@@ -4,6 +4,7 @@ import {
   ApolloProvider,
   InMemoryCache,
 } from "@apollo/client";
+// @ts-ignore
 import { createUploadLink } from "apollo-upload-client";
 import { ReactNode } from "react";
 
