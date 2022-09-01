@@ -1,5 +1,5 @@
-import EventInfoList from "../../../src/components/units/eventInfo/list/eventInfoList.container";
+import EventInfoList from "../../src/components/units/eventInfo/list/eventInfoList.container";
 
-export default function EvnetInfoList(){
-    return <EventInfoList />
+export default function EventInfoListPage() {
+  return <EventInfoList />;
 }
