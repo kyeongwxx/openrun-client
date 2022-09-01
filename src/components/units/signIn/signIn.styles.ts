@@ -41,7 +41,7 @@ export const IdSaveWrapper = styled.div`
   align-items: center;
   padding-bottom: 1.813rem;
 `;
-export const IdSaveButton = styled.button`
+export const IdSaveBtn = styled.button`
   width: 18px;
   height: 18px;
   border-radius: 9px;
@@ -54,7 +54,7 @@ export const IdSaveText = styled.div`
   font-weight: 400;
   color: #393939;
 `;
-export const LoginButton = styled.button`
+export const LoginBtn = styled.button`
   width: 25%;
   height: 77px;
   font-size: 1.25rem;
@@ -89,7 +89,7 @@ export const SocialTitle = styled.div`
   color: #000000;
   padding-bottom: 1.5rem;
 `;
-export const SocialButtons = styled.div`
+export const SocialBtns = styled.div`
   width: 25%;
   display: flex;
   flex-direction: row;

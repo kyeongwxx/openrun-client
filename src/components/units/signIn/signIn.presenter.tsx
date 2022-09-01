@@ -9,13 +9,13 @@ export default function SignInUI() {
     <s.Wrapper>
       <s.LoginWrapper>
         <s.Title>로그인</s.Title>
-        <s.InfoInput placeholder="ID"></s.InfoInput>
-        <s.InfoInput placeholder="PW"></s.InfoInput>
+        <s.InfoInput placeholder="ID" type="text"></s.InfoInput>
+        <s.InfoInput placeholder="PW" type="password"></s.InfoInput>
         <s.IdSaveWrapper>
-          <s.IdSaveButton></s.IdSaveButton>
+          <s.IdSaveBtn></s.IdSaveBtn>
           <s.IdSaveText>아이디 저장</s.IdSaveText>
         </s.IdSaveWrapper>
-        <s.LoginButton>로그인</s.LoginButton>
+        <s.LoginBtn>로그인</s.LoginBtn>
         <s.SearchWrapper>
           <s.Text>회원가입</s.Text>
           <VerticalDivideLine />
@@ -25,7 +25,7 @@ export default function SignInUI() {
         </s.SearchWrapper>
         <s.DivideLine></s.DivideLine>
         <s.SocialTitle>SNS 계정 로그인</s.SocialTitle>
-        <s.SocialButtons>
+        <s.SocialBtns>
           <s.NaverLogin>
             <Naver />
           </s.NaverLogin>
@@ -35,7 +35,7 @@ export default function SignInUI() {
           <s.KakaoLogin>
             <Kakao />
           </s.KakaoLogin>
-        </s.SocialButtons>
+        </s.SocialBtns>
       </s.LoginWrapper>
     </s.Wrapper>
   );
