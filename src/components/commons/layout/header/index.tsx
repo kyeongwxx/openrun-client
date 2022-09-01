@@ -4,6 +4,7 @@ import Heart from "../../../../../public/Heart.svg";
 import Account from "../../../../../public/Account.svg";
 import Logo from "../../../../../public/Logo.svg";
 import Hamburger from "../../../../../public/Hamburger.svg";
+import Search from "../../../../../public/Search.svg";
 
 export default function LayoutHeader() {
   return (
@@ -18,6 +19,9 @@ export default function LayoutHeader() {
         <s.MenuList>
           <s.MenuIcon>
             <Account />
+          </s.MenuIcon>
+          <s.MenuIcon>
+            <Search />
           </s.MenuIcon>
           <s.MenuIcon>
             <Heart />
