@@ -15,7 +15,7 @@ export default function BoardDetailPage(props: any) {
         <meta property="og:image" content={props?.fetchBoard.images?.[0]} />
       </Head>
       <div>
-        <div>게시글 상세 페이지. 게시글 ID는 {router.query.boardId}</div>
+        <div>게시글 상세 페이지. 게시글 ID는 {router.query.id}</div>
       </div>
     </div>
   );
@@ -38,7 +38,7 @@ export const getServerSideProps = async (context: any) => {
   );
   // 프론트 -> 백엔드로 요청하는 부분
   const result = await graphQLClient.request(FETCH_BOARD, {
-    boardId: context.query.boardId,
+    boardId: context.query.id,
   });
 
   return {
