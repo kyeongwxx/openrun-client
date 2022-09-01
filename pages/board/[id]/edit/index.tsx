@@ -1,14 +1,14 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { gql, GraphQLClient } from "graphql-request";
-// import BoardDetail from "../../../../src/components/units/board/detail/boardDetail.container";
+import BoardDetail from "../../../../src/components/units/board/detail/boardDetail.container";
 
 export default function BoardDetailPage(props: any) {
   const router = useRouter();
 
   return (
     <div>
-      {/* <BoardDetail /> */}
+      <BoardDetail />
       <Head>
         <meta property="og:title" content={props?.fetchBoard.title} />
         <meta property="og:description" content={props?.fetchBoard.contents} />
