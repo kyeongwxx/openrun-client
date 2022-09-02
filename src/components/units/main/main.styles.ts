@@ -4,7 +4,6 @@ export const Wrapper = styled.main`
   width: 95%;
 
   margin: auto;
-  background-color: pink;
 `;
 
 export const AdCarousel = styled.section`
@@ -71,31 +70,26 @@ export const TEXT = styled.span`
   margin-bottom: 5%;
 `;
 
-export const BestProductWrapper = styled.section`
-  width: 100%;
+export const ProductWrapper = styled.section`
+  width: 90%;
   height: 690px;
-  background-color: beige;
 
   margin: auto;
   display: flex;
   flex-direction: column;
 `;
 
-export const BestProductText = styled.div`
+export const ProductWrapperText = styled.div`
   width: 15%;
-  height: 30%;
 
   margin: auto;
   text-align: center;
-
-  background-color: aliceblue;
 `;
 
 export const BestProductCategory = styled.div`
   width: 100%;
   height: 70%;
 
-  background-color: yellow;
   display: flex;
   flex-direction: row;
 `;
@@ -103,11 +97,11 @@ export const BestProductCategory = styled.div`
 export const Category = styled.div`
   width: 30%;
   height: 50%;
-
   margin: auto;
-  text-align: center;
-
-  background-color: skyblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: 700;
 `;
 
 export const CategoryImages = styled.div`
@@ -119,15 +113,71 @@ export const CategoryImages = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   overflow-y: scroll;
-
-  background-color: yellowgreen;
+  justify-content: center;
 `;
 
-export const CategoryImage = styled.div`
-  width: 50%;
-  height: 90%;
+export const CategoryImage = styled.img`
+  width: 40%;
+  height: 80%;
   margin: 1%;
   border-radius: 24px;
 
   background-color: orange;
+`;
+
+export const NewProductCategory = styled.div`
+  width: 100%;
+  height: 70%;
+
+  display: flex;
+  flex-direction: row;
+`;
+
+export const NewItemsImages = styled.div`
+  width: 100%;
+  height: 80%;
+
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: wrap;
+  overflow-y: scroll; */
+  justify-content: center;
+`;
+export const NewItemsImage = styled.img`
+  width: 33%;
+  height: 80%;
+  margin: 1%;
+  border-radius: 24px;
+
+  background-color: orange;
+`;
+
+export const Banner = styled.img`
+  width: 100%;
+  height: 80%;
+`;
+
+export const NewsCategory = styled.div`
+  width: 100%;
+  height: 70%;
+
+  display: flex;
+  flex-direction: row;
+`;
+
+export const NewsImages = styled.div`
+  width: 50%;
+  height: 100%;
+
+  margin: 1%;
+  background-color: orange;
+`;
+
+export const NewsImage = styled.div`
+  width: 95%;
+  height: 50%;
+  margin: auto;
+
+  background-color: skyblue;
 `;
