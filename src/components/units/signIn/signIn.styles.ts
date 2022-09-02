@@ -63,6 +63,7 @@ export const LoginBtn = styled.button`
   background: #000000;
   border: none;
   margin-bottom: 1.75rem;
+  color: #ffffff;
 `;
 export const SearchWrapper = styled.div`
   width: 25%;

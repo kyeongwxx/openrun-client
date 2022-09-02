@@ -36,6 +36,9 @@ export const Btn01 = styled.button`
   background: rgba(0, 0, 0, 0.8);
   border-radius: 24px;
   border: none;
+  color: #ffffff;
+  font-size: 0.938rem;
+  font-weight: 400;
 `;
 export const Input02 = styled.input`
   width: 24.4%;
@@ -122,4 +125,7 @@ export const SignUpBtn = styled.button`
   border-radius: 24px;
   border: none;
   margin-bottom: 4.125rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
 `;

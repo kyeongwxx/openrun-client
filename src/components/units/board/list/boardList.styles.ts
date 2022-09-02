@@ -30,14 +30,14 @@ export const DivideLine1 = styled.div`
   margin-top: 4.938rem;
 `;
 export const ProductWrapper = styled.div`
-  width: 60%;
+  width: 65%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding-top: 3.813rem;
 `;
 export const ProductWrapper1 = styled.div`
-  width: 60%;
+  width: 65%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
