@@ -1,6 +1,6 @@
-import * as s from "./signInSuccess.styles";
+import * as s from "./signUpSuccess.styles";
 
-export default function CardSignUpUI() {
+export default function SignUpSuccessUI() {
   return (
     <s.Wrapper>
       <s.LoginSuccessWrapper>

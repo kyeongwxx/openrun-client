@@ -19,15 +19,15 @@ export const Welcome = styled.div`
   font-size: 1.875rem;
   font-weight: 800;
   padding-top: 12rem;
-  color: #000000;
-  text-shadow: 0px 3px 3px gray;
+  color: #000;
+  text-shadow: 0px 2px 5px gray;
 `;
 
 export const WelcomeMention = styled.div`
   font-size: 1.875rem;
   font-weight: 600;
   padding-top: 10px;
-  color: #000000;
+  color: #000;
   padding-bottom: 4rem;
   text-shadow: 0px 3px 3px gray;
 `;
@@ -41,6 +41,8 @@ export const HomeBtn = styled.button`
   background: #000000;
   border: none;
   margin-bottom: 1.75rem;
+  color: white;
+  cursor: pointer;
 `;
 
 export const CardBtn = styled.button`
@@ -53,4 +55,5 @@ export const CardBtn = styled.button`
   border: 1px solid black;
   color: black;
   margin-bottom: 13rem;
+  cursor: pointer;
 `;
