@@ -66,20 +66,68 @@ export const H5 = styled.h5`
   margin-bottom: 5%;
 `;
 
+export const TEXT = styled.span`
+  color: #333;
+  margin-bottom: 5%;
+`;
+
 export const BestProductWrapper = styled.section`
   width: 100%;
   height: 690px;
   background-color: beige;
 
   margin: auto;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const BestProductText = styled.div`
   width: 15%;
-  height: 10%;
+  height: 30%;
 
   margin: auto;
   text-align: center;
 
   background-color: aliceblue;
+`;
+
+export const BestProductCategory = styled.div`
+  width: 100%;
+  height: 70%;
+
+  background-color: yellow;
+  display: flex;
+  flex-direction: row;
+`;
+
+export const Category = styled.div`
+  width: 30%;
+  height: 50%;
+
+  margin: auto;
+  text-align: center;
+
+  background-color: skyblue;
+`;
+
+export const CategoryImages = styled.div`
+  width: 70%;
+  height: 80%;
+
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+
+  background-color: yellowgreen;
+`;
+
+export const CategoryImage = styled.div`
+  width: 50%;
+  height: 90%;
+  margin: 1%;
+  border-radius: 24px;
+
+  background-color: orange;
 `;

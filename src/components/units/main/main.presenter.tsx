@@ -35,8 +35,18 @@ export default function MainUI() {
       <s.BestProductWrapper>
         <s.BestProductText>
           <s.H1>Monthly Best</s.H1>
-          <s.H2>이달의 베스트 상품</s.H2>
+          <s.TEXT>이달의 베스트 상품</s.TEXT>
         </s.BestProductText>
+        <s.BestProductCategory>
+          <s.Category></s.Category>
+          <s.CategoryImages>
+            <s.CategoryImage />
+            <s.CategoryImage />
+            <s.CategoryImage />
+            <s.CategoryImage />
+            <s.CategoryImage />
+          </s.CategoryImages>
+        </s.BestProductCategory>
       </s.BestProductWrapper>
     </s.Wrapper>
   );

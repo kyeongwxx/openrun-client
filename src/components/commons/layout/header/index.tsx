@@ -10,14 +10,18 @@ export default function LayoutHeader() {
   return (
     <s.Wrapper>
       <s.MenuWrapper>
-        <s.Hamburger>
+        {/* <s.Hamburger>
           <Hamburger />
-        </s.Hamburger>
+        </s.Hamburger> */}
         <s.Logo>
           <Logo />
         </s.Logo>
         <s.MenuList>
-          <s.MenuIcon>
+          <s.Menu>LIST</s.Menu>
+          <s.Menu>POST</s.Menu>
+          <s.Menu>NEWS</s.Menu>
+
+          {/* <s.MenuIcon>
             <Account />
           </s.MenuIcon>
           <s.MenuIcon>
@@ -28,7 +32,7 @@ export default function LayoutHeader() {
           </s.MenuIcon>
           <s.MenuIcon>
             <Bag />
-          </s.MenuIcon>
+          </s.MenuIcon> */}
         </s.MenuList>
       </s.MenuWrapper>
     </s.Wrapper>

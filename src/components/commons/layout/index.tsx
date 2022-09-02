@@ -12,9 +12,10 @@ interface ILayoutProps {
 export default function Layout(props: ILayoutProps) {
   return (
     <s.Wrapper>
-      <Container maxWidth="xl" style={{ backgroundColor: "skyblue" }}>
+      <Container maxWidth="xl">
+        <LayoutNavigation />
         <LayoutHeader />
-        {/* <LayoutNavigation /> */}
+
         <div>{props.children}</div>
         <LayoutFooter />
       </Container>

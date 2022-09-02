@@ -4,7 +4,7 @@ export const Wrapper = styled.header`
   width: 95%;
   height: 96px;
   margin: auto;
-  background-color: yellow;
+  /* background-color: yellow; */
 `;
 
 export const MenuWrapper = styled.div`
@@ -23,22 +23,25 @@ export const Hamburger = styled.div`
 `;
 
 export const Logo = styled.div`
-  /* width: 33.3%; */
-  /* background-color: pink; */
   text-align: center;
   cursor: pointer;
 `;
 
 export const MenuList = styled.div`
   /* width: 33.3%; */
-  background-color: aqua;
+
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
 `;
 
 export const MenuIcon = styled.div`
-  /* background-color: pink; */
   margin-right: 10%;
+  cursor: pointer;
+`;
+export const Menu = styled.div`
+  margin-right: 10%;
+  color: #333;
+
   cursor: pointer;
 `;
