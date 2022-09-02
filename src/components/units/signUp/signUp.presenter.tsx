@@ -1,3 +1,4 @@
+import BlackButton from "../../../commons/button/black";
 import * as s from "./signUp.styles";
 
 export default function SignUpUI() {
