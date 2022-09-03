@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { ISignInputProps } from "./input.types";
 const Input = styled.input`
   width: ${(props) => props.width};
 
@@ -14,7 +15,7 @@ const Input = styled.input`
   }
 `;
 
-export default function SignInput(props) {
+export default function SignInput(props: ISignInputProps) {
   const { placeholder, color, width, name } = props;
   return (
     <Input

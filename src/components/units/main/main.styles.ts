@@ -6,12 +6,6 @@ export const Wrapper = styled.main`
   margin: auto;
 `;
 
-export const AdCarousel = styled.section`
-  width: 100%;
-  height: 700px;
-  background-color: aqua;
-`;
-
 export const DateCarousel = styled.section`
   width: 90%;
   height: 143px;
@@ -47,7 +41,8 @@ export const ProductText = styled.div`
 `;
 
 export const H1 = styled.h1`
-  color: #333;
+  /* color: #333; */
+  color: ${(props) => props.color};
   margin-bottom: 3%;
 `;
 
@@ -66,14 +61,14 @@ export const H5 = styled.h5`
 `;
 
 export const TEXT = styled.span`
-  color: #333;
+  /* color: #333; */
+  color: ${(props) => props.color};
   margin-bottom: 5%;
 `;
 
 export const ProductWrapper = styled.section`
   width: 90%;
   height: 690px;
-
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -140,8 +135,6 @@ export const NewItemsImages = styled.div`
   margin: auto;
   display: flex;
   flex-direction: row;
-  /* flex-wrap: wrap;
-  overflow-y: scroll; */
   justify-content: center;
 `;
 export const NewItemsImage = styled.img`
@@ -153,9 +146,18 @@ export const NewItemsImage = styled.img`
   background-color: orange;
 `;
 
-export const Banner = styled.img`
+export const Banner = styled.div`
   width: 100%;
-  height: 80%;
+  height: 420px;
+  padding-top: 12%;
+
+  background-image: url("/img/subBanner.png");
+`;
+
+export const BannerWrapperText = styled.div`
+  width: 30%;
+  margin: auto;
+  text-align: center;
 `;
 
 export const NewsCategory = styled.div`

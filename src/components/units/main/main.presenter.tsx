@@ -1,9 +1,12 @@
+import MainSlider from "../../../commons/carousel";
+import DatePicker from "../../../commons/datePicker";
 import * as s from "./main.styles";
 export default function MainUI() {
   return (
     <s.Wrapper>
-      <s.AdCarousel>캐러셀</s.AdCarousel>
-      <s.DateCarousel>달력 영역</s.DateCarousel>
+      <MainSlider Src="/img/mainBanner.png" />
+
+      <DatePicker></DatePicker>
       <s.EventProductWrapper>
         {/* 나중에 map으로 처리 */}
         <s.EventProduct>
@@ -34,8 +37,8 @@ export default function MainUI() {
       </s.EventProductWrapper>
       <s.ProductWrapper>
         <s.ProductWrapperText>
-          <s.H1>Weekly Best</s.H1>
-          <s.TEXT>이주의 베스트 상품</s.TEXT>
+          <s.H1 color="#333">Weekly Best</s.H1>
+          <s.TEXT color="#333">이주의 베스트 상품</s.TEXT>
         </s.ProductWrapperText>
         <s.BestProductCategory>
           <s.Category>
@@ -56,8 +59,8 @@ export default function MainUI() {
       </s.ProductWrapper>
       <s.ProductWrapper>
         <s.ProductWrapperText>
-          <s.H1>Brand New Items</s.H1>
-          <s.TEXT>신상품을 한눈에</s.TEXT>
+          <s.H1 color="#333">Brand New Items</s.H1>
+          <s.TEXT color="#333">신상품을 한눈에</s.TEXT>
         </s.ProductWrapperText>
         <s.NewProductCategory>
           <s.NewItemsImages>
@@ -67,11 +70,16 @@ export default function MainUI() {
           </s.NewItemsImages>
         </s.NewProductCategory>
       </s.ProductWrapper>
-      <s.Banner src="/img/subBanner.png"></s.Banner>
+      <s.Banner>
+        <s.BannerWrapperText>
+          <s.H1 color="#fff">Openrun 회원에게 드리는 혜택 </s.H1>
+          <s.TEXT color="#fff">신규 가입 시 포인트 5% 추가 적립</s.TEXT>
+        </s.BannerWrapperText>
+      </s.Banner>
       <s.ProductWrapper>
         <s.ProductWrapperText>
-          <s.H1>Openrun News</s.H1>
-          <s.TEXT>오픈런이 전하는 다향한 소식</s.TEXT>
+          <s.H1 color="#333">Openrun News</s.H1>
+          <s.TEXT color="#333">오픈런이 전하는 다향한 소식</s.TEXT>
         </s.ProductWrapperText>
         <s.NewsCategory>
           <s.NewsImages>
