@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.main`
   width: 95%;
-
   margin: auto;
 `;
 
@@ -37,14 +36,34 @@ export const Button = styled.div`
   cursor: pointer;
 `;
 
+export const ButtonMobile = styled.div`
+  width: 80%;
+  height: 60px;
+  margin: auto;
+  margin-top: 40px;
+  border: 1px solid #333;
+  border-radius: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  cursor: pointer;
+`;
+
 export const TextDay = styled.div`
   color: #333;
   font-weight: 400;
-  font-size: 22px;
+  font-size: 1rem;
+  @media (max-width: 767px) {
+    font-size: 1rem;
+  }
 `;
 
 export const TextDate = styled.div`
   color: #333;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 2rem;
+  @media (max-width: 767px) {
+    font-size: 1rem;
+  }
 `;

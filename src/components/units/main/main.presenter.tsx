@@ -5,10 +5,8 @@ export default function MainUI() {
   return (
     <s.Wrapper>
       <MainSlider Src="/img/mainBanner.png" />
-
-      <DatePicker></DatePicker>
+      <DatePicker />
       <s.EventProductWrapper>
-        {/* 나중에 map으로 처리 */}
         <s.EventProduct>
           <s.ProductImg />
           <s.ProductText>
@@ -35,10 +33,22 @@ export default function MainUI() {
           <s.ProductText></s.ProductText>
         </s.EventProduct>
       </s.EventProductWrapper>
+      <s.Banner height="690px" url="/img/rectangle2.png" size="contain">
+        <s.ProductWrapperText>
+          <s.H1 color="#333">Best Runner Ranking</s.H1>
+          <s.TEXT color="#333">우리가 사랑하는 베스트 러너 순위</s.TEXT>
+        </s.ProductWrapperText>
+        <s.BestRunners>
+          <s.BestRunner>1</s.BestRunner>
+          <s.BestRunner>2</s.BestRunner>
+          <s.BestRunner>3</s.BestRunner>
+          <s.BestRunner>4</s.BestRunner>
+        </s.BestRunners>
+      </s.Banner>
       <s.ProductWrapper>
         <s.ProductWrapperText>
-          <s.H1 color="#333">Weekly Best</s.H1>
-          <s.TEXT color="#333">이주의 베스트 상품</s.TEXT>
+          <s.H1 color="#333">Best Pick</s.H1>
+          <s.TEXT color="#333">찜 많이 받은 글</s.TEXT>
         </s.ProductWrapperText>
         <s.BestProductCategory>
           <s.Category>
@@ -57,7 +67,7 @@ export default function MainUI() {
           </s.CategoryImages>
         </s.BestProductCategory>
       </s.ProductWrapper>
-      <s.ProductWrapper>
+      {/* <s.ProductWrapper>
         <s.ProductWrapperText>
           <s.H1 color="#333">Brand New Items</s.H1>
           <s.TEXT color="#333">신상품을 한눈에</s.TEXT>
@@ -69,8 +79,8 @@ export default function MainUI() {
             <s.NewItemsImage />
           </s.NewItemsImages>
         </s.NewProductCategory>
-      </s.ProductWrapper>
-      <s.Banner>
+      </s.ProductWrapper> */}
+      <s.Banner height="420px" url="/img/subBanner.png" size="cover">
         <s.BannerWrapperText>
           <s.H1 color="#fff">Openrun 회원에게 드리는 혜택 </s.H1>
           <s.TEXT color="#fff">신규 가입 시 포인트 5% 추가 적립</s.TEXT>

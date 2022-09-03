@@ -25,7 +25,7 @@ export default function MainSlider(props: ICarouselProps) {
   };
   return (
     <Slider {...settings}>
-      <s.AdCarousel src={props.Src} />
+      <s.AdCarousel src={props.Src} color="#8be1f2" />
       <s.AdCarousel />
       <s.AdCarousel />
     </Slider>
