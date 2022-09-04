@@ -58,7 +58,7 @@ export const H1 = styled.p`
   font-weight: 700;
   font-size: 2rem;
   @media (max-width: 767px) {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 `;
 
@@ -73,11 +73,12 @@ export const H5 = styled.h5`
   color: #333;
 `;
 
-export const TEXT = styled.p`
+export const TEXT = styled.div`
   color: ${(props) => props.color};
   font-weight: 400;
   font-size: 1rem;
   @media (max-width: 767px) {
+    width: 100%;
     font-size: 0.5rem;
   }
 `;
@@ -89,8 +90,7 @@ export const ProductWrapper = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: yellow;
-  margin-bottom: 50px;
+
   @media (max-width: 767px) {
     background-size: contain;
     height: 300px;
@@ -99,39 +99,45 @@ export const ProductWrapper = styled.section`
 
 export const ProductWrapperText = styled.div`
   text-align: center;
-  background-color: aliceblue;
 `;
-export const Banner = styled.div<{
+export const BannerImg = styled.div<{
   height: string;
   url: string;
-  size: string;
 }>`
   width: 100%;
   height: ${(props) => props.height};
   background-image: url(${(props) => props.url});
   background-repeat: no-repeat;
-  background-size: ${(props) => props.size};
+  background-size: contain;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: aquamarine;
+
   @media (max-width: 767px) {
     background-size: contain;
     height: 300px;
   }
 `;
-
 export const BestRunners = styled.div`
   width: 90%;
   height: 40%;
-  margin: auto;
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  background-color: aqua;
+  @media (max-width: 767px) {
+    height: 100px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    justify-content: center;
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
 `;
 
 export const BestRunner = styled.div`
@@ -140,6 +146,27 @@ export const BestRunner = styled.div`
   border-radius: 20px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   background-color: #fff;
+  @media (max-width: 767px) {
+    width: 80%;
+    height: 50px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+`;
+
+export const BannerDiv = styled.div`
+  width: 100%;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #d2e0ec;
+  margin-bottom: 100px;
+  @media (max-width: 767px) {
+    height: 100px;
+    margin-bottom: 30px;
+  }
 `;
 
 export const BestProductCategory = styled.div`
@@ -152,10 +179,12 @@ export const BestProductCategory = styled.div`
 export const Category = styled.div`
   width: 30%;
   height: 50%;
+
   margin: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+
   font-weight: 700;
 `;
 
@@ -168,6 +197,7 @@ export const CategoryImages = styled.div`
   flex-wrap: wrap;
   overflow-y: scroll;
   justify-content: center;
+  background-color: unset;
   ::-webkit-scrollbar {
     display: none;
   }
@@ -181,8 +211,8 @@ export const CategoryImage = styled.img`
 
   background-color: orange;
   @media (max-width: 767px) {
-    width: 300px;
-    height: 200px;
+    width: 190px;
+    height: 170px;
   }
 `;
 
@@ -225,21 +255,29 @@ export const BannerWrapperText = styled.div`
 
 export const NewsCategory = styled.div`
   width: 100%;
-  height: 70%;
+  height: 100%;
   display: flex;
   flex-direction: row;
 `;
 
-export const NewsImages = styled.div`
+export const NewsImages = styled.div<{ justify: string }>`
   width: 50%;
   height: 100%;
   margin: 1%;
-  background-color: orange;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: ${(props) => props.justify};
+  align-items: center;
 `;
 
 export const NewsImage = styled.div`
   width: 95%;
-  height: 50%;
-  margin: auto;
+  height: 40%;
+  border-radius: 24px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-color: skyblue;
 `;

@@ -33,7 +33,7 @@ export default function MainUI() {
           <s.ProductText></s.ProductText>
         </s.EventProduct>
       </s.EventProductWrapper>
-      <s.Banner height="690px" url="/img/rectangle2.png" size="contain">
+      <s.BannerImg height="690px" url="/img/rectangle2.png">
         <s.ProductWrapperText>
           <s.H1 color="#333">Best Runner Ranking</s.H1>
           <s.TEXT color="#333">우리가 사랑하는 베스트 러너 순위</s.TEXT>
@@ -44,7 +44,7 @@ export default function MainUI() {
           <s.BestRunner>3</s.BestRunner>
           <s.BestRunner>4</s.BestRunner>
         </s.BestRunners>
-      </s.Banner>
+      </s.BannerImg>
       <s.ProductWrapper>
         <s.ProductWrapperText>
           <s.H1 color="#333">Best Pick</s.H1>
@@ -80,23 +80,48 @@ export default function MainUI() {
           </s.NewItemsImages>
         </s.NewProductCategory>
       </s.ProductWrapper> */}
-      <s.Banner height="420px" url="/img/subBanner.png" size="cover">
+      <s.BannerDiv>
         <s.BannerWrapperText>
-          <s.H1 color="#fff">Openrun 회원에게 드리는 혜택 </s.H1>
-          <s.TEXT color="#fff">신규 가입 시 포인트 5% 추가 적립</s.TEXT>
+          <s.H1 color="#4E6781">러너 1:1 매칭 </s.H1>
+          <s.TEXT color="#4E6781">
+            어려웠던 줄서기 오픈런과 함께하면 쉬어집니다.
+          </s.TEXT>
         </s.BannerWrapperText>
-      </s.Banner>
+      </s.BannerDiv>
       <s.ProductWrapper>
         <s.ProductWrapperText>
           <s.H1 color="#333">Openrun News</s.H1>
           <s.TEXT color="#333">오픈런이 전하는 다향한 소식</s.TEXT>
         </s.ProductWrapperText>
         <s.NewsCategory>
-          <s.NewsImages>
-            <s.NewsImage />
+          <s.NewsImages justify="flex-start">
+            <s.NewsImage>
+              <s.ProductWrapperText>
+                <s.TEXT color="#333">오픈런이 전하는 다향한 소식</s.TEXT>
+                <s.TEXT color="#333">오픈런이 전하는 다향한 소식</s.TEXT>
+              </s.ProductWrapperText>
+            </s.NewsImage>
+
+            <s.NewsImage>
+              <s.ProductWrapperText>
+                <s.TEXT color="#333">오픈런이 전하는 다향한 소식</s.TEXT>
+                <s.TEXT color="#333">오픈런이 전하는 다향한 소식</s.TEXT>
+              </s.ProductWrapperText>
+            </s.NewsImage>
           </s.NewsImages>
-          <s.NewsImages>
-            <s.NewsImage />
+          <s.NewsImages justify="flex-end">
+            <s.NewsImage>
+              <s.ProductWrapperText>
+                <s.TEXT color="#333">오픈런이 전하는 다향한 소식</s.TEXT>
+                <s.TEXT color="#333">오픈런이 전하는 다향한 소식</s.TEXT>
+              </s.ProductWrapperText>
+            </s.NewsImage>
+            <s.NewsImage>
+              <s.ProductWrapperText>
+                <s.TEXT color="#333">오픈런이 전하는 다향한 소식</s.TEXT>
+                <s.TEXT color="#333">오픈런이 전하는 다향한 소식</s.TEXT>
+              </s.ProductWrapperText>
+            </s.NewsImage>
           </s.NewsImages>
         </s.NewsCategory>
       </s.ProductWrapper>
