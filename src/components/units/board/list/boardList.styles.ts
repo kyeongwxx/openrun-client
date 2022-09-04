@@ -60,12 +60,16 @@ export const ProductWrapper = styled.div`
 export const ProductInnerWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
   padding-bottom: 5rem;
 `;
 export const ProductInfoWrapper = styled.div`
   width: 24%;
   position: relative;
+  @media (max-width: 767px) {
+    width: 48%;
+  }
 `;
 export const ImageWrapper = styled.div`
   padding-bottom: 2.125rem;
