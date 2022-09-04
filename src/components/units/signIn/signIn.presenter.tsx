@@ -3,19 +3,47 @@ import Naver from "../../../../public/Naver.svg";
 import Google from "../../../../public/Google.svg";
 import Kakao from "../../../../public/Kakao.svg";
 import VerticalDivideLine from "../../../../public/VerticalDivideLine.svg";
+import SignInput from "../../../commons/input/sign";
+import { ISignInProps } from "./signIn.types";
 
-export default function SignInUI() {
+import BlackButton from "../../../commons/button/black";
+
+export default function SignInUI(props: ISignInProps) {
   return (
     <s.Wrapper>
       <s.LoginWrapper>
         <s.Title>로그인</s.Title>
-        <s.InfoInput placeholder="ID" type="text"></s.InfoInput>
-        <s.InfoInput placeholder="PW" type="password"></s.InfoInput>
-        <s.IdSaveWrapper>
-          <s.IdSaveBtn></s.IdSaveBtn>
-          <s.IdSaveText>아이디 저장</s.IdSaveText>
-        </s.IdSaveWrapper>
-        <s.LoginBtn>로그인</s.LoginBtn>
+
+        <form onSubmit={props.handleSubmit(props.onClickSignIn)}>
+          <SignInput
+            register={props.register}
+            placeholder="ID"
+            color="#000000"
+            width="100%"
+            name="id"
+            type="text"
+          />
+          <SignInput
+            register={props.register}
+            placeholder="PW"
+            color="#000000"
+            width="100%"
+            name="password"
+            type="password"
+          />
+          <s.IdSaveWrapper>
+            <s.IdSaveBtn></s.IdSaveBtn>
+            <s.IdSaveText>아이디 저장</s.IdSaveText>
+          </s.IdSaveWrapper>
+
+          <BlackButton
+            onClick={props.onClickSignIn}
+            type="submit"
+            width="100%"
+            fontWeight="700"
+            title="로그인"
+          />
+        </form>
         <s.SearchWrapper>
           <s.Text>회원가입</s.Text>
           <VerticalDivideLine />
@@ -23,7 +51,7 @@ export default function SignInUI() {
           <VerticalDivideLine />
           <s.Text>비밀번호 찾기</s.Text>
         </s.SearchWrapper>
-        <s.DivideLine></s.DivideLine>
+        <s.DivideLine />
         <s.SocialTitle>SNS 계정 로그인</s.SocialTitle>
         <s.SocialBtns>
           <s.NaverLogin>

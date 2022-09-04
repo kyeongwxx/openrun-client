@@ -16,13 +16,14 @@ const Input = styled.input`
 `;
 
 export default function SignInput(props: ISignInputProps) {
-  const { placeholder, color, width, name } = props;
+  const { placeholder, color, width, name, type, register } = props;
   return (
     <Input
-      //   {...props.register(name)}
+      {...register(name || "")}
       placeholder={placeholder}
       color={color}
       width={width}
+      type={type}
     ></Input>
   );
 }
