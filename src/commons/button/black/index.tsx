@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const Button = styled.button`
+export const Button = styled.button<{ width: string; fontWeight: string }>`
   width: ${(props) => props.width};
   height: 77px;
   background-color: #000;

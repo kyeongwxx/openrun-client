@@ -71,6 +71,10 @@ export const SearchWrapper = styled.div`
   flex-direction: row;
   justify-content: space-around;
   padding-bottom: 1.875rem;
+  margin-top: 20px;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 export const Text = styled.div`
   font-size: 0.8rem;
@@ -78,10 +82,14 @@ export const Text = styled.div`
   color: #393939;
   padding-right: 0.5rem;
   padding-left: 0.5rem;
+  cursor: pointer;
 `;
 export const DivideLine = styled.div`
-  width: 25%;
+  width: 40%;
   border-bottom: 1px solid rgba(101, 101, 101, 0.5);
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 export const SocialTitle = styled.div`
   font-size: 1.25rem;
@@ -96,6 +104,9 @@ export const SocialBtns = styled.div`
   flex-direction: row;
   justify-content: space-around;
   padding-bottom: 5.25rem;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 export const NaverLogin = styled.div`
   width: 64px;
@@ -105,6 +116,7 @@ export const NaverLogin = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 export const GoogleLogin = styled.div`
   width: 64px;
@@ -114,6 +126,7 @@ export const GoogleLogin = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 export const KakaoLogin = styled.div`
   width: 64px;
@@ -123,4 +136,5 @@ export const KakaoLogin = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
