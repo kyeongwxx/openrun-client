@@ -6,21 +6,19 @@ import { currentDate } from "../function/currentDate";
 import { v4 as uuidv4 } from "uuid";
 import { useMediaQuery } from "react-responsive";
 
+import MediaQueryPc from "../mediaQuery/mediaQueryStandardPc";
+import MediaQueryTablet from "../mediaQuery/mediaQueryStandardTablet";
+import MediaQueryMobile from "../mediaQuery/mediaQueryStandardMobile";
+
 export default function DatePicker() {
   const oneWeek = currentDate();
 
   const date = [...oneWeek[0]];
   const day = [...oneWeek[1]];
 
-  const isPc = useMediaQuery({
-    query: "(min-width:1200px)",
-  });
-  const isTablet = useMediaQuery({
-    query: "(min-width:768px) and (max-width:1199px)",
-  });
-  const isMobile = useMediaQuery({
-    query: "(max-width:767px)",
-  });
+  const isPc = MediaQueryPc();
+  const isTablet = MediaQueryTablet();
+  const isMobile = MediaQueryMobile();
 
   return (
     <s.Wrapper>
