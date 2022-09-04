@@ -36,13 +36,15 @@ export default function LayoutFooter() {
               <s.Text weight="400" color="#909090">
                 공지사항
               </s.Text>
-              {/* <s.Text weight="400" color="#909090">
-                회원혜택
-              </s.Text> */}
+            </s.Info>
+            <s.Info>
               <s.Text weight="400" color="#909090">
-                자주묻는질문
+                고객센터
               </s.Text>
             </s.Info>
+            {/* <s.Text weight="400" color="#909090">
+                회원혜택
+              </s.Text> */}
           </s.InfoWrapper>
         </s.Menu>
       </s.MenuWrapper>
