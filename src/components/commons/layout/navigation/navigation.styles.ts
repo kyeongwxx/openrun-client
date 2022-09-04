@@ -17,21 +17,16 @@ export const MenuWrapper = styled.div`
 `;
 
 export const MenuList = styled.div`
-  height: 100%;
+  width: 50%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 `;
 
-export const MenuIcon = styled.div`
-  background-color: pink;
-  margin-right: 10%;
-  cursor: pointer;
-`;
-
-export const Text = styled.div`
+export const Menu = styled.div`
+  margin-left: 1%;
   color: #5e5e5e;
-  font-size: 0.5rem;
+  font-size: 0.8rem;
   cursor: pointer;
 `;
