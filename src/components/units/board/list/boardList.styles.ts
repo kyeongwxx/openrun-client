@@ -67,6 +67,8 @@ export const ProductInnerWrapper = styled.div`
 export const ProductInfoWrapper = styled.div`
   width: 24%;
   position: relative;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 24px;
   @media (max-width: 767px) {
     width: 48%;
   }
@@ -124,6 +126,7 @@ export const Brand = styled.div`
   font-weight: 700;
   font-size: 1rem;
   color: rgba(0, 0, 0, 0.7);
+  padding: 0 10px;
 `;
 export const Region1 = styled.div`
   width: 25%;
@@ -135,6 +138,7 @@ export const Region1 = styled.div`
   font-weight: 400;
   font-size: 0.875rem;
   color: #ffffff;
+  margin: 0 10px;
 `;
 export const Region2 = styled.div`
   width: 25%;
@@ -146,6 +150,7 @@ export const Region2 = styled.div`
   font-weight: 400;
   font-size: 0.875rem;
   color: #ffffff;
+  margin: 0 10px;
 `;
 export const Region3 = styled.div`
   width: 25%;
@@ -157,6 +162,7 @@ export const Region3 = styled.div`
   font-weight: 400;
   font-size: 0.875rem;
   color: #ffffff;
+  margin: 0 10px;
 `;
 export const Region4 = styled.div`
   width: 25%;
@@ -168,23 +174,28 @@ export const Region4 = styled.div`
   font-weight: 400;
   font-size: 0.875rem;
   color: #ffffff;
+  margin: 0 10px;
 `;
 export const Name = styled.div`
   font-weight: 700;
   font-size: 1.25rem;
   color: #000000;
+  padding: 0 10px;
   padding-bottom: 0.813rem;
 `;
 export const Contents = styled.div`
   font-weight: 400;
   font-size: 0.875rem;
   color: #656565;
+  padding: 0 10px;
   padding-bottom: 0.688rem;
 `;
 export const Writer = styled.div`
   font-weight: 700;
   font-size: 0.875rem;
   color: #a3a3a3;
+  padding: 0 10px;
+
   padding-bottom: 0.688rem;
 `;
 export const Price = styled.div`
@@ -193,4 +204,5 @@ export const Price = styled.div`
   font-weight: 700;
   font-size: 1.5rem;
   color: #000000;
+  padding: 10px;
 `;
