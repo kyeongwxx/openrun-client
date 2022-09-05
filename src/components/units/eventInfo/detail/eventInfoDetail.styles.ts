@@ -1,71 +1,138 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.main`
-  width: 95%;
+  width: 100%;
+
   margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: 767px) {
+    width: auto;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const ItemWrapper = styled.div`
   width: 60%;
+  height: 100%;
   display: flex;
   flex-direction: row;
-  padding-top: 3rem;
+  padding-top: 1rem;
   padding-bottom: 2rem;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  // border: 1px solid red;
 `;
 export const ItemImg = styled.img`
-  width: 40%;
+  width: 330px;
   height: 100%;
+  border-radius: 24px;
+  @media (max-width: 767px) {
+    width: 310px;
+  }
 `;
 export const ItemInfoBox = styled.div`
   margin-left: 10%;
   margin-top: 1.5rem;
-  margin-bottom: 1rem;
   width: 100%;
+
+  @media (max-width: 767px) {
+    margin-left: -15px;
+    width: 280px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  // border: 1px solid red;
 `;
 export const PlanTitle = styled.div`
   font-size: 0.85rem;
   font-weight: 800;
   padding-bottom: 1rem;
   color: #9b9b9b;
+
+  @media (max-width: 767px) {
+    font-size: 1rem;
+  }
 `;
 export const Brand = styled.div`
   font-size: 0.9rem;
   font-weight: 500;
   padding-bottom: 0.7rem;
+
+  @media (max-width: 767px) {
+    font-size: 1rem;
+  }
 `;
 export const ItemEventImg = styled.div``;
 export const Event = styled.div`
   font-size: 1.1rem;
   font-weight: 650;
   padding-bottom: 1rem;
+
+  @media (max-width: 767px) {
+    font-size: 1rem;
+  }
 `;
 export const Time = styled.div`
   font-size: 0.95rem;
   font-weight: 350;
   padding-bottom: 1.9rem;
   color: #555;
+
+  @media (max-width: 767px) {
+    font-size: 1rem;
+  }
 `;
 export const PlaceTitle = styled.div`
   font-size: 0.85rem;
   font-weight: 800;
   padding-bottom: 1rem;
   color: #9b9b9b;
+
+  @media (max-width: 767px) {
+    font-size: 1rem;
+  }
 `;
 
 export const Store = styled.div`
   font-size: 1.05rem;
   font-weight: 600;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.2rem;
   text-decoration: underline;
+
+  @media (max-width: 767px) {
+    font-size: 1rem;
+  }
 `;
 export const StoreDetail = styled.div`
   font-size: 0.9rem;
   font-weight: 400;
-  padding-bottom: 1rem;
+  padding-bottom: 0.8rem;
   color: #808080;
+
+  @media (max-width: 767px) {
+    font-size: 1rem;
+  }
 `;
 export const PriceBox = styled.div`
   width: 100%;
@@ -77,6 +144,10 @@ export const PriceBox = styled.div`
 export const Price = styled.div`
   font-size: 1.3rem;
   font-weight: 400;
+
+  @media (max-width: 767px) {
+    font-size: 1.8rem;
+  }
 `;
 
 export const DivideLine = styled.div`
@@ -105,9 +176,18 @@ export const Information = styled.div`
 export const InfoImg1 = styled.img`
   width: 70%;
   margin-bottom: 2rem;
+  @media (max-width: 767px) {
+    width: 300px;
+  }
 `;
 export const InfoImg2 = styled.img`
   width: 65%;
+  @media (max-width: 767px) {
+    width: 300px;
+  }
+  @media (max-width: 767px) {
+    width: 300px;
+  }
 `;
 export const ImgBox = styled.div`
   width: 55%;
@@ -141,6 +221,10 @@ export const MoveToSiteBtn = styled.button`
   margin-bottom: 6rem;
   color: white;
   cursor: pointer;
+
+  @media (max-width: 767px) {
+    font-size: 0.8rem;
+  }
 `;
 export const WithItemWrapper = styled.div`
   text-align: center;
@@ -150,6 +234,10 @@ export const WithItemTitle = styled.div`
   font-weight: 600;
 
   margin-bottom: 1rem;
+
+  @media (max-width: 767px) {
+    font-size: 1rem;
+  }
 `;
 export const WithItemSubTitle = styled.div`
   font-size: 1.5rem;
@@ -157,22 +245,40 @@ export const WithItemSubTitle = styled.div`
   font-weight: 350;
 
   margin-bottom: 3rem;
+
+  @media (max-width: 767px) {
+    font-size: 2em;
+    margin-bottom: -1rem;
+  }
 `;
+
+// 가로 스크롤
 export const WithItemBox = styled.div`
   width: 100%;
+  height: 300px;
+  margin: auto;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow-y: scroll;
   justify-content: center;
+
+  background-color: unset;
+  ::-webkit-scrollbar {
+    display: none;
+  }
   margin-bottom: 6rem;
 `;
+
 export const WithItemImg = styled.img`
-  width: 20%;
+  width: 300px;
+  height: 300px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-
+  border-radius: 24px;
   cursor: pointer;
+  @media (max-width: 767px) {
+    width: 200px;
+    height: 200px;
+  }
 `;
-// export const NewImg = styled.img`
-//   width: 3%;
-// `;
