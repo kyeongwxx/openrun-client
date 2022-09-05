@@ -11,10 +11,9 @@ export const Wrapper = styled.main`
 
 export const EventWrapper = styled.div`
   width: 100%;
-  //height: 100rem;
+
   display: flex;
   flex-direction: column;
-  //border: 1px solid red;
 `;
 export const Box1 = styled.div`
   width: 100%;
@@ -23,7 +22,13 @@ export const Box1 = styled.div`
   margin-top: 5rem;
   display: flex;
   flex-direction: row;
-  //border: 1px solid blue;
+  display: flex;
+
+  @media (max-width: 767px) {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 export const Box2 = styled.div`
   width: 100%;
@@ -33,7 +38,12 @@ export const Box2 = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  //border: 1px solid green;
+
+  @media (max-width: 767px) {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 export const Box3 = styled.div`
   width: 100%;
@@ -44,24 +54,42 @@ export const Box3 = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 12rem;
-  // border: 1px solid green;
+
+  @media (max-width: 767px) {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 export const ItemImg = styled.img`
-  width: 50rem;
+  width: 40rem;
   animation: fadeInLeft;
   animation-duration: 2s;
+
+  @media (max-width: 767px) {
+    width: 400px;
+  }
 `;
 export const ItemImg2 = styled.img`
-  width: 50rem;
+  width: 40rem;
   animation: fadeInRight;
   animation-duration: 5s;
 
-  // border: 1px solid green;
+  @media (max-width: 767px) {
+    width: 400px;
+
+    margin-left: 6rem;
+  }
+  //border: 1px solid green;
 `;
 export const ItemImg3 = styled.img`
-  width: 50rem;
+  width: 40rem;
   animation: fadeInLeft;
   animation-duration: 8s;
+  @media (max-width: 767px) {
+    width: 400px;
+    margin-left: 6rem;
+  }
 `;
 
 export const TextBox = styled.div`
@@ -71,7 +99,38 @@ export const TextBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  // border: 1px solid red;
+
+  @media (max-width: 767px) {
+    width: 300px;
+
+    margin-top: -8rem;
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+export const TextBox2 = styled.div`
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  //border: 1px solid pink;
+
+  @media (max-width: 767px) {
+    width: 300px;
+
+    margin-top: -2rem;
+    margin-left: 2rem;
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 export const TextLine1 = styled.div`
   margin-top: 8rem;
@@ -82,15 +141,24 @@ export const TextLine1 = styled.div`
   justify-content: center;
   font-size: 2rem;
   font-weight: 800;
+  @media (max-width: 767px) {
+    font-size: 2rem;
+  }
 `;
 
 export const Text1 = styled.div`
   padding-right: 1rem;
   padding-left: 1rem;
+  @media (max-width: 767px) {
+    font-size: 1.3rem;
+  }
 `;
 export const Text2 = styled.div`
   color: #3f00fd;
   font-size: 3rem;
+  @media (max-width: 767px) {
+    font-size: 1.6rem;
+  }
 `;
 export const TextLine2 = styled.div`
   font-size: 2rem;
@@ -98,6 +166,9 @@ export const TextLine2 = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  @media (max-width: 767px) {
+    font-size: 1.2rem;
+  }
 `;
 export const EventWrapper2 = styled.div`
   width: 60%;
