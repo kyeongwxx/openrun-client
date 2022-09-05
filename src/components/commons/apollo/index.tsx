@@ -7,17 +7,20 @@ import {
 // @ts-ignore
 import { createUploadLink } from "apollo-upload-client";
 import { ReactNode } from "react";
+import { useRecoilState } from "recoil";
+import { accessTokenState } from "../store";
 
 const APOLLO_CACHE = new InMemoryCache();
 interface IApolloSettingProps {
   children: ReactNode;
 }
 export default function ApolloSetting(props: IApolloSettingProps) {
+  const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
   const uploadLink = createUploadLink({
     uri: "https://openrunbackend.shop/graphql",
-    // 백엔드에 Bearer 이 맞는지 확인 필요함
-    // headers: { Authorization: `Bearer ${accessToken}` },
-    // credentials: "include",
+
+    headers: { Authorization: `Bearer ${accessToken}` },
+    credentials: "include",
   });
   const client = new ApolloClient({
     link: ApolloLink.from([uploadLink]),

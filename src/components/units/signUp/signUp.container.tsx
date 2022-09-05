@@ -28,14 +28,15 @@ export default function SignUp() {
       const result = await createUser({
         variables: {
           createUserInput: {
-            email: data.email,
-            password: data.password,
-            nickName: data.nickname,
-            phone: data.phone,
+            email: String(data.email),
+            password: String(data.password),
+            nickName: String(data.nickname),
+            phone: String(data.phone),
             profileImg: "d",
           },
         },
       });
+      alert("가입완료");
     } catch (error) {
       console.log(error);
     }

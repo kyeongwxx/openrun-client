@@ -1,8 +1,8 @@
 import { atom } from "recoil";
 
-export const isChecked = atom({
-  key: "isChecked",
-  default: false,
+export const accessTokenState = atom({
+  key: "accessTokenState",
+  default: "",
 });
 
 export const selectorState = atom({

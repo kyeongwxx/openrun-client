@@ -7,6 +7,7 @@ import SignInput from "../../../commons/input/sign";
 import { ISignInProps } from "./signIn.types";
 
 import BlackButton from "../../../commons/button/black";
+import YupWarningMsg from "../../../commons/div/yupWarningMsg";
 
 export default function SignInUI(props: ISignInProps) {
   return (
@@ -14,15 +15,20 @@ export default function SignInUI(props: ISignInProps) {
       <s.LoginWrapper>
         <s.Title>로그인</s.Title>
 
-        <form onSubmit={props.handleSubmit(props.onClickSignIn)}>
+        <form
+          onSubmit={props.handleSubmit(props.onClickSignIn)}
+          style={{ width: "100%" }}
+        >
           <SignInput
             register={props.register}
-            placeholder="ID"
+            placeholder="EMAIL"
             color="#000000"
             width="100%"
-            name="id"
+            name="email"
             type="text"
           />
+          <YupWarningMsg errormsg={props.formState.errors.email?.message} />
+
           <SignInput
             register={props.register}
             placeholder="PW"
@@ -31,6 +37,8 @@ export default function SignInUI(props: ISignInProps) {
             name="password"
             type="password"
           />
+          <YupWarningMsg errormsg={props.formState.errors.password?.message} />
+
           <s.IdSaveWrapper>
             <s.IdSaveBtn></s.IdSaveBtn>
             <s.IdSaveText>아이디 저장</s.IdSaveText>
