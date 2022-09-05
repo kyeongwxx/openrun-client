@@ -19,7 +19,7 @@ export default function SignIn() {
   });
 
   const onClickSignIn = async (data) => {
-    if (!data.email || !data.password) return;
+    // if (!data.email || !data.password) return;
     try {
       const result = await login({
         variables: {
@@ -27,6 +27,7 @@ export default function SignIn() {
           password: String(data.password),
         },
       });
+      console.log(result);
     } catch (error) {
       console.log(error);
     }

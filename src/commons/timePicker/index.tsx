@@ -4,22 +4,22 @@ import TextField from "@mui/material/TextField";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
+import { useRecoilState } from "recoil";
+import { timeState } from "../../components/commons/store";
 
 export default function MaterialUIPickers() {
-  const [value, setValue] = React.useState<Dayjs | null>(
-    dayjs("2014-08-18T00:00:00")
-  );
+  const [timeValue, setTimeValue] = useRecoilState<Dayjs | null>(timeState);
 
   const handleChange = (newValue: Dayjs | null) => {
-    setValue(newValue);
-    console.log(value);
+    setTimeValue(newValue);
+    console.log(timeValue?.$d);
   };
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <TimePicker
         label="시간 선택"
-        value={value}
+        value={timeValue}
         onChange={handleChange}
         renderInput={(params) => <TextField {...params} />}
       />
