@@ -9,10 +9,13 @@ export const Wrapper = styled.main`
 `;
 
 export const LoginWrapper = styled.div`
-  width: 100%;
+  width: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 export const Title = styled.div`
   font-size: 1.875rem;
@@ -34,7 +37,7 @@ export const InfoInput = styled.input`
   color: #000000;
 `;
 export const IdSaveWrapper = styled.div`
-  width: 25%;
+  width: 50%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -66,12 +69,13 @@ export const LoginBtn = styled.button`
   color: #ffffff;
 `;
 export const SearchWrapper = styled.div`
-  width: 25%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   padding-bottom: 1.875rem;
   margin-top: 20px;
+
   @media (max-width: 767px) {
     width: 100%;
   }
@@ -83,9 +87,12 @@ export const Text = styled.div`
   padding-right: 0.5rem;
   padding-left: 0.5rem;
   cursor: pointer;
+  @media (max-width: 767px) {
+    font-size: 0.8rem;
+  }
 `;
 export const DivideLine = styled.div`
-  width: 40%;
+  width: 100%;
   border-bottom: 1px solid rgba(101, 101, 101, 0.5);
   @media (max-width: 767px) {
     width: 100%;
@@ -99,11 +106,12 @@ export const SocialTitle = styled.div`
   padding-bottom: 1.5rem;
 `;
 export const SocialBtns = styled.div`
-  width: 25%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   padding-bottom: 5.25rem;
+
   @media (max-width: 767px) {
     width: 100%;
   }
