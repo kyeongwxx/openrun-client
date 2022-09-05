@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { Avatar } from "@mui/material";
 
 export const Wrapper = styled.main`
   width: 95%;
@@ -35,9 +34,12 @@ export const ProfileUser = styled.div`
   }
 `;
 
-export const AvatarC = styled(Avatar)`
-  width: 70px;
-  height: 70px;
+export const ProfileImg = styled.div`
+  background-color: yellow;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+
   @media (max-width: 767px) {
     width: 35px;
     height: 35px;
@@ -50,6 +52,8 @@ export const ProfileDetail = styled.div<{ width: string }>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  margin: 10px;
 
   @media (max-width: 767px) {
     width: ${(props) => props.width};
@@ -143,45 +147,4 @@ export const Menus = styled.div`
 
 export const Menu = styled.div`
   cursor: pointer;
-`;
-
-export const ActiveListWrapper = styled.section`
-  width: 100%;
-  height: 400px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
-export const ActiveTitle = styled.div`
-  cursor: pointer;
-  margin-top: 5px;
-  font-weight: 700;
-  color: #333;
-`;
-
-export const ActiveImages = styled.div`
-  width: 70%;
-  height: 80%;
-
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  overflow-y: scroll;
-
-  ::-webkit-scrollbar {
-    display: none;
-  }
-`;
-
-export const ActiveImage = styled.img<{ height: string }>`
-  width: 400px;
-  height: ${(props) => props.height};
-  margin: 1%;
-  border-radius: 24px;
-  background-color: orange;
-  @media (max-width: 767px) {
-    width: 190px;
-    height: 170px;
-  }
 `;
