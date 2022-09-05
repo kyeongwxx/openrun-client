@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { Avatar } from "@mui/material";
 
 export const Wrapper = styled.main`
   width: 95%;
@@ -83,7 +82,7 @@ export const ActiveTitle = styled.div`
 `;
 
 export const ActiveImages = styled.div`
-  width: 70%;
+  width: 80%;
   height: 80%;
 
   display: flex;
