@@ -23,6 +23,14 @@ export default function SignUpUI(props: ISignUpProps) {
         />
         <SignInput
           register={props.register}
+          placeholder="닉네임"
+          color="#000000"
+          width="100%"
+          name="nickname"
+          type="text"
+        />
+        <SignInput
+          register={props.register}
           placeholder="비밀번호"
           color="#000000"
           width="100%"
