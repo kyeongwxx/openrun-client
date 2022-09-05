@@ -1,13 +1,11 @@
-import { Avatar } from "@mui/material";
-import * as s from "./myPage.styles";
-export default function MyPageUI() {
+import * as s from "./mypage.styles";
+
+export default function LayoutMyPage() {
   return (
     <s.Wrapper>
       <s.ProfileWrapper>
         <s.ProfileUser>
-          <s.ProfileDetail width="15%">
-            <s.AvatarC />
-          </s.ProfileDetail>
+          <s.ProfileImg />
           <s.ProfileDetail width="70%">
             <s.Text size="1.5rem" color="#333" weight="400">
               xxx님, 오늘의 일정이 1건 있습니다.
@@ -55,35 +53,6 @@ export default function MyPageUI() {
         </s.Menus>
         <s.DivideLineHorizontal color="#656565" />
       </s.MenuWrapper>
-      <s.ActiveListWrapper>
-        <s.ActiveTitle>거래중인 제품</s.ActiveTitle>
-        <s.ActiveImages>
-          <s.ActiveImage height="300px" />
-          <s.ActiveImage height="300px" />
-          <s.ActiveImage height="300px" />
-          <s.ActiveImage height="300px" />
-        </s.ActiveImages>
-      </s.ActiveListWrapper>
-      <s.DivideLineHorizontal color="#F2F2F2" />
-      <s.ActiveListWrapper>
-        <s.ActiveTitle>채딩중인 대화</s.ActiveTitle>
-        <s.ActiveImages>
-          <s.ActiveImage height="150px" />
-          <s.ActiveImage height="150px" />
-          <s.ActiveImage height="150px" />
-          <s.ActiveImage height="150px" />
-        </s.ActiveImages>
-      </s.ActiveListWrapper>
-      <s.DivideLineHorizontal color="#F2F2F2" />
-      <s.ActiveListWrapper>
-        <s.ActiveTitle>오늘 본 제품</s.ActiveTitle>
-        <s.ActiveImages>
-          <s.ActiveImage height="300px" />
-          <s.ActiveImage height="300px" />
-          <s.ActiveImage height="300px" />
-          <s.ActiveImage height="300px" />
-        </s.ActiveImages>
-      </s.ActiveListWrapper>
     </s.Wrapper>
   );
 }
