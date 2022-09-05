@@ -6,6 +6,7 @@ import * as s from "./signUp.styles";
 import { ISignUpProps } from "./signUp.types";
 
 import CheckBox from "../../../commons/checkBox";
+import YupWarningMsg from "../../../commons/div/yupWarningMsg";
 
 export default function SignUpUI(props: ISignUpProps) {
   return (
@@ -15,12 +16,13 @@ export default function SignUpUI(props: ISignUpProps) {
       <form onSubmit={props.handleSubmit(props.onClickSignUp)}>
         <SignInput
           register={props.register}
-          placeholder="아이디"
+          placeholder="이메일"
           color="#000000"
           width="100%"
-          name="id"
+          name="email"
           type="text"
         />
+        <YupWarningMsg errormsg={props.formState.errors.email?.message} />
         <SignInput
           register={props.register}
           placeholder="닉네임"
@@ -29,6 +31,7 @@ export default function SignUpUI(props: ISignUpProps) {
           name="nickname"
           type="text"
         />
+        <YupWarningMsg errormsg={props.formState.errors.nickname?.message} />
         <SignInput
           register={props.register}
           placeholder="비밀번호"
@@ -37,6 +40,7 @@ export default function SignUpUI(props: ISignUpProps) {
           name="password"
           type="password"
         />
+        <YupWarningMsg errormsg={props.formState.errors.password?.message} />
         <SignInput
           register={props.register}
           placeholder="비밀번호 확인"
@@ -44,6 +48,9 @@ export default function SignUpUI(props: ISignUpProps) {
           width="100%"
           name="passwordCheck"
           type="password"
+        />
+        <YupWarningMsg
+          errormsg={props.formState.errors.passwordCheck?.message}
         />
 
         <SignInput
@@ -54,6 +61,7 @@ export default function SignUpUI(props: ISignUpProps) {
           name="phone"
           type="text"
         />
+
         <BlackButton
           onClick={props.onClickSendCertificationNum}
           type="button"
@@ -61,6 +69,7 @@ export default function SignUpUI(props: ISignUpProps) {
           fontWeight="700"
           title="인증하기"
         />
+        <YupWarningMsg errormsg={props.formState.errors.phone?.message} />
 
         <SignInput
           register={props.register}
@@ -78,11 +87,11 @@ export default function SignUpUI(props: ISignUpProps) {
           title="확인"
         />
 
-        <CheckBox
+        {/* <CheckBox
           totalAgree="전체동의"
           essential="(필수) 개인정보 수집 및 이용 동의"
           choice="(선택) 이벤트 소식 등 알림 정보 받기"
-        />
+        /> */}
         {/* <s.AgreeWrapper>
           <Radio.Group
             onChange={props.onChangeRadio}

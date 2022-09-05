@@ -1302,7 +1302,7 @@
 
 "@graphql-codegen/typescript@^2.7.3":
   version "2.7.3"
-  resolved "https://registry.npmjs.org/@graphql-codegen/typescript/-/typescript-2.7.3.tgz"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript/-/typescript-2.7.3.tgz#ad786a1c74e16eca8e01e7a8f28078e1c24eeb61"
   integrity sha512-EzX/acijXtbG/AwPzho2ZZWaNo00+xAbsRDP+vnT2PwQV3AYq3/5bFvjq1XfAGWbTntdmlYlIwC9hf5bI85WVA==
   dependencies:
     "@graphql-codegen/plugin-helpers" "^2.6.2"
