@@ -36,6 +36,9 @@ export default function BoardWrite() {
   const [dayValue, setDayValue] = useRecoilState(dayState);
   const [timeValue, setTimeValue] = useRecoilState(timeState);
 
+  console.log(`dayValue  : ${String(dayValue).slice(0, 15)}`);
+  console.log(`timeValue : ${timeValue.$d}`);
+
   // 주소 state
   const [address, setAddress] = useState("");
   const [zipcode, setZipcode] = useState("");
@@ -75,10 +78,11 @@ export default function BoardWrite() {
       const result = await createBoard({
         variables: {
           createBoardInput: {
-            // id: String(data.id),
             title: String(data.title),
             contents: String(data.contents),
             price: Number(data.price),
+            eventDay: String(dayValue).slice(0, 15),
+            eventTime: String(timeValue.$d).slice(16, 21),
             location: {
               zipcode: zipcode,
               address: address,
