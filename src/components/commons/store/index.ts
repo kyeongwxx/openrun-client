@@ -6,7 +6,7 @@ export const accessTokenState = atom({
   default: "",
 });
 
-export const selectorState = atom({
+export const selectorValue = atom({
   key: "selectorState",
   default: "",
 });

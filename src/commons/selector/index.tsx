@@ -6,11 +6,11 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 import { useRecoilState } from "recoil";
-import { selectorState } from "../../components/commons/store";
+import { selectorValue } from "../../components/commons/store";
 import { ISelectorProps } from "./selector.types";
 
 export default function Selector(props: ISelectorProps) {
-  const [sortValue, setSortValue] = useRecoilState(selectorState);
+  const [sortValue, setSortValue] = useRecoilState(selectorValue);
 
   const handleChange = (event: SelectChangeEvent) => {
     setSortValue(event.target.value as string);
@@ -25,9 +25,9 @@ export default function Selector(props: ISelectorProps) {
         label="Age"
         onChange={handleChange}
       >
-        <MenuItem value={props.sortValue[0]}>{props.sortValue[0]}</MenuItem>
-        <MenuItem value={20}>Twenty</MenuItem>
-        <MenuItem value={30}>Thirty</MenuItem>
+        {props.sortValue.map((el, index) => (
+          <MenuItem value={el}>{el}</MenuItem>
+        ))}
       </Select>
     </FormControl>
   );
