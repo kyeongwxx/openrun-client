@@ -11,6 +11,7 @@ export const ProductWrapper = styled.div`
   width: 75%;
   display: flex;
   flex-direction: row;
+  padding-bottom: 5rem;
 `;
 export const ImageWrapper = styled.div`
   padding-right: 6.438rem;
@@ -202,52 +203,25 @@ export const ApplyBtn = styled.button`
   border: none;
   border-radius: 16px;
 `;
-export const LowerWrapper = styled.div`
-  width: 75%;
+export const RequestWrapper = styled.div`
+  width: 100%;
+  height: 326px;
+  background: #fafafa;
+  border-radius: 16px;
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: #656565;
+  padding: 2rem;
+`;
+
+export const ApplyWrapper = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 7rem;
+  padding-top: 3rem;
 `;
-export const TapWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  padding-bottom: 2.375rem;
-  font-weight: 700;
-  font-size: 1.125rem;
-  color: rgba(0, 0, 0, 0.8);
-`;
-export const RequestTap = styled.div`
-  width: 33.3%;
-  height: 86px;
-  text-align: center;
-  line-height: 86px;
-  background: #f6f6f6;
-  border: 1px solid #909090;
-  border-top: none;
-  border-left: none;
-`;
-export const ApplyTap = styled.div`
-  width: 33.3%;
-  height: 86px;
-  text-align: center;
-  line-height: 86px;
-  background: #f6f6f6;
-  border: 1px solid #909090;
-  background: #ffffff;
-  border-bottom: none;
-`;
-export const InquiryTap = styled.div`
-  width: 33.3%;
-  height: 86px;
-  text-align: center;
-  line-height: 86px;
-  background: #f6f6f6;
-  border: 1px solid #909090;
-  border-top: none;
-  border-right: none;
-`;
+
 export const ApplyList = styled.div`
   width: 100%;
   display: flex;
