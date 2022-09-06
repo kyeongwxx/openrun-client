@@ -8,7 +8,7 @@ import * as s from "./navigation.styles";
 
 export default function LayoutNavigation() {
   const [userInfo, setUserInfo] = useRecoilState(userInfoValue);
-  console.log(userInfo);
+
   // const isPc = MediaQueryPc();
   // const isTablet = MediaQueryTablet();
   // const isMobile = MediaQueryMobile();
