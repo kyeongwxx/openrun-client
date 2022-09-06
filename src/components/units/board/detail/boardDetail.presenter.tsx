@@ -1,6 +1,35 @@
 import * as s from "./boardDetail.styles";
 
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Tab from "@mui/material/Tab";
+import TabContext from "@mui/lab/TabContext";
+import TabList from "@mui/lab/TabList";
+import TabPanel from "@mui/lab/TabPanel";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+const theme = createTheme({
+  components: {
+    MuiTab: {
+      styleOverrides: {
+        textColorPrimary: {
+          color: "#555",
+          "&.Mui-selected": {
+            fontWeight: "800",
+            fontSize: "1.125rem",
+          },
+        },
+      },
+    },
+  },
+});
+
 export default function BoardDetailUI() {
+  const [value, setValue] = React.useState("1");
+
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    setValue(newValue);
+  };
   return (
     <s.Wrapper>
       <s.ProductWrapper>
@@ -43,65 +72,86 @@ export default function BoardDetailUI() {
           </s.BtnsWrapper>
         </s.ProductInfoWrapper>
       </s.ProductWrapper>
-
-      <s.LowerWrapper>
-        <s.TapWrapper>
-          <s.RequestTap>요청사항</s.RequestTap>
-          <s.ApplyTap>신청목록</s.ApplyTap>
-          <s.InquiryTap>문의</s.InquiryTap>
-        </s.TapWrapper>
-        <s.ApplyList>
-          <s.ApplyItem>
-            <s.RunnerIcon src="/boardDetail/RunnerIcon.png" />
-            <s.RunnerName>abc1234</s.RunnerName>
-            <s.Rating>
-              <s.Star src="/boardDetail/Star.png" />
-            </s.Rating>
-            <s.CntWrapper>
-              <s.RunCnt>줄서기 300건</s.RunCnt>
-              <s.ReTradeRate>재거래희망률 90%</s.ReTradeRate>
-              <s.SuccessRate>성공률 95%</s.SuccessRate>
-            </s.CntWrapper>
-          </s.ApplyItem>
-          <s.SelectBtn>채택하기</s.SelectBtn>
-        </s.ApplyList>
-        <s.ApplyList>
-          <s.ApplyItem>
-            <s.RunnerIcon src="/boardDetail/RunnerIcon.png" />
-            <s.RunnerName>abc1234</s.RunnerName>
-            <s.Rating>
-              <s.Star src="/boardDetail/Star.png" />
-              <s.Star src="/boardDetail/Star.png" />
-              <s.Star src="/boardDetail/Star.png" />
-            </s.Rating>
-            <s.CntWrapper>
-              <s.RunCnt>줄서기 300건</s.RunCnt>
-              <s.ReTradeRate>재거래희망률 90%</s.ReTradeRate>
-              <s.SuccessRate>성공률 95%</s.SuccessRate>
-            </s.CntWrapper>
-          </s.ApplyItem>
-          <s.SelectBtn>채택하기</s.SelectBtn>
-        </s.ApplyList>
-        <s.ApplyList>
-          <s.ApplyItem>
-            <s.RunnerIcon src="/boardDetail/RunnerIcon.png" />
-            <s.RunnerName>abc1234</s.RunnerName>
-            <s.Rating>
-              <s.Star src="/boardDetail/Star.png" />
-              <s.Star src="/boardDetail/Star.png" />
-              <s.Star src="/boardDetail/Star.png" />
-              <s.Star src="/boardDetail/Star.png" />
-              <s.Star src="/boardDetail/Star.png" />
-            </s.Rating>
-            <s.CntWrapper>
-              <s.RunCnt>줄서기 300건</s.RunCnt>
-              <s.ReTradeRate>재거래희망률 90%</s.ReTradeRate>
-              <s.SuccessRate>성공률 95%</s.SuccessRate>
-            </s.CntWrapper>
-          </s.ApplyItem>
-          <s.SelectBtn>채택하기</s.SelectBtn>
-        </s.ApplyList>
-      </s.LowerWrapper>
+      <ThemeProvider theme={theme}>
+        <Box sx={{ width: "75%", typography: "body1" }}>
+          <TabContext value={value}>
+            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+              <TabList
+                onChange={handleChange}
+                aria-label="lab API tabs example"
+                centered
+                variant="fullWidth"
+              >
+                <Tab label="요청사항" value="1" />
+                <Tab label="신청목록" value="2" />
+              </TabList>
+            </Box>
+            <TabPanel value="1">
+              <s.RequestWrapper>
+                1. 매장 도착 시 줄서기 인증 사진 부탁드립니다.
+                <br />
+                2. 예상 대기 시간을 알려주세요.
+                <br />
+              </s.RequestWrapper>
+            </TabPanel>
+            <TabPanel value="2">
+              <s.ApplyWrapper>
+                <s.ApplyList>
+                  <s.ApplyItem>
+                    <s.RunnerIcon src="/boardDetail/RunnerIcon.png" />
+                    <s.RunnerName>abc1234</s.RunnerName>
+                    <s.Rating>
+                      <s.Star src="/boardDetail/Star.png" />
+                    </s.Rating>
+                    <s.CntWrapper>
+                      <s.RunCnt>줄서기 300건</s.RunCnt>
+                      <s.ReTradeRate>재거래희망률 90%</s.ReTradeRate>
+                      <s.SuccessRate>성공률 95%</s.SuccessRate>
+                    </s.CntWrapper>
+                  </s.ApplyItem>
+                  <s.SelectBtn>채택하기</s.SelectBtn>
+                </s.ApplyList>
+                <s.ApplyList>
+                  <s.ApplyItem>
+                    <s.RunnerIcon src="/boardDetail/RunnerIcon.png" />
+                    <s.RunnerName>abc1234</s.RunnerName>
+                    <s.Rating>
+                      <s.Star src="/boardDetail/Star.png" />
+                      <s.Star src="/boardDetail/Star.png" />
+                      <s.Star src="/boardDetail/Star.png" />
+                    </s.Rating>
+                    <s.CntWrapper>
+                      <s.RunCnt>줄서기 300건</s.RunCnt>
+                      <s.ReTradeRate>재거래희망률 90%</s.ReTradeRate>
+                      <s.SuccessRate>성공률 95%</s.SuccessRate>
+                    </s.CntWrapper>
+                  </s.ApplyItem>
+                  <s.SelectBtn>채택하기</s.SelectBtn>
+                </s.ApplyList>
+                <s.ApplyList>
+                  <s.ApplyItem>
+                    <s.RunnerIcon src="/boardDetail/RunnerIcon.png" />
+                    <s.RunnerName>abc1234</s.RunnerName>
+                    <s.Rating>
+                      <s.Star src="/boardDetail/Star.png" />
+                      <s.Star src="/boardDetail/Star.png" />
+                      <s.Star src="/boardDetail/Star.png" />
+                      <s.Star src="/boardDetail/Star.png" />
+                      <s.Star src="/boardDetail/Star.png" />
+                    </s.Rating>
+                    <s.CntWrapper>
+                      <s.RunCnt>줄서기 300건</s.RunCnt>
+                      <s.ReTradeRate>재거래희망률 90%</s.ReTradeRate>
+                      <s.SuccessRate>성공률 95%</s.SuccessRate>
+                    </s.CntWrapper>
+                  </s.ApplyItem>
+                  <s.SelectBtn>채택하기</s.SelectBtn>
+                </s.ApplyList>
+              </s.ApplyWrapper>
+            </TabPanel>
+          </TabContext>
+        </Box>
+      </ThemeProvider>
     </s.Wrapper>
   );
 }

@@ -9,19 +9,19 @@ export const CREATE_BOARD = gql`
       price
       eventDay
       eventTime
-      category {
-        id
-        name
-      }
+      # category {
+      #   id
+      #   name
+      # }
       location {
         zipcode
         address
         addressDetail
-        lat
-        lng
+        # lat
+        # lng
       }
       image {
-        id
+        # id
         url
       }
     }
