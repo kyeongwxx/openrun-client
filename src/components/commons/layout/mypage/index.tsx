@@ -1,6 +1,9 @@
+import { useRecoilState } from "recoil";
+import { userInfoValue } from "../../store";
 import * as s from "./mypage.styles";
 
 export default function LayoutMyPage() {
+  const [userInfo] = useRecoilState(userInfoValue);
   return (
     <s.Wrapper>
       <s.ProfileWrapper>
@@ -8,7 +11,7 @@ export default function LayoutMyPage() {
           <s.ProfileImg />
           <s.ProfileDetail width="70%">
             <s.Text size="1.5rem" color="#333" weight="400">
-              xxx님, 오늘의 일정이 1건 있습니다.
+              {userInfo?.nickName}님, 오늘의 일정이 1건 있습니다.
             </s.Text>
             <s.UserInfoEdit>내정보 수정</s.UserInfoEdit>
           </s.ProfileDetail>
@@ -35,7 +38,7 @@ export default function LayoutMyPage() {
           <s.DivideLine />
           <s.userInfoNumbers>
             <s.Text size="1.5rem" color="#333" weight="700">
-              1000P
+              {userInfo?.point}P
             </s.Text>
             <s.Text size="0.7rem" color="#333" weight="400">
               포인트
