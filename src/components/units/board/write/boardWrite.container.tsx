@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BoardWriteUI from "./boardWrite.presenter";
 import * as yup from "yup";
 import { useMutation } from "@apollo/client";
@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRecoilState } from "recoil";
-import { dayState, timeState } from "../../../commons/store";
+import { dayState, selectorValue, timeState } from "../../../commons/store";
 
 const schema = yup.object({
   // name: yup.string().required("상품명을 입력해주세요."),
@@ -24,7 +24,7 @@ const schema = yup.object({
   //   .required("태그를 입력해주세요"),
 });
 
-export default function BoardWrite() {
+export default function BoardWrite(props) {
   const router = useRouter();
 
   const { register, handleSubmit, formState, setValue, trigger } = useForm({
@@ -32,11 +32,13 @@ export default function BoardWrite() {
     mode: "onChange",
   });
 
-  // calendar, timePicker 라이브러리 global state
+  // selector, calendar, timePicker 라이브러리 global state
+  const [sortValue, setSortValue] = useRecoilState(selectorValue);
   const [dayValue, setDayValue] = useRecoilState(dayState);
   const [timeValue, setTimeValue] = useRecoilState(timeState);
 
-  console.log(`dayValue  : ${String(dayValue).slice(0, 15)}`);
+  console.log(`sortValue : ${sortValue}`);
+  console.log(`dayValue : ${String(dayValue).slice(0, 15)}`);
   console.log(`timeValue : ${timeValue.$d}`);
 
   // 주소 state
@@ -71,6 +73,20 @@ export default function BoardWrite() {
     trigger("contents");
   };
 
+  // 파일 업로드
+  const [fileUrls, setFileUrls] = useState(["", ""]);
+  const onChangeFileUrls = (fileUrl: string, index: number) => {
+    const newFileUrls = [...fileUrls];
+    newFileUrls[index] = fileUrl;
+    setFileUrls(newFileUrls);
+  };
+
+  useEffect(() => {
+    if (props.data?.fetchBoard.images?.length) {
+      setFileUrls([...props.data?.fetchBoard.images]);
+    }
+  }, [props.data]);
+
   // 게시물 등록 함수
   const [createBoard] = useMutation(CREATE_BOARD);
   const onClickCreate = async (data) => {
@@ -83,6 +99,7 @@ export default function BoardWrite() {
             price: Number(data.price),
             eventDay: String(dayValue).slice(0, 15),
             eventTime: String(timeValue.$d).slice(16, 21),
+            category: sortValue,
             location: {
               zipcode: zipcode,
               address: address,
@@ -93,6 +110,7 @@ export default function BoardWrite() {
       });
       console.log(result);
       console.log(data);
+      alert("게시물 등록 성공");
     } catch (error) {
       alert(error.message);
     }
@@ -113,6 +131,8 @@ export default function BoardWrite() {
       onClickAddressSearch={onClickAddressSearch}
       handleOk={handleOk}
       handleCancel={handleCancel}
+      onChangeFileUrls={onChangeFileUrls}
+      fileUrls={fileUrls}
     />
   );
 }

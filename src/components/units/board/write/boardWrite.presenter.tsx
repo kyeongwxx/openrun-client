@@ -2,7 +2,9 @@ import * as s from "./boardWrite.styles";
 import Map from "../../../../commons/maps/map.container";
 import Calendar from "../../../../commons/calendar";
 import MaterialUIPickers from "../../../../commons/timePicker";
-import Previews from "../../../../commons/reactDropzone";
+import Selector from "../../../../commons/selector";
+import Upload from "../../../../commons/uploads/Uploads.container";
+import { v4 as uuidv4 } from "uuid";
 
 export default function BoardWriteUI(props) {
   return (
@@ -19,16 +21,12 @@ export default function BoardWriteUI(props) {
       <s.Wrapper>
         <s.ProductInfoWrapper>
           <s.ProductInfoText>오픈런 정보</s.ProductInfoText>
-          <s.Select name="CategorySelect" defaultValue={"default"}>
-            <option value="default" disabled>
-              제품 카테고리
-            </option>
-            <option>FASHION</option>
-            <option>ACC</option>
-            <option>DIGITAL</option>
-            <option>FOOD</option>
-            <option>TOY</option>
-          </s.Select>
+          <s.SelectWrapper>
+            <Selector
+              title="제품 카테고리"
+              sortValue={["FASHION", "ACC", "DIGITAL", "FOOD", "TOY"]}
+            />
+          </s.SelectWrapper>
           <s.TitleInput
             {...props.register("title")}
             type="text"
@@ -78,7 +76,17 @@ export default function BoardWriteUI(props) {
         </s.RequestWrapper>
         <s.ImageUploadWrapper>
           <s.ImageUploadText>이미지 업로드</s.ImageUploadText>
-          <Previews />
+          <s.Images>
+            {props.fileUrls &&
+              props.fileUrls.map((el: any, index: any) => (
+                <Upload
+                  key={uuidv4()}
+                  index={index}
+                  fileUrl={el}
+                  onChangeFileUrls={props.onChangeFileUrls}
+                />
+              ))}
+          </s.Images>
         </s.ImageUploadWrapper>
         <s.BtnWrapper>
           <s.CreateBtn type="submit">등록</s.CreateBtn>
