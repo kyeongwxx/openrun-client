@@ -24,7 +24,7 @@ export default function SignIn() {
     mode: "onChange",
   });
 
-  const onClickSignIn = async (data) => {
+  const onClickSignIn = async (data: any) => {
     const values = getValues();
     if (!values) return;
 
