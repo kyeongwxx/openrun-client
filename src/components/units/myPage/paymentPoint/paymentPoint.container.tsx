@@ -4,11 +4,15 @@ import { selectorValue, userInfoValue } from "../../../commons/store";
 import MypagePaymentPointUI from "./paymentPoint.presenter";
 import { v4 as uuidv4 } from "uuid";
 import Head from "next/head";
-import { useApolloClient, useMutation } from "@apollo/client";
-import { CHARGE_PAYMENT } from "./paymentPoint.queries";
+import { useApolloClient, useMutation, useQuery } from "@apollo/client";
+import {
+  CHARGE_PAYMENT,
+  FETCH_POINT_CHARGE_HISTORY,
+} from "./paymentPoint.queries";
 import {
   IMutation,
   IMutationChargePaymentArgs,
+  IQuery,
 } from "../../../../commons/types/generated/types";
 import { string } from "yup";
 declare const window: typeof globalThis & {
@@ -24,6 +28,10 @@ export default function MypagePaymentPoint() {
     Pick<IMutation, "chargePayment">,
     IMutationChargePaymentArgs
   >(CHARGE_PAYMENT);
+  const { data } = useQuery<Pick<IQuery, "fetchPointChargeHistory">>(
+    FETCH_POINT_CHARGE_HISTORY
+  );
+  console.log(data);
 
   const onClickChargePoint = () => {
     setChargeBtnState(!chargeBtnState);
@@ -52,7 +60,7 @@ export default function MypagePaymentPoint() {
           const result = await chargePayment({
             variables: {
               impUid: String(impUid),
-              amount: parseInt(sortValue),
+              amount: Number(sortValue),
             },
           });
 
