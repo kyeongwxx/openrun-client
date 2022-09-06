@@ -1,1 +1,18 @@
-import styled from "@emotion/styled";
+import { gql } from "@apollo/client";
+
+export const CHARGE_PAYMENT = gql`
+  mutation chargePayment($impUid: String!, $amount: Int!) {
+    chargePayment(impUid: $impUid, amount: $amount) {
+      id
+      #   impUid
+      #   status
+      #   amount
+      #   user {
+      #     id
+      #     email
+      #     nickName
+      #     point
+      #   }
+    }
+  }
+`;

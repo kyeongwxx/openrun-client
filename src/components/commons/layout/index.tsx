@@ -25,7 +25,7 @@ export default function Layout(props: ILayoutProps) {
     "/myPage/",
     `/myPage/dealList/`,
     `/myPage/favoriteList/`,
-    `/myPage/pointPayment/`,
+    `/myPage/paymentPoint/`,
     `/myPage/writtenBoards/`,
   ];
   console.log(router.asPath);
