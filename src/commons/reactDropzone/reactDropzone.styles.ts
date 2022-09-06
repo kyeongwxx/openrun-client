@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 
 export const Div = styled.div`
   width: 30%;
-  cursor: pointer;
 `;
 export const Wrapper = styled.div`
   width: 100%;

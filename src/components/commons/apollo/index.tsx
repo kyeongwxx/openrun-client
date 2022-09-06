@@ -2,13 +2,21 @@ import {
   ApolloClient,
   ApolloLink,
   ApolloProvider,
+  fromPromise,
   InMemoryCache,
 } from "@apollo/client";
 // @ts-ignore
 import { createUploadLink } from "apollo-upload-client";
-import { ReactNode } from "react";
-import { useRecoilState } from "recoil";
-import { accessTokenState } from "../store";
+import { ReactNode, useEffect } from "react";
+import { useRecoilState, useRecoilValueLoadable } from "recoil";
+import { getUserInfo } from "../../../commons/function/getUserInfo";
+import {
+  accessTokenState,
+  restoreAccessTokenLoadable,
+  userInfoValue,
+} from "../store";
+import { onError } from "@apollo/client/link/error";
+import { getAccessToken } from "../../../commons/function/getAccessToken";
 
 const APOLLO_CACHE = new InMemoryCache();
 interface IApolloSettingProps {
@@ -16,14 +24,48 @@ interface IApolloSettingProps {
 }
 export default function ApolloSetting(props: IApolloSettingProps) {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
+  const restoreAccessFunc = useRecoilValueLoadable(restoreAccessTokenLoadable);
+  const [userInfo, setUserInfo] = useRecoilState(userInfoValue);
+
+  useEffect(() => {
+    restoreAccessFunc.toPromise().then((newAccessToken) => {
+      setAccessToken(newAccessToken);
+    });
+    const FetchUserInfo = async (accessToken: string) => {
+      const resultUserInfo = await getUserInfo(accessToken);
+
+      setUserInfo(resultUserInfo);
+      return resultUserInfo;
+    };
+    const newUserInfo = FetchUserInfo(accessToken);
+  }, [accessToken]);
+
+  const errorLink = onError(({ graphQLErrors, operation, forward }) => {
+    if (graphQLErrors) {
+      for (const err of graphQLErrors) {
+        if (err.extensions.code === "UNAUTHENTICATED") {
+          return fromPromise(
+            getAccessToken().then((newAccessToken) => {
+              setAccessToken(newAccessToken);
+              operation.setContext({
+                headers: {
+                  ...operation.getContext().headers,
+                  Authorization: `Bearer ${newAccessToken}`,
+                },
+              });
+            })
+          ).flatMap(() => forward(operation));
+        }
+      }
+    }
+  });
   const uploadLink = createUploadLink({
     uri: "https://openrunbackend.shop/graphql",
-
     headers: { Authorization: `Bearer ${accessToken}` },
     credentials: "include",
   });
   const client = new ApolloClient({
-    link: ApolloLink.from([uploadLink]),
+    link: ApolloLink.from([errorLink, uploadLink]),
     cache: APOLLO_CACHE,
   });
 

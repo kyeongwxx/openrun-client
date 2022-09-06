@@ -1,20 +1,19 @@
 import * as s from "./calendar.styles";
 import moment from "moment";
-import { useRecoilState } from "recoil";
-import { dayState } from "../../components/commons/store";
+import { useState } from "react";
 
 export default function Calendar() {
-  const [dayValue, setDayValue] = useRecoilState(dayState);
+  const [value, setValue] = useState(new Date());
   const onClickDay = () => {
-    console.log(dayValue);
+    console.log(value);
   };
 
   return (
     <s.DateCalendar
       formatDay={(locale, date) => moment(date).format("D")}
       calendarType="US"
-      value={dayValue}
-      onChange={setDayValue}
+      value={value}
+      onChange={setValue}
       onClickDay={onClickDay}
     />
   );

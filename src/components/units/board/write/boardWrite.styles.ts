@@ -39,7 +39,7 @@ export const Select = styled.select`
   padding: 0 0.5rem;
   margin-bottom: 1rem;
 `;
-export const TitleInput = styled.input`
+export const NameInput = styled.input`
   height: 56px;
   background: #f7f7f7;
   border-radius: 16px;
@@ -125,7 +125,6 @@ export const AddressButton = styled.button`
   border: none;
   font-weight: 400;
   font-size: 1.125rem;
-  cursor: pointer;
 `;
 export const AddressInput = styled.input`
   height: 56px;
@@ -184,7 +183,6 @@ export const CreateBtn = styled.button`
   font-weight: 400;
   font-size: 1.125rem;
   margin-right: 2rem;
-  cursor: pointer;
 `;
 export const UpdateBtn = styled.button`
   width: 10%;
@@ -196,7 +194,6 @@ export const UpdateBtn = styled.button`
   font-weight: 400;
   font-size: 1.125rem;
   margin-right: 2rem;
-  cursor: pointer;
 `;
 export const DeleteBtn = styled.button`
   width: 10%;
@@ -208,7 +205,6 @@ export const DeleteBtn = styled.button`
   font-weight: 400;
   font-size: 1.125rem;
   margin-right: 2rem;
-  cursor: pointer;
 `;
 export const MoveBtn = styled.button`
   width: 10%;
@@ -220,7 +216,6 @@ export const MoveBtn = styled.button`
   font-weight: 400;
   font-size: 1.125rem;
   margin-right: 2rem;
-  cursor: pointer;
 `;
 
 export const AddressModal = styled(Modal)``;
