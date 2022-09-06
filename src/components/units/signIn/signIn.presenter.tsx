@@ -24,7 +24,7 @@ export default function SignInUI(props: ISignInProps) {
             placeholder="EMAIL"
             color="#000000"
             width="100%"
-            name="email"
+            name={"email"}
             type="text"
           />
           <YupWarningMsg errormsg={props.formState.errors.email?.message} />

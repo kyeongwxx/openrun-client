@@ -1,32 +1,58 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import SignInUI from "./signIn.presenter";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useMutation } from "@apollo/client";
-import { LOGIN } from "./signIn.queries";
+import { useApolloClient, useMutation, useQuery } from "@apollo/client";
+import { FETCH_LOGIN_USER, LOGIN } from "./signIn.queries";
 import {
   IMutation,
   IMutationLoginArgs,
+  IQuery,
 } from "../../../commons/types/generated/types";
 import { schema } from "../../../commons/yup/signIn";
+import { useRecoilState } from "recoil";
+import { userInfoValue } from "../../commons/store";
 
 export default function SignIn() {
+  const client = useApolloClient();
+  const [userInfo, setUserInfo] = useRecoilState(userInfoValue);
   const [login] = useMutation<Pick<IMutation, "login">, IMutationLoginArgs>(
     LOGIN
   );
-  const { register, handleSubmit, formState } = useForm({
+
+  const { register, handleSubmit, getValues, formState } = useForm({
     resolver: yupResolver(schema),
     mode: "onChange",
   });
 
   const onClickSignIn = async (data) => {
-    if (!data.email || !data.password) return;
+    const values = getValues();
+    if (!values) return;
+
     try {
       const result = await login({
         variables: {
-          email: String(data.email),
-          password: String(data.password),
+          email: String(values.email),
+          password: String(values.password),
         },
       });
+
+      const accessToken = result.data?.login;
+
+      const resultUserInfo = await client.query({
+        query: FETCH_LOGIN_USER,
+        context: {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        },
+      });
+
+      const userInfo = resultUserInfo.data?.fetchLoginUser;
+      setUserInfo(userInfo);
+      if (userInfo) alert("로그인성공");
+      else {
+        alert("로그인실패");
+      }
     } catch (error) {
       console.log(error);
     }
