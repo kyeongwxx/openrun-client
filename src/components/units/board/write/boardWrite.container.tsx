@@ -79,6 +79,7 @@ export default function BoardWrite(props) {
     const newFileUrls = [...fileUrls];
     newFileUrls[index] = fileUrl;
     setFileUrls(newFileUrls);
+    console.log(fileUrls);
   };
 
   useEffect(() => {
@@ -105,6 +106,7 @@ export default function BoardWrite(props) {
               address: address,
               addressDetail: addressDetail,
             },
+            image: [...fileUrls],
           },
         },
       });
@@ -133,6 +135,7 @@ export default function BoardWrite(props) {
       handleCancel={handleCancel}
       onChangeFileUrls={onChangeFileUrls}
       fileUrls={fileUrls}
+      data={props.data}
     />
   );
 }
