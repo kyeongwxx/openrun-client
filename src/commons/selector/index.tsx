@@ -14,6 +14,7 @@ export default function Selector(props: ISelectorProps) {
 
   const handleChange = (event: SelectChangeEvent) => {
     setSortValue(event.target.value as string);
+    console.log(sortValue);
   };
   return (
     <FormControl fullWidth>

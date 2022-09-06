@@ -26,18 +26,8 @@ export const ProductInfoText = styled.div`
   color: #555;
   padding-bottom: 1.188rem;
 `;
-export const Select = styled.select`
-  width: 170px;
-  height: 40px;
-  font-weight: 400;
-  font-size: 1.125rem;
-  line-height: 27px;
-  color: #656565;
-  background: #ffffff;
-  border: 1px solid #000000;
-  border-radius: 8px;
-  padding: 0 0.5rem;
-  margin-bottom: 1rem;
+export const SelectWrapper = styled.div`
+  width: 25%;
 `;
 export const TitleInput = styled.input`
   height: 56px;
@@ -45,7 +35,7 @@ export const TitleInput = styled.input`
   border-radius: 16px;
   border: none;
   padding-left: 1rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
   font-weight: 400;
   font-size: 1.125rem;
 `;
@@ -167,6 +157,11 @@ export const ImageUploadText = styled.div`
   font-size: 1.125rem;
   color: #555;
   padding-bottom: 1.188rem;
+`;
+export const Images = styled.div`
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
 `;
 export const BtnWrapper = styled.div`
   width: 100%;

@@ -10,10 +10,11 @@ export const UploadImage = styled.img`
 export const UploadButton = styled.button`
   width: 180px;
   height: 180px;
-  background-color: #bdbdbd;
   margin-right: 25px;
   outline: none;
-  border: none;
+  border: 2px dashed #bdbdbd;
+  background: #fff;
+  border-radius: 16px;
   cursor: pointer;
   font-size: 20px;
 `;
