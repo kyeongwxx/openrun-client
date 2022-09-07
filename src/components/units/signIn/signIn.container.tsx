@@ -11,9 +11,11 @@ import {
 import { schema } from "../../../commons/yup/signIn";
 import { useRecoilState } from "recoil";
 import { userInfoValue } from "../../commons/store";
+import { Router, useRouter } from "next/router";
 
 export default function SignIn() {
   const client = useApolloClient();
+  const router = useRouter();
   const [userInfo, setUserInfo] = useRecoilState(userInfoValue);
   const [login] = useMutation<Pick<IMutation, "login">, IMutationLoginArgs>(
     LOGIN
@@ -49,8 +51,10 @@ export default function SignIn() {
 
       const userInfo = resultUserInfo.data?.fetchLoginUser;
       setUserInfo(userInfo);
-      if (userInfo) alert("로그인성공");
-      else {
+      if (userInfo) {
+        alert("로그인성공");
+        router.push(`/myPage`);
+      } else {
         alert("로그인실패");
       }
     } catch (error) {
