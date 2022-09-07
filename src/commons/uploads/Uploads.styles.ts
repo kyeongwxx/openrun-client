@@ -1,16 +1,16 @@
 import styled from "@emotion/styled";
 
 export const UploadImage = styled.img`
-  width: 180px;
-  height: 180px;
-  margin-right: 24px;
+  width: 11.25rem;
+  height: 11.25rem;
+  margin-right: 2rem;
   cursor: pointer;
 `;
 
 export const UploadButton = styled.button`
-  width: 180px;
-  height: 180px;
-  margin-right: 25px;
+  width: 11.25rem;
+  height: 11.25rem;
+  margin-right: 2rem;
   outline: none;
   border: 2px dashed #bdbdbd;
   background: #fff;

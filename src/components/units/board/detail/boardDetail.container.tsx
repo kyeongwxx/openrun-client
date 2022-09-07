@@ -1,5 +1,14 @@
+import { useQuery } from "@apollo/client";
+import { useRouter } from "next/router";
 import BoardDetailUI from "./boardDetail.presenter";
+import { FETCH_BOARD } from "./boardDetail.queries";
 
 export default function BoardDetail() {
-  return <BoardDetailUI />;
+  const router = useRouter();
+  const { data } = useQuery(FETCH_BOARD, {
+    variables: { boardId: router.query.id },
+  });
+  console.log(data);
+
+  return <BoardDetailUI data={data} />;
 }

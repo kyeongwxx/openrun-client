@@ -51,6 +51,9 @@ export const PriceInput = styled.input`
 export const CalenderWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
   .react-calendar {
     width: 45%;
     max-width: 100%;
@@ -61,6 +64,10 @@ export const CalenderWrapper = styled.div`
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.125em;
+    @media (max-width: 767px) {
+      width: 100%;
+      margin-bottom: 2.188rem;
+    }
   }
   padding-bottom: 3.75rem;
 `;
@@ -86,6 +93,9 @@ export const ProductLocationText = styled.div`
 export const MapWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
 `;
 export const AddressWrapper = styled.div`
   width: calc(55% - 5rem);
@@ -93,8 +103,17 @@ export const AddressWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   margin-left: 5rem;
+  @media (max-width: 767px) {
+    width: 100%;
+    padding-top: 1.188rem;
+    margin-left: 0;
+  }
 `;
-export const ZipcodeWrapper = styled.div``;
+export const ZipcodeWrapper = styled.div`
+  @media (max-width: 767px) {
+    margin-bottom: 1.188rem;
+  }
+`;
 export const Zipcode = styled.input`
   text-align: center;
   width: 30%;
@@ -125,6 +144,9 @@ export const AddressInput = styled.input`
   padding-left: 1rem;
   font-weight: 400;
   font-size: 1.125rem;
+  @media (max-width: 767px) {
+    margin-bottom: 1.188rem;
+  }
 `;
 export const AddressDetailInput = styled.input`
   height: 56px;
@@ -148,8 +170,12 @@ export const RequestInput = styled(ReactQuill)`
   width: 100%;
   height: 430px;
   padding-bottom: 40px;
+  @media (max-width: 767px) {
+    height: 250px;
+  }
 `;
 export const ImageUploadWrapper = styled.div`
+  width: 100%;
   padding-bottom: 3.75rem;
 `;
 export const ImageUploadText = styled.div`
@@ -159,6 +185,7 @@ export const ImageUploadText = styled.div`
   padding-bottom: 1.188rem;
 `;
 export const Images = styled.div`
+  width: 100%;
   margin-top: 20px;
   display: flex;
   flex-direction: row;
@@ -168,9 +195,12 @@ export const BtnWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  @media (max-width: 767px) {
+    justify-content: space-between;
+  }
 `;
 export const CreateBtn = styled.button`
-  width: 10%;
+  width: 30%;
   height: 56px;
   background: #555;
   color: #fff;
@@ -180,9 +210,13 @@ export const CreateBtn = styled.button`
   font-size: 1.125rem;
   margin-right: 2rem;
   cursor: pointer;
+  @media (max-width: 767px) {
+    width: 45%;
+    margin-right: 0;
+  }
 `;
 export const MoveBtn = styled.button`
-  width: 10%;
+  width: 30%;
   height: 56px;
   background: #555;
   color: #fff;
@@ -192,6 +226,10 @@ export const MoveBtn = styled.button`
   font-size: 1.125rem;
   margin-right: 2rem;
   cursor: pointer;
+  @media (max-width: 767px) {
+    width: 45%;
+    margin-right: 0;
+  }
 `;
 
 export const AddressModal = styled(Modal)``;
