@@ -16,35 +16,17 @@ export default function LayoutFooter() {
         </s.Menu>
         <s.Menu>
           <s.InfoWrapper>
-            <s.Info>
-              <s.Text weight="400" color="#909090">
-                서비스소개
-              </s.Text>
-            </s.Info>
-            {/* <s.Info>
-              <s.Text weight="400" color="#909090">
-                개인정보 처리방침
-              </s.Text>
-              <s.Text weight="400" color="#909090">
-                약관안내
-              </s.Text>
-              <s.Text weight="400" color="#909090">
-                윤리경영
-              </s.Text>
-            </s.Info> */}
-            <s.Info>
-              <s.Text weight="400" color="#909090">
-                공지사항
-              </s.Text>
-            </s.Info>
-            <s.Info>
-              <s.Text weight="400" color="#909090">
-                고객센터
-              </s.Text>
-            </s.Info>
-            {/* <s.Text weight="400" color="#909090">
-                회원혜택
-              </s.Text> */}
+            <s.Text weight="400" color="#909090">
+              서비스소개
+            </s.Text>
+
+            <s.Text weight="400" color="#909090">
+              공지사항
+            </s.Text>
+
+            <s.Text weight="400" color="#909090">
+              고객센터
+            </s.Text>
           </s.InfoWrapper>
         </s.Menu>
       </s.MenuWrapper>

@@ -2,8 +2,10 @@ import styled from "@emotion/styled";
 import { Container, Grid } from "@mui/material";
 
 export const Wrapper = styled.header`
-  width: 95%;
+  width: 100%;
   margin: auto;
+  height: 40px;
+  border-bottom: 2px solid #f2f2f2;
 
   @media (max-width: 767px) {
     display: none;
@@ -11,7 +13,6 @@ export const Wrapper = styled.header`
 `;
 
 export const MenuWrapper = styled(Container)`
-  /* max-width: xl; */
   width: 100%;
   height: 100%;
   margin: auto;

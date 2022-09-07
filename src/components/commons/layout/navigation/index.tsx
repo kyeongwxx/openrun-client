@@ -2,13 +2,9 @@ import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { IMutation } from "../../../../commons/types/generated/types";
-import { accessTokenState, isSignIn, userInfoValue } from "../../store";
+import { accessTokenState, userInfoValue } from "../../store";
 import { LOGOUT } from "../layout.queries";
 import * as s from "./navigation.styles";
-
-// import MediaQueryPc from "../../../../commons/mediaQuery/mediaQueryStandardPc";
-// import MediaQueryTablet from "../../../../commons/mediaQuery/mediaQueryStandardTablet";
-// import MediaQueryMobile from "../../../../commons/mediaQuery/mediaQueryStandardMobile";
 
 export default function LayoutNavigation() {
   const [userInfo, setUserInfo] = useRecoilState(userInfoValue);
@@ -16,10 +12,6 @@ export default function LayoutNavigation() {
 
   const router = useRouter();
   const [logout] = useMutation<Pick<IMutation, "logout">>(LOGOUT);
-
-  // const isPc = MediaQueryPc();
-  // const isTablet = MediaQueryTablet();
-  // const isMobile = MediaQueryMobile();
 
   const onClickMoveToPage = (event: string) => () => {
     router.push(event);
@@ -40,7 +32,6 @@ export default function LayoutNavigation() {
     <>
       <s.Wrapper>
         <s.MenuWrapper>
-          {/* <s.MenuList /> */}
           {!userInfo ? (
             <s.MenuList>
               <s.Menu onClick={onClickMoveToPage(`/signIn`)}>로그인</s.Menu>
