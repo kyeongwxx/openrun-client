@@ -1,18 +1,21 @@
 import styled from "@emotion/styled";
-import { Grid } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 
 export const Wrapper = styled.header`
-  width: 95%;
+  width: 100%;
   height: 40px;
   margin: auto;
+
   border-bottom: 1px solid rgba(101, 101, 101, 0.5);
   @media (max-width: 767px) {
     display: none;
   }
 `;
 
-export const MenuWrapper = styled.div`
+export const MenuWrapper = styled(Container)`
+  /* max-width: xl; */
   height: 100%;
+  margin: auto;
 
   display: flex;
   flex-direction: row;

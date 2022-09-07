@@ -1,14 +1,15 @@
 import styled from "@emotion/styled";
+import { Container } from "@mui/system";
 
 export const Wrapper = styled.header`
-  width: 95%;
+  width: 100%;
   height: 96px;
   margin: auto;
   /* background-color: yellow; */
 `;
 
-export const MenuWrapper = styled.div`
-  width: 100%;
+export const MenuWrapper = styled(Container)`
+  /* width: 100%; */
   height: 100%;
   display: flex;
   flex-direction: row;
@@ -28,11 +29,11 @@ export const Logo = styled.div`
 `;
 
 export const MenuList = styled.div`
-  /* width: 33.3%; */
+  width: 20%;
 
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
 `;
 
 export const MenuIcon = styled.div`
@@ -40,7 +41,7 @@ export const MenuIcon = styled.div`
   cursor: pointer;
 `;
 export const Menu = styled.div`
-  margin-right: 10%;
+  /* margin-right: 10%; */
   color: #333;
 
   cursor: pointer;

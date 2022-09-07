@@ -32,14 +32,14 @@ export default function Layout(props: ILayoutProps) {
   const isShowMyPage = SHOW_MYPAGE.includes(router.asPath);
   return (
     <s.Wrapper>
-      <Container maxWidth="xl">
-        <LayoutNavigation />
-        <LayoutHeader />
-        {isShowMyPage && <LayoutMyPage />}
+      {/* <Container maxWidth="xl"> */}
+      <LayoutNavigation />
+      <LayoutHeader />
+      {isShowMyPage && <LayoutMyPage />}
 
-        <div>{props.children}</div>
-        <LayoutFooter />
-      </Container>
+      <div>{props.children}</div>
+      <LayoutFooter />
+      {/* </Container> */}
     </s.Wrapper>
   );
 }

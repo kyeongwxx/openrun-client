@@ -1,18 +1,18 @@
 import styled from "@emotion/styled";
+import { Container } from "@mui/system";
 
 export const Wrapper = styled.footer`
-  width: 95%;
-  height: 300px;
-  margin: auto;
+  width: 100%;
+
   margin-top: 20px;
+
   background-color: #f7f7f7;
   @media (max-width: 767px) {
     height: 70px;
   }
 `;
 
-export const MenuWrapper = styled.section`
-  width: 100%;
+export const MenuWrapper = styled(Container)`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
