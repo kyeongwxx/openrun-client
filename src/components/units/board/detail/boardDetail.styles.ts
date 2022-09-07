@@ -224,6 +224,9 @@ export const ApplyItem = styled.div`
   background: #f5f5f5;
   border-radius: 16px;
   align-items: center;
+  @media (max-width: 767px) {
+    width: 82%;
+  }
 `;
 export const RunnerIcon = styled.img`
   padding-left: 2.688rem;
@@ -237,6 +240,9 @@ export const RunnerName = styled.div`
   color: rgba(0, 0, 0, 0.8);
   padding-left: 1.063rem;
   padding-right: 3rem;
+  @media (max-width: 767px) {
+    padding-right: 0.5rem;
+  }
 `;
 export const Rating = styled.div`
   display: flex;
@@ -255,17 +261,14 @@ export const RunCnt = styled.div`
   color: rgba(0, 0, 0, 0.5);
   padding-right: 2.5rem;
 `;
-export const ReTradeRate = styled.div`
-  font-weight: 700;
-  font-size: 0.75rem;
-  color: rgba(0, 0, 0, 0.5);
-  padding-right: 2.5rem;
-`;
 export const SuccessRate = styled.div`
   font-weight: 700;
   font-size: 0.75rem;
   color: #1f8716;
   padding-right: 2.5rem;
+  @media (max-width: 767px) {
+    padding-right: 1rem;
+  }
 `;
 export const SelectBtn = styled.div`
   width: 20%;
@@ -278,6 +281,10 @@ export const SelectBtn = styled.div`
   text-align: center;
   line-height: 53px;
   @media (max-width: 767px) {
+    width: 15%;
     font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `;

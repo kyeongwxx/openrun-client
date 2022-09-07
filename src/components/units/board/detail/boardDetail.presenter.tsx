@@ -9,6 +9,7 @@ import TabPanel from "@mui/lab/TabPanel";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Map from "../../../../commons/maps-detail/map.container";
 import Dompurify from "dompurify";
+import { AiOutlineCheckCircle } from "react-icons/ai";
 
 const theme = createTheme({
   components: {
@@ -69,7 +70,7 @@ export default function BoardDetailUI(props) {
             <s.ChatBtn>
               <s.ChatCnt>1</s.ChatCnt>
               <s.ChatIcon src="/boardDetail/Chat.png" />
-              <s.ChatText>채팅하기</s.ChatText>
+              {props.isPc && <s.ChatText>채팅하기</s.ChatText>}
             </s.ChatBtn>
             <s.PickBtn>찜하기</s.PickBtn>
             <s.ApplyBtn>신청하기</s.ApplyBtn>
@@ -113,12 +114,16 @@ export default function BoardDetailUI(props) {
                       <s.Star src="/boardDetail/Star.png" />
                     </s.Rating>
                     <s.CntWrapper>
-                      <s.RunCnt>줄서기 300건</s.RunCnt>
-                      <s.ReTradeRate>재거래희망률 90%</s.ReTradeRate>
+                      {props.isPc && <s.RunCnt>줄서기 300건</s.RunCnt>}
                       <s.SuccessRate>성공률 95%</s.SuccessRate>
                     </s.CntWrapper>
                   </s.ApplyItem>
-                  <s.SelectBtn>채택하기</s.SelectBtn>
+                  {props.isPc && <s.SelectBtn>채택하기</s.SelectBtn>}
+                  {props.isMobile && (
+                    <s.SelectBtn>
+                      <AiOutlineCheckCircle size={30} />
+                    </s.SelectBtn>
+                  )}
                 </s.ApplyList>
                 <s.ApplyList>
                   <s.ApplyItem>
@@ -129,12 +134,16 @@ export default function BoardDetailUI(props) {
                       <s.Star src="/boardDetail/Star.png" />
                     </s.Rating>
                     <s.CntWrapper>
-                      <s.RunCnt>줄서기 300건</s.RunCnt>
-                      <s.ReTradeRate>재거래희망률 90%</s.ReTradeRate>
+                      {props.isPc && <s.RunCnt>줄서기 300건</s.RunCnt>}
                       <s.SuccessRate>성공률 95%</s.SuccessRate>
                     </s.CntWrapper>
                   </s.ApplyItem>
-                  <s.SelectBtn>채택하기</s.SelectBtn>
+                  {props.isPc && <s.SelectBtn>채택하기</s.SelectBtn>}
+                  {props.isMobile && (
+                    <s.SelectBtn>
+                      <AiOutlineCheckCircle size={30} />
+                    </s.SelectBtn>
+                  )}
                 </s.ApplyList>
                 <s.ApplyList>
                   <s.ApplyItem>
@@ -146,12 +155,16 @@ export default function BoardDetailUI(props) {
                       <s.Star src="/boardDetail/Star.png" />
                     </s.Rating>
                     <s.CntWrapper>
-                      <s.RunCnt>줄서기 300건</s.RunCnt>
-                      <s.ReTradeRate>재거래희망률 90%</s.ReTradeRate>
+                      {props.isPc && <s.RunCnt>줄서기 300건</s.RunCnt>}
                       <s.SuccessRate>성공률 95%</s.SuccessRate>
                     </s.CntWrapper>
                   </s.ApplyItem>
-                  <s.SelectBtn>채택하기</s.SelectBtn>
+                  {props.isPc && <s.SelectBtn>채택하기</s.SelectBtn>}
+                  {props.isMobile && (
+                    <s.SelectBtn>
+                      <AiOutlineCheckCircle size={30} />
+                    </s.SelectBtn>
+                  )}
                 </s.ApplyList>
                 <s.ApplyList>
                   <s.ApplyItem>
@@ -164,12 +177,16 @@ export default function BoardDetailUI(props) {
                       <s.Star src="/boardDetail/Star.png" />
                     </s.Rating>
                     <s.CntWrapper>
-                      <s.RunCnt>줄서기 300건</s.RunCnt>
-                      <s.ReTradeRate>재거래희망률 90%</s.ReTradeRate>
+                      {props.isPc && <s.RunCnt>줄서기 300건</s.RunCnt>}
                       <s.SuccessRate>성공률 95%</s.SuccessRate>
                     </s.CntWrapper>
                   </s.ApplyItem>
-                  <s.SelectBtn>채택하기</s.SelectBtn>
+                  {props.isPc && <s.SelectBtn>채택하기</s.SelectBtn>}
+                  {props.isMobile && (
+                    <s.SelectBtn>
+                      <AiOutlineCheckCircle size={30} />
+                    </s.SelectBtn>
+                  )}
                 </s.ApplyList>
                 <s.ApplyList>
                   <s.ApplyItem>
@@ -183,12 +200,16 @@ export default function BoardDetailUI(props) {
                       <s.Star src="/boardDetail/Star.png" />
                     </s.Rating>
                     <s.CntWrapper>
-                      <s.RunCnt>줄서기 300건</s.RunCnt>
-                      <s.ReTradeRate>재거래희망률 90%</s.ReTradeRate>
+                      {props.isPc && <s.RunCnt>줄서기 300건</s.RunCnt>}
                       <s.SuccessRate>성공률 95%</s.SuccessRate>
                     </s.CntWrapper>
                   </s.ApplyItem>
-                  <s.SelectBtn>채택하기</s.SelectBtn>
+                  {props.isPc && <s.SelectBtn>채택하기</s.SelectBtn>}
+                  {props.isMobile && (
+                    <s.SelectBtn>
+                      <AiOutlineCheckCircle size={30} />
+                    </s.SelectBtn>
+                  )}
                 </s.ApplyList>
               </s.ApplyWrapper>
             </TabPanel>
