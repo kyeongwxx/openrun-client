@@ -11,13 +11,8 @@ export type Scalars = {
   Int: number;
   Float: number;
   DateTime: any;
+  Upload: any;
 };
-
-export enum IBoard_Status_Enum {
-  Finished = 'FINISHED',
-  Inprogress = 'INPROGRESS',
-  Recruiting = 'RECRUITING'
-}
 
 export type IBankAccount = {
   __typename?: 'BankAccount';
@@ -28,23 +23,25 @@ export type IBankAccount = {
 };
 
 export type IBankAccountInput = {
-  bankAccountNum: Scalars['String'];
-  company: Scalars['String'];
+  backAccountNum?: InputMaybe<Scalars['String']>;
+  company?: InputMaybe<Scalars['String']>;
 };
 
 export type IBoard = {
   __typename?: 'Board';
   category: ICategory;
-  contents: Scalars['String'];
+  chatRoom: IChatRoom;
+  contents?: Maybe<Scalars['String']>;
   createdAt: Scalars['DateTime'];
   deletedAt: Scalars['DateTime'];
-  dueDate: Scalars['DateTime'];
+  dueDate?: Maybe<Scalars['DateTime']>;
+  eventDay?: Maybe<Scalars['String']>;
+  eventTime?: Maybe<Scalars['String']>;
   id: Scalars['String'];
   image: Array<IImage>;
   location: ILocation;
-  price: Scalars['Int'];
-  status: IBoard_Status_Enum;
-  storeName: Scalars['String'];
+  price?: Maybe<Scalars['Int']>;
+  status?: Maybe<Scalars['String']>;
   title: Scalars['String'];
   updatedAt: Scalars['DateTime'];
   user: IUser;
@@ -53,41 +50,64 @@ export type IBoard = {
 export type ICategory = {
   __typename?: 'Category';
   id: Scalars['String'];
-  name: Scalars['String'];
+  name?: Maybe<Scalars['String']>;
+};
+
+export type IChatMessage = {
+  __typename?: 'ChatMessage';
+  createdAt: Scalars['DateTime'];
+  message: Scalars['String'];
+  room: Scalars['String'];
+  user: IUser;
+};
+
+export type IChatRoom = {
+  __typename?: 'ChatRoom';
+  board: IBoard;
+  id: Scalars['String'];
+  room: Scalars['String'];
+  runner: IUser;
+  seller: IUser;
 };
 
 export type ICreateBoardInput = {
-  category: Scalars['String'];
-  contents: Scalars['String'];
-  dueDate: Scalars['DateTime'];
-  image: Array<Scalars['String']>;
-  location: ILocationInput;
-  price: Scalars['Int'];
-  storeName: Scalars['String'];
+  category?: InputMaybe<Scalars['String']>;
+  contents?: InputMaybe<Scalars['String']>;
+  dueDate?: InputMaybe<Scalars['DateTime']>;
+  eventDay?: InputMaybe<Scalars['DateTime']>;
+  eventTime?: InputMaybe<Scalars['String']>;
+  image?: InputMaybe<Array<Scalars['String']>>;
+  location?: InputMaybe<ILocationInput>;
+  price?: InputMaybe<Scalars['Int']>;
   title: Scalars['String'];
 };
 
 export type ICreateEventInput = {
-  contents: Scalars['String'];
-  fakeData: Scalars['String'];
-  image: Scalars['String'];
-  location: Scalars['String'];
-  period: Scalars['DateTime'];
+  contents?: InputMaybe<Scalars['String']>;
+  fakeData?: InputMaybe<Scalars['String']>;
+  image?: InputMaybe<Scalars['String']>;
+  location?: InputMaybe<Scalars['String']>;
+  period?: InputMaybe<Scalars['DateTime']>;
   title: Scalars['String'];
 };
 
 export type ICreateInquiryInput = {
-  contents: Scalars['String'];
-  title: Scalars['String'];
-  type: Scalars['String'];
+  contents?: InputMaybe<Scalars['String']>;
+  title?: InputMaybe<Scalars['String']>;
+  type?: InputMaybe<Scalars['String']>;
+};
+
+export type ICreateReportInput = {
+  boardId?: InputMaybe<Scalars['String']>;
+  contents?: InputMaybe<Scalars['String']>;
+  type?: InputMaybe<IReport_Type_Enum>;
 };
 
 export type ICreateUserInput = {
-  email: Scalars['String'];
-  nickName: Scalars['String'];
-  password: Scalars['String'];
-  phone: Scalars['String'];
-  profileImg: Scalars['String'];
+  email?: InputMaybe<Scalars['String']>;
+  nickName?: InputMaybe<Scalars['String']>;
+  password?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
 };
 
 export type IEvent = {
@@ -105,7 +125,7 @@ export type IImage = {
   __typename?: 'Image';
   board: IBoard;
   id: Scalars['String'];
-  url: Scalars['String'];
+  url?: Maybe<Scalars['String']>;
 };
 
 export type IInquiry = {
@@ -141,13 +161,15 @@ export type ILocation = {
   id: Scalars['String'];
   lat: Scalars['Float'];
   lng: Scalars['Float'];
+  zipcode: Scalars['String'];
 };
 
 export type ILocationInput = {
-  address: Scalars['String'];
-  addressDetail: Scalars['String'];
-  lat: Scalars['Float'];
-  lng: Scalars['Float'];
+  address?: InputMaybe<Scalars['String']>;
+  addressDetail?: InputMaybe<Scalars['String']>;
+  lat?: InputMaybe<Scalars['Float']>;
+  lng?: InputMaybe<Scalars['Float']>;
+  zipcode?: InputMaybe<Scalars['String']>;
 };
 
 export type IMutation = {
@@ -162,13 +184,20 @@ export type IMutation = {
   createEvent: IEvent;
   createInquiry: IInquiry;
   createInquiryAnswer: IInquiryAnswer;
+  createRating: Scalars['Boolean'];
+  createReport: IReport;
+  createRoom: IChatRoom;
   createUser: IUser;
   deleteBoard: Scalars['Boolean'];
+  deleteLoginUser: Scalars['Boolean'];
+  deleteReport: Scalars['Boolean'];
   login: Scalars['String'];
   logout: Scalars['Boolean'];
   restoreAccessToken: Scalars['String'];
   updateBoard: IBoard;
   updateLoginUser: IUser;
+  uploadFile: Scalars['String'];
+  uploadFiles: Array<Scalars['String']>;
 };
 
 
@@ -227,6 +256,23 @@ export type IMutationCreateInquiryAnswerArgs = {
 };
 
 
+export type IMutationCreateRatingArgs = {
+  boardId: Scalars['String'];
+  rate: Scalars['Float'];
+};
+
+
+export type IMutationCreateReportArgs = {
+  createReportInput: ICreateReportInput;
+};
+
+
+export type IMutationCreateRoomArgs = {
+  boardId: Scalars['String'];
+  userEmail: Scalars['String'];
+};
+
+
 export type IMutationCreateUserArgs = {
   createUserInput: ICreateUserInput;
 };
@@ -234,6 +280,11 @@ export type IMutationCreateUserArgs = {
 
 export type IMutationDeleteBoardArgs = {
   boardId: Scalars['String'];
+};
+
+
+export type IMutationDeleteReportArgs = {
+  reportId: Scalars['String'];
 };
 
 
@@ -251,6 +302,16 @@ export type IMutationUpdateBoardArgs = {
 
 export type IMutationUpdateLoginUserArgs = {
   updateUserInput: IUpdateUserInput;
+};
+
+
+export type IMutationUploadFileArgs = {
+  file: Scalars['Upload'];
+};
+
+
+export type IMutationUploadFilesArgs = {
+  files: Array<Scalars['Upload']>;
 };
 
 export type IPayment = {
@@ -273,6 +334,7 @@ export type IPaymentHistory = {
 
 export type IQuery = {
   __typename?: 'Query';
+  connectionRoom: IChatRoom;
   fetchBoard: IBoard;
   fetchBoards: Array<IBoard>;
   fetchCategories: Array<ICategory>;
@@ -283,12 +345,19 @@ export type IQuery = {
   fetchLoginUser: IUser;
   fetchLoginUserInquiry: Array<IInquiry>;
   fetchLoginUserInquiryAnswer: Array<IInquiryAnswer>;
+  fetchLogs: Array<IChatMessage>;
   fetchPaymentHistory: Array<IPaymentHistory>;
   fetchPaymentHistoryCount: Scalars['Int'];
   fetchPayments: Scalars['Int'];
   fetchPointChargeHistory: Array<IPayment>;
+  fetchReports: Array<IReport>;
   fetchRunnerByBoard: Array<IUser>;
   fetchUsers: Array<IUser>;
+};
+
+
+export type IQueryConnectionRoomArgs = {
+  userEmail: Scalars['String'];
 };
 
 
@@ -307,6 +376,11 @@ export type IQueryFetchEventArgs = {
 };
 
 
+export type IQueryFetchEventsArgs = {
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
 export type IQueryFetchEventsByDateArgs = {
   date: Scalars['DateTime'];
 };
@@ -317,8 +391,31 @@ export type IQueryFetchLoginUserInquiryAnswerArgs = {
 };
 
 
+export type IQueryFetchLogsArgs = {
+  room: Scalars['String'];
+};
+
+
 export type IQueryFetchRunnerByBoardArgs = {
   boardId: Scalars['String'];
+};
+
+export enum IReport_Type_Enum {
+  Adv = 'ADV',
+  Etc = 'ETC',
+  MissionFailed = 'MISSION_FAILED',
+  TrashTalk = 'TRASH_TALK'
+}
+
+export type IReport = {
+  __typename?: 'Report';
+  board: IBoard;
+  contents: Scalars['String'];
+  createdAt: Scalars['DateTime'];
+  deletedAt: Scalars['DateTime'];
+  id: Scalars['String'];
+  type: IReport_Type_Enum;
+  user: IUser;
 };
 
 export type IRunner = {
@@ -368,9 +465,10 @@ export type IUpdateBoardInput = {
   category?: InputMaybe<Scalars['String']>;
   contents?: InputMaybe<Scalars['String']>;
   dueDate?: InputMaybe<Scalars['DateTime']>;
+  eventDay?: InputMaybe<Scalars['DateTime']>;
+  eventTime?: InputMaybe<Scalars['String']>;
   image?: InputMaybe<Array<Scalars['String']>>;
   location?: InputMaybe<ILocationInput>;
   price?: InputMaybe<Scalars['Int']>;
-  storeName?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
 };

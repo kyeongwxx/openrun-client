@@ -1,9 +1,15 @@
+import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { userInfoValue } from "../../store";
 import * as s from "./mypage.styles";
 
 export default function LayoutMyPage() {
+  const router = useRouter();
   const [userInfo] = useRecoilState(userInfoValue);
+
+  const onClickMoveToPage = (event: string) => () => {
+    router.push(event);
+  };
   return (
     <s.Wrapper>
       <s.ProfileWrapper>
@@ -13,7 +19,9 @@ export default function LayoutMyPage() {
             <s.Text size="1.5rem" color="#333" weight="400">
               {userInfo?.nickName}님, 오늘의 일정이 1건 있습니다.
             </s.Text>
-            <s.UserInfoEdit>내정보 수정</s.UserInfoEdit>
+            <s.UserInfoEdit onClick={onClickMoveToPage(`/myPage/editAccount`)}>
+              내정보 수정
+            </s.UserInfoEdit>
           </s.ProfileDetail>
         </s.ProfileUser>
 
@@ -48,11 +56,19 @@ export default function LayoutMyPage() {
       </s.ProfileWrapper>
       <s.MenuWrapper>
         <s.Menus>
-          <s.Menu>MY</s.Menu>
-          <s.Menu>작성한게시글</s.Menu>
-          <s.Menu>포인트</s.Menu>
-          <s.Menu>찜목록</s.Menu>
-          <s.Menu>거래내역</s.Menu>
+          <s.Menu onClick={onClickMoveToPage(`/myPage`)}>MY</s.Menu>
+          <s.Menu onClick={onClickMoveToPage(`/myPage/writtenBoards`)}>
+            작성한게시글
+          </s.Menu>
+          <s.Menu onClick={onClickMoveToPage(`/myPage/paymentPoint`)}>
+            포인트
+          </s.Menu>
+          <s.Menu onClick={onClickMoveToPage(`/myPage/favoriteList`)}>
+            찜목록
+          </s.Menu>
+          <s.Menu onClick={onClickMoveToPage(`/myPage/dealList`)}>
+            거래내역
+          </s.Menu>
         </s.Menus>
         <s.DivideLineHorizontal color="#656565" />
       </s.MenuWrapper>

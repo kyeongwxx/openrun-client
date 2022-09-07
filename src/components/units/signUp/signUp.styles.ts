@@ -7,6 +7,7 @@ export const Wrapper = styled.main`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+
   @media (max-width: 767px) {
     width: 350px;
   }
@@ -58,3 +59,6 @@ export const DetailText = styled.div`
 `;
 
 export const SelectText = styled.div``;
+export const Certify = styled.div`
+  width: 100%;
+`;

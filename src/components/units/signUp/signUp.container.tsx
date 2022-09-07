@@ -1,5 +1,6 @@
 import { useMutation } from "@apollo/client";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useState } from "react";
 
 import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
@@ -13,14 +14,17 @@ import SignUpUI from "./signUp.presenter";
 import { CREATE_USER } from "./signUp.queries";
 
 export default function SignUp() {
+  const [isOpen, setIsOpen] = useState(false);
   const [createUser] = useMutation<
     Pick<IMutation, "createUser">,
     IMutationCreateUserArgs
   >(CREATE_USER);
-  const { register, handleSubmit, formState } = useForm({
+  const { register, handleSubmit, formState, getValues } = useForm({
     resolver: yupResolver(schema),
     mode: "onChange",
   });
+  const value = getValues;
+  console.log(value);
 
   const onClickSignUp = async (data) => {
     if (!data.email || !data.password || !data.nickname || !data.phone) return;
@@ -32,7 +36,6 @@ export default function SignUp() {
             password: String(data.password),
             nickName: String(data.nickname),
             phone: String(data.phone),
-            profileImg: "d",
           },
         },
       });
@@ -42,7 +45,9 @@ export default function SignUp() {
     }
   };
   const onClickPhoneCertify = () => {};
-  const onClickSendCertificationNum = () => {};
+  const onClickSendCertificationNum = () => {
+    setIsOpen(true);
+  };
   return (
     <SignUpUI
       register={register}
@@ -51,6 +56,7 @@ export default function SignUp() {
       onClickSignUp={onClickSignUp}
       onClickSendCertificationNum={onClickSendCertificationNum}
       onClickPhoneCertify={onClickPhoneCertify}
+      isOpen={isOpen}
     />
   );
 }
