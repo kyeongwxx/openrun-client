@@ -7,7 +7,6 @@ import { v4 as uuidv4 } from "uuid";
 import { useMediaQuery } from "react-responsive";
 
 import MediaQueryPc from "../mediaQuery/mediaQueryStandardPc";
-import MediaQueryTablet from "../mediaQuery/mediaQueryStandardTablet";
 import MediaQueryMobile from "../mediaQuery/mediaQueryStandardMobile";
 
 export default function DatePicker() {
@@ -17,7 +16,6 @@ export default function DatePicker() {
   const day = [...oneWeek[1]];
 
   const isPc = MediaQueryPc();
-  const isTablet = MediaQueryTablet();
   const isMobile = MediaQueryMobile();
 
   return (
@@ -37,7 +35,7 @@ export default function DatePicker() {
           </s.ButtonWrapper>
         </s.Carousel>
       )}
-      {(isTablet || isMobile) && (
+      {isMobile && (
         <s.ButtonMobile>
           {/* <s.TextDay>sdf</s.TextDay> */}
           <s.TextDate>Today</s.TextDate>
