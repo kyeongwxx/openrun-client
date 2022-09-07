@@ -28,7 +28,7 @@ export default function Layout(props: ILayoutProps) {
     `/myPage/paymentPoint/`,
     `/myPage/writtenBoards/`,
   ];
-  console.log(router.asPath);
+
   const isShowMyPage = SHOW_MYPAGE.includes(router.asPath);
   return (
     <s.Wrapper>
