@@ -12,9 +12,18 @@ export const ProductWrapper = styled.div`
   display: flex;
   flex-direction: row;
   padding-bottom: 5rem;
+  @media (max-width: 767px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 export const ImageWrapper = styled.div`
   padding-right: 6.438rem;
+  @media (max-width: 767px) {
+    width: 50%;
+    padding: 0;
+    margin-bottom: 1rem;
+  }
 `;
 export const BigImage = styled.img`
   width: 100%;
@@ -150,7 +159,12 @@ export const ChatCnt = styled.div`
   text-align: center;
   line-height: 17px;
 `;
-export const ChatIcon = styled.img``;
+export const ChatIcon = styled.img`
+  width: 50%;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+`;
 export const ChatText = styled.div`
   font-weight: 400;
   font-size: 0.75rem;
@@ -204,6 +218,7 @@ export const ApplyList = styled.div`
 `;
 export const ApplyItem = styled.div`
   width: 77%;
+  height: 53px;
   display: flex;
   flex-direction: row;
   background: #f5f5f5;
@@ -212,6 +227,9 @@ export const ApplyItem = styled.div`
 `;
 export const RunnerIcon = styled.img`
   padding-left: 2.688rem;
+  @media (max-width: 767px) {
+    padding-left: 1rem;
+  }
 `;
 export const RunnerName = styled.div`
   font-weight: 700;
@@ -259,4 +277,7 @@ export const SelectBtn = styled.div`
   color: #ffffff;
   text-align: center;
   line-height: 53px;
+  @media (max-width: 767px) {
+    font-size: 0.9rem;
+  }
 `;

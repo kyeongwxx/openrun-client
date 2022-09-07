@@ -37,10 +37,6 @@ export default function BoardDetailUI(props) {
       <s.ProductWrapper>
         <s.ImageWrapper>
           <s.BigImage src="/boardDetail/Nike2.png" />
-          <s.SmallImageWrapper>
-            <s.SmallImage />
-            <s.SmallImage />
-          </s.SmallImageWrapper>
         </s.ImageWrapper>
         <s.ProductInfoWrapper>
           <s.Status>모집중</s.Status>
