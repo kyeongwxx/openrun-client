@@ -8,6 +8,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRecoilState } from "recoil";
 import { dayState, selectorValue, timeState } from "../../../commons/store";
+import MediaQueryMobile from "../../../../commons/mediaQuery/mediaQueryStandardMobile";
+import MediaQueryPc from "../../../../commons/mediaQuery/mediaQueryStandardPc";
 
 const schema = yup.object({
   // name: yup.string().required("상품명을 입력해주세요."),
@@ -31,6 +33,10 @@ export default function BoardWrite(props) {
     resolver: yupResolver(schema),
     mode: "onChange",
   });
+
+  // mediaQuery
+  const isMobile = MediaQueryMobile();
+  const isPc = MediaQueryPc();
 
   // selector, calendar, timePicker 라이브러리 global state
   const [sortValue, setSortValue] = useRecoilState(selectorValue);
@@ -100,7 +106,7 @@ export default function BoardWrite(props) {
             price: Number(data.price),
             eventDay: String(dayValue).slice(0, 15),
             eventTime: String(timeValue.$d).slice(16, 21),
-            category: sortValue,
+            category: String(sortValue),
             location: {
               zipcode: zipcode,
               address: address,
@@ -120,6 +126,8 @@ export default function BoardWrite(props) {
 
   return (
     <BoardWriteUI
+      isMobile={isMobile}
+      isPc={isPc}
       register={register}
       handleSubmit={handleSubmit}
       formState={formState}

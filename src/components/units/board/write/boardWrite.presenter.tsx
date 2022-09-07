@@ -52,12 +52,22 @@ export default function BoardWriteUI(props) {
             <s.AddressWrapper>
               <s.ZipcodeWrapper>
                 <s.Zipcode placeholder="07250" readOnly value={props.zipcode} />
-                <s.AddressButton
-                  type="button"
-                  onClick={props.onClickAddressSearch}
-                >
-                  우편번호 검색
-                </s.AddressButton>
+                {props.isPc && (
+                  <s.AddressButton
+                    type="button"
+                    onClick={props.onClickAddressSearch}
+                  >
+                    우편번호 검색
+                  </s.AddressButton>
+                )}
+                {props.isMobile && (
+                  <s.AddressButton
+                    type="button"
+                    onClick={props.onClickAddressSearch}
+                  >
+                    우편번호
+                  </s.AddressButton>
+                )}
               </s.ZipcodeWrapper>
               <s.AddressInput readOnly value={props.address} />
               <s.AddressDetailInput

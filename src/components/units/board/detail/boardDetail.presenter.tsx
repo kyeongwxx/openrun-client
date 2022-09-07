@@ -1,5 +1,4 @@
 import * as s from "./boardDetail.styles";
-
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
@@ -10,6 +9,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Map from "../../../../commons/maps-detail/map.container";
 import Dompurify from "dompurify";
 import { AiOutlineCheckCircle } from "react-icons/ai";
+import MainSlider from "../../../../commons/carousel";
 
 const theme = createTheme({
   components: {
@@ -37,6 +37,12 @@ export default function BoardDetailUI(props) {
     <s.Wrapper>
       <s.ProductWrapper>
         <s.ImageWrapper>
+          {props.data?.fetchBoard?.image.map((el) => (
+            <MainSlider
+              key={el}
+              Src={`https://storage.googleapis.com/openrun-storage/${el}`}
+            />
+          ))}
           <s.BigImage src="/boardDetail/Nike2.png" />
         </s.ImageWrapper>
         <s.ProductInfoWrapper>
@@ -46,7 +52,7 @@ export default function BoardDetailUI(props) {
           <s.Category>{props.data?.fetchBoard?.category.name}</s.Category>
           <s.Location>희망 시간</s.Location>
           <s.Date>
-            {props.data?.fetchBoard?.eventDay.slice(0, 10)}{" "}
+            {props.data?.fetchBoard?.eventDay?.slice(0, 10)}{" "}
             {props.data?.fetchBoard?.eventTime}
           </s.Date>
           <s.Location>장소</s.Location>
