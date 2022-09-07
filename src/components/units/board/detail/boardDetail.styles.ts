@@ -47,22 +47,22 @@ export const Status = styled.div`
   border: 1px solid #7dd03c;
   margin-bottom: 2rem;
 `;
-export const Brand = styled.div`
-  font-weight: 700;
-  font-size: 1.125rem;
-  color: rgba(0, 0, 0, 0.7);
-  padding-bottom: 0.438rem;
-`;
 export const Name = styled.div`
   font-weight: 700;
   font-size: 1.375rem;
   color: #555;
-  padding-bottom: 1.188rem;
+  padding-bottom: 2.188rem;
+`;
+export const Category = styled.div`
+  font-weight: 700;
+  font-size: 1.375rem;
+  color: #555;
+  padding-bottom: 2.188rem;
 `;
 export const Date = styled.div`
-  font-weight: 400;
-  font-size: 1.25rem;
-  color: #656565;
+  font-weight: 700;
+  font-size: 1.375rem;
+  color: #555;
   padding-bottom: 2.188rem;
 `;
 export const Location = styled.div`
@@ -71,44 +71,17 @@ export const Location = styled.div`
   color: rgba(0, 0, 0, 0.3);
   padding-bottom: 1.188rem;
 `;
-export const StoreAddress = styled.div`
+export const Address = styled.div`
   font-weight: 700;
-  font-size: 1.25rem;
-  text-decoration-line: underline;
-  color: #000000;
-  padding-bottom: 0.438rem;
+  font-size: 1.375rem;
+  color: #555;
+  padding-bottom: 0.5rem;
 `;
 export const AddressDetail = styled.div`
-  font-weight: 400;
-  font-size: 1.125rem;
-  color: #656565;
-  padding-bottom: 2.125rem;
-`;
-export const ProductInfo = styled.div`
   font-weight: 700;
-  font-size: 1.125rem;
-  color: rgba(0, 0, 0, 0.3);
-  padding-bottom: 1.188rem;
-`;
-export const ProductName = styled.div`
-  font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.375rem;
   color: #555;
-  padding-bottom: 0.75rem;
-`;
-export const ProductNumber = styled.div`
-  font-weight: 400;
-  font-size: 1.125rem;
-  line-height: 27px;
-  color: #656565;
-  padding-bottom: 0.438rem;
-`;
-export const ProductSize = styled.div`
-  font-weight: 400;
-  font-size: 1.125rem;
-  line-height: 27px;
-  color: #656565;
-  padding-bottom: 2rem;
+  padding-bottom: 2.188rem;
 `;
 export const Price = styled.div`
   width: 90%;
@@ -116,7 +89,7 @@ export const Price = styled.div`
   font-size: 1.5rem;
   color: #555;
   text-align: right;
-  padding-bottom: 2.188rem;
+  padding: 2.188rem 0;
 `;
 export const DivideLine = styled.div`
   width: 100%;

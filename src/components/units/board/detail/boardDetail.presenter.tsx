@@ -7,6 +7,8 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Map from "../../../../commons/maps-detail/map.container";
+import Dompurify from "dompurify";
 
 const theme = createTheme({
   components: {
@@ -24,7 +26,7 @@ const theme = createTheme({
   },
 });
 
-export default function BoardDetailUI() {
+export default function BoardDetailUI(props) {
   const [value, setValue] = React.useState("1");
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
@@ -42,17 +44,23 @@ export default function BoardDetailUI() {
         </s.ImageWrapper>
         <s.ProductInfoWrapper>
           <s.Status>모집중</s.Status>
-          <s.Brand>Nike</s.Brand>
-          <s.Name>오픈런 한정판 나이키 덩크 로우</s.Name>
-          <s.Date>2022.09.16 10:00 am</s.Date>
+          <s.Name>{props.data?.fetchBoard?.title}</s.Name>
+          <s.Location>카테고리</s.Location>
+          <s.Category>{props.data?.fetchBoard?.category.name}</s.Category>
+          <s.Location>희망 시간</s.Location>
+          <s.Date>
+            {props.data?.fetchBoard?.eventDay.slice(0, 10)}{" "}
+            {props.data?.fetchBoard?.eventTime}
+          </s.Date>
           <s.Location>장소</s.Location>
-          <s.StoreAddress>홍대 나이키</s.StoreAddress>
-          <s.AddressDetail>서울시 마포구 홍익로 23</s.AddressDetail>
-          <s.ProductInfo>제품 정보</s.ProductInfo>
-          <s.ProductName>나이키 덩크 로우 레트로 블랙</s.ProductName>
-          <s.ProductNumber>DD1391-100</s.ProductNumber>
-          <s.ProductSize>250mm</s.ProductSize>
-          <s.Price>10,000원</s.Price>
+          <s.Address>{props.data?.fetchBoard?.location.address}</s.Address>
+          <s.AddressDetail>
+            {props.data?.fetchBoard?.location.addressDetail}
+          </s.AddressDetail>
+          <Map address={props.data?.fetchBoard?.location.address} />
+          <s.Price>
+            {props.data?.fetchBoard?.price.toLocaleString("ko-KR")}원
+          </s.Price>
           <s.DivideLine />
           <s.PenaltyWrapper>
             <s.BtnWrapper>
@@ -87,12 +95,17 @@ export default function BoardDetailUI() {
               </TabList>
             </Box>
             <TabPanel value="1">
-              <s.RequestWrapper>
-                1. 매장 도착 시 줄서기 인증 사진 부탁드립니다.
-                <br />
-                2. 예상 대기 시간을 알려주세요.
-                <br />
-              </s.RequestWrapper>
+              {typeof window !== "undefined" ? (
+                <s.RequestWrapper
+                  dangerouslySetInnerHTML={{
+                    __html: Dompurify.sanitize(
+                      props.data?.fetchBoard?.contents
+                    ),
+                  }}
+                ></s.RequestWrapper>
+              ) : (
+                <s.RequestWrapper></s.RequestWrapper>
+              )}
             </TabPanel>
             <TabPanel value="2">
               <s.ApplyWrapper>
@@ -116,6 +129,40 @@ export default function BoardDetailUI() {
                     <s.RunnerIcon src="/boardDetail/RunnerIcon.png" />
                     <s.RunnerName>abc1234</s.RunnerName>
                     <s.Rating>
+                      <s.Star src="/boardDetail/Star.png" />
+                      <s.Star src="/boardDetail/Star.png" />
+                    </s.Rating>
+                    <s.CntWrapper>
+                      <s.RunCnt>줄서기 300건</s.RunCnt>
+                      <s.ReTradeRate>재거래희망률 90%</s.ReTradeRate>
+                      <s.SuccessRate>성공률 95%</s.SuccessRate>
+                    </s.CntWrapper>
+                  </s.ApplyItem>
+                  <s.SelectBtn>채택하기</s.SelectBtn>
+                </s.ApplyList>
+                <s.ApplyList>
+                  <s.ApplyItem>
+                    <s.RunnerIcon src="/boardDetail/RunnerIcon.png" />
+                    <s.RunnerName>abc1234</s.RunnerName>
+                    <s.Rating>
+                      <s.Star src="/boardDetail/Star.png" />
+                      <s.Star src="/boardDetail/Star.png" />
+                      <s.Star src="/boardDetail/Star.png" />
+                    </s.Rating>
+                    <s.CntWrapper>
+                      <s.RunCnt>줄서기 300건</s.RunCnt>
+                      <s.ReTradeRate>재거래희망률 90%</s.ReTradeRate>
+                      <s.SuccessRate>성공률 95%</s.SuccessRate>
+                    </s.CntWrapper>
+                  </s.ApplyItem>
+                  <s.SelectBtn>채택하기</s.SelectBtn>
+                </s.ApplyList>
+                <s.ApplyList>
+                  <s.ApplyItem>
+                    <s.RunnerIcon src="/boardDetail/RunnerIcon.png" />
+                    <s.RunnerName>abc1234</s.RunnerName>
+                    <s.Rating>
+                      <s.Star src="/boardDetail/Star.png" />
                       <s.Star src="/boardDetail/Star.png" />
                       <s.Star src="/boardDetail/Star.png" />
                       <s.Star src="/boardDetail/Star.png" />

@@ -1,23 +1,14 @@
 import { useEffect } from "react";
-import styled from "@emotion/styled";
 
 declare const window: typeof globalThis & {
   kakao: any;
 };
 
-const Wrapper = styled.div`
-  width: 45%;
-  height: 252px;
-  @media (max-width: 767px) {
-    width: 100%;
-  }
-`;
-
 export default function Map(props: any) {
   useEffect(() => {
     const script = document.createElement("script"); // <script></script>
     script.src =
-      "//dapi.kakao.com/v2/maps/sdk.js?appkey=0c784202955170ce9660de667cc69c1e&autoload=false&libraries=services";
+      "//dapi.kakao.com/v2/maps/sdk.js?appkey=0a52caedc58ffbb58170054eedc1f287&autoload=false&libraries=services";
     document.head.appendChild(script);
 
     script.onload = () => {
@@ -62,7 +53,7 @@ export default function Map(props: any) {
 
   return (
     <>
-      <Wrapper id="map"></Wrapper>
+      <div id="map" style={{ width: "100%", height: "252px" }}></div>
     </>
   );
 }
