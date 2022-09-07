@@ -13,7 +13,10 @@ export default function SignUpUI(props: ISignUpProps) {
     <s.Wrapper>
       <s.Title>회원가입</s.Title>
 
-      <form onSubmit={props.handleSubmit(props.onClickSignUp)}>
+      <form
+        onSubmit={props.handleSubmit(props.onClickSignUp)}
+        style={{ width: "100%" }}
+      >
         <SignInput
           register={props.register}
           placeholder="이메일"
@@ -71,21 +74,28 @@ export default function SignUpUI(props: ISignUpProps) {
         />
         <YupWarningMsg errormsg={props.formState.errors.phone?.message} />
 
-        <SignInput
-          register={props.register}
-          placeholder="인증번호"
-          color="#000000"
-          width="70%"
-          name="phoneCheck"
-          type="text"
-        />
-        <BlackButton
-          onClick={props.onClickPhoneCertify}
-          type="button"
-          width="30%"
-          fontWeight="700"
-          title="확인"
-        />
+        {props.isOpen ? (
+          <s.Certify>
+            <SignInput
+              register={props.register}
+              placeholder="인증번호"
+              color="#000000"
+              width="70%"
+              name="phoneCheck"
+              type="text"
+            />
+
+            <BlackButton
+              onClick={props.onClickPhoneCertify}
+              type="button"
+              width="30%"
+              fontWeight="700"
+              title="확인"
+            />
+          </s.Certify>
+        ) : (
+          <></>
+        )}
 
         {/* <CheckBox
           totalAgree="전체동의"

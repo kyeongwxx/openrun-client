@@ -14,4 +14,5 @@ export interface ISignUpProps {
   onClickSignUp: SubmitHandler<FieldValues>;
   onClickSendCertificationNum: () => void;
   onClickPhoneCertify: () => void;
+  isOpen: boolean;
 }
