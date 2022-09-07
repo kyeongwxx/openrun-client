@@ -15,6 +15,7 @@ export const EventWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
 export const Box1 = styled.div`
   width: 100%;
   height: 40%;
@@ -34,6 +35,7 @@ export const Box2 = styled.div`
   width: 100%;
   height: 40%;
 
+  margin-top: 18rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -44,6 +46,8 @@ export const Box2 = styled.div`
     display: flex;
     flex-direction: column;
   }
+
+  // border: 1px solid red;
 `;
 export const Box3 = styled.div`
   width: 100%;
@@ -53,27 +57,47 @@ export const Box3 = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-bottom: 12rem;
-
+  margin-bottom: 18rem;
+  margin-top: 40rem;
   @media (max-width: 767px) {
     width: 300px;
     display: flex;
     flex-direction: column;
   }
+  // border: 1px solid red;
+`;
+export const Divi = styled.div`
+  width: auto;
+  height: 640px;
+  .isActive {
+    animation: fadeInUp;
+    animation-duration: 1s;
+  }
+`;
+export const DiviMiddle = styled.div`
+  .isActive {
+    animation: fadeInRight;
+    animation-duration: 2s;
+  }
+`;
+export const DiviBottom = styled.div`
+  .isActive {
+    animation: fadeInRight;
+    animation-duration: 4s;
+  }
 `;
 export const ItemImg = styled.img`
-  width: 40rem;
-  animation: fadeInLeft;
-  animation-duration: 2s;
-
+  width: 50rem;
+  animation: fadeInUp;
+  animation-duration: 1s;
   @media (max-width: 767px) {
     width: 400px;
   }
 `;
 export const ItemImg2 = styled.img`
   width: 40rem;
-  animation: fadeInRight;
-  animation-duration: 5s;
+  /* animation: fadeInRight;
+  animation-duration: 2s; */
 
   @media (max-width: 767px) {
     width: 400px;
@@ -84,8 +108,8 @@ export const ItemImg2 = styled.img`
 `;
 export const ItemImg3 = styled.img`
   width: 40rem;
-  animation: fadeInLeft;
-  animation-duration: 8s;
+  /* animation: fadeInLeft;
+  animation-duration: 2s; */
   @media (max-width: 767px) {
     width: 400px;
     margin-left: 6rem;
@@ -149,6 +173,7 @@ export const TextLine1 = styled.div`
 export const Text1 = styled.div`
   padding-right: 1rem;
   padding-left: 1rem;
+  font-weight: 500;
   @media (max-width: 767px) {
     font-size: 1.3rem;
   }
