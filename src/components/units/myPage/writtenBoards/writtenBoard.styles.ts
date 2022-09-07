@@ -13,8 +13,10 @@ export const SelectorWrapper = styled.div`
   width: 200px;
   margin-bottom: 40px;
   float: right;
+
   @media (max-width: 767px) {
     width: 30%;
+    margin-bottom: 20px;
   }
 `;
 
@@ -45,6 +47,9 @@ export const ActiveListWrapper = styled.section`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
 `;
 
 export const ActiveTitle = styled.div`
@@ -64,6 +69,9 @@ export const ActiveBoards = styled.div`
   flex-wrap: wrap;
 
   background-color: yellow;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 
 export const ActiveBoard = styled.div`

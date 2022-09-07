@@ -14,6 +14,10 @@ export const PointWrapper = styled.section`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
 `;
 
 export const PointTitle = styled.div`
@@ -28,6 +32,10 @@ export const PointInfo = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 
 export const AvailablePoint = styled.div`
@@ -46,6 +54,9 @@ export const ChargePoint = styled.button`
   background-color: transparent;
 
   cursor: pointer;
+  @media (max-width: 767px) {
+    width: 100px;
+  }
 `;
 
 export const Text = styled.div<{ size: string; color: string; weight: string }>`
@@ -75,17 +86,24 @@ export const PointHistories = styled.section`
   height: 400px;
   margin-left: 20%;
   margin-top: 30px;
+  @media (max-width: 767px) {
+    margin-left: 0%;
+  }
 `;
 
 export const PaymentWrapper = styled.section`
-  width: 80%;
+  width: 100%;
   height: 400px;
-  margin-left: 20%;
+  /* margin-left: 20%; */
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
-  background-color: aliceblue;
+
+  @media (max-width: 767px) {
+    height: 250px;
+    justify-content: space-around;
+  }
 `;
 
 export const SelectPoint = styled.div`

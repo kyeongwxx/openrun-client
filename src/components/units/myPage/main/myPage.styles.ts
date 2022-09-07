@@ -72,6 +72,11 @@ export const ActiveListWrapper = styled.section`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    height: 200px;
+  }
 `;
 
 export const ActiveTitle = styled.div`
@@ -92,6 +97,9 @@ export const ActiveImages = styled.div`
 
   ::-webkit-scrollbar {
     display: none;
+  }
+  @media (max-width: 767px) {
+    width: 100%;
   }
 `;
 

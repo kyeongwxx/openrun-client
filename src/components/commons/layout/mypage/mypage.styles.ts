@@ -126,11 +126,14 @@ export const DivideLineHorizontal = styled.div<{ color: string }>`
 export const MenuWrapper = styled.section`
   width: 100%;
   height: 156px;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 767px) {
+    height: 100px;
+  }
 `;
 
 export const Menus = styled.div`
@@ -140,6 +143,7 @@ export const Menus = styled.div`
   justify-content: space-evenly;
   align-items: center;
   margin-bottom: 15px;
+
   @media (max-width: 767px) {
     width: 100%;
   }
