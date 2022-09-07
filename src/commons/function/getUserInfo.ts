@@ -11,6 +11,7 @@ export async function getUserInfo(parm: string) {
     const result = await graphQlClient.request(FETCH_LOGIN_USER);
 
     const newUserInfo = result.fetchLoginUser;
+    console.log(newUserInfo);
 
     return newUserInfo;
   } catch (error) {
