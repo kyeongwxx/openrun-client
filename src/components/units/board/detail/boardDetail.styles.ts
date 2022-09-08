@@ -18,28 +18,25 @@ export const ProductWrapper = styled.div`
   }
 `;
 export const ImageWrapper = styled.div`
+  width: 100%;
+  height: 400px;
+  margin: 0 auto;
+  overflow: hidden;
   padding-right: 6.438rem;
   @media (max-width: 767px) {
     width: 50%;
+    height: 200px;
     padding: 0;
     margin-bottom: 1rem;
   }
 `;
-export const BigImage = styled.img`
+export const Image = styled.img`
+  border-radius: 24px;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
-export const SmallImageWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  padding-top: 1.25rem;
-`;
-export const SmallImage = styled.div`
-  width: 20%;
-  height: 92px;
-  background: #d9d9d9;
-  border-radius: 16px;
-  margin-right: 1.25rem;
-`;
+
 export const ProductInfoWrapper = styled.div`
   width: 75%;
   display: flex;
@@ -138,10 +135,10 @@ export const BtnsWrapper = styled.div`
   justify-content: space-between;
 `;
 export const ChatBtn = styled.button`
-  width: 12%;
+  width: 15%;
   height: 63px;
   background: #ffffff;
-  border: 1px solid #000000;
+  border: 1px solid #555;
   border-radius: 16px;
   position: relative;
 `;
@@ -171,17 +168,17 @@ export const ChatText = styled.div`
   color: #222222;
 `;
 export const PickBtn = styled.button`
-  width: 42%;
+  width: 40%;
   height: 63px;
   font-weight: 700;
   font-size: 1.25rem;
   color: #000000;
   background: #ffffff;
-  border: 1px solid #000000;
+  border: 1px solid #555;
   border-radius: 16px;
 `;
 export const ApplyBtn = styled.button`
-  width: 42%;
+  width: 40%;
   height: 63px;
   font-weight: 700;
   font-size: 1.25rem;

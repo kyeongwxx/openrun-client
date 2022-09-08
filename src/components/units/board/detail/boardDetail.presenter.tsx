@@ -37,13 +37,13 @@ export default function BoardDetailUI(props: any) {
     <s.Wrapper>
       <s.ProductWrapper>
         <s.ImageWrapper>
-          {/* {props.data?.fetchBoard?.image.map((el) => (
-            <MainSlider
-              key={el}
-              Src={`https://storage.googleapis.com/openrun-storage/${el}`}
-            />
-          ))} */}
-          <s.BigImage src="/boardDetail/Nike2.png" />
+          <s.Image
+            src={
+              props.data?.fetchBoard?.image[0].url
+                ? `https://storage.googleapis.com/openrun-storage/${props.data?.fetchBoard?.image[0].url}`
+                : "/boardList/default.jpeg"
+            }
+          />
         </s.ImageWrapper>
         <s.ProductInfoWrapper>
           <s.Status>모집중</s.Status>
