@@ -7,7 +7,7 @@ export default function AdminUI() {
       <s.InnerWrapper>
         <s.Box>
           <s.Title>가입자 현황</s.Title>
-
+          <BasicModal title="제에에에목" description="내요오오옹" />
           <canvas id="myChart" width={"400px"} height={"400px"}></canvas>
         </s.Box>
 
