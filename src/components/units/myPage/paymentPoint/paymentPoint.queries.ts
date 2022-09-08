@@ -20,5 +20,8 @@ export const CHARGE_PAYMENT = gql`
 export const FETCH_POINT_CHARGE_HISTORY = gql`
   query fetchPointChargeHistory {
     id
+    impUid
+    status
+    amount
   }
 `;

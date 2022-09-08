@@ -37,7 +37,6 @@ export default function DatePicker() {
       )}
       {isMobile && (
         <s.ButtonMobile>
-          {/* <s.TextDay>sdf</s.TextDay> */}
           <s.TextDate>Today</s.TextDate>
         </s.ButtonMobile>
       )}
