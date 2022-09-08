@@ -12,6 +12,7 @@ export default function BoardDetail() {
   });
   console.log(data);
 
+  // mediaQuery
   const isMobile = MediaQueryMobile();
   const isPc = MediaQueryPc();
 
