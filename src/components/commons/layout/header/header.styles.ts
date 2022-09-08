@@ -2,10 +2,9 @@ import styled from "@emotion/styled";
 import { Container } from "@mui/system";
 
 export const Wrapper = styled.header`
-  width: 95%;
+  width: 100%;
   height: 96px;
   margin: auto;
-  /* background-color: yellow; */
 `;
 
 export const MenuWrapper = styled(Container)`

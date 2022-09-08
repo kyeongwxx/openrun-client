@@ -24,9 +24,12 @@ export const MenuWrapper = styled(Container)`
 `;
 
 export const Menu = styled.section`
-  width: 50%;
-  margin: 10%;
+  width: 30%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+
   color: #333;
+
   @media (max-width: 767px) {
     height: 60px;
     margin: 1%;
@@ -37,12 +40,8 @@ export const InfoWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
   color: #909090;
-`;
-
-export const Info = styled.div`
-  width: 33%;
 `;
 
 export const Text = styled.p<{ weight: string; color: string }>`
