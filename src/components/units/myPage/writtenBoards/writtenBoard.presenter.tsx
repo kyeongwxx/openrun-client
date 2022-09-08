@@ -1,7 +1,8 @@
 import * as s from "./writtenBoard.styles";
-import InfiniteScroll from "react-infinite-scroller";
+import { v4 as uuidv4 } from "uuid";
 import Selector from "../../../../commons/selector";
-export default function MypageWrittenBoardsUI() {
+import { dateSplit } from "../../../../commons/function/dateSlice";
+export default function MypageWrittenBoardsUI(props) {
   return (
     <s.Wrapper>
       <s.SelectorWrapper>
@@ -10,23 +11,33 @@ export default function MypageWrittenBoardsUI() {
 
       <s.ActiveListWrapper>
         <s.ActiveTitle>작성게시글</s.ActiveTitle>
-        <s.ActiveBoards>
-          <s.ActiveBoard>
-            <s.BoardImg />
-            <s.BoardContents>
-              <s.BoardContent weight="700" size="1rem" color="#5e5e5e">
-                나이키
-              </s.BoardContent>
-              <s.BoardContent weight="700" size="1.2rem" color="#333">
-                행사제목행사제목행사제목행사제목
-              </s.BoardContent>
-            </s.BoardContents>
-          </s.ActiveBoard>
-          <s.ActiveBoard>2</s.ActiveBoard>
-          <s.ActiveBoard>3</s.ActiveBoard>
-          <s.ActiveBoard>4</s.ActiveBoard>
-          <s.ActiveBoard>5</s.ActiveBoard>
-          <s.ActiveBoard>6</s.ActiveBoard>
+
+        <s.ActiveBoards
+          pageStart={0}
+          loadMore={props.onFetchMore}
+          hasMore={true}
+          useWindow={false}
+        >
+          {props.data ? (
+            props.data?.map((el) => (
+              <s.ActiveBoard key={uuidv4()}>
+                <s.BoardImg />
+                <s.BoardContents>
+                  <s.BoardContent weight="700" size="1.2rem" color="#333">
+                    {el.title}
+                  </s.BoardContent>
+                  <s.BoardContent weight="400" size="0.8rem" color="#333">
+                    {dateSplit(el.dueDate)}
+                  </s.BoardContent>
+                  <s.BoardContent weight="400" size="0.8rem" color="#5e5e5e">
+                    {el.price}원
+                  </s.BoardContent>
+                </s.BoardContents>
+              </s.ActiveBoard>
+            ))
+          ) : (
+            <></>
+          )}
         </s.ActiveBoards>
       </s.ActiveListWrapper>
     </s.Wrapper>

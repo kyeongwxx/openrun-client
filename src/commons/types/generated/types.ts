@@ -57,14 +57,13 @@ export type IChatMessage = {
   __typename?: 'ChatMessage';
   createdAt: Scalars['DateTime'];
   message: Scalars['String'];
-  room: Scalars['String'];
+  room: IChatRoom;
   user: IUser;
 };
 
 export type IChatRoom = {
   __typename?: 'ChatRoom';
   board: IBoard;
-  id: Scalars['String'];
   room: Scalars['String'];
   runner: IUser;
   seller: IUser;
@@ -74,7 +73,7 @@ export type ICreateBoardInput = {
   category?: InputMaybe<Scalars['String']>;
   contents?: InputMaybe<Scalars['String']>;
   dueDate?: InputMaybe<Scalars['DateTime']>;
-  eventDay?: InputMaybe<Scalars['DateTime']>;
+  eventDay?: InputMaybe<Scalars['String']>;
   eventTime?: InputMaybe<Scalars['String']>;
   image?: InputMaybe<Array<Scalars['String']>>;
   location?: InputMaybe<ILocationInput>;
@@ -158,6 +157,7 @@ export type ILocation = {
   __typename?: 'Location';
   address: Scalars['String'];
   addressDetail: Scalars['String'];
+  deletedAt: Scalars['DateTime'];
   id: Scalars['String'];
   lat: Scalars['Float'];
   lng: Scalars['Float'];
@@ -179,6 +179,7 @@ export type IMutation = {
   applyRunner: IRunner;
   cancelPayment: IPayment;
   chargePayment: IPayment;
+  checkTokenByPhone: Scalars['Boolean'];
   createBoard: IBoard;
   createCategory: ICategory;
   createEvent: IEvent;
@@ -194,6 +195,8 @@ export type IMutation = {
   login: Scalars['String'];
   logout: Scalars['Boolean'];
   restoreAccessToken: Scalars['String'];
+  sendTokenToPhone: Scalars['String'];
+  test: IPaymentHistory;
   updateBoard: IBoard;
   updateLoginUser: IUser;
   uploadFile: Scalars['String'];
@@ -226,6 +229,12 @@ export type IMutationCancelPaymentArgs = {
 export type IMutationChargePaymentArgs = {
   amount: Scalars['Int'];
   impUid: Scalars['String'];
+};
+
+
+export type IMutationCheckTokenByPhoneArgs = {
+  phone: Scalars['String'];
+  token: Scalars['String'];
 };
 
 
@@ -294,6 +303,16 @@ export type IMutationLoginArgs = {
 };
 
 
+export type IMutationSendTokenToPhoneArgs = {
+  phone: Scalars['String'];
+};
+
+
+export type IMutationTestArgs = {
+  boardId: Scalars['String'];
+};
+
+
 export type IMutationUpdateBoardArgs = {
   boardId: Scalars['String'];
   updateBoardInput: IUpdateBoardInput;
@@ -328,6 +347,7 @@ export type IPaymentHistory = {
   board: IBoard;
   createdAt: Scalars['DateTime'];
   id: Scalars['String'];
+  price: Scalars['Int'];
   status: Scalars['String'];
   user: IUser;
 };
@@ -335,9 +355,12 @@ export type IPaymentHistory = {
 export type IQuery = {
   __typename?: 'Query';
   connectionRoom: IChatRoom;
+  fetchAdmin: Array<IUser>;
+  fetchBestOfUser: Array<IUser>;
   fetchBoard: IBoard;
   fetchBoards: Array<IBoard>;
   fetchCategories: Array<ICategory>;
+  fetchChatLogs: Array<IChatMessage>;
   fetchEvent: IEvent;
   fetchEvents: Array<Array<IEvent>>;
   fetchEventsByDate: Array<IEvent>;
@@ -345,7 +368,6 @@ export type IQuery = {
   fetchLoginUser: IUser;
   fetchLoginUserInquiry: Array<IInquiry>;
   fetchLoginUserInquiryAnswer: Array<IInquiryAnswer>;
-  fetchLogs: Array<IChatMessage>;
   fetchPaymentHistory: Array<IPaymentHistory>;
   fetchPaymentHistoryCount: Scalars['Int'];
   fetchPayments: Scalars['Int'];
@@ -353,6 +375,8 @@ export type IQuery = {
   fetchReports: Array<IReport>;
   fetchRunnerByBoard: Array<IUser>;
   fetchUsers: Array<IUser>;
+  fetchUsersCount: Scalars['Int'];
+  fetchWriteBoards: Array<IBoard>;
 };
 
 
@@ -368,6 +392,12 @@ export type IQueryFetchBoardArgs = {
 
 export type IQueryFetchBoardsArgs = {
   dateType: Scalars['String'];
+  page?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type IQueryFetchChatLogsArgs = {
+  room: Scalars['String'];
 };
 
 
@@ -391,13 +421,13 @@ export type IQueryFetchLoginUserInquiryAnswerArgs = {
 };
 
 
-export type IQueryFetchLogsArgs = {
-  room: Scalars['String'];
+export type IQueryFetchRunnerByBoardArgs = {
+  boardId: Scalars['String'];
 };
 
 
-export type IQueryFetchRunnerByBoardArgs = {
-  boardId: Scalars['String'];
+export type IQueryFetchWriteBoardsArgs = {
+  page?: InputMaybe<Scalars['Int']>;
 };
 
 export enum IReport_Type_Enum {
@@ -433,6 +463,18 @@ export enum IUser_Logintype_Enum {
   Naver = 'NAVER'
 }
 
+export type IUpdateBoardInput = {
+  category?: InputMaybe<Scalars['String']>;
+  contents?: InputMaybe<Scalars['String']>;
+  dueDate?: InputMaybe<Scalars['DateTime']>;
+  eventDay?: InputMaybe<Scalars['String']>;
+  eventTime?: InputMaybe<Scalars['String']>;
+  image?: InputMaybe<Array<Scalars['String']>>;
+  location?: InputMaybe<ILocationInput>;
+  price?: InputMaybe<Scalars['Int']>;
+  title?: InputMaybe<Scalars['String']>;
+};
+
 export type IUpdateUserInput = {
   bankAccount?: InputMaybe<IBankAccountInput>;
   email?: InputMaybe<Scalars['String']>;
@@ -445,10 +487,12 @@ export type IUpdateUserInput = {
 export type IUser = {
   __typename?: 'User';
   bankAccount: IBankAccount;
+  boardTotal: Scalars['Int'];
   createdAt: Scalars['DateTime'];
   deleteAt: Scalars['DateTime'];
   email: Scalars['String'];
   id: Scalars['String'];
+  inquiryTotal: Scalars['Int'];
   isAdmin: Scalars['Boolean'];
   loginType: IUser_Logintype_Enum;
   nickName: Scalars['String'];
@@ -458,17 +502,6 @@ export type IUser = {
   profileImg: Scalars['String'];
   rating: Scalars['Float'];
   report: Scalars['Int'];
+  sucessRate: Scalars['Int'];
   updatedAt: Scalars['DateTime'];
-};
-
-export type IUpdateBoardInput = {
-  category?: InputMaybe<Scalars['String']>;
-  contents?: InputMaybe<Scalars['String']>;
-  dueDate?: InputMaybe<Scalars['DateTime']>;
-  eventDay?: InputMaybe<Scalars['DateTime']>;
-  eventTime?: InputMaybe<Scalars['String']>;
-  image?: InputMaybe<Array<Scalars['String']>>;
-  location?: InputMaybe<ILocationInput>;
-  price?: InputMaybe<Scalars['Int']>;
-  title?: InputMaybe<Scalars['String']>;
 };

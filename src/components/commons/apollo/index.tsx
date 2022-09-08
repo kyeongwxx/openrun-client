@@ -39,7 +39,6 @@ export default function ApolloSetting(props: IApolloSettingProps) {
     };
     const newUserInfo = FetchUserInfo(accessToken);
   }, [accessToken]);
-  console.log(accessToken);
 
   const errorLink = onError(({ graphQLErrors, operation, forward }) => {
     if (graphQLErrors) {

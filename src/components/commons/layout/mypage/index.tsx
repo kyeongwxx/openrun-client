@@ -1,5 +1,8 @@
+import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { useRecoilState } from "recoil";
+import { FETCH_WRITE_BOARDS } from "../../../units/myPage/writtenBoards/writtenBoard.queries";
 import { userInfoValue } from "../../store";
 import * as s from "./mypage.styles";
 
@@ -10,6 +13,8 @@ export default function LayoutMyPage() {
   const onClickMoveToPage = (event: string) => () => {
     router.push(event);
   };
+  const { data } = useQuery(FETCH_WRITE_BOARDS);
+
   return (
     <s.Wrapper>
       <s.ProfileWrapper>
@@ -28,7 +33,7 @@ export default function LayoutMyPage() {
         <s.UserDetail>
           <s.userInfoNumbers>
             <s.Text size="1.5rem" color="#333" weight="700">
-              10
+              {data ? data?.fetchWriteBoards.length : 0}
             </s.Text>
             <s.Text size="0.7rem" color="#333" weight="400">
               작성한 게시글
