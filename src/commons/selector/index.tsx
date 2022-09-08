@@ -1,20 +1,19 @@
-// import * as React from "react";
-
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
-import { useRecoilState } from "recoil";
-import { selectorValue } from "../../components/commons/store";
 import { ISelectorProps } from "./selector.types";
+import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Selector(props: ISelectorProps) {
-  const [sortValue, setSortValue] = useRecoilState(selectorValue);
+  const [sortValue, setSortValue] = useState("");
 
   const handleChange = (event: SelectChangeEvent) => {
     setSortValue(event.target.value as string);
   };
+
   return (
     <FormControl fullWidth>
       <InputLabel id="demo-simple-select-label">{props.title}</InputLabel>
@@ -27,7 +26,9 @@ export default function Selector(props: ISelectorProps) {
         sx={{ height: 50 }}
       >
         {props.sortValue.map((el, index) => (
-          <MenuItem value={el}>{el}</MenuItem>
+          <MenuItem key={uuidv4()} value={el}>
+            {el}
+          </MenuItem>
         ))}
       </Select>
     </FormControl>

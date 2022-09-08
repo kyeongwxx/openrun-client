@@ -39,7 +39,6 @@ export default function SignIn() {
       });
 
       const accessToken = result.data?.login;
-      console.log(accessToken);
 
       const resultUserInfo = await client.query({
         query: FETCH_LOGIN_USER,
@@ -51,6 +50,7 @@ export default function SignIn() {
       });
 
       const userInfo = resultUserInfo.data?.fetchLoginUser;
+
       setUserInfo(userInfo);
       if (userInfo) {
         alert("로그인성공");

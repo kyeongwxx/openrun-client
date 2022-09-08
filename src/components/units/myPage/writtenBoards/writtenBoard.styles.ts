@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import InfiniteScroll from "react-infinite-scroller";
 
 export const Wrapper = styled.main`
   width: 95%;
@@ -47,6 +48,7 @@ export const ActiveListWrapper = styled.section`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  overflow: auto;
   @media (max-width: 767px) {
     flex-direction: column;
   }
@@ -59,7 +61,7 @@ export const ActiveTitle = styled.div`
   color: #333;
 `;
 
-export const ActiveBoards = styled.div`
+export const ActiveBoards = styled(InfiniteScroll)`
   width: 80%;
   height: 100%;
   display: flex;
@@ -68,7 +70,6 @@ export const ActiveBoards = styled.div`
   align-items: center;
   flex-wrap: wrap;
 
-  background-color: yellow;
   @media (max-width: 767px) {
     width: 100%;
   }
@@ -83,7 +84,7 @@ export const ActiveBoard = styled.div`
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  background-color: orange;
+
   @media (max-width: 767px) {
     width: 90%;
     height: 100px;
@@ -107,14 +108,12 @@ export const BoardContents = styled.div`
   width: 60%;
   height: 90px;
 
-  border-radius: 20px;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background-color: yellow;
+  background-color: #fafafa;
   @media (max-width: 767px) {
-    /* width: 90%;
-    height: 100px; */
     font-size: 0.8rem;
   }
 `;
@@ -127,7 +126,8 @@ export const BoardContent = styled.div<{
   color: ${(props) => props.color};
   font-weight: ${(props) => props.weight};
   font-size: ${(props) => props.size};
-  background-color: pink;
+  margin-left: 10px;
+
   @media (max-width: 767px) {
     font-size: 0.8rem;
     /* width: 90%;

@@ -1,5 +1,7 @@
 import { gql } from "@apollo/client";
 import { GraphQLClient } from "graphql-request";
+import { useRecoilState } from "recoil";
+import { accessTokenState } from "../../components/commons/store";
 
 const RESTORE_ACCESS_TOKEN = gql`
   mutation restoreAccessToken {
@@ -15,7 +17,6 @@ export async function getAccessToken() {
     );
     const result = await graphQlClient.request(RESTORE_ACCESS_TOKEN);
     const newAccessToken = result.restoreAccessToken;
-    console.log(result);
 
     return newAccessToken;
   } catch (error) {
