@@ -5,7 +5,9 @@ import { FETCH_BOARDS } from "./boardList.queries";
 
 export default function BoardList() {
   const router = useRouter();
-  const { data, refetch, fetchMore } = useQuery(FETCH_BOARDS);
+  const { data, refetch, fetchMore } = useQuery(FETCH_BOARDS, {
+    variables: { dateType: "최신순", page: 1 },
+  });
   console.log(data);
 
   // infinite-scroll 함수
@@ -13,16 +15,13 @@ export default function BoardList() {
     if (!data) return;
 
     fetchMore({
-      variables: { page: Math.ceil(data?.fetchUseditems.length / 10) + 1 },
+      variables: { page: Math.ceil(data?.fetchBoards.length / 10) + 1 },
       updateQuery: (prev, { fetchMoreResult }) => {
-        if (!fetchMoreResult.fetchUseditems)
-          return { fetchUseditems: [...prev.fetchUseditems] };
+        if (!fetchMoreResult.fetchBoards)
+          return { fetchBoards: [...prev.fetchBoards] };
 
         return {
-          fetchUseditems: [
-            ...prev.fetchUseditems,
-            ...fetchMoreResult.fetchUseditems,
-          ],
+          fetchBoards: [...prev.fetchBoards, ...fetchMoreResult.fetchBoards],
         };
       },
     });

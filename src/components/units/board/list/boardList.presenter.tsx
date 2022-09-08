@@ -1,6 +1,9 @@
+import Selector from "../../../../commons/selector";
 import * as s from "./boardList.styles";
+import DOMPurify from "dompurify";
+import { AiOutlinePlus } from "react-icons/ai";
 
-export default function BoardListUI() {
+export default function BoardListUI(props) {
   return (
     <s.Wrapper>
       <s.CategoryWrapper>
@@ -15,373 +18,97 @@ export default function BoardListUI() {
       <s.DivideLine1 />
 
       <s.FilterWrapper>
-        <select name="basicFilter">
-          <option selected>기본순</option>
-          <option>최신순</option>
-          <option>인기순</option>
-        </select>
-        <select name="regionFilter">
-          <option selected disabled>
-            지역
-          </option>
-          <option>서울</option>
-          <option>경기도</option>
-        </select>
+        {/* <Selector title="전체" sortValue={["최신순", "마감 임박순"]} />
+        <s.DivideDiv />
+        <Selector
+          title="지역"
+          sortValue={[
+            "서울특별시",
+            "경기도",
+            "충청남도",
+            "충청북도",
+            "경상북도",
+            "경상남도",
+            "전라북도",
+            "전라남도",
+          ]}
+        />
         <s.SearchBarWrapper>
           <s.SearchIcon src="/boardList/Search.png" />
           <s.SearchInput />
-        </s.SearchBarWrapper>
+        </s.SearchBarWrapper> */}
       </s.FilterWrapper>
 
       <s.ProductWrapper>
-        <s.ProductInnerWrapper>
-          <s.ProductInfoWrapper>
+        {props.data?.fetchBoards?.map((el: any) => (
+          <s.ProductInfoWrapper key={el._id}>
             <s.ImageWrapper>
-              <s.ProductImage src="/boardList/Nike.png" />
-              <s.DateWrapper1>
-                <s.Month>9</s.Month>
-                <s.DivideLine2 />
-                <s.Day>16</s.Day>
-              </s.DateWrapper1>
-              <s.PickIconWhite src="/boardList/Bookmark(white).png" />
+              <s.ProductImage
+                key={el}
+                src={
+                  el?.image[0].url
+                    ? `https://storage.googleapis.com/openrun-storage/${el?.image[0].url}`
+                    : "/boardList/default.jpeg"
+                }
+              />
             </s.ImageWrapper>
+            <s.DateWrapper1>
+              <s.Month>{el?.dueDate.slice(6, 7)}</s.Month>
+              <s.DivideLine2 />
+              <s.Day>{el?.dueDate.slice(8, 10)}</s.Day>
+            </s.DateWrapper1>
+            <s.PickIconWhite src="/boardList/Bookmark(white).png" />
             <s.UpperInfoWrapper>
               <s.Brand>Nike</s.Brand>
-              <s.Region1>서울</s.Region1>
+              {(el?.location.address.slice(0, 2) === "서울" ||
+                el?.location.address.slice(0, 2) === "경기" ||
+                el?.location.address.slice(0, 2) === "인천") && (
+                <s.Region1>{el?.location.address.slice(0, 2)}</s.Region1>
+              )}
+              {el?.location.address.slice(0, 2) === "충남" && (
+                <s.Region2>{el?.location.address.slice(0, 2)}</s.Region2>
+              )}
+              {el?.location.address.slice(0, 2) === "충북" && (
+                <s.Region3>{el?.location.address.slice(0, 2)}</s.Region3>
+              )}
+              {(el?.location.address.slice(0, 2) === "경북" ||
+                el?.location.address.slice(0, 2) === "대구") && (
+                <s.Region4>{el?.location.address.slice(0, 2)}</s.Region4>
+              )}
+              {(el?.location.address.slice(0, 2) === "경남" ||
+                el?.location.address.slice(0, 2) === "부산" ||
+                el?.location.address.slice(0, 2) === "울산") && (
+                <s.Region5>{el?.location.address.slice(0, 2)}</s.Region5>
+              )}
+              {el?.location.address.slice(0, 2) === "전북" && (
+                <s.Region6>{el?.location.address.slice(0, 2)}</s.Region6>
+              )}
+              {(el?.location.address.slice(0, 2) === "전남" ||
+                el?.location.address.slice(0, 2) === "광주") && (
+                <s.Region7>{el?.location.address.slice(0, 2)}</s.Region7>
+              )}
             </s.UpperInfoWrapper>
-            <s.Name>오픈런 한정판 나이키 덩크</s.Name>
-            <s.Contents>
-              (세부내용...) 갤러리아 나이키 오픈런 성공경험 있는 분 원합니다.
-            </s.Contents>
-            <s.Writer>abc1234</s.Writer>
-            <s.Price>10,000원</s.Price>
+            <s.Name>{el?.title}</s.Name>
+            {typeof window !== "undefined" ? (
+              <s.Contents
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(el?.contents),
+                }}
+              ></s.Contents>
+            ) : (
+              <s.Contents></s.Contents>
+            )}
+            <s.Writer>{el?.user.nickName}</s.Writer>
+            <s.Price>{el?.price}</s.Price>
           </s.ProductInfoWrapper>
-          <s.ProductInfoWrapper>
-            <s.ImageWrapper>
-              <s.ProductImage src="/boardList/Chanel.png" />
-              <s.DateWrapper2>
-                <s.Month>9</s.Month>
-                <s.DivideLine2 />
-                <s.Day>16</s.Day>
-              </s.DateWrapper2>
-              <s.PickIconWhite src="/boardList/Bookmark(black).png" />
-            </s.ImageWrapper>
-            <s.UpperInfoWrapper>
-              <s.Brand>Nike</s.Brand>
-              <s.Region2>부산</s.Region2>
-            </s.UpperInfoWrapper>
-            <s.Name>오픈런 한정판 나이키 덩크</s.Name>
-            <s.Contents>
-              (세부내용...) 갤러리아 나이키 오픈런 성공경험 있는 분 원합니다.
-            </s.Contents>
-            <s.Writer>abc1234</s.Writer>
-            <s.Price>10,000원</s.Price>
-          </s.ProductInfoWrapper>
-          <s.ProductInfoWrapper>
-            <s.ImageWrapper>
-              <s.ProductImage src="/boardList/Umu.png" />
-              <s.DateWrapper1>
-                <s.Month>9</s.Month>
-                <s.DivideLine2 />
-                <s.Day>16</s.Day>
-              </s.DateWrapper1>
-              <s.PickIconWhite src="/boardList/Bookmark(white).png" />
-            </s.ImageWrapper>
-            <s.UpperInfoWrapper>
-              <s.Brand>Nike</s.Brand>
-              <s.Region3>제주</s.Region3>
-            </s.UpperInfoWrapper>
-            <s.Name>오픈런 한정판 나이키 덩크</s.Name>
-            <s.Contents>
-              (세부내용...) 갤러리아 나이키 오픈런 성공경험 있는 분 원합니다.
-            </s.Contents>
-            <s.Writer>abc1234</s.Writer>
-            <s.Price>10,000원</s.Price>
-          </s.ProductInfoWrapper>
-          <s.ProductInfoWrapper>
-            <s.ImageWrapper>
-              <s.ProductImage src="/boardList/Rolex.png" />
-              <s.DateWrapper2>
-                <s.Month>9</s.Month>
-                <s.DivideLine2 />
-                <s.Day>16</s.Day>
-              </s.DateWrapper2>
-              <s.PickIconWhite src="/boardList/Bookmark(black).png" />
-            </s.ImageWrapper>
-            <s.UpperInfoWrapper>
-              <s.Brand>Nike</s.Brand>
-              <s.Region4>천안</s.Region4>
-            </s.UpperInfoWrapper>
-            <s.Name>오픈런 한정판 나이키 덩크</s.Name>
-            <s.Contents>
-              (세부내용...) 갤러리아 나이키 오픈런 성공경험 있는 분 원합니다.
-            </s.Contents>
-            <s.Writer>abc1234</s.Writer>
-            <s.Price>10,000원</s.Price>
-          </s.ProductInfoWrapper>
-        </s.ProductInnerWrapper>
-
-        <s.ProductInnerWrapper>
-          <s.ProductInfoWrapper>
-            <s.ImageWrapper>
-              <s.ProductImage src="/boardList/Nike.png" />
-              <s.DateWrapper1>
-                <s.Month>9</s.Month>
-                <s.DivideLine2 />
-                <s.Day>16</s.Day>
-              </s.DateWrapper1>
-              <s.PickIconWhite src="/boardList/Bookmark(white).png" />
-            </s.ImageWrapper>
-            <s.UpperInfoWrapper>
-              <s.Brand>Nike</s.Brand>
-              <s.Region1>서울</s.Region1>
-            </s.UpperInfoWrapper>
-            <s.Name>오픈런 한정판 나이키 덩크</s.Name>
-            <s.Contents>
-              (세부내용...) 갤러리아 나이키 오픈런 성공경험 있는 분 원합니다.
-            </s.Contents>
-            <s.Writer>abc1234</s.Writer>
-            <s.Price>10,000원</s.Price>
-          </s.ProductInfoWrapper>
-          <s.ProductInfoWrapper>
-            <s.ImageWrapper>
-              <s.ProductImage src="/boardList/Chanel.png" />
-              <s.DateWrapper2>
-                <s.Month>9</s.Month>
-                <s.DivideLine2 />
-                <s.Day>16</s.Day>
-              </s.DateWrapper2>
-              <s.PickIconWhite src="/boardList/Bookmark(black).png" />
-            </s.ImageWrapper>
-            <s.UpperInfoWrapper>
-              <s.Brand>Nike</s.Brand>
-              <s.Region2>부산</s.Region2>
-            </s.UpperInfoWrapper>
-            <s.Name>오픈런 한정판 나이키 덩크</s.Name>
-            <s.Contents>
-              (세부내용...) 갤러리아 나이키 오픈런 성공경험 있는 분 원합니다.
-            </s.Contents>
-            <s.Writer>abc1234</s.Writer>
-            <s.Price>10,000원</s.Price>
-          </s.ProductInfoWrapper>
-          <s.ProductInfoWrapper>
-            <s.ImageWrapper>
-              <s.ProductImage src="/boardList/Umu.png" />
-              <s.DateWrapper1>
-                <s.Month>9</s.Month>
-                <s.DivideLine2 />
-                <s.Day>16</s.Day>
-              </s.DateWrapper1>
-              <s.PickIconWhite src="/boardList/Bookmark(white).png" />
-            </s.ImageWrapper>
-            <s.UpperInfoWrapper>
-              <s.Brand>Nike</s.Brand>
-              <s.Region3>제주</s.Region3>
-            </s.UpperInfoWrapper>
-            <s.Name>오픈런 한정판 나이키 덩크</s.Name>
-            <s.Contents>
-              (세부내용...) 갤러리아 나이키 오픈런 성공경험 있는 분 원합니다.
-            </s.Contents>
-            <s.Writer>abc1234</s.Writer>
-            <s.Price>10,000원</s.Price>
-          </s.ProductInfoWrapper>
-          <s.ProductInfoWrapper>
-            <s.ImageWrapper>
-              <s.ProductImage src="/boardList/Rolex.png" />
-              <s.DateWrapper2>
-                <s.Month>9</s.Month>
-                <s.DivideLine2 />
-                <s.Day>16</s.Day>
-              </s.DateWrapper2>
-              <s.PickIconWhite src="/boardList/Bookmark(black).png" />
-            </s.ImageWrapper>
-            <s.UpperInfoWrapper>
-              <s.Brand>Nike</s.Brand>
-              <s.Region4>천안</s.Region4>
-            </s.UpperInfoWrapper>
-            <s.Name>오픈런 한정판 나이키 덩크</s.Name>
-            <s.Contents>
-              (세부내용...) 갤러리아 나이키 오픈런 성공경험 있는 분 원합니다.
-            </s.Contents>
-            <s.Writer>abc1234</s.Writer>
-            <s.Price>10,000원</s.Price>
-          </s.ProductInfoWrapper>
-        </s.ProductInnerWrapper>
-
-        <s.ProductInnerWrapper>
-          <s.ProductInfoWrapper>
-            <s.ImageWrapper>
-              <s.ProductImage src="/boardList/Nike.png" />
-              <s.DateWrapper1>
-                <s.Month>9</s.Month>
-                <s.DivideLine2 />
-                <s.Day>16</s.Day>
-              </s.DateWrapper1>
-              <s.PickIconWhite src="/boardList/Bookmark(white).png" />
-            </s.ImageWrapper>
-            <s.UpperInfoWrapper>
-              <s.Brand>Nike</s.Brand>
-              <s.Region1>서울</s.Region1>
-            </s.UpperInfoWrapper>
-            <s.Name>오픈런 한정판 나이키 덩크</s.Name>
-            <s.Contents>
-              (세부내용...) 갤러리아 나이키 오픈런 성공경험 있는 분 원합니다.
-            </s.Contents>
-            <s.Writer>abc1234</s.Writer>
-            <s.Price>10,000원</s.Price>
-          </s.ProductInfoWrapper>
-          <s.ProductInfoWrapper>
-            <s.ImageWrapper>
-              <s.ProductImage src="/boardList/Chanel.png" />
-              <s.DateWrapper2>
-                <s.Month>9</s.Month>
-                <s.DivideLine2 />
-                <s.Day>16</s.Day>
-              </s.DateWrapper2>
-              <s.PickIconWhite src="/boardList/Bookmark(black).png" />
-            </s.ImageWrapper>
-            <s.UpperInfoWrapper>
-              <s.Brand>Nike</s.Brand>
-              <s.Region2>부산</s.Region2>
-            </s.UpperInfoWrapper>
-            <s.Name>오픈런 한정판 나이키 덩크</s.Name>
-            <s.Contents>
-              (세부내용...) 갤러리아 나이키 오픈런 성공경험 있는 분 원합니다.
-            </s.Contents>
-            <s.Writer>abc1234</s.Writer>
-            <s.Price>10,000원</s.Price>
-          </s.ProductInfoWrapper>
-          <s.ProductInfoWrapper>
-            <s.ImageWrapper>
-              <s.ProductImage src="/boardList/Umu.png" />
-              <s.DateWrapper1>
-                <s.Month>9</s.Month>
-                <s.DivideLine2 />
-                <s.Day>16</s.Day>
-              </s.DateWrapper1>
-              <s.PickIconWhite src="/boardList/Bookmark(white).png" />
-            </s.ImageWrapper>
-            <s.UpperInfoWrapper>
-              <s.Brand>Nike</s.Brand>
-              <s.Region3>제주</s.Region3>
-            </s.UpperInfoWrapper>
-            <s.Name>오픈런 한정판 나이키 덩크</s.Name>
-            <s.Contents>
-              (세부내용...) 갤러리아 나이키 오픈런 성공경험 있는 분 원합니다.
-            </s.Contents>
-            <s.Writer>abc1234</s.Writer>
-            <s.Price>10,000원</s.Price>
-          </s.ProductInfoWrapper>
-          <s.ProductInfoWrapper>
-            <s.ImageWrapper>
-              <s.ProductImage src="/boardList/Rolex.png" />
-              <s.DateWrapper2>
-                <s.Month>9</s.Month>
-                <s.DivideLine2 />
-                <s.Day>16</s.Day>
-              </s.DateWrapper2>
-              <s.PickIconWhite src="/boardList/Bookmark(black).png" />
-            </s.ImageWrapper>
-            <s.UpperInfoWrapper>
-              <s.Brand>Nike</s.Brand>
-              <s.Region4>천안</s.Region4>
-            </s.UpperInfoWrapper>
-            <s.Name>오픈런 한정판 나이키 덩크</s.Name>
-            <s.Contents>
-              (세부내용...) 갤러리아 나이키 오픈런 성공경험 있는 분 원합니다.
-            </s.Contents>
-            <s.Writer>abc1234</s.Writer>
-            <s.Price>10,000원</s.Price>
-          </s.ProductInfoWrapper>
-        </s.ProductInnerWrapper>
-
-        <s.ProductInnerWrapper>
-          <s.ProductInfoWrapper>
-            <s.ImageWrapper>
-              <s.ProductImage src="/boardList/Nike.png" />
-              <s.DateWrapper1>
-                <s.Month>9</s.Month>
-                <s.DivideLine2 />
-                <s.Day>16</s.Day>
-              </s.DateWrapper1>
-              <s.PickIconWhite src="/boardList/Bookmark(white).png" />
-            </s.ImageWrapper>
-            <s.UpperInfoWrapper>
-              <s.Brand>Nike</s.Brand>
-              <s.Region1>서울</s.Region1>
-            </s.UpperInfoWrapper>
-            <s.Name>오픈런 한정판 나이키 덩크</s.Name>
-            <s.Contents>
-              (세부내용...) 갤러리아 나이키 오픈런 성공경험 있는 분 원합니다.
-            </s.Contents>
-            <s.Writer>abc1234</s.Writer>
-            <s.Price>10,000원</s.Price>
-          </s.ProductInfoWrapper>
-          <s.ProductInfoWrapper>
-            <s.ImageWrapper>
-              <s.ProductImage src="/boardList/Chanel.png" />
-              <s.DateWrapper2>
-                <s.Month>9</s.Month>
-                <s.DivideLine2 />
-                <s.Day>16</s.Day>
-              </s.DateWrapper2>
-              <s.PickIconWhite src="/boardList/Bookmark(black).png" />
-            </s.ImageWrapper>
-            <s.UpperInfoWrapper>
-              <s.Brand>Nike</s.Brand>
-              <s.Region2>부산</s.Region2>
-            </s.UpperInfoWrapper>
-            <s.Name>오픈런 한정판 나이키 덩크</s.Name>
-            <s.Contents>
-              (세부내용...) 갤러리아 나이키 오픈런 성공경험 있는 분 원합니다.
-            </s.Contents>
-            <s.Writer>abc1234</s.Writer>
-            <s.Price>10,000원</s.Price>
-          </s.ProductInfoWrapper>
-          <s.ProductInfoWrapper>
-            <s.ImageWrapper>
-              <s.ProductImage src="/boardList/Umu.png" />
-              <s.DateWrapper1>
-                <s.Month>9</s.Month>
-                <s.DivideLine2 />
-                <s.Day>16</s.Day>
-              </s.DateWrapper1>
-              <s.PickIconWhite src="/boardList/Bookmark(white).png" />
-            </s.ImageWrapper>
-            <s.UpperInfoWrapper>
-              <s.Brand>Nike</s.Brand>
-              <s.Region3>제주</s.Region3>
-            </s.UpperInfoWrapper>
-            <s.Name>오픈런 한정판 나이키 덩크</s.Name>
-            <s.Contents>
-              (세부내용...) 갤러리아 나이키 오픈런 성공경험 있는 분 원합니다.
-            </s.Contents>
-            <s.Writer>abc1234</s.Writer>
-            <s.Price>10,000원</s.Price>
-          </s.ProductInfoWrapper>
-          <s.ProductInfoWrapper>
-            <s.ImageWrapper>
-              <s.ProductImage src="/boardList/Rolex.png" />
-              <s.DateWrapper2>
-                <s.Month>9</s.Month>
-                <s.DivideLine2 />
-                <s.Day>16</s.Day>
-              </s.DateWrapper2>
-              <s.PickIconWhite src="/boardList/Bookmark(black).png" />
-            </s.ImageWrapper>
-            <s.UpperInfoWrapper>
-              <s.Brand>Nike</s.Brand>
-              <s.Region4>천안</s.Region4>
-            </s.UpperInfoWrapper>
-            <s.Name>오픈런 한정판 나이키 덩크</s.Name>
-            <s.Contents>
-              (세부내용...) 갤러리아 나이키 오픈런 성공경험 있는 분 원합니다.
-            </s.Contents>
-            <s.Writer>abc1234</s.Writer>
-            <s.Price>10,000원</s.Price>
-          </s.ProductInfoWrapper>
-        </s.ProductInnerWrapper>
+        ))}
+        {/* </InfiniteScroll> */}
       </s.ProductWrapper>
+      <s.FetchMoreBtnWrapper>
+        <s.FetchMoreBtn onClick={props.onFetchMore}>
+          <AiOutlinePlus size={20} />
+        </s.FetchMoreBtn>
+      </s.FetchMoreBtnWrapper>
     </s.Wrapper>
   );
 }
