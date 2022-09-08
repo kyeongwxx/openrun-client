@@ -27,7 +27,7 @@ const theme = createTheme({
   },
 });
 
-export default function BoardDetailUI(props) {
+export default function BoardDetailUI(props: any) {
   const [value, setValue] = React.useState("1");
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
@@ -37,12 +37,12 @@ export default function BoardDetailUI(props) {
     <s.Wrapper>
       <s.ProductWrapper>
         <s.ImageWrapper>
-          {props.data?.fetchBoard?.image.map((el) => (
+          {/* {props.data?.fetchBoard?.image.map((el) => (
             <MainSlider
               key={el}
               Src={`https://storage.googleapis.com/openrun-storage/${el}`}
             />
-          ))}
+          ))} */}
           <s.BigImage src="/boardDetail/Nike2.png" />
         </s.ImageWrapper>
         <s.ProductInfoWrapper>
