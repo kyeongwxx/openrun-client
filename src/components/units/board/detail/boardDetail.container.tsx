@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import MediaQueryMobile from "../../../../commons/mediaQuery/mediaQueryStandardMobile";
 import MediaQueryPc from "../../../../commons/mediaQuery/mediaQueryStandardPc";
 import BoardDetailUI from "./boardDetail.presenter";
-import { FETCH_BOARD } from "./boardDetail.queries";
+import { FETCH_BOARD, FETCH_LOGIN_USER } from "./boardDetail.queries";
 
 export default function BoardDetail() {
   const router = useRouter();

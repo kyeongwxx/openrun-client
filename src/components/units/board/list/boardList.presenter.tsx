@@ -18,7 +18,7 @@ export default function BoardListUI(props) {
       <s.DivideLine1 />
 
       <s.FilterWrapper>
-        {/* <Selector title="전체" sortValue={["최신순", "마감 임박순"]} />
+        <Selector title="전체" sortValue={["최신순", "마감 임박순"]} />
         <s.DivideDiv />
         <Selector
           title="지역"
@@ -36,7 +36,7 @@ export default function BoardListUI(props) {
         <s.SearchBarWrapper>
           <s.SearchIcon src="/boardList/Search.png" />
           <s.SearchInput />
-        </s.SearchBarWrapper> */}
+        </s.SearchBarWrapper>
       </s.FilterWrapper>
 
       <s.ProductWrapper>
