@@ -28,19 +28,22 @@ export const FilterWrapper = styled.div`
   width: 75%;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding-top: 3.313rem;
   padding-bottom: 2.375rem;
 `;
+export const DivideDiv = styled.div`
+  width: 5rem;
+`;
 export const SearchBarWrapper = styled.div`
-  width: 15%;
-  height: 36px;
+  width: 100%;
+  height: 50px;
   display: flex;
   flex-direction: row;
   align-items: center;
   background: #f8f8f8;
   border-radius: 8px;
-  margin-left: 1.563rem;
+  margin-left: 30rem;
   padding-left: 0.688rem;
 `;
 export const SearchIcon = styled.img`
@@ -53,19 +56,15 @@ export const SearchInput = styled.input`
   background: #f8f8f8;
 `;
 export const ProductWrapper = styled.div`
-  width: 75%;
-  display: flex;
-  flex-direction: column;
-`;
-export const ProductInnerWrapper = styled.div`
+  width: 80%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
-  padding-bottom: 5rem;
 `;
 export const ProductInfoWrapper = styled.div`
-  width: 24%;
+  width: 23%;
+  margin: 0px 1%;
+  margin-bottom: 2%;
   position: relative;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
   border-radius: 24px;
@@ -75,9 +74,16 @@ export const ProductInfoWrapper = styled.div`
 `;
 export const ImageWrapper = styled.div`
   padding-bottom: 2.125rem;
+  width: 100%;
+  height: 200px;
+  margin: 0 auto;
+  overflow: hidden;
 `;
 export const ProductImage = styled.img`
+  border-radius: 24px;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 export const DateWrapper1 = styled.div`
   display: flex;
@@ -128,6 +134,18 @@ export const Brand = styled.div`
   color: rgba(0, 0, 0, 0.7);
   padding: 0 10px;
 `;
+export const Region = styled.div`
+  width: 25%;
+  height: 25px;
+  text-align: center;
+  line-height: 25px;
+  background: #2f88e5;
+  border-radius: 40px;
+  font-weight: 400;
+  font-size: 0.875rem;
+  color: #ffffff;
+  margin: 0 10px;
+`;
 export const Region1 = styled.div`
   width: 25%;
   height: 25px;
@@ -176,6 +194,42 @@ export const Region4 = styled.div`
   color: #ffffff;
   margin: 0 10px;
 `;
+export const Region5 = styled.div`
+  width: 25%;
+  height: 25px;
+  text-align: center;
+  line-height: 25px;
+  background: #de7f7f;
+  border-radius: 40px;
+  font-weight: 400;
+  font-size: 0.875rem;
+  color: #ffffff;
+  margin: 0 10px;
+`;
+export const Region6 = styled.div`
+  width: 25%;
+  height: 25px;
+  text-align: center;
+  line-height: 25px;
+  background: #8be1f2;
+  border-radius: 40px;
+  font-weight: 400;
+  font-size: 0.875rem;
+  color: #ffffff;
+  margin: 0 10px;
+`;
+export const Region7 = styled.div`
+  width: 25%;
+  height: 25px;
+  text-align: center;
+  line-height: 25px;
+  background: #4f4f4f;
+  border-radius: 40px;
+  font-weight: 400;
+  font-size: 0.875rem;
+  color: #ffffff;
+  margin: 0 10px;
+`;
 export const Name = styled.div`
   font-weight: 700;
   font-size: 1.25rem;
@@ -205,4 +259,24 @@ export const Price = styled.div`
   font-size: 1.5rem;
   color: #000000;
   padding: 10px;
+`;
+export const FetchMoreBtnWrapper = styled.div`
+  width: 15%;
+  height: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 24px;
+  color: #555;
+  margin-top: 3rem;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+`;
+export const FetchMoreBtn = styled.button`
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: none;
+  cursor: pointer;
 `;
