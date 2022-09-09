@@ -53,7 +53,11 @@ export default function BoardDetailUI(props: any) {
                 src="/boardDetail/Update.png"
                 onClick={props.onClickMoveToProductEdit}
               />
-              <s.DeleteBtn src="/boardDetail/Delete.png" />
+              <s.DeleteBtn
+                src="/boardDetail/Delete.png"
+                onClick={props.onClickDelete}
+                id={props.router.query.id}
+              />
             </s.MutationBtns>
           </s.StatusWrapper>
           <s.Name>{props.data?.fetchBoard?.title}</s.Name>
@@ -69,11 +73,11 @@ export default function BoardDetailUI(props: any) {
             </s.eventTime>
           </s.Date>
           <s.Location>장소</s.Location>
-          <s.Address>{props.data?.fetchBoard?.location.address}</s.Address>
+          <s.Address>{props.data?.fetchBoard?.location?.address}</s.Address>
           <s.AddressDetail>
-            {props.data?.fetchBoard?.location.addressDetail}
+            {props.data?.fetchBoard?.location?.addressDetail}
           </s.AddressDetail>
-          <Map address={props.data?.fetchBoard?.location.address} />
+          <Map address={props.data?.fetchBoard?.location?.address} />
           <s.Price>
             {props.data?.fetchBoard?.price.toLocaleString("ko-KR")}원
           </s.Price>
