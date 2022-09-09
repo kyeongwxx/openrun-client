@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import BoardWrite from "../../../../src/components/units/board/write/boardWrite.container";
 
 const FETCH_BOARD = gql`
-  query fetchBoard($boardId: boardId!) {
+  query fetchBoard($boardId: String!) {
     fetchBoard(boardId: $boardId) {
       id
       title
@@ -32,6 +32,6 @@ export default function BoardEditPage() {
   const { data } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.id },
   });
-  console.log(data);
-  return <BoardWrite data={data} />;
+  console.log(router.query.id);
+  return <BoardWrite data={data} isEdit={true} />;
 }

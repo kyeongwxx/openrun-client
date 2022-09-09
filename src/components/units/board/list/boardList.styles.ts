@@ -25,7 +25,7 @@ export const DivideLine1 = styled.div`
   border-bottom: 2px solid rgba(101, 101, 101, 0.5); ;
 `;
 export const FilterWrapper = styled.div`
-  width: 75%;
+  width: 78%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -78,6 +78,7 @@ export const ImageWrapper = styled.div`
   height: 200px;
   margin: 0 auto;
   overflow: hidden;
+  cursor: pointer;
 `;
 export const ProductImage = styled.img`
   border-radius: 24px;
@@ -230,12 +231,17 @@ export const Region7 = styled.div`
   color: #ffffff;
   margin: 0 10px;
 `;
-export const Name = styled.div`
+export const Title = styled.div`
   font-weight: 700;
   font-size: 1.25rem;
   color: #000000;
   padding: 0 10px;
   padding-bottom: 0.813rem;
+  cursor: pointer;
+  :hover {
+    text-decoration: underline;
+    font-weight: bold;
+  }
 `;
 export const Contents = styled.div`
   font-weight: 400;

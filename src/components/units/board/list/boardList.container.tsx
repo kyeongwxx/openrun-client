@@ -27,7 +27,19 @@ export default function BoardList() {
     });
   };
 
+  // 페이지 이동 함수
+  const onClickMoveToProductDetail = (event: any) => {
+    if (!(event.target instanceof HTMLElement)) return;
+    router.push(`/board/${event.currentTarget.id}`);
+    console.log(event.currentTarget.id);
+  };
+
   return (
-    <BoardListUI data={data} refetch={refetch} onFetchMore={onFetchMore} />
+    <BoardListUI
+      data={data}
+      refetch={refetch}
+      onFetchMore={onFetchMore}
+      onClickMoveToProductDetail={onClickMoveToProductDetail}
+    />
   );
 }

@@ -9,6 +9,7 @@ export const FETCH_BOARD = gql`
       price
       eventDay
       eventTime
+      dueDate
       category {
         name
       }
