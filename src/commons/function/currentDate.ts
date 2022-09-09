@@ -1,5 +1,3 @@
-import { date } from "yup";
-
 export const currentDate = () => {
   const date = new Date().toLocaleDateString();
   let today = Date.parse(date);

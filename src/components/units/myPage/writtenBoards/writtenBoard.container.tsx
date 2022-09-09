@@ -6,9 +6,7 @@ import MypageWrittenBoardsUI from "./writtenBoard.presenter";
 import { FETCH_WRITE_BOARDS } from "./writtenBoard.queries";
 
 export default function MypageWrittenBoards() {
-  const [sortValue, setSortValue] = useRecoilState(selectorValue);
   const { data, fetchMore } = useQuery(FETCH_WRITE_BOARDS);
-  console.log(data?.fetchWriteBoards);
 
   const onFetchMore = () => {
     if (!data) return;
