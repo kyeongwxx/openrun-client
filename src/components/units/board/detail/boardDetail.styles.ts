@@ -196,6 +196,7 @@ export const RequestWrapper = styled.div`
   font-size: 1.5rem;
   color: #656565;
   padding: 2rem;
+  margin-top: 3rem;
 `;
 
 export const ApplyWrapper = styled.div`
