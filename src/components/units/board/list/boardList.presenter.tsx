@@ -2,6 +2,7 @@ import Selector from "../../../../commons/selector";
 import * as s from "./boardList.styles";
 import DOMPurify from "dompurify";
 import { AiOutlinePlus } from "react-icons/ai";
+import { v4 as uuidv4 } from "uuid";
 
 export default function BoardListUI(props) {
   return (
@@ -35,7 +36,12 @@ export default function BoardListUI(props) {
         />
         <s.SearchBarWrapper>
           <s.SearchIcon src="/boardList/Search.png" />
-          <s.SearchInput />
+          <s.SearchInput
+            placeholder="제목을 검색해주세요"
+            type="text"
+            onChange={props.onChangeSearch}
+            refetch={props.refetch}
+          />
         </s.SearchBarWrapper>
       </s.FilterWrapper>
 
@@ -99,7 +105,14 @@ export default function BoardListUI(props) {
                 props.onClickMoveToProductDetail(e);
               }}
             >
-              {el?.title}
+              {el?.title
+                ?.replaceAll(props.keyword, `#$%${props.keyword}#$%`)
+                .split("#$%")
+                .map((el: any) => (
+                  <s.TitleSpan key={uuidv4()} isMatched={props.keyword === el}>
+                    {el}
+                  </s.TitleSpan>
+                ))}
             </s.Title>
             {typeof window !== "undefined" ? (
               <s.Contents
