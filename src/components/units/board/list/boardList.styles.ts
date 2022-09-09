@@ -243,6 +243,9 @@ export const Title = styled.div`
     font-weight: bold;
   }
 `;
+export const TitleSpan = styled.span`
+  color: ${(props) => (props.isMatched ? "#bfae90" : "black")};
+`;
 export const Contents = styled.div`
   font-weight: 400;
   font-size: 0.875rem;
