@@ -7,8 +7,6 @@ export const FETCH_BOARD = gql`
       title
       contents
       price
-      eventDay
-      eventTime
       dueDate
       category {
         name
@@ -21,6 +19,21 @@ export const FETCH_BOARD = gql`
       image {
         url
       }
+      user {
+        id
+      }
+    }
+  }
+`;
+export const DELETE_BOARD = gql`
+  mutation deleteBoard($boardId: String!) {
+    deleteBoard(boardId: $boardId)
+  }
+`;
+export const FETCH_LOGIN_USER = gql`
+  query fetchLoginUser {
+    fetchLoginUser {
+      id
     }
   }
 `;

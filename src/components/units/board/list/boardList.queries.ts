@@ -8,8 +8,6 @@ export const FETCH_BOARDS = gql`
       contents
       status
       price
-      eventDay
-      eventTime
       dueDate
       user {
         nickName
