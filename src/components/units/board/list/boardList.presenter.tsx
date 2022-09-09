@@ -41,8 +41,13 @@ export default function BoardListUI(props) {
 
       <s.ProductWrapper>
         {props.data?.fetchBoards?.map((el: any) => (
-          <s.ProductInfoWrapper key={el._id}>
-            <s.ImageWrapper>
+          <s.ProductInfoWrapper key={el.id}>
+            <s.ImageWrapper
+              id={el.id}
+              onClick={(e) => {
+                props.onClickMoveToProductDetail(e);
+              }}
+            >
               <s.ProductImage
                 key={el}
                 src={
@@ -88,7 +93,14 @@ export default function BoardListUI(props) {
                 <s.Region7>{el?.location.address.slice(0, 2)}</s.Region7>
               )}
             </s.UpperInfoWrapper>
-            <s.Name>{el?.title}</s.Name>
+            <s.Title
+              id={el.id}
+              onClick={(e) => {
+                props.onClickMoveToProductDetail(e);
+              }}
+            >
+              {el?.title}
+            </s.Title>
             {typeof window !== "undefined" ? (
               <s.Contents
                 dangerouslySetInnerHTML={{

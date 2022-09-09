@@ -42,6 +42,11 @@ export const ProductInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
+export const StatusWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
 export const Status = styled.div`
   width: 47px;
   height: 25px;
@@ -52,6 +57,21 @@ export const Status = styled.div`
   color: #7dd03c;
   border: 1px solid #7dd03c;
   margin-bottom: 2rem;
+`;
+export const MutationBtns = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+export const UpdateBtn = styled.img`
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+`;
+export const DeleteBtn = styled.img`
+  width: 20px;
+  height: 20px;
+  margin-left: 0.4rem;
+  cursor: pointer;
 `;
 export const Name = styled.div`
   font-weight: 700;
@@ -70,7 +90,13 @@ export const Date = styled.div`
   font-size: 1.375rem;
   color: #555;
   padding-bottom: 2.188rem;
+  display: flex;
+  flex-direction: row;
 `;
+export const eventDay = styled.div`
+  margin-right: 1rem;
+`;
+export const eventTime = styled.div``;
 export const Location = styled.div`
   font-weight: 700;
   font-size: 1.125rem;

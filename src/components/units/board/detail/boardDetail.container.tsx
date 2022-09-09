@@ -16,5 +16,17 @@ export default function BoardDetail() {
   const isMobile = MediaQueryMobile();
   const isPc = MediaQueryPc();
 
-  return <BoardDetailUI data={data} isMobile={isMobile} isPc={isPc} />;
+  // 페이지 이동 함수
+  const onClickMoveToProductEdit = () => {
+    router.push(`/board/${router.query.id}/edit`);
+  };
+
+  return (
+    <BoardDetailUI
+      data={data}
+      isMobile={isMobile}
+      isPc={isPc}
+      onClickMoveToProductEdit={onClickMoveToProductEdit}
+    />
+  );
 }

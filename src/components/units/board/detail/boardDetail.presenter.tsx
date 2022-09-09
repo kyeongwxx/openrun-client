@@ -46,14 +46,27 @@ export default function BoardDetailUI(props: any) {
           />
         </s.ImageWrapper>
         <s.ProductInfoWrapper>
-          <s.Status>모집중</s.Status>
+          <s.StatusWrapper>
+            <s.Status>모집중</s.Status>
+            <s.MutationBtns>
+              <s.UpdateBtn
+                src="/boardDetail/Update.png"
+                onClick={props.onClickMoveToProductEdit}
+              />
+              <s.DeleteBtn src="/boardDetail/Delete.png" />
+            </s.MutationBtns>
+          </s.StatusWrapper>
           <s.Name>{props.data?.fetchBoard?.title}</s.Name>
           <s.Location>카테고리</s.Location>
-          <s.Category>{props.data?.fetchBoard?.category.name}</s.Category>
-          <s.Location>희망 시간</s.Location>
+          <s.Category>{props.data?.fetchBoard?.category?.name}</s.Category>
+          <s.Location>희망시간</s.Location>
           <s.Date>
-            {props.data?.fetchBoard?.eventDay?.slice(0, 10)}{" "}
-            {props.data?.fetchBoard?.eventTime}
+            <s.eventDay>
+              {props.data?.fetchBoard?.dueDate?.slice(0, 10)}
+            </s.eventDay>
+            <s.eventTime>
+              {props.data?.fetchBoard?.dueDate?.slice(11, 16)}
+            </s.eventTime>
           </s.Date>
           <s.Location>장소</s.Location>
           <s.Address>{props.data?.fetchBoard?.location.address}</s.Address>
