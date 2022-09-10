@@ -2,9 +2,8 @@ import * as s from "./paymentPoint.styles";
 import InfiniteScroll from "react-infinite-scroller";
 import Selector from "../../../../commons/selector";
 import { useRecoilState } from "recoil";
-import { selectorValue, userInfoValue } from "../../../commons/store";
+import { userInfoValue } from "../../../commons/store";
 export default function MypagePaymentPointUI(props) {
-  const [sortValue, setSortValue] = useRecoilState(selectorValue);
   const [userInfo] = useRecoilState(userInfoValue);
   return (
     <s.Wrapper>
@@ -39,9 +38,6 @@ export default function MypagePaymentPointUI(props) {
             />
           </s.SelectPoint>
           <s.SelectedPointWrapper>
-            <s.Text size="1.5rem" color="#333" weight="700">
-              {sortValue}
-            </s.Text>
             <s.ChargePoint onClick={props.onClickPayment}>
               <s.Text size="1rem" color="#656565" weight="700">
                 결제 하기
