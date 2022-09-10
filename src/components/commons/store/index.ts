@@ -7,6 +7,16 @@ export const accessTokenState = atom({
   default: "",
 });
 
+export const selectorValue = atom({
+  key: "selectorState",
+  default: "",
+});
+
+export const selectorValues = atom({
+  key: "selectorValues",
+  default: [],
+});
+
 export const userInfoValue = atom({
   key: "userInfo",
   default: {
