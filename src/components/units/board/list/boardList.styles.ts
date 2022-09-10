@@ -18,7 +18,8 @@ export const CategoryItem = styled.div`
   font-size: 1.25rem;
   font-weight: 400;
   color: #5e5e5e;
-  padding-right: 2.188rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
 `;
 export const DivideLine1 = styled.div`
   width: 75%;
@@ -34,6 +35,9 @@ export const FilterWrapper = styled.div`
 `;
 export const DivideDiv = styled.div`
   width: 5rem;
+  @media (max-width: 767px) {
+    width: 1rem;
+  }
 `;
 export const SearchBarWrapper = styled.div`
   width: 100%;
@@ -45,15 +49,27 @@ export const SearchBarWrapper = styled.div`
   border-radius: 8px;
   margin-left: 30rem;
   padding-left: 0.688rem;
+  margin-bottom: 2.375rem;
+  @media (max-width: 767px) {
+    width: 78%;
+    margin-left: 0;
+  }
 `;
 export const SearchIcon = styled.img`
   width: 1rem;
   height: 1rem;
+  margin-right: 0.5rem;
 `;
 export const SearchInput = styled.input`
   width: 100%;
   border: none;
   background: #f8f8f8;
+  font-weight: 700;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.7);
+  :focus {
+    outline: none;
+  }
 `;
 export const ProductWrapper = styled.div`
   width: 80%;

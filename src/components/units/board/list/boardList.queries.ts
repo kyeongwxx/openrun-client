@@ -24,14 +24,3 @@ export const FETCH_BOARDS = gql`
     }
   }
 `;
-
-export const FETCH_EVENTS = gql`
-  query fetchEvents($search: String) {
-    fetchEvents(search: $search) {
-      id
-      title
-      contents
-      image
-    }
-  }
-`;

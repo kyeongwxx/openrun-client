@@ -34,6 +34,19 @@ export default function BoardListUI(props) {
             "전라남도",
           ]}
         />
+        {props.isPc && (
+          <s.SearchBarWrapper>
+            <s.SearchIcon src="/boardList/Search.png" />
+            <s.SearchInput
+              placeholder="제목을 검색해주세요"
+              type="text"
+              onChange={props.onChangeSearch}
+              refetch={props.refetch}
+            />
+          </s.SearchBarWrapper>
+        )}
+      </s.FilterWrapper>
+      {props.isMobile && (
         <s.SearchBarWrapper>
           <s.SearchIcon src="/boardList/Search.png" />
           <s.SearchInput
@@ -43,7 +56,7 @@ export default function BoardListUI(props) {
             refetch={props.refetch}
           />
         </s.SearchBarWrapper>
-      </s.FilterWrapper>
+      )}
 
       <s.ProductWrapper>
         {props.data?.fetchBoards?.map((el: any) => (
