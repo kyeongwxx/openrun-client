@@ -7,8 +7,6 @@ export const CREATE_BOARD = gql`
       title
       contents
       price
-      eventDay
-      eventTime
       category {
         name
       }

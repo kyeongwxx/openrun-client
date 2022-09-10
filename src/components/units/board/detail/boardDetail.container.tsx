@@ -5,9 +5,12 @@ import MediaQueryPc from "../../../../commons/mediaQuery/mediaQueryStandardPc";
 import { FETCH_BOARDS } from "../list/boardList.queries";
 import BoardDetailUI from "./boardDetail.presenter";
 import {
+  ADOPT_RUNNER,
+  APPLY_RUNNER,
   DELETE_BOARD,
   FETCH_BOARD,
   FETCH_LOGIN_USER,
+  FETCH_RUNNER_BY_BOARD,
 } from "./boardDetail.queries";
 
 export default function BoardDetail() {
@@ -16,6 +19,10 @@ export default function BoardDetail() {
     variables: { boardId: router.query.id },
   });
   console.log(data);
+  const { data: runner } = useQuery(FETCH_RUNNER_BY_BOARD, {
+    variables: { boardId: router.query.id },
+  });
+  console.log(runner);
 
   // mediaQuery
   const isMobile = MediaQueryMobile();
@@ -48,14 +55,45 @@ export default function BoardDetail() {
     }
   };
 
+  // runner 신청
+  const [applyRunner] = useMutation(APPLY_RUNNER);
+  const onClickApply = async () => {
+    try {
+      const result = await applyRunner({
+        variables: { boardId: router.query.id },
+      });
+      alert("runner 신청 성공");
+    } catch (error: any) {
+      alert(error.message);
+    }
+  };
+  // runner 채택
+  const [adoptRunner] = useMutation(ADOPT_RUNNER);
+  const onClickAdopt = async () => {
+    try {
+      const result = await adoptRunner({
+        variables: {
+          userId: login.fetchLoginUser.id,
+          boardId: router.query.id,
+        },
+      });
+      alert("runner 채택 성공");
+    } catch (error: any) {
+      alert(error.message);
+    }
+  };
+
   return (
     <BoardDetailUI
       data={data}
+      runner={runner}
       router={router}
       isMobile={isMobile}
       isPc={isPc}
       onClickMoveToProductEdit={onClickMoveToProductEdit}
       onClickDelete={onClickDelete}
+      onClickApply={onClickApply}
+      onClickAdopt={onClickAdopt}
     />
   );
 }

@@ -10,6 +10,7 @@ import Map from "../../../../commons/maps-detail/map.container";
 import Dompurify from "dompurify";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import MainSlider from "../../../../commons/carousel";
+import LiveChat from "../../../../commons/liveChat/liveChat.container";
 
 const theme = createTheme({
   components: {
@@ -35,6 +36,7 @@ export default function BoardDetailUI(props: any) {
   };
   return (
     <s.Wrapper>
+      <LiveChat />
       <s.ProductWrapper>
         <s.ImageWrapper>
           <s.Image
@@ -96,7 +98,9 @@ export default function BoardDetailUI(props: any) {
               {props.isPc && <s.ChatText>채팅하기</s.ChatText>}
             </s.ChatBtn>
             <s.PickBtn>찜하기</s.PickBtn>
-            <s.ApplyBtn>신청하기</s.ApplyBtn>
+            <s.ApplyBtn type="button" onClick={props.onClickApply}>
+              신청하기
+            </s.ApplyBtn>
           </s.BtnsWrapper>
         </s.ProductInfoWrapper>
       </s.ProductWrapper>
@@ -129,111 +133,34 @@ export default function BoardDetailUI(props: any) {
             </TabPanel>
             <TabPanel value="2">
               <s.ApplyWrapper>
-                <s.ApplyList>
-                  <s.ApplyItem>
-                    <s.RunnerIcon src="/boardDetail/RunnerIcon.png" />
-                    <s.RunnerName>abc1234</s.RunnerName>
-                    <s.Rating>
-                      <s.Star src="/boardDetail/Star.png" />
-                    </s.Rating>
-                    <s.CntWrapper>
-                      {props.isPc && <s.RunCnt>줄서기 300건</s.RunCnt>}
-                      <s.SuccessRate>성공률 95%</s.SuccessRate>
-                    </s.CntWrapper>
-                  </s.ApplyItem>
-                  {props.isPc && <s.SelectBtn>채택하기</s.SelectBtn>}
-                  {props.isMobile && (
-                    <s.SelectBtn>
-                      <AiOutlineCheckCircle size={30} />
-                    </s.SelectBtn>
-                  )}
-                </s.ApplyList>
-                <s.ApplyList>
-                  <s.ApplyItem>
-                    <s.RunnerIcon src="/boardDetail/RunnerIcon.png" />
-                    <s.RunnerName>abc1234</s.RunnerName>
-                    <s.Rating>
-                      <s.Star src="/boardDetail/Star.png" />
-                      <s.Star src="/boardDetail/Star.png" />
-                    </s.Rating>
-                    <s.CntWrapper>
-                      {props.isPc && <s.RunCnt>줄서기 300건</s.RunCnt>}
-                      <s.SuccessRate>성공률 95%</s.SuccessRate>
-                    </s.CntWrapper>
-                  </s.ApplyItem>
-                  {props.isPc && <s.SelectBtn>채택하기</s.SelectBtn>}
-                  {props.isMobile && (
-                    <s.SelectBtn>
-                      <AiOutlineCheckCircle size={30} />
-                    </s.SelectBtn>
-                  )}
-                </s.ApplyList>
-                <s.ApplyList>
-                  <s.ApplyItem>
-                    <s.RunnerIcon src="/boardDetail/RunnerIcon.png" />
-                    <s.RunnerName>abc1234</s.RunnerName>
-                    <s.Rating>
-                      <s.Star src="/boardDetail/Star.png" />
-                      <s.Star src="/boardDetail/Star.png" />
-                      <s.Star src="/boardDetail/Star.png" />
-                    </s.Rating>
-                    <s.CntWrapper>
-                      {props.isPc && <s.RunCnt>줄서기 300건</s.RunCnt>}
-                      <s.SuccessRate>성공률 95%</s.SuccessRate>
-                    </s.CntWrapper>
-                  </s.ApplyItem>
-                  {props.isPc && <s.SelectBtn>채택하기</s.SelectBtn>}
-                  {props.isMobile && (
-                    <s.SelectBtn>
-                      <AiOutlineCheckCircle size={30} />
-                    </s.SelectBtn>
-                  )}
-                </s.ApplyList>
-                <s.ApplyList>
-                  <s.ApplyItem>
-                    <s.RunnerIcon src="/boardDetail/RunnerIcon.png" />
-                    <s.RunnerName>abc1234</s.RunnerName>
-                    <s.Rating>
-                      <s.Star src="/boardDetail/Star.png" />
-                      <s.Star src="/boardDetail/Star.png" />
-                      <s.Star src="/boardDetail/Star.png" />
-                      <s.Star src="/boardDetail/Star.png" />
-                    </s.Rating>
-                    <s.CntWrapper>
-                      {props.isPc && <s.RunCnt>줄서기 300건</s.RunCnt>}
-                      <s.SuccessRate>성공률 95%</s.SuccessRate>
-                    </s.CntWrapper>
-                  </s.ApplyItem>
-                  {props.isPc && <s.SelectBtn>채택하기</s.SelectBtn>}
-                  {props.isMobile && (
-                    <s.SelectBtn>
-                      <AiOutlineCheckCircle size={30} />
-                    </s.SelectBtn>
-                  )}
-                </s.ApplyList>
-                <s.ApplyList>
-                  <s.ApplyItem>
-                    <s.RunnerIcon src="/boardDetail/RunnerIcon.png" />
-                    <s.RunnerName>abc1234</s.RunnerName>
-                    <s.Rating>
-                      <s.Star src="/boardDetail/Star.png" />
-                      <s.Star src="/boardDetail/Star.png" />
-                      <s.Star src="/boardDetail/Star.png" />
-                      <s.Star src="/boardDetail/Star.png" />
-                      <s.Star src="/boardDetail/Star.png" />
-                    </s.Rating>
-                    <s.CntWrapper>
-                      {props.isPc && <s.RunCnt>줄서기 300건</s.RunCnt>}
-                      <s.SuccessRate>성공률 95%</s.SuccessRate>
-                    </s.CntWrapper>
-                  </s.ApplyItem>
-                  {props.isPc && <s.SelectBtn>채택하기</s.SelectBtn>}
-                  {props.isMobile && (
-                    <s.SelectBtn>
-                      <AiOutlineCheckCircle size={30} />
-                    </s.SelectBtn>
-                  )}
-                </s.ApplyList>
+                {props.runner?.fetchRunnerByBoard.map((el: any) => (
+                  <s.ApplyList>
+                    <s.ApplyItem>
+                      <s.RunnerIcon src="/boardDetail/RunnerIcon.png" />
+                      <s.RunnerName>{el.user.nickName}</s.RunnerName>
+                      <s.Rating>
+                        <s.Star src="/boardDetail/Star.png" />
+                      </s.Rating>
+                      <s.CntWrapper>
+                        {props.isPc && <s.RunCnt>줄서기 300건</s.RunCnt>}
+                        <s.SuccessRate>성공률 95%</s.SuccessRate>
+                      </s.CntWrapper>
+                    </s.ApplyItem>
+                    {props.isPc && (
+                      <s.SelectBtn onClick={props.onClickAdopt}>
+                        채택하기
+                      </s.SelectBtn>
+                    )}
+                    {props.isMobile && (
+                      <s.SelectBtn>
+                        <AiOutlineCheckCircle
+                          size={30}
+                          onClick={props.onClickAdopt}
+                        />
+                      </s.SelectBtn>
+                    )}
+                  </s.ApplyList>
+                ))}
               </s.ApplyWrapper>
             </TabPanel>
           </TabContext>
