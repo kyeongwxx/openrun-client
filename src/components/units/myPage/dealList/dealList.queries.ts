@@ -7,11 +7,10 @@ export const FETCH_PAYMENT_HISTORY = gql`
       price
       status
       board {
-        id
         title
-        contents
-        dueDate
-        price
+        image {
+          url
+        }
       }
     }
   }

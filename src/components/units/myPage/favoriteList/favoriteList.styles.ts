@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import InfiniteScroll from "react-infinite-scroller";
 
 export const Wrapper = styled.main`
   width: 95%;
@@ -58,14 +59,14 @@ export const FavoriteTitle = styled.div`
   color: #333;
 `;
 
-export const FavoriteBoards = styled.div`
+export const FavoriteBoards = styled(InfiniteScroll)`
   width: 80%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color: yellow;
+
   @media (max-width: 767px) {
     width: 100%;
   }
@@ -81,6 +82,7 @@ export const FavoriteBoard = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: #fafafa;
+  cursor: pointer;
 `;
 
 export const BoardImg = styled.img`

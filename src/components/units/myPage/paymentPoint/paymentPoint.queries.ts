@@ -17,11 +17,33 @@ export const CHARGE_PAYMENT = gql`
   }
 `;
 
+export const CANCEL_PAYMENT = gql`
+  mutation cancelPayment($impUid: String!, $amount: Float!) {
+    cancelPayment(impUid: $impUid, amount: $amount) {
+      id
+      impUid
+      status
+      amount
+      user {
+        id
+        point
+      }
+    }
+  }
+`;
+
 export const FETCH_POINT_CHARGE_HISTORY = gql`
-  query fetchPointChargeHistory {
-    id
-    impUid
-    status
-    amount
+  query fetchPointChargeHistory($page: Int) {
+    fetchPointChargeHistory(page: $page) {
+      id
+      impUid
+      status
+      amount
+      createdAt
+      user {
+        id
+        email
+      }
+    }
   }
 `;
