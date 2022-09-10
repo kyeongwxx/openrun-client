@@ -9,8 +9,10 @@ export const FETCH_WRITE_BOARDS = gql`
       status
       price
       dueDate
-      eventDay
-      #   image
+
+      image {
+        url
+      }
     }
   }
 `;

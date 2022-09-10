@@ -7,6 +7,7 @@ import { FETCH_WRITE_BOARDS } from "./writtenBoard.queries";
 
 export default function MypageWrittenBoards() {
   const { data, fetchMore } = useQuery(FETCH_WRITE_BOARDS);
+  console.log(data);
 
   const onFetchMore = () => {
     if (!data) return;
