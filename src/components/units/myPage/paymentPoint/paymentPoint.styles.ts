@@ -118,6 +118,6 @@ export const SelectedPointWrapper = styled.div`
 
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 `;
