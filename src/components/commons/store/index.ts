@@ -12,6 +12,11 @@ export const selectorValue = atom({
   default: "",
 });
 
+export const selectorValues = atom({
+  key: "selectorValues",
+  default: [],
+});
+
 export const userInfoValue = atom({
   key: "userInfo",
   default: {
