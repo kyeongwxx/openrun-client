@@ -1,11 +1,25 @@
-export const currentDate = () => {
-  const date = new Date().toLocaleDateString();
-  let today = Date.parse(date);
+export const currentDate = (pageState: number) => {
+  let date = "";
+  let today = 0;
   const weekly = [];
-  const dayOfWeek = [];
+  const dayOfWeek: string[] = [];
+  if (pageState > 0) {
+    const now = new Date();
+    date = new Date(
+      now.setDate(now.getDate() + 7 * pageState)
+    ).toLocaleDateString();
+
+    today = Date.parse(date);
+  } else {
+    date = new Date().toLocaleDateString();
+    today = Date.parse(date);
+  }
+
   weekly.push(date);
+
   for (var i = 0; i < 6; i++) {
-    today += 86400000;
+    today += 86400000; // 1일 ms로 변환 (1000*60*60*24)
+
     weekly.push(new Date(today).toLocaleDateString());
   }
   weekly.forEach((el, i) => {
@@ -22,7 +36,7 @@ export const currentDate = () => {
     if (day === 6) changeDay = "Sat";
     dayOfWeek.push(changeDay);
   });
-  const changeDate = [];
+  const changeDate: string[] = [];
 
   weekly.forEach((el, i) => {
     const daySplit = el.split(" ")[2];
