@@ -30,6 +30,45 @@ export const DELETE_BOARD = gql`
     deleteBoard(boardId: $boardId)
   }
 `;
+export const APPLY_RUNNER = gql`
+  mutation applyRunner($boardId: String!) {
+    applyRunner(boardId: $boardId) {
+      id
+      isChecked
+      user {
+        id
+        nickName
+      }
+      board {
+        id
+      }
+    }
+  }
+`;
+export const ADOPT_RUNNER = gql`
+  mutation adoptRunner($userId: String!, $boardId: String!) {
+    adoptRunner(userId: $userId, boardId: $boardId) {
+      id
+      isChecked
+      user {
+        id
+        nickName
+      }
+    }
+  }
+`;
+export const FETCH_RUNNER_BY_BOARD = gql`
+  query fetchRunnerByBoard($boardId: String!) {
+    fetchRunnerByBoard(boardId: $boardId) {
+      id
+      isChecked
+      user {
+        id
+        nickName
+      }
+    }
+  }
+`;
 export const FETCH_LOGIN_USER = gql`
   query fetchLoginUser {
     fetchLoginUser {
