@@ -1,5 +1,7 @@
+import { MouseEventHandler } from "react";
+
 export interface IEventInfoDetailUI {
-  data: any;
+  data?: any;
   eventInfo: any;
   id: string;
   title: string;
@@ -8,4 +10,7 @@ export interface IEventInfoDetailUI {
   location: string;
   image: string;
   createdAt: string;
+  el: any;
+  onClickMoveToPage?: (path: any) => MouseEventHandler<HTMLDivElement>;
+  ToloadFunc?: () => void;
 }

@@ -208,7 +208,7 @@ export const InfoImg4 = styled.img`
 export const InfoImg5 = styled.img`
   width: 45%;
 `;
-export const MoveToSiteBtn = styled.button`
+export const MoveToSiteBtn = styled.a`
   width: 35%;
   height: 55px;
   font-size: 0.95rem;

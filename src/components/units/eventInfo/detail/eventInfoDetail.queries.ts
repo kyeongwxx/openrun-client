@@ -13,3 +13,12 @@ export const FETCH_EVENT = gql`
     }
   }
 `;
+
+export const FETCH_BOARDS = gql`
+query fetchBaords($dateType:String!, page:Int){
+  fetchBaords(dateType:$dateType, page:$page){
+    id
+    image
+  }
+}
+`;

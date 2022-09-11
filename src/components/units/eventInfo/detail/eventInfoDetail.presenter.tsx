@@ -1,3 +1,4 @@
+import InfiniteScroll from "react-infinite-scroller";
 import * as s from "./eventInfoDetail.styles";
 import { IEventInfoDetailUI } from "./eventInfoDetail.types";
 
@@ -70,21 +71,29 @@ export default function EventInfoDetailUI(props: IEventInfoDetailUI) {
             <s.InfoImg4 src="/img/Rectangle 137.png" />
           </s.ImgBox>
           <s.InfoImg5 src="/img/Rectangle 135.png" />
-          <s.MoveToSiteBtn>사이트로 이동하기</s.MoveToSiteBtn>
+          <s.MoveToSiteBtn href={`${props.el?.urlRedirect}`}>
+            사이트로 이동하기
+          </s.MoveToSiteBtn>
         </s.InfoWrapper>
         <s.WithItemWrapper>
           <s.WithItemTitle>With Item</s.WithItemTitle>
           <s.WithItemSubTitle>함께 보면 좋은 상품</s.WithItemSubTitle>
         </s.WithItemWrapper>
-        <s.WithItemBox>
-          <s.WithItemImg src="/img/Rectangle 38.png" />
-          <s.WithItemImg />
-          <s.WithItemImg />
-          <s.WithItemImg />
-          <s.WithItemImg />
-
-          {/* <s.NewImg src="/img/Group 1.png" /> */}
-        </s.WithItemBox>
+        <InfiniteScroll
+          pageStart={0}
+          loadMore={props.ToloadFunc}
+          hasMore={true}
+          useWindow={true}
+        >
+          <s.WithItemBox>
+            <s.WithItemImg src="/img/Rectangle 38.png" />
+            <s.WithItemImg />
+            <s.WithItemImg />
+            <s.WithItemImg />
+            <s.WithItemImg />
+            {/* <s.NewImg src="/img/Group 1.png" /> */}
+          </s.WithItemBox>
+        </InfiniteScroll>
       </s.Wrapper>
     </>
   );
