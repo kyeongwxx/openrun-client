@@ -114,16 +114,16 @@ export const PlaceTitle = styled.div`
   }
 `;
 
-export const Store = styled.div`
-  font-size: 1.05rem;
-  font-weight: 600;
-  padding-bottom: 0.2rem;
-  text-decoration: underline;
+// export const Store = styled.div`
+//   font-size: 1.05rem;
+//   font-weight: 600;
+//   padding-bottom: 0.2rem;
+//   text-decoration: underline;
 
-  @media (max-width: 767px) {
-    font-size: 1rem;
-  }
-`;
+//   @media (max-width: 767px) {
+//     font-size: 1rem;
+//   }
+// `;
 export const StoreDetail = styled.div`
   font-size: 0.9rem;
   font-weight: 400;
