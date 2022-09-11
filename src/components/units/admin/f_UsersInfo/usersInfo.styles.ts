@@ -9,6 +9,7 @@ export const Wrapper = styled.main`
   border: 2px solid #555;
   border-left: none;
   border-right: none;
+  border-bottom: none;
 `;
 
 export const Row = styled.title`
@@ -27,7 +28,21 @@ export const ColumnHeader = styled.title`
   justify-content: space-around;
 `;
 export const ColumnBasic = styled.div`
-  width: 10%;
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   text-align: center;
   cursor: pointer;
+
+  //border: 1px solid red;
+`;
+
+export const Scroll = styled.div`
+  width: 100%;
+  height: 400px;
+  overflow: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
