@@ -1,24 +1,25 @@
 import * as s from "./admin.styles";
-import BasicModal from "../../../commons/modal";
+import UsersChart from "./a_UsersChart/usersChart.container";
+import DailyPayments from "./b_DailyPayments/dailyPayments.container";
+import Reports from "./d_Reports/reports.container";
+import AdminInfoUI from "./e_AdminInfo/adminInfo.presenter";
+import UsersInfo from "./f_UsersInfo/usersInfo.container";
 
-export default function AdminUI() {
+export default function AdminUI(props) {
   return (
     <s.Wrapper>
       <s.InnerWrapper>
         <s.Box>
           <s.Title>가입자 현황</s.Title>
-          <BasicModal title="제에에에목" description="내요오오옹" />
-          <canvas id="myChart" width={"400px"} height={"400px"}></canvas>
+
         </s.Box>
 
         <s.Box>
           <s.Title>일자별 요약</s.Title>
 
-          <s.Chart></s.Chart>
+          <DailyPayments />
         </s.Box>
-      </s.InnerWrapper>
 
-      <s.InnerWrapper>
         <s.Box>
           <s.Title>1:1문의 내역</s.Title>
 
@@ -26,25 +27,23 @@ export default function AdminUI() {
         </s.Box>
 
         <s.Box>
-          <s.Title>대행 신고 내역</s.Title>
+          <s.Title>신고 내역</s.Title>
 
-          <s.Chart></s.Chart>
+          <Reports />
         </s.Box>
-      </s.InnerWrapper>
 
-      <s.InnerWrapper2>
-        <s.Box2>
+        <s.Box>
           <s.Title>운영진</s.Title>
 
-          <s.AdminInfo></s.AdminInfo>
-        </s.Box2>
+          <AdminInfoUI />
+        </s.Box>
 
-        <s.Box2>
+        <s.Box>
           <s.Title>일반 회원</s.Title>
 
-          <s.UserInfo></s.UserInfo>
-        </s.Box2>
-      </s.InnerWrapper2>
+          <UsersInfo />
+        </s.Box>
+      </s.InnerWrapper>
     </s.Wrapper>
   );
 }

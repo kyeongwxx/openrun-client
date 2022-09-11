@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
-export const FETCH_USERS = gql`
-  query fetchUsers {
-    fetchUsers {
+export const FETCH_ADMIN = gql`
+  query fetchAdmin {
+    fetchAdmin {
       id
       email
       isAdmin

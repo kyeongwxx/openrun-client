@@ -18,20 +18,25 @@ export const Wrapper = styled.div`
 `;
 export const InnerWrapper = styled.div`
   width: 100%;
+
+  margin-bottom: 10rem;
+  padding-left: 8rem;
+  padding-top: 5rem;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
 
   @media (max-width: 767px) {
     flex-direction: column;
+    padding-left: 2.5rem;
   }
-
-  border: 1px solid red;
 `;
 export const Box = styled.div`
   width: 500px;
   height: 400px;
+
+  margin-bottom: 10rem;
+
   @media (max-width: 767px) {
     width: 500px;
     height: 500px;
@@ -62,53 +67,11 @@ export const Graph = styled.div`
 `;
 
 export const Chart = styled.div`
-  width: 450px;
-  height: 350px;
-  @media (max-width: 767px) {
-    width: 400px;
-    height: 400px;
-  }
-  border: 1px solid red;
-`;
-export const Box2 = styled.div`
-  margin-bottom: 20px;
-
+  width: 1000px;
+  height: 400px;
   @media (max-width: 767px) {
     width: 500px;
     height: 400px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
   }
-`;
-export const AdminInfo = styled.div`
-  width: 1000px;
-  height: 600px;
-  @media (max-width: 767px) {
-    width: 400px;
-    height: 400px;
-  }
-
-  border: 1px solid red;
-`;
-export const UserInfo = styled.div`
-  width: 1000px;
-  height: 600px;
-  @media (max-width: 767px) {
-    width: 400px;
-    height: 400px;
-  }
-  border: 1px solid red;
-`;
-export const InnerWrapper2 = styled.div`
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  margin-top: 60px;
   border: 1px solid red;
 `;
