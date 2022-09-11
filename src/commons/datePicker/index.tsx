@@ -1,16 +1,17 @@
 import * as s from "./datePicker.styles";
-import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
-import ArrowRightIcon from "@mui/icons-material/ArrowRight";
-import { useState } from "react";
+
 import { currentDate } from "../function/currentDate";
 import { v4 as uuidv4 } from "uuid";
-import { useMediaQuery } from "react-responsive";
 
 import MediaQueryPc from "../mediaQuery/mediaQueryStandardPc";
 import MediaQueryMobile from "../mediaQuery/mediaQueryStandardMobile";
 
+import { useState } from "react";
+
 export default function DatePicker() {
-  const oneWeek = currentDate();
+  const [pageState, setPageState] = useState(0);
+
+  const oneWeek = currentDate(pageState);
 
   const date = [...oneWeek[0]];
   const day = [...oneWeek[1]];
@@ -18,26 +19,43 @@ export default function DatePicker() {
   const isPc = MediaQueryPc();
   const isMobile = MediaQueryMobile();
 
+  const onClickNextPage = () => {
+    setPageState(pageState + 1);
+  };
+
+  const onClickPrevPage = () => {
+    if (pageState === 0) return;
+    setPageState(pageState - 1);
+  };
+  console.log(pageState);
+
   return (
     <s.Wrapper>
       {isPc && (
         <s.Carousel>
           <s.ButtonWrapper>
-            <ArrowLeftIcon style={{ fontSize: "40px", cursor: "pointer" }} />
+            {pageState !== 0 ? (
+              <s.ArrowLeft onClick={onClickPrevPage} />
+            ) : (
+              <s.NoneArrowBtn></s.NoneArrowBtn>
+            )}
+
             {date.map((el, index) => (
               <s.Button key={uuidv4()}>
                 <s.TextDay>{day[index]}</s.TextDay>
                 <s.TextDate>{el}</s.TextDate>
               </s.Button>
             ))}
-
-            <ArrowRightIcon style={{ fontSize: "40px", cursor: "pointer" }} />
+            {pageState < 3 ? (
+              <s.ArrowRight onClick={onClickNextPage} />
+            ) : (
+              <s.NoneArrowBtn></s.NoneArrowBtn>
+            )}
           </s.ButtonWrapper>
         </s.Carousel>
       )}
       {isMobile && (
         <s.ButtonMobile>
-          {/* <s.TextDay>sdf</s.TextDay> */}
           <s.TextDate>Today</s.TextDate>
         </s.ButtonMobile>
       )}

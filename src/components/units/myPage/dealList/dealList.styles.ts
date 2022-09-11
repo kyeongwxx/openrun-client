@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import InfiniteScroll from "react-infinite-scroller";
 
 export const Wrapper = styled.main`
   width: 95%;
@@ -58,7 +59,7 @@ export const FavoriteTitle = styled.div`
   color: #333;
 `;
 
-export const FavoriteBoards = styled.div`
+export const FavoriteBoards = styled(InfiniteScroll)`
   width: 80%;
   height: 100%;
   display: flex;

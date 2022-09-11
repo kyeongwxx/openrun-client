@@ -6,10 +6,7 @@ export const FETCH_BOARDS = gql`
       id
       title
       contents
-      status
       price
-      eventDay
-      eventTime
       dueDate
       user {
         nickName
@@ -17,9 +14,9 @@ export const FETCH_BOARDS = gql`
       category {
         name
       }
-      location {
-        address
-      }
+      # location {
+      #   address
+      # }
       image {
         url
       }

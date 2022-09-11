@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import InfiniteScroll from "react-infinite-scroller";
 
 export const Wrapper = styled.main`
   width: 95%;
@@ -28,6 +29,7 @@ export const PointTitle = styled.div`
 
 export const PointInfo = styled.div`
   width: 80%;
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -80,13 +82,41 @@ export const DivideLineHorizontal = styled.div<{ color: string }>`
   background-color: ${(props) => props.color};
 `;
 
-export const PointHistories = styled.section`
+export const PointHistoriesWrapper = styled.div`
   width: 100%;
   height: 400px;
+  overflow: auto;
+`;
+
+export const PointHistories = styled(InfiniteScroll)`
+  width: 100%;
+
   margin-left: 20%;
   margin-top: 30px;
+
   @media (max-width: 767px) {
     margin-left: 0%;
+  }
+`;
+
+export const RefundPoint = styled.button`
+  width: 171px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background-color: transparent;
+
+  cursor: pointer;
+  @media (max-width: 767px) {
+    width: 100px;
+  }
+`;
+export const None = styled.div`
+  width: 171px;
+  height: 40px;
+
+  @media (max-width: 767px) {
+    width: 100px;
   }
 `;
 
@@ -118,6 +148,6 @@ export const SelectedPointWrapper = styled.div`
 
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 `;

@@ -1,10 +1,10 @@
 import * as s from "./paymentPoint.styles";
-import InfiniteScroll from "react-infinite-scroller";
+
 import Selector from "../../../../commons/selector";
 import { useRecoilState } from "recoil";
-import { selectorValue, userInfoValue } from "../../../commons/store";
+import { userInfoValue } from "../../../commons/store";
+import { v4 as uuidv4 } from "uuid";
 export default function MypagePaymentPointUI(props) {
-  const [sortValue, setSortValue] = useRecoilState(selectorValue);
   const [userInfo] = useRecoilState(userInfoValue);
   return (
     <s.Wrapper>
@@ -21,7 +21,7 @@ export default function MypagePaymentPointUI(props) {
           </s.AvailablePoint>
           <s.ChargePoint onClick={props.onClickChargePoint}>
             <s.Text size="1rem" color="#656565" weight="400">
-              포인트 충전하기
+              포인트 충전
             </s.Text>
           </s.ChargePoint>
         </s.PointInfo>
@@ -39,9 +39,6 @@ export default function MypagePaymentPointUI(props) {
             />
           </s.SelectPoint>
           <s.SelectedPointWrapper>
-            <s.Text size="1.5rem" color="#333" weight="700">
-              {sortValue}
-            </s.Text>
             <s.ChargePoint onClick={props.onClickPayment}>
               <s.Text size="1rem" color="#656565" weight="700">
                 결제 하기
@@ -53,28 +50,64 @@ export default function MypagePaymentPointUI(props) {
         <></>
       )}
 
-      <s.PointHistories>
-        <InfiniteScroll
+      <s.PointHistoriesWrapper>
+        <s.PointHistories
           pageStart={0}
           loadMore={props.onFetchMore}
           hasMore={true}
           useWindow={false}
         >
-          <s.PointInfo>
-            <s.AvailablePoint>
-              <s.Text size="1rem" color="#656565" weight="400">
-                충전포인트
-              </s.Text>
-              <s.Text size="1rem" color="#333" weight="700">
-                1000P
-              </s.Text>
-            </s.AvailablePoint>
-            <s.Text size="1rem" color="#656565" weight="400">
-              2022.ㅌㅌ.ㅌㅌ
-            </s.Text>
-          </s.PointInfo>
-        </InfiniteScroll>
-      </s.PointHistories>
+          {console.log(props.data)}
+          {!props.data ? (
+            <s.PointInfo />
+          ) : (
+            props.data.map((el) => (
+              <s.PointInfo key={uuidv4()}>
+                <s.AvailablePoint>
+                  <s.Text size="1rem" color="#656565" weight="400">
+                    {el.status === "PAYMENT" ? "충전포인트" : "환불포인트"}
+                  </s.Text>
+                  <s.Text size="1rem" color="#333" weight="700">
+                    {el.amount}P
+                  </s.Text>
+                </s.AvailablePoint>
+                <s.Text size="1rem" color="#656565" weight="400">
+                  {el.createdAt}
+                </s.Text>
+                {console.log(props.isRefund)}
+                {props.isRefund ? (
+                  <s.None />
+                ) : el.status === "PAYMENT" ? (
+                  <>
+                    <s.RefundPoint
+                      onClick={props.onClickRefund(el.impUid, el.amount)}
+                    >
+                      <s.Text size="1rem" color="#656565" weight="400">
+                        포인트 환불
+                      </s.Text>
+                    </s.RefundPoint>
+                  </>
+                ) : (
+                  <s.None />
+                )}
+                {/* {el.status === "PAYMENT" ? (
+                  <>
+                    <s.RefundPoint
+                      onClick={props.onClickRefund(el.impUid, el.amount)}
+                    >
+                      <s.Text size="1rem" color="#656565" weight="400">
+                        포인트 환불
+                      </s.Text>
+                    </s.RefundPoint>
+                  </>
+                ) : (
+                  <s.None />
+                )} */}
+              </s.PointInfo>
+            ))
+          )}
+        </s.PointHistories>
+      </s.PointHistoriesWrapper>
     </s.Wrapper>
   );
 }

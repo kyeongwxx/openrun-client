@@ -1,4 +1,6 @@
 import styled from "@emotion/styled";
+import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
+import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 
 export const Wrapper = styled.main`
   width: 95%;
@@ -23,6 +25,16 @@ export const ButtonWrapper = styled.div`
   align-items: center;
 `;
 
+export const ArrowLeft = styled(ArrowLeftIcon)`
+  font-size: 40px;
+  cursor: pointer;
+`;
+
+export const ArrowRight = styled(ArrowRightIcon)`
+  font-size: 40px;
+  cursor: pointer;
+`;
+
 export const Button = styled.div`
   width: 90px;
   height: 143px;
@@ -34,6 +46,10 @@ export const Button = styled.div`
   justify-content: space-evenly;
   align-items: center;
   cursor: pointer;
+`;
+export const NoneArrowBtn = styled.div`
+  width: 40px;
+  background-color: aliceblue;
 `;
 
 export const ButtonMobile = styled.div`

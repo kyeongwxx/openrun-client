@@ -1,21 +1,47 @@
-import { useMutation } from "@apollo/client";
+import { gql, useApolloClient, useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
+import { getUserInfo } from "../../../../commons/function/getUserInfo";
 import { IMutation } from "../../../../commons/types/generated/types";
+
 import { accessTokenState, userInfoValue } from "../../store";
 import { LOGOUT } from "../layout.queries";
 import * as s from "./navigation.styles";
+
+export const FETCH_LOGIN_USER = gql`
+  query fetchLoginUser {
+    fetchLoginUser {
+      id
+      email
+      nickName
+      phone
+      point
+      # rating
+      # profileImg
+      isAdmin
+      # bankAccount
+      report
+      loginType
+      createdAt
+      updatedAt
+    }
+  }
+`;
 
 export default function LayoutNavigation() {
   const [userInfo, setUserInfo] = useRecoilState(userInfoValue);
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
 
   const router = useRouter();
+
   const [logout] = useMutation<Pick<IMutation, "logout">>(LOGOUT);
+  // const { data } = useQuery(FETCH_LOGIN_USER);
+  // console.log(data);
 
   const onClickMoveToPage = (event: string) => () => {
     router.push(event);
   };
+
   const onClickLogout = async () => {
     try {
       const result = await logout();
@@ -42,7 +68,7 @@ export default function LayoutNavigation() {
           ) : (
             <s.MenuList>
               <s.Menu onClick={onClickMoveToPage(`/myPage`)}>
-                {userInfo.nickName}
+                {userInfo?.nickName}
               </s.Menu>
               <s.Menu onClick={onClickLogout}>로그아웃</s.Menu>
 

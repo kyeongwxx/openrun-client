@@ -210,6 +210,9 @@ export const CreateBtn = styled.button`
   font-size: 1.125rem;
   margin-right: 2rem;
   cursor: pointer;
+  :hover {
+    background: linear-gradient(93.72deg, #5920d3 0%, #2f88e5 99.32%);
+  }
   @media (max-width: 767px) {
     width: 45%;
     margin-right: 0;
@@ -224,8 +227,10 @@ export const MoveBtn = styled.button`
   border: none;
   font-weight: 400;
   font-size: 1.125rem;
-  margin-right: 2rem;
   cursor: pointer;
+  :hover {
+    background: linear-gradient(93.72deg, #5920d3 0%, #2f88e5 99.32%);
+  }
   @media (max-width: 767px) {
     width: 45%;
     margin-right: 0;

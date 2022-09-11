@@ -7,8 +7,6 @@ export const CREATE_BOARD = gql`
       title
       contents
       price
-      eventDay
-      eventTime
       category {
         name
       }
@@ -16,11 +14,33 @@ export const CREATE_BOARD = gql`
         zipcode
         address
         addressDetail
-        # lat
-        # lng
       }
       image {
-        # id
+        url
+      }
+    }
+  }
+`;
+export const UPDATE_BOARD = gql`
+  mutation updateBoard(
+    $boardId: String!
+    $updateBoardInput: UpdateBoardInput!
+  ) {
+    updateBoard(boardId: $boardId, updateBoardInput: $updateBoardInput) {
+      id
+      title
+      contents
+      price
+      dueDate
+      category {
+        name
+      }
+      location {
+        zipcode
+        address
+        addressDetail
+      }
+      image {
         url
       }
     }

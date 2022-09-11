@@ -2,12 +2,17 @@ import { useEffect, useState } from "react";
 import BoardWriteUI from "./boardWrite.presenter";
 import * as yup from "yup";
 import { useMutation } from "@apollo/client";
-import { CREATE_BOARD } from "./boardWrite.queries";
+import { CREATE_BOARD, UPDATE_BOARD } from "./boardWrite.queries";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRecoilState } from "recoil";
-import { dayState, selectorValue, timeState } from "../../../commons/store";
+import {
+  accessTokenState,
+  dayState,
+  selectorValue,
+  timeState,
+} from "../../../commons/store";
 import MediaQueryMobile from "../../../../commons/mediaQuery/mediaQueryStandardMobile";
 import MediaQueryPc from "../../../../commons/mediaQuery/mediaQueryStandardPc";
 
@@ -28,6 +33,7 @@ const schema = yup.object({
 
 export default function BoardWrite(props) {
   const router = useRouter();
+  const [accessToken] = useRecoilState(accessTokenState);
 
   const { register, handleSubmit, formState, setValue, trigger } = useForm({
     resolver: yupResolver(schema),
@@ -119,9 +125,50 @@ export default function BoardWrite(props) {
       console.log(result);
       console.log(data);
       alert("게시물 등록 성공");
+      router.push(`/board/${result.data.createBoard.id}`);
     } catch (error) {
       alert(error.message);
+      if (!accessToken) router.push("/signIn");
     }
+  };
+
+  // 게시물 수정 함수
+  const [updateBoard] = useMutation(UPDATE_BOARD);
+  const onClickUpdate = async (data: any) => {
+    try {
+      const result = await updateBoard({
+        variables: {
+          updateBoardInput: {
+            title: String(data.title),
+            contents: String(data.contents),
+            price: Number(data.price),
+            eventDay: String(dayValue).slice(0, 15),
+            eventTime: String(timeValue.$d).slice(16, 21),
+            category: String(sortValue),
+            location: {
+              zipcode: zipcode,
+              address: address,
+              addressDetail: addressDetail,
+            },
+            image: [...fileUrls],
+          },
+          boardId: router.query.id,
+        },
+      });
+      console.log(data);
+      alert("게시물 수정 성공");
+      router.push(`/board/${result.data?.updateBoard.id}`);
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  };
+
+  // 페이지 이동 함수
+  const onClickMoveToList = () => {
+    router.push("/board/");
+  };
+  const onClickMoveToDetail = () => {
+    router.push(`/board/${router.query.id}`);
   };
 
   return (
@@ -133,6 +180,7 @@ export default function BoardWrite(props) {
       formState={formState}
       onChangeContents={onChangeContents}
       onClickCreate={onClickCreate}
+      onClickUpdate={onClickUpdate}
       address={address}
       zipcode={zipcode}
       onChangeAddressDetail={onChangeAddressDetail}
@@ -143,7 +191,10 @@ export default function BoardWrite(props) {
       handleCancel={handleCancel}
       onChangeFileUrls={onChangeFileUrls}
       fileUrls={fileUrls}
+      isEdit={props.isEdit}
       data={props.data}
+      onClickMoveToList={onClickMoveToList}
+      onClickMoveToDetail={onClickMoveToDetail}
     />
   );
 }

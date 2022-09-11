@@ -8,7 +8,13 @@ import { v4 as uuidv4 } from "uuid";
 
 export default function BoardWriteUI(props) {
   return (
-    <form onSubmit={props.handleSubmit(props.onClickCreate)}>
+    <form
+      onSubmit={
+        props.isEdit
+          ? props.handleSubmit(props.onClickUpdate)
+          : props.handleSubmit(props.onClickCreate)
+      }
+    >
       {props.isModalOpen && (
         <s.AddressModal
           open={true}
@@ -31,11 +37,13 @@ export default function BoardWriteUI(props) {
             {...props.register("title")}
             type="text"
             placeholder="행사명을 입력해주세요."
+            defaultValue={props.data?.fetchBoard.title}
           />
           <s.PriceInput
             {...props.register("price")}
             type="text"
             placeholder="대행 가격을 입력해주세요."
+            defaultValue={props.data?.fetchBoard.price}
           />
         </s.ProductInfoWrapper>
         <s.ProductDateWrapper>
@@ -48,10 +56,24 @@ export default function BoardWriteUI(props) {
         <s.ProductLocationWrapper>
           <s.ProductLocationText>장소</s.ProductLocationText>
           <s.MapWrapper>
-            <Map address={props.address}></Map>
+            <Map
+              address={
+                props.address
+                  ? props.address
+                  : props.data?.fetchBoard?.location?.address
+              }
+            ></Map>
             <s.AddressWrapper>
               <s.ZipcodeWrapper>
-                <s.Zipcode placeholder="07250" readOnly value={props.zipcode} />
+                <s.Zipcode
+                  placeholder="07250"
+                  readOnly
+                  value={
+                    props.zipcode ||
+                    props.data?.fetchBoard.location?.zipcode ||
+                    ""
+                  }
+                />
                 {props.isPc && (
                   <s.AddressButton
                     type="button"
@@ -69,10 +91,20 @@ export default function BoardWriteUI(props) {
                   </s.AddressButton>
                 )}
               </s.ZipcodeWrapper>
-              <s.AddressInput readOnly value={props.address} />
+              <s.AddressInput
+                readOnly
+                value={
+                  props.address ||
+                  props.data?.fetchBoard.location?.address ||
+                  ""
+                }
+              />
               <s.AddressDetailInput
                 onChange={props.onChangeAddressDetail}
                 type="text"
+                defaultValue={
+                  props.data?.fetchBoard.location?.addressDetail || ""
+                }
               />
             </s.AddressWrapper>
           </s.MapWrapper>
@@ -82,6 +114,7 @@ export default function BoardWriteUI(props) {
           <s.RequestInput
             onChange={props.onChangeContents}
             placeholder="요청사항을 기입해주세요."
+            defaultValue={props.data?.fetchBoard.contents}
           />
         </s.RequestWrapper>
         <s.ImageUploadWrapper>
@@ -99,8 +132,17 @@ export default function BoardWriteUI(props) {
           </s.Images>
         </s.ImageUploadWrapper>
         <s.BtnWrapper>
-          <s.CreateBtn type="submit">등록</s.CreateBtn>
-          <s.MoveBtn>목록으로</s.MoveBtn>
+          <s.CreateBtn type="submit">
+            {props.isEdit ? "수정" : "등록"}
+          </s.CreateBtn>
+          <s.MoveBtn
+            type="button"
+            onClick={
+              props.isEdit ? props.onClickMoveToDetail : props.onClickMoveToList
+            }
+          >
+            취소
+          </s.MoveBtn>
         </s.BtnWrapper>
       </s.Wrapper>
     </form>
