@@ -1,5 +1,9 @@
 import AdminUI from "./admin.presenter";
 
-export default function Admin(){
-    return <AdminUI />
+export default function Admin() {
+  return (
+    <>
+      <AdminUI />
+    </>
+  );
 }
