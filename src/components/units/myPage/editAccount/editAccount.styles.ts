@@ -36,7 +36,7 @@ export const ProfileImg = styled.img`
 `;
 
 export const ProfileInfo = styled.div`
-  width: 70%;
+  width: 65%;
 
   display: flex;
   flex-direction: column;

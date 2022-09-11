@@ -36,10 +36,16 @@ export const userInfoValue = atom({
   },
 });
 
+export const logoutState = atom({
+  key: "logoutState",
+  default: false,
+});
+
 export const restoreAccessTokenLoadable = selector({
   key: "restoreAccessTokenLoadable",
   get: async () => {
     const newAccessToken = await getAccessToken();
+
     return newAccessToken;
   },
 });

@@ -12,6 +12,7 @@ import { useRecoilState, useRecoilValueLoadable } from "recoil";
 import { getUserInfo } from "../../../commons/function/getUserInfo";
 import {
   accessTokenState,
+  logoutState,
   restoreAccessTokenLoadable,
   userInfoValue,
 } from "../store";
@@ -26,19 +27,22 @@ export default function ApolloSetting(props: IApolloSettingProps) {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
   const restoreAccessFunc = useRecoilValueLoadable(restoreAccessTokenLoadable);
   const [userInfo, setUserInfo] = useRecoilState(userInfoValue);
+  const [isLogout, setIsLogout] = useRecoilState(logoutState);
 
   useEffect(() => {
     restoreAccessFunc.toPromise().then((newAccessToken) => {
       setAccessToken(newAccessToken);
     });
-    const FetchUserInfo = async (accessToken: string) => {
-      const resultUserInfo = await getUserInfo(accessToken);
-
-      setUserInfo(resultUserInfo);
-      return resultUserInfo;
-    };
-    const newUserInfo = FetchUserInfo(accessToken);
+    if (!isLogout) {
+      FetchUserInfo(accessToken);
+    }
   }, [accessToken]);
+
+  const FetchUserInfo = async (accessToken: string) => {
+    const resultUserInfo = await getUserInfo(accessToken);
+    setUserInfo(resultUserInfo);
+    return resultUserInfo;
+  };
 
   const errorLink = onError(({ graphQLErrors, operation, forward }) => {
     if (graphQLErrors) {

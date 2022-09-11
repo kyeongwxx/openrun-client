@@ -66,7 +66,7 @@ export default function SignUpUI(props: ISignUpProps) {
         />
 
         <BlackButton
-          onClick={props.onClickSendCertificationNum}
+          onClick={props.onClickPhoneCertify}
           type="button"
           width="30%"
           fontWeight="700"
@@ -81,12 +81,12 @@ export default function SignUpUI(props: ISignUpProps) {
               placeholder="인증번호"
               color="#000000"
               width="70%"
-              name="phoneCheck"
+              name="token"
               type="text"
             />
 
             <BlackButton
-              onClick={props.onClickPhoneCertify}
+              onClick={props.onClickCheckCertify}
               type="button"
               width="30%"
               fontWeight="700"
@@ -96,44 +96,6 @@ export default function SignUpUI(props: ISignUpProps) {
         ) : (
           <></>
         )}
-
-        {/* <CheckBox
-          totalAgree="전체동의"
-          essential="(필수) 개인정보 수집 및 이용 동의"
-          choice="(선택) 이벤트 소식 등 알림 정보 받기"
-        /> */}
-        {/* <s.AgreeWrapper>
-          <Radio.Group
-            onChange={props.onChangeRadio}
-            value={selectedValue}
-            style={{ width: "100%" }}
-          >
-            <s.RadioWrapper>
-              <Radio value={1} />
-              <s.DetailText>전체동의</s.DetailText>
-            </s.RadioWrapper>
-
-            <s.DivideLine></s.DivideLine>
-            <s.EssentialWrapper>
-              <s.RadioWrapper>
-                <Radio value={2} defaultChecked={true} />
-                <s.DetailText>(필수) 개인정보 수집 및 이용 동의</s.DetailText>
-              </s.RadioWrapper>
-
-              <s.DetailText>자세히 보기</s.DetailText>
-            </s.EssentialWrapper>
-
-            <s.EssentialWrapper>
-              <s.RadioWrapper>
-                <Radio value={3} />
-                <s.DetailText>
-                  (선택) 이벤트 소식 등 알림 정보 받기
-                </s.DetailText>
-              </s.RadioWrapper>
-              <s.DetailText>자세히 보기</s.DetailText>
-            </s.EssentialWrapper>
-          </Radio.Group>
-        </s.AgreeWrapper> */}
 
         <BlackButton
           onClick={props.onClickSignUp}

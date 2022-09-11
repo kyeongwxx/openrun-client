@@ -27,7 +27,6 @@ export default function DatePicker() {
     if (pageState === 0) return;
     setPageState(pageState - 1);
   };
-  console.log(pageState);
 
   return (
     <s.Wrapper>
