@@ -12,7 +12,7 @@ export interface ISignUpProps {
   handleSubmit: UseFormHandleSubmit<FieldValues>;
   formState: FormState<FieldValues>;
   onClickSignUp: SubmitHandler<FieldValues>;
-  onClickSendCertificationNum: () => void;
-  onClickPhoneCertify: () => void;
+  onClickCheckCertify: (data: any) => Promise<void>;
+  onClickPhoneCertify: (data: any) => Promise<void>;
   isOpen: boolean;
 }

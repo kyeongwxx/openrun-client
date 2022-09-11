@@ -4,7 +4,7 @@ import { useRecoilState } from "recoil";
 import { getUserInfo } from "../../../../commons/function/getUserInfo";
 import { IMutation } from "../../../../commons/types/generated/types";
 
-import { accessTokenState, userInfoValue } from "../../store";
+import { accessTokenState, logoutState, userInfoValue } from "../../store";
 import { LOGOUT } from "../layout.queries";
 import * as s from "./navigation.styles";
 
@@ -31,6 +31,7 @@ export const FETCH_LOGIN_USER = gql`
 export default function LayoutNavigation() {
   const [userInfo, setUserInfo] = useRecoilState(userInfoValue);
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
+  const [isLogout, setIsLogout] = useRecoilState(logoutState);
 
   const router = useRouter();
 
@@ -45,9 +46,10 @@ export default function LayoutNavigation() {
   const onClickLogout = async () => {
     try {
       const result = await logout();
-      // console.log(result);
+
       if (result) {
-        setAccessToken("");
+        setAccessToken(" ");
+        setIsLogout(true);
         router.push("/main");
       }
     } catch (error) {

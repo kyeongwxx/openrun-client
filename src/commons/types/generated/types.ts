@@ -29,22 +29,20 @@ export type IBankAccountInput = {
 
 export type IBoard = {
   __typename?: 'Board';
-  category: ICategory;
-  chatRoom: IChatRoom;
+  category?: Maybe<ICategory>;
+  chatRoom?: Maybe<IChatRoom>;
   contents?: Maybe<Scalars['String']>;
-  createdAt: Scalars['DateTime'];
-  deletedAt: Scalars['DateTime'];
+  createdAt?: Maybe<Scalars['DateTime']>;
+  deletedAt?: Maybe<Scalars['DateTime']>;
   dueDate?: Maybe<Scalars['DateTime']>;
-  eventDay?: Maybe<Scalars['String']>;
-  eventTime?: Maybe<Scalars['String']>;
   id: Scalars['String'];
-  image: Array<IImage>;
-  location: ILocation;
+  image?: Maybe<Array<IImage>>;
+  location?: Maybe<ILocation>;
   price?: Maybe<Scalars['Int']>;
   status?: Maybe<Scalars['String']>;
-  title: Scalars['String'];
+  title?: Maybe<Scalars['String']>;
   updatedAt: Scalars['DateTime'];
-  user: IUser;
+  user?: Maybe<IUser>;
 };
 
 export type ICategory = {
@@ -72,7 +70,6 @@ export type IChatRoom = {
 export type ICreateBoardInput = {
   category?: InputMaybe<Scalars['String']>;
   contents?: InputMaybe<Scalars['String']>;
-  dueDate?: InputMaybe<Scalars['DateTime']>;
   eventDay?: InputMaybe<Scalars['String']>;
   eventTime?: InputMaybe<Scalars['String']>;
   image?: InputMaybe<Array<Scalars['String']>>;
@@ -187,7 +184,6 @@ export type IMutation = {
   createInquiryAnswer: IInquiryAnswer;
   createRating: Scalars['Boolean'];
   createReport: IReport;
-  createRoom: IChatRoom;
   createUser: IUser;
   deleteBoard: Scalars['Boolean'];
   deleteLoginUser: Scalars['Boolean'];
@@ -276,12 +272,6 @@ export type IMutationCreateReportArgs = {
 };
 
 
-export type IMutationCreateRoomArgs = {
-  boardId: Scalars['String'];
-  userEmail: Scalars['String'];
-};
-
-
 export type IMutationCreateUserArgs = {
   createUserInput: ICreateUserInput;
 };
@@ -336,6 +326,7 @@ export type IMutationUploadFilesArgs = {
 export type IPayment = {
   __typename?: 'Payment';
   amount: Scalars['Int'];
+  createdAt: Scalars['DateTime'];
   id: Scalars['String'];
   impUid: Scalars['String'];
   status: Scalars['String'];
@@ -354,7 +345,6 @@ export type IPaymentHistory = {
 
 export type IQuery = {
   __typename?: 'Query';
-  connectionRoom: IChatRoom;
   fetchAdmin: Array<IUser>;
   fetchBestOfUser: Array<IUser>;
   fetchBoard: IBoard;
@@ -365,6 +355,7 @@ export type IQuery = {
   fetchEvents: Array<Array<IEvent>>;
   fetchEventsByDate: Array<IEvent>;
   fetchInquiry: Array<IInquiry>;
+  fetchInterestBoards: Array<IInterest>;
   fetchLoginUser: IUser;
   fetchLoginUserInquiry: Array<IInquiry>;
   fetchLoginUserInquiryAnswer: Array<IInquiryAnswer>;
@@ -373,15 +364,11 @@ export type IQuery = {
   fetchPayments: Scalars['Int'];
   fetchPointChargeHistory: Array<IPayment>;
   fetchReports: Array<IReport>;
-  fetchRunnerByBoard: Array<IUser>;
+  fetchRunnerByBoard: Array<IRunner>;
+  fetchUserChatRoom: Array<IChatRoom>;
   fetchUsers: Array<IUser>;
   fetchUsersCount: Scalars['Int'];
   fetchWriteBoards: Array<IBoard>;
-};
-
-
-export type IQueryConnectionRoomArgs = {
-  userEmail: Scalars['String'];
 };
 
 
@@ -416,8 +403,18 @@ export type IQueryFetchEventsByDateArgs = {
 };
 
 
+export type IQueryFetchInterestBoardsArgs = {
+  page?: InputMaybe<Scalars['Int']>;
+};
+
+
 export type IQueryFetchLoginUserInquiryAnswerArgs = {
   inquiryId: Scalars['String'];
+};
+
+
+export type IQueryFetchPointChargeHistoryArgs = {
+  page?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -466,7 +463,6 @@ export enum IUser_Logintype_Enum {
 export type IUpdateBoardInput = {
   category?: InputMaybe<Scalars['String']>;
   contents?: InputMaybe<Scalars['String']>;
-  dueDate?: InputMaybe<Scalars['DateTime']>;
   eventDay?: InputMaybe<Scalars['String']>;
   eventTime?: InputMaybe<Scalars['String']>;
   image?: InputMaybe<Array<Scalars['String']>>;
@@ -486,22 +482,25 @@ export type IUpdateUserInput = {
 
 export type IUser = {
   __typename?: 'User';
-  bankAccount: IBankAccount;
-  boardTotal: Scalars['Int'];
-  createdAt: Scalars['DateTime'];
-  deleteAt: Scalars['DateTime'];
-  email: Scalars['String'];
-  id: Scalars['String'];
-  inquiryTotal: Scalars['Int'];
-  isAdmin: Scalars['Boolean'];
-  loginType: IUser_Logintype_Enum;
-  nickName: Scalars['String'];
-  password: Scalars['String'];
-  phone: Scalars['String'];
-  point: Scalars['Int'];
-  profileImg: Scalars['String'];
-  rating: Scalars['Float'];
-  report: Scalars['Int'];
-  sucessRate: Scalars['Int'];
-  updatedAt: Scalars['DateTime'];
+  bankAccount?: Maybe<IBankAccount>;
+  boardTotal?: Maybe<Scalars['Int']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  deleteAt?: Maybe<Scalars['DateTime']>;
+  email?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  inquiryTotal?: Maybe<Scalars['Int']>;
+  isAdmin?: Maybe<Scalars['Boolean']>;
+  loginDate?: Maybe<Scalars['DateTime']>;
+  loginType?: Maybe<IUser_Logintype_Enum>;
+  nickName?: Maybe<Scalars['String']>;
+  password?: Maybe<Scalars['String']>;
+  paymentTotal?: Maybe<Scalars['Int']>;
+  phone?: Maybe<Scalars['String']>;
+  point?: Maybe<Scalars['Int']>;
+  profileImg?: Maybe<Scalars['String']>;
+  rating?: Maybe<Scalars['Float']>;
+  report?: Maybe<Scalars['Int']>;
+  successRate?: Maybe<Scalars['Int']>;
+  sucessRate?: Maybe<Scalars['Int']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
 };
