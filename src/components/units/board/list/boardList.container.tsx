@@ -22,7 +22,7 @@ export default function BoardList() {
     variables: { dateType: sortValue || "최신순", page: 1 },
   });
 
-  // infinite-scroll 함수
+  // 더보기  함수
   const onFetchMore = () => {
     if (!data) return;
 
@@ -40,17 +40,17 @@ export default function BoardList() {
   };
 
   // search 함수
-  const [keyword, setKeyword] = useState("");
+  // const [keyword, setKeyword] = useState("");
 
-  const getDebounce = _.debounce((value) => {
-    refetch({ dateType: "최신순" });
-    setKeyword(value);
-    console.log(value);
-  }, 1000);
+  // const getDebounce = _.debounce((value) => {
+  //   refetch({ dateType: "최신순" });
+  //   setKeyword(value);
+  //   console.log(value);
+  // }, 1000);
 
-  const onChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
-    getDebounce(event.target.value);
-  };
+  // const onChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
+  //   getDebounce(event.target.value);
+  // };
 
   // 페이지 이동 함수
   const onClickMoveToProductDetail = (event: any) => {
@@ -65,10 +65,10 @@ export default function BoardList() {
       isMobile={isMobile}
       isPc={isPc}
       refetch={refetch}
-      keyword={keyword}
       onFetchMore={onFetchMore}
       onClickMoveToProductDetail={onClickMoveToProductDetail}
-      onChangeSearch={onChangeSearch}
+      // keyword={keyword}
+      // onChangeSearch={onChangeSearch}
     />
   );
 }

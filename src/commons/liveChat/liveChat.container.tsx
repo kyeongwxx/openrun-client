@@ -28,6 +28,8 @@ export default function LiveChat() {
     variables: { room: `first${router.query.id}` },
   });
   console.log(data);
+  const { data: chatRoom } = useQuery(FETCH_USER_CHAT_ROOM);
+  console.log(chatRoom);
 
   const { data: login } = useQuery(FETCH_LOGIN_USER);
 

@@ -70,7 +70,7 @@ export default function BoardListUI(props) {
               <s.ProductImage
                 key={el}
                 src={
-                  el?.image[0].url
+                  el?.image[0]?.url
                     ? `https://storage.googleapis.com/openrun-storage/${el?.image[0].url}`
                     : "/boardList/default.jpeg"
                 }
@@ -84,32 +84,32 @@ export default function BoardListUI(props) {
             <s.PickIconWhite src="/boardList/Bookmark(white).png" />
             <s.UpperInfoWrapper>
               <s.Brand>Nike</s.Brand>
-              {(el?.location?.address.slice(0, 2) === "서울" ||
-                el?.location?.address.slice(0, 2) === "경기" ||
-                el?.location?.address.slice(0, 2) === "인천") && (
-                <s.Region1>{el?.location?.address.slice(0, 2)}</s.Region1>
+              {(el?.location?.address?.slice(0, 2) === "서울" ||
+                el?.location?.address?.slice(0, 2) === "경기" ||
+                el?.location?.address?.slice(0, 2) === "인천") && (
+                <s.Region1>{el?.location?.address?.slice(0, 2)}</s.Region1>
               )}
-              {el?.location?.address.slice(0, 2) === "충남" && (
-                <s.Region2>{el?.location?.address.slice(0, 2)}</s.Region2>
+              {el?.location?.address?.slice(0, 2) === "충남" && (
+                <s.Region2>{el?.location?.address?.slice(0, 2)}</s.Region2>
               )}
-              {el?.location?.address.slice(0, 2) === "충북" && (
-                <s.Region3>{el?.location?.address.slice(0, 2)}</s.Region3>
+              {el?.location?.address?.slice(0, 2) === "충북" && (
+                <s.Region3>{el?.location?.address?.slice(0, 2)}</s.Region3>
               )}
-              {(el?.location?.address.slice(0, 2) === "경북" ||
-                el?.location?.address.slice(0, 2) === "대구") && (
-                <s.Region4>{el?.location?.address.slice(0, 2)}</s.Region4>
+              {(el?.location?.address?.slice(0, 2) === "경북" ||
+                el?.location?.address?.slice(0, 2) === "대구") && (
+                <s.Region4>{el?.location?.address?.slice(0, 2)}</s.Region4>
               )}
-              {(el?.location?.address.slice(0, 2) === "경남" ||
-                el?.location?.address.slice(0, 2) === "부산" ||
-                el?.location?.address.slice(0, 2) === "울산") && (
-                <s.Region5>{el?.location?.address.slice(0, 2)}</s.Region5>
+              {(el?.location?.address?.slice(0, 2) === "경남" ||
+                el?.location?.address?.slice(0, 2) === "부산" ||
+                el?.location?.address?.slice(0, 2) === "울산") && (
+                <s.Region5>{el?.location?.address?.slice(0, 2)}</s.Region5>
               )}
-              {el?.location?.address.slice(0, 2) === "전북" && (
-                <s.Region6>{el?.location?.address.slice(0, 2)}</s.Region6>
+              {el?.location?.address?.slice(0, 2) === "전북" && (
+                <s.Region6>{el?.location?.address?.slice(0, 2)}</s.Region6>
               )}
-              {(el?.location?.address.slice(0, 2) === "전남" ||
-                el?.location?.address.slice(0, 2) === "광주") && (
-                <s.Region7>{el?.location?.address.slice(0, 2)}</s.Region7>
+              {(el?.location?.address?.slice(0, 2) === "전남" ||
+                el?.location?.address?.slice(0, 2) === "광주") && (
+                <s.Region7>{el?.location?.address?.slice(0, 2)}</s.Region7>
               )}
             </s.UpperInfoWrapper>
             <s.Title
