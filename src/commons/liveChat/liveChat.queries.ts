@@ -37,9 +37,9 @@ export const FETCH_USER_CHAT_ROOM = gql`
         id
         nickName
       }
-      board {
-        id
-      }
+      # board {
+      #   id
+      # }
     }
   }
 `;

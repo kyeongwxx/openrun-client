@@ -31,8 +31,7 @@ export const UPDATE_BOARD = gql`
       title
       contents
       price
-      eventDay
-      eventTime
+      dueDate
       category {
         name
       }
