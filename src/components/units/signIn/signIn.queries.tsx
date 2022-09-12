@@ -15,7 +15,7 @@ export const FETCH_LOGIN_USER = gql`
       phone
       point
       # rating
-      # profileImg
+      profileImg
       isAdmin
       # bankAccount
       report

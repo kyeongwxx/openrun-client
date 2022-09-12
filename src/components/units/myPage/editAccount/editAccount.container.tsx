@@ -1,27 +1,47 @@
 import { useMutation } from "@apollo/client";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { userInfo } from "os";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
+
 import {
   IMutation,
   IMutationUpdateLoginUserArgs,
 } from "../../../../commons/types/generated/types";
+import { schema } from "../../../../commons/yup/updateUserAccount";
 import { userInfoValue } from "../../../commons/store";
+
 import EditAccountUI from "./editAccount.presenter";
 import { UPDATE_LOGIN_USER } from "./editAccount.queries";
 
 export default function EditAccount() {
+  const [fileUrls, setFileUrls] = useState([""]);
+  const [userInfo, setUserInfo] = useRecoilState(userInfoValue);
+
   const [updateLoginUser] = useMutation<
     Pick<IMutation, "updateLoginUser">,
     IMutationUpdateLoginUserArgs
   >(UPDATE_LOGIN_USER);
   const { register, handleSubmit, getValues, formState } = useForm({
-    // resolver: yupResolver(schema),
+    resolver: yupResolver(schema),
     mode: "onChange",
   });
-  const [userInfo, setUserInfo] = useRecoilState(userInfoValue);
-  const onClickEdit = async (data) => {
-    // if (getValues("email")) updateUserInput.email = email;
+
+  useEffect(() => {
+    if (userInfo?.profileImg) {
+      setFileUrls([userInfo?.profileImg]);
+    }
+  }, [userInfo?.profileImg]);
+
+  const onChangeFileUrls = (fileUrl: string, index: number) => {
+    const newFileUrls = [...fileUrls];
+    newFileUrls[index] = fileUrl;
+    setFileUrls(newFileUrls);
+  };
+
+  const onClickEdit = async () => {
+    if (!getValues("password")) return;
     try {
       const result = await updateLoginUser({
         variables: {
@@ -30,15 +50,21 @@ export default function EditAccount() {
             password: getValues("password"),
             nickName: getValues("nickname"),
             phone: getValues("phone"),
+            profileImg: fileUrls[0],
           },
         },
       });
-      console.log(result);
+      if (result) {
+        // console.log(result);
+        location.replace(`/myPage/`);
+      }
     } catch (error) {
       console.log(error);
     }
   };
-  const onClickCancel = () => {};
+  const onClickCancel = () => {
+    location.replace(`/myPage/`);
+  };
   return (
     <EditAccountUI
       register={register}
@@ -46,6 +72,8 @@ export default function EditAccount() {
       formState={formState}
       onClickEdit={onClickEdit}
       onClickCancel={onClickCancel}
+      onChangeFileUrls={onChangeFileUrls}
+      fileUrls={fileUrls}
     />
   );
 }

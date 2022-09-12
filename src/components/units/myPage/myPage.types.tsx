@@ -12,4 +12,6 @@ export interface IEditAccountProps {
   formState: FormState<FieldValues>;
   onClickEdit: SubmitHandler<FieldValues>;
   onClickCancel: () => void;
+  fileUrls: string[];
+  onChangeFileUrls: (arg0: string) => void;
 }

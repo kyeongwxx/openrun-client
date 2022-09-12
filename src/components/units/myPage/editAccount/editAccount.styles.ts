@@ -23,12 +23,14 @@ export const MainWrapper = styled.section`
   }
 `;
 
-export const ProfileImg = styled.img`
+export const ProfileImg = styled.div`
   width: 334px;
   height: 334px;
   border-radius: 50%;
 
-  background-color: yellow;
+  background-color: #fff;
+  border: 1px solid #333;
+  object-fit: contain;
   @media (max-width: 767px) {
     width: 200px;
     height: 200px;

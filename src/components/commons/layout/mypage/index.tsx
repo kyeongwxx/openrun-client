@@ -13,13 +13,20 @@ export default function LayoutMyPage() {
   const onClickMoveToPage = (event: string) => () => {
     router.push(event);
   };
-  // const { data } = useQuery(FETCH_WRITE_BOARDS);
+  const { data } = useQuery(FETCH_WRITE_BOARDS);
 
   return (
     <s.Wrapper>
       <s.ProfileWrapper>
         <s.ProfileUser>
-          <s.ProfileImg />
+          {userInfo?.profileImg ? (
+            <s.ProfileImg
+              src={`https://storage.googleapis.com/openrun-storage/${userInfo?.profileImg}`}
+            />
+          ) : (
+            <s.ProfileImg src={`/img/smile.png`} />
+          )}
+
           <s.ProfileDetail width="70%">
             <s.Text size="1.5rem" color="#333" weight="400">
               {userInfo?.nickName}님, 오늘의 일정이 1건 있습니다.
@@ -33,7 +40,7 @@ export default function LayoutMyPage() {
         <s.UserDetail>
           <s.userInfoNumbers>
             <s.Text size="1.5rem" color="#333" weight="700">
-              {/* {data ? data?.fetchWriteBoards.length : 0} */}
+              {data ? data?.fetchWriteBoards.length : 0}
             </s.Text>
             <s.Text size="0.7rem" color="#333" weight="400">
               작성한 게시글

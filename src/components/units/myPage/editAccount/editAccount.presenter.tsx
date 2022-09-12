@@ -1,8 +1,10 @@
 import { useRecoilState } from "recoil";
 import BlackButton from "../../../../commons/button/black";
 import WhiteButton from "../../../../commons/button/white";
+import YupWarningMsg from "../../../../commons/div/yupWarningMsg";
 import EditInput from "../../../../commons/input/edit";
 import SignInput from "../../../../commons/input/sign";
+import Upload from "../../../../commons/uploads/Uploads.container";
 import { userInfoValue } from "../../../commons/store";
 import { IEditAccountProps } from "../myPage.types";
 import * as s from "./editAccount.styles";
@@ -13,7 +15,13 @@ export default function EditAccountUI(props: IEditAccountProps) {
     <s.Wrapper>
       <form onSubmit={props.handleSubmit(props.onClickEdit)}>
         <s.MainWrapper>
-          <s.ProfileImg />
+          {/* <s.ProfileImg /> */}
+          <Upload
+            fileUrl={props.fileUrls[0]}
+            onChangeFileUrls={props.onChangeFileUrls}
+            index={0}
+          />
+
           <s.ProfileInfo>
             <s.ProfileInfoDetail>
               <s.Title>로그인 정보</s.Title>
@@ -36,6 +44,9 @@ export default function EditAccountUI(props: IEditAccountProps) {
                 type="password"
                 defaultValue=""
               />
+              <YupWarningMsg
+                errormsg={props.formState.errors.password?.message}
+              />
 
               <EditInput
                 register={props.register}
@@ -45,6 +56,9 @@ export default function EditAccountUI(props: IEditAccountProps) {
                 name="passwordCheck"
                 type="password"
                 defaultValue=""
+              />
+              <YupWarningMsg
+                errormsg={props.formState.errors.passwordCheck?.message}
               />
             </s.ProfileInfoDetail>
             <s.ProfileInfoDetail>
@@ -58,6 +72,9 @@ export default function EditAccountUI(props: IEditAccountProps) {
                 type="text"
                 defaultValue={userInfo?.nickName}
               />
+              <YupWarningMsg
+                errormsg={props.formState.errors.nickname?.message}
+              />
 
               <EditInput
                 register={props.register}
@@ -68,6 +85,7 @@ export default function EditAccountUI(props: IEditAccountProps) {
                 type="text"
                 defaultValue={userInfo?.phone}
               />
+              <YupWarningMsg errormsg={props.formState.errors.phone?.message} />
             </s.ProfileInfoDetail>
           </s.ProfileInfo>
         </s.MainWrapper>

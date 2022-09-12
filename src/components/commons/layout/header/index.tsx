@@ -6,14 +6,14 @@ import { useRouter } from "next/router";
 
 export default function LayoutHeader() {
   const router = useRouter();
-  const onClickMoveToPage = (event: string) => () => {
-    router.push(event);
+  const onClickMoveToPage = () => {
+    location.replace("/main/");
   };
   return (
     <s.Wrapper>
       <s.MenuWrapper>
         <s.Logo>
-          <Logo onClick={onClickMoveToPage("/main")} />
+          <Logo onClick={onClickMoveToPage} />
         </s.Logo>
         <s.MenuList>
           <s.Menu>LIST</s.Menu>

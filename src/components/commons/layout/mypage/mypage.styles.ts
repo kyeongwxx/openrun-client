@@ -34,11 +34,12 @@ export const ProfileUser = styled.div`
   }
 `;
 
-export const ProfileImg = styled.div`
-  background-color: yellow;
+export const ProfileImg = styled.img`
+  background-color: #fff;
   width: 100px;
   height: 100px;
   border-radius: 50%;
+  object-fit: contain;
 
   @media (max-width: 767px) {
     width: 35px;
