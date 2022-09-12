@@ -209,9 +209,6 @@ export const CustomSlider = styled(Slider)`
     position: absolute;
     height: 50px;
 
-    bottom: -10px;
-    /* background-color: yellow; */
-
     display: block;
 
     width: 100%;
@@ -297,7 +294,7 @@ export const CustomSlider = styled(Slider)`
   }
 
   .ft-slick__dots--custom {
-    height: 10px;
+    height: 5px;
     width: 100px;
     background-color: #e5e7e9;
 
@@ -307,6 +304,8 @@ export const CustomSlider = styled(Slider)`
 
   .slick-dots li {
     width: 100px;
+    height: 5px;
+
     margin: 0 2px;
     transition: width 0.3s ease-in-out;
   }
@@ -318,12 +317,13 @@ export const CustomSlider = styled(Slider)`
 
   .slick-dots .slick-active .ft-slick__dots--custom {
     width: 100px;
+    height: 5px;
+
     top: 0px;
     overflow: hidden;
 
     .loading {
-      height: 10px;
-      /* animation: loading 1.5s ease-in; */
+      height: 5px;
       animation: loading 1.5s ease-in;
       background-image: linear-gradient(270deg, #2f88e5, #5920d3);
       display: inline-block;
