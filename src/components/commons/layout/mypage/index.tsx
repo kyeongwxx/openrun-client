@@ -13,7 +13,7 @@ export default function LayoutMyPage() {
   const onClickMoveToPage = (event: string) => () => {
     router.push(event);
   };
-  const { data } = useQuery(FETCH_WRITE_BOARDS);
+  // const { data } = useQuery(FETCH_WRITE_BOARDS);
 
   return (
     <s.Wrapper>
@@ -33,7 +33,7 @@ export default function LayoutMyPage() {
         <s.UserDetail>
           <s.userInfoNumbers>
             <s.Text size="1.5rem" color="#333" weight="700">
-              {data ? data?.fetchWriteBoards.length : 0}
+              {/* {data ? data?.fetchWriteBoards.length : 0} */}
             </s.Text>
             <s.Text size="0.7rem" color="#333" weight="400">
               작성한 게시글
