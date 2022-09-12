@@ -1,10 +1,11 @@
 import * as S from "./liveChat.styles";
 import { v4 as uuidv4 } from "uuid";
+import { AiOutlineArrowUp } from "react-icons/ai";
 
 export default function LiveChatUI(props: any) {
   return (
     <S.TalkWrapper onSubmit={props.handleSubmit(props.onSendMessage)}>
-      <S.TalkHeader />
+      <S.TalkHeader>채팅</S.TalkHeader>
       <S.TalkContents>
         {props.data?.fetchChatLogs.map((el: any) => (
           <div key={uuidv4()}>
@@ -37,20 +38,25 @@ export default function LiveChatUI(props: any) {
           </div>
         ))}
       </S.TalkContents>
-      {props.accessToken ? (
-        <S.TalkWrite
-          onClick={props.onClickCreate}
-          placeholder="궁금한 점을 물어보세요! 실시간으로 답변해드립니다!"
-          onKeyDown={props.onKeyDown}
-          type="text"
-          {...props.register("message", { required: true })}
-        />
-      ) : (
-        <S.TalkWrite
-          placeholder="로그인 후 채팅이 가능합니다!"
-          disabled={true}
-        />
-      )}
+      <S.SendWrapper>
+        {props.accessToken ? (
+          <S.TalkWrite
+            onClick={props.onClickCreate}
+            placeholder="메세지를 입력해주세요."
+            onKeyDown={props.onKeyDown}
+            type="text"
+            {...props.register("message", { required: true })}
+          />
+        ) : (
+          <S.TalkWrite
+            placeholder="로그인 후 채팅이 가능합니다."
+            disabled={true}
+          />
+        )}
+        <S.SendBtn type="submit">
+          <AiOutlineArrowUp size={22} />
+        </S.SendBtn>
+      </S.SendWrapper>
     </S.TalkWrapper>
   );
 }

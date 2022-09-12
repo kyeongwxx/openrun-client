@@ -81,6 +81,7 @@ export default function LiveChat() {
     socket.emit("send", `first${router.query.id}`, nickName, message);
     resetField("message");
     await delay(100);
+
     return messagesEndRef?.current?.scrollIntoView({
       behavior: "smooth",
       block: "nearest",

@@ -36,7 +36,6 @@ export default function BoardDetailUI(props: any) {
   };
   return (
     <s.Wrapper>
-      <LiveChat />
       <s.ProductWrapper>
         <s.ImageWrapper>
           <s.Image
@@ -92,11 +91,11 @@ export default function BoardDetailUI(props: any) {
             <s.DetailText>자세히 보기</s.DetailText>
           </s.PenaltyWrapper>
           <s.BtnsWrapper>
-            <s.ChatBtn>
-              <s.ChatCnt>1</s.ChatCnt>
+            <s.ChatBtn onClick={props.openCloseModal}>
               <s.ChatIcon src="/boardDetail/Chat.png" />
               {props.isPc && <s.ChatText>채팅하기</s.ChatText>}
             </s.ChatBtn>
+            {props.showModal ? <LiveChat /> : null}
             <s.PickBtn>찜하기</s.PickBtn>
             <s.ApplyBtn type="button" onClick={props.onClickApply}>
               신청하기
