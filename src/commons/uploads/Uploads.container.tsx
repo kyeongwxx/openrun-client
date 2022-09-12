@@ -24,6 +24,7 @@ export default function Upload(props) {
       alert(error.message);
     }
   };
+
   return (
     <UploadUI
       fileRef={fileRef}
