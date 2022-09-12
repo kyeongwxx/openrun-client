@@ -12,6 +12,7 @@ export const AdCarousel = styled.img`
   height: 700px;
   object-fit: contain;
   background-color: ${(props) => props.color};
+  transition: all 0.5s;
   @media (max-width: 767px) {
     height: 300px;
   }

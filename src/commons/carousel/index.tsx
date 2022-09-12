@@ -5,6 +5,7 @@ import React from "react";
 import Slider from "react-slick";
 import * as s from "./carousel.styles";
 import { ICarouselProps } from "./carousel.types";
+import { CustomSlider } from "./slicCustom.styles";
 
 export default function MainSlider(props: ICarouselProps) {
   const settings = {
@@ -14,20 +15,21 @@ export default function MainSlider(props: ICarouselProps) {
     slidesToScroll: 1,
     autoplay: true,
     speed: 1000,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 1500,
     cssEase: "linear",
+    appendDots: (dots: any) => <ul> {dots} </ul>,
 
-    // dots: true,
-    // infinite: true,
-    // speed: 500,
-    // slidesToShow: 1,
-    // slidesToScroll: 1,
+    customPaging: (i) => (
+      <div className="ft-slick__dots--custom">
+        <div className="loading" />
+      </div>
+    ),
   };
   return (
-    <Slider {...settings}>
+    <CustomSlider {...settings}>
       <s.AdCarousel src={props.Src} color="#8be1f2" />
       <s.AdCarousel />
       <s.AdCarousel />
-    </Slider>
+    </CustomSlider>
   );
 }
