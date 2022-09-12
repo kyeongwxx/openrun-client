@@ -1,24 +1,30 @@
 import { atom, selector } from "recoil";
 import { getAccessToken } from "../../../commons/function/getAccessToken";
 import dayjs, { Dayjs } from "dayjs";
+import { v1 } from "uuid";
+
+export const visitedPageState = atom({
+  key: `visitedPageState/${v1()}`,
+  default: "/",
+});
 
 export const accessTokenState = atom({
-  key: "accessTokenState",
+  key: `accessTokenState/${v1()}`,
   default: "",
 });
 
 export const selectorValue = atom({
-  key: "selectorState",
+  key: `selectorState/${v1()}`,
   default: "",
 });
 
 export const selectorValues = atom({
-  key: "selectorValues",
+  key: `selectorValues/${v1()}`,
   default: [],
 });
 
 export const userInfoValue = atom({
-  key: "userInfo",
+  key: `userInfo/${v1()}`,
   default: {
     id: "",
     email: "",
@@ -42,7 +48,7 @@ export const logoutState = atom({
 });
 
 export const restoreAccessTokenLoadable = selector({
-  key: "restoreAccessTokenLoadable",
+  key: `restoreAccessTokenLoadable/${v1()}`,
   get: async () => {
     const newAccessToken = await getAccessToken();
 
@@ -51,15 +57,15 @@ export const restoreAccessTokenLoadable = selector({
 });
 
 export const dayState = atom({
-  key: "dayState",
+  key: `dayState/${v1()}`,
   default: new Date(),
 });
 
 export const timeState = atom({
-  key: "timeState",
+  key: `timeState/${v1()}`,
   default: dayjs("2014-08-18T00:00:00"),
 });
 export const openValue = atom({
-  key: "openState",
+  key: `openState/${v1()}`,
   default: false,
 });

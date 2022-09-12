@@ -1,19 +1,26 @@
+import InfiniteScroll from "react-infinite-scroller";
 import * as s from "./eventInfoDetail.styles";
+import { IEventInfoDetailUI } from "./eventInfoDetail.types";
 
-export default function EventInfoDetailUI() {
+export default function EventInfoDetailUI(props: IEventInfoDetailUI) {
   return (
     <>
       <s.Wrapper>
         <s.ItemWrapper>
           <s.ItemImg src="/img/Rectangle 114.png" />
+          {/* {props.image}  */}
           <s.ItemInfoBox>
             <s.PlanTitle>오픈런 일정</s.PlanTitle>
-            <s.Brand>NIKE</s.Brand>
-            <s.Event>나이키 DD1391-100 선출시</s.Event>
-            <s.Time>2022.09.16 am10:00</s.Time>
+            <s.Brand>{props.data?.fetchEvent?.id}NIKE</s.Brand>
+            <s.Event>
+              {props.data?.fetchEvent?.title}나이키 DD1391-100 선출시
+            </s.Event>
+            <s.Time>{props.data?.fetchEvent?.period}2022.09.16 am10:00</s.Time>
             <s.PlaceTitle>장소</s.PlaceTitle>
-            <s.Store>홍대 나이키</s.Store>
-            <s.StoreDetail>서울시 마포구 홍익로 23</s.StoreDetail>
+            {/* <s.Store>{props.location}홍대 나이키</s.Store> */}
+            <s.StoreDetail>
+              {props.data?.fetchEvent?.location}서울시 마포구 홍익로 23
+            </s.StoreDetail>
             <s.PriceBox>
               <s.Price>169,000원</s.Price>
             </s.PriceBox>
@@ -23,6 +30,7 @@ export default function EventInfoDetailUI() {
         <s.InfoWrapper>
           <s.InfoTitle>행사정보</s.InfoTitle>
           <s.Information>
+            {props.data?.fetchEvent?.contents}
             2 0 2 2 . 0 9 . 16
             <br />
             1 1 : 0 0 A M <br />
@@ -63,21 +71,29 @@ export default function EventInfoDetailUI() {
             <s.InfoImg4 src="/img/Rectangle 137.png" />
           </s.ImgBox>
           <s.InfoImg5 src="/img/Rectangle 135.png" />
-          <s.MoveToSiteBtn>사이트로 이동하기</s.MoveToSiteBtn>
+          <s.MoveToSiteBtn href={`${props.el?.urlRedirect}`}>
+            사이트로 이동하기
+          </s.MoveToSiteBtn>
         </s.InfoWrapper>
         <s.WithItemWrapper>
           <s.WithItemTitle>With Item</s.WithItemTitle>
           <s.WithItemSubTitle>함께 보면 좋은 상품</s.WithItemSubTitle>
         </s.WithItemWrapper>
-        <s.WithItemBox>
-          <s.WithItemImg src="/img/Rectangle 38.png" />
-          <s.WithItemImg />
-          <s.WithItemImg />
-          <s.WithItemImg />
-          <s.WithItemImg />
-
-          {/* <s.NewImg src="/img/Group 1.png" /> */}
-        </s.WithItemBox>
+        <InfiniteScroll
+          pageStart={0}
+          loadMore={props.ToloadFunc}
+          hasMore={true}
+          useWindow={true}
+        >
+          <s.WithItemBox>
+            <s.WithItemImg src="/img/Rectangle 38.png" />
+            <s.WithItemImg />
+            <s.WithItemImg />
+            <s.WithItemImg />
+            <s.WithItemImg />
+            {/* <s.NewImg src="/img/Group 1.png" /> */}
+          </s.WithItemBox>
+        </InfiniteScroll>
       </s.Wrapper>
     </>
   );
