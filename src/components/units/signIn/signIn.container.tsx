@@ -11,7 +11,7 @@ import {
 import { schema } from "../../../commons/yup/signIn";
 import { useRecoilState } from "recoil";
 import { userInfoValue } from "../../commons/store";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 
 export default function SignIn() {
   const client = useApolloClient();
@@ -53,9 +53,8 @@ export default function SignIn() {
 
       setUserInfo(userInfo);
       if (userInfo) {
-        alert("로그인성공");
-
-        router.push(`/myPage`);
+        // reload();
+        location.replace(`/myPage`);
       } else {
         alert("로그인실패");
       }

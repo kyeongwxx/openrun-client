@@ -1,4 +1,3 @@
-import { Avatar } from "@mui/material";
 import * as s from "./myPage.styles";
 export default function MyPageUI() {
   return (
