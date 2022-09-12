@@ -1,5 +1,7 @@
 import * as s from "./adminInfo.styles";
-export default function AdminInfoUI(props) {
+import { IAdminInfoUIProps } from "./adminInfo.types";
+
+export default function AdminInfoUI(props: IAdminInfoUIProps) {
   return (
     <s.Wrapper>
       <s.Row>
