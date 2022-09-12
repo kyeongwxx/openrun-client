@@ -159,6 +159,7 @@ export const BtnsWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  position: relative;
 `;
 export const ChatBtn = styled.button`
   width: 15%;
@@ -166,21 +167,7 @@ export const ChatBtn = styled.button`
   background: #ffffff;
   border: 1px solid #555;
   border-radius: 16px;
-  position: relative;
-`;
-export const ChatCnt = styled.div`
-  width: 17px;
-  height: 17px;
-  border-radius: 8.5px;
-  position: absolute;
-  top: -7%;
-  right: -7%;
-  background: #ff0000;
-  font-weight: 400;
-  font-size: 0.75rem;
-  color: #ffffff;
-  text-align: center;
-  line-height: 17px;
+  cursor: pointer;
 `;
 export const ChatIcon = styled.img`
   width: 50%;

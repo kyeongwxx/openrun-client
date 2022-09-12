@@ -1,5 +1,6 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import MediaQueryMobile from "../../../../commons/mediaQuery/mediaQueryStandardMobile";
 import MediaQueryPc from "../../../../commons/mediaQuery/mediaQueryStandardPc";
 import { FETCH_BOARDS } from "../list/boardList.queries";
@@ -23,6 +24,11 @@ export default function BoardDetail() {
     variables: { boardId: router.query.id },
   });
   console.log(runner);
+  // LiveChat 모달
+  const [showModal, setShowModal] = useState(false);
+  const openCloseModal = () => {
+    setShowModal((prev) => !prev);
+  };
 
   // mediaQuery
   const isMobile = MediaQueryMobile();
@@ -67,6 +73,7 @@ export default function BoardDetail() {
       alert(error.message);
     }
   };
+
   // runner 채택
   const [adoptRunner] = useMutation(ADOPT_RUNNER);
   const onClickAdopt = async () => {
@@ -77,6 +84,7 @@ export default function BoardDetail() {
           boardId: router.query.id,
         },
       });
+      console.log(result);
       alert("runner 채택 성공");
     } catch (error: any) {
       alert(error.message);
@@ -88,6 +96,8 @@ export default function BoardDetail() {
       data={data}
       runner={runner}
       router={router}
+      showModal={showModal}
+      openCloseModal={openCloseModal}
       isMobile={isMobile}
       isPc={isPc}
       onClickMoveToProductEdit={onClickMoveToProductEdit}
