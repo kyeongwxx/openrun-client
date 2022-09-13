@@ -119,6 +119,7 @@ export const BoardImg = styled.img`
   width: 90px;
   height: 90px;
   margin-left: 5px;
+  margin-right: 5px;
 
   border-radius: 20px;
   background-color: aqua;

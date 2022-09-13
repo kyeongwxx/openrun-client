@@ -116,7 +116,7 @@ export const BoardContents = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background-color: yellow;
+
   @media (max-width: 767px) {
     width: 50%;
 
