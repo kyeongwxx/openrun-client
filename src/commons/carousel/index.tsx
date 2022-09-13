@@ -14,9 +14,10 @@ export default function MainSlider(props: ICarouselProps) {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    speed: 1000,
-    autoplaySpeed: 1500,
-    cssEase: "linear",
+    speed: 1500,
+    autoplaySpeed: 2000,
+
+    cssEase: "cubic-bezier(0.535, 0.600, 0.340, 0.785)",
     appendDots: (dots: any) => <ul> {dots} </ul>,
 
     customPaging: (i) => (
