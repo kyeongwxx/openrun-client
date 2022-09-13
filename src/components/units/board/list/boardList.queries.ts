@@ -8,6 +8,9 @@ export const FETCH_BOARDS = gql`
       contents
       price
       dueDate
+      category {
+        name
+      }
       user {
         nickName
       }
