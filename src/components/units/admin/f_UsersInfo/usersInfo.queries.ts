@@ -10,6 +10,7 @@ export const FETCH_USERS = gql`
       createdAt
       boardTotal
       paymentTotal
+      inquiryTotal
     }
   }
 `;

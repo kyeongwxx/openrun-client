@@ -23,6 +23,8 @@
     "@mui/lab": "^5.0.0-alpha.97",
     "@mui/material": "^5.10.3",
     "@mui/x-date-pickers": "^5.0.0",
+    "@terwanerik/scrolltrigger": "^1.0.5",
+    "@types/react-dom": "^18.0.6",
     "animate.css": "^4.1.1",
     "antd": "^4.23.0",
     "apollo-upload-client": "^17.0.0",
