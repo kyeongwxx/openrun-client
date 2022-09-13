@@ -41,7 +41,7 @@ export default function BoardDetailUI(props: any) {
           <s.Image
             src={
               props.data?.fetchBoard?.image[0].url
-                ? `https://storage.googleapis.com/openrun-storage/${props.data?.fetchBoard?.image[0].url}`
+                ? `https://storage.googleapis.com/openrun-storage/${props.data?.fetchBoard?.image[0]?.url}`
                 : "/boardList/default.jpeg"
             }
           />
@@ -57,7 +57,7 @@ export default function BoardDetailUI(props: any) {
               <s.DeleteBtn
                 src="/boardDetail/Delete.png"
                 onClick={props.onClickDelete}
-                id={props.router.query.id}
+                id={props.router.query?.id}
               />
             </s.MutationBtns>
           </s.StatusWrapper>
@@ -80,7 +80,7 @@ export default function BoardDetailUI(props: any) {
           </s.AddressDetail>
           <Map address={props.data?.fetchBoard?.location?.address} />
           <s.Price>
-            {props.data?.fetchBoard?.price.toLocaleString("ko-KR")}원
+            {props.data?.fetchBoard?.price?.toLocaleString("ko-KR")}원
           </s.Price>
           <s.DivideLine />
           <s.PenaltyWrapper>
@@ -132,11 +132,11 @@ export default function BoardDetailUI(props: any) {
             </TabPanel>
             <TabPanel value="2">
               <s.ApplyWrapper>
-                {props.runner?.fetchRunnerByBoard.map((el: any) => (
+                {props.runner?.fetchRunnerByBoard?.map((el: any) => (
                   <s.ApplyList>
                     <s.ApplyItem>
                       <s.RunnerIcon src="/boardDetail/RunnerIcon.png" />
-                      <s.RunnerName>{el.user.nickName}</s.RunnerName>
+                      <s.RunnerName>{el?.user?.nickName}</s.RunnerName>
                       <s.Rating>
                         <s.Star src="/boardDetail/Star.png" />
                       </s.Rating>
