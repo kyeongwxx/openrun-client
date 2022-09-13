@@ -59,6 +59,16 @@ export const FavoriteTitle = styled.div`
   color: #333;
 `;
 
+export const NodataImg = styled.img`
+  width: 80%;
+  height: 100%;
+
+  object-fit: contain;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+`;
+
 export const FavoriteBoards = styled(InfiniteScroll)`
   width: 80%;
   height: 100%;

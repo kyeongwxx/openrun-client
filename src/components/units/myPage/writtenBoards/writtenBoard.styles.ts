@@ -48,7 +48,7 @@ export const ActiveListWrapper = styled.section`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  overflow: auto;
+
   @media (max-width: 767px) {
     flex-direction: column;
   }
@@ -60,15 +60,21 @@ export const ActiveTitle = styled.div`
   font-weight: 700;
   color: #333;
 `;
+export const InfiniteScrollLimit = styled.div`
+  overflow: auto;
+  width: 80%;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+`;
 
 export const ActiveBoards = styled(InfiniteScroll)`
-  width: 80%;
-  height: 100%;
+  width: 100%;
+
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
 
   @media (max-width: 767px) {
     width: 100%;
@@ -76,14 +82,18 @@ export const ActiveBoards = styled(InfiniteScroll)`
 `;
 
 export const ActiveBoard = styled.div`
-  width: 45%;
-  height: 100px;
-  margin: 1%;
-  border-radius: 24px;
+  width: 100%;
+
+  margin: 10px;
+
+  border-radius: 16px;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
+  background-color: rgb(244, 244, 244);
+
+  cursor: pointer;
 
   @media (max-width: 767px) {
     width: 90%;
@@ -94,9 +104,10 @@ export const ActiveBoard = styled.div`
 export const BoardImg = styled.img`
   width: 90px;
   height: 90px;
+  margin-left: 5px;
 
   border-radius: 20px;
-  background-color: aqua;
+  object-fit: contain;
   @media (max-width: 767px) {
     /* width: 60px;
     height: 90px;
@@ -105,14 +116,21 @@ export const BoardImg = styled.img`
 `;
 
 export const BoardContents = styled.div`
-  width: 60%;
+  width: 70%;
   height: 90px;
 
   border-radius: 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background-color: #fafafa;
+
+  @media (max-width: 767px) {
+    font-size: 0.8rem;
+  }
+`;
+export const Status = styled.div`
+  width: 50px;
+
   @media (max-width: 767px) {
     font-size: 0.8rem;
   }
