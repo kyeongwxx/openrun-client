@@ -6,6 +6,7 @@ import MediaQueryPc from "../../../../commons/mediaQuery/mediaQueryStandardPc";
 import { FETCH_BOARDS } from "../list/boardList.queries";
 import BoardDetailUI from "./boardDetail.presenter";
 import {
+  ADD_INTEREST_LIST,
   ADOPT_RUNNER,
   APPLY_RUNNER,
   DELETE_BOARD,
@@ -91,6 +92,19 @@ export default function BoardDetail() {
       alert(error.message);
     }
   };
+  // 찜하기
+  const [addInterestList] = useMutation(ADD_INTEREST_LIST);
+  const onClickAddInterestList = async () => {
+    try {
+      const result = await addInterestList({
+        variables: { boardId: router.query.id },
+      });
+      console.log(result);
+      alert("찜하기 성공");
+    } catch (error: any) {
+      alert(error.message);
+    }
+  };
 
   return (
     <BoardDetailUI
@@ -105,6 +119,7 @@ export default function BoardDetail() {
       onClickDelete={onClickDelete}
       onClickApply={onClickApply}
       onClickAdopt={onClickAdopt}
+      onClickAddInterestList={onClickAddInterestList}
     />
   );
 }

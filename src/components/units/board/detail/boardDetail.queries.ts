@@ -76,3 +76,17 @@ export const FETCH_LOGIN_USER = gql`
     }
   }
 `;
+export const ADD_INTEREST_LIST = gql`
+  mutation addInterestList($boardId: String!) {
+    addInterestList(boardId: $boardId) {
+      id
+      user {
+        id
+        nickName
+      }
+      board {
+        id
+      }
+    }
+  }
+`;

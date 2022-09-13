@@ -96,7 +96,7 @@ export default function BoardDetailUI(props: any) {
               {props.isPc && <s.ChatText>채팅하기</s.ChatText>}
             </s.ChatBtn>
             {props.showModal ? <LiveChat /> : null}
-            <s.PickBtn>찜하기</s.PickBtn>
+            <s.PickBtn onClick={props.onClickAddInterestList}>찜하기</s.PickBtn>
             <s.ApplyBtn type="button" onClick={props.onClickApply}>
               신청하기
             </s.ApplyBtn>
