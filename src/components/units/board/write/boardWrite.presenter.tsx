@@ -5,6 +5,7 @@ import MaterialUIPickers from "../../../../commons/timePicker";
 import Selector from "../../../../commons/selector";
 import Upload from "../../../../commons/uploads/Uploads.container";
 import { v4 as uuidv4 } from "uuid";
+import YupWarningMsg from "../../../../commons/div/yupWarningMsg";
 
 export default function BoardWriteUI(props) {
   return (
@@ -39,12 +40,14 @@ export default function BoardWriteUI(props) {
             placeholder="행사명을 입력해주세요."
             defaultValue={props.data?.fetchBoard.title}
           />
+          <YupWarningMsg errormsg={props.formState.errors.title?.message} />
           <s.PriceInput
             {...props.register("price")}
             type="text"
             placeholder="대행 가격을 입력해주세요."
             defaultValue={props.data?.fetchBoard.price}
           />
+          <YupWarningMsg errormsg={props.formState.errors.price?.message} />
         </s.ProductInfoWrapper>
         <s.ProductDateWrapper>
           <s.ProductDateText>오픈런 일정</s.ProductDateText>
@@ -98,6 +101,7 @@ export default function BoardWriteUI(props) {
                   props.data?.fetchBoard.location?.address ||
                   ""
                 }
+                onChange={props.onChangeAddress}
               />
               <s.AddressDetailInput
                 onChange={props.onChangeAddressDetail}
@@ -116,6 +120,7 @@ export default function BoardWriteUI(props) {
             placeholder="요청사항을 기입해주세요."
             defaultValue={props.data?.fetchBoard.contents}
           />
+          <YupWarningMsg errormsg={props.formState.errors.contents?.message} />
         </s.RequestWrapper>
         <s.ImageUploadWrapper>
           <s.ImageUploadText>이미지 업로드</s.ImageUploadText>
