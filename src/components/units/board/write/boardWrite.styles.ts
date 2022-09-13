@@ -35,7 +35,7 @@ export const TitleInput = styled.input`
   border-radius: 16px;
   border: none;
   padding-left: 1rem;
-  margin: 1rem 0;
+  margin-top: 1rem;
   font-weight: 400;
   font-size: 1.125rem;
 `;
@@ -44,6 +44,7 @@ export const PriceInput = styled.input`
   background: #f7f7f7;
   border-radius: 16px;
   padding-left: 1rem;
+  margin-top: 1rem;
   border: none;
   font-weight: 400;
   font-size: 1.125rem;
@@ -236,6 +237,5 @@ export const MoveBtn = styled.button`
     margin-right: 0;
   }
 `;
-
 export const AddressModal = styled(Modal)``;
 export const AddressSearchInput = styled(DaumPostcode)``;

@@ -15,21 +15,7 @@ import {
 } from "../../../commons/store";
 import MediaQueryMobile from "../../../../commons/mediaQuery/mediaQueryStandardMobile";
 import MediaQueryPc from "../../../../commons/mediaQuery/mediaQueryStandardPc";
-
-const schema = yup.object({
-  // name: yup.string().required("상품명을 입력해주세요."),
-  // remarks: yup.string(),
-  // contents: yup.string().required("상품설명을 입력해주세요."),
-  // price: yup
-  //   .number()
-  //   .typeError("숫자를 입력해주세요.")
-  //   .positive("0이상의 숫자를 입력해주세요.")
-  //   .required("판매가격을 입력해주세요."),
-  // tags: yup
-  //   .string()
-  //   .matches(/(#[^\s#]+)/g, "'#'으로 입력을 시작해주세요.")
-  //   .required("태그를 입력해주세요"),
-});
+import { schema } from "../../../../commons/yup/boardWrite";
 
 export default function BoardWrite(props) {
   const router = useRouter();
