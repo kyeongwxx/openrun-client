@@ -71,15 +71,15 @@ export default function BoardListUI(props) {
                 key={el}
                 src={
                   el?.image[0]?.url
-                    ? `https://storage.googleapis.com/openrun-storage/${el?.image[0].url}`
+                    ? `https://storage.googleapis.com/openrun-storage/${el?.image[0]?.url}`
                     : "/boardList/default.jpeg"
                 }
               />
             </s.ImageWrapper>
             <s.DateWrapper1>
-              <s.Month>{el?.dueDate.slice(6, 7)}</s.Month>
+              <s.Month>{el?.dueDate?.slice(6, 7)}</s.Month>
               <s.DivideLine2 />
-              <s.Day>{el?.dueDate.slice(8, 10)}</s.Day>
+              <s.Day>{el?.dueDate?.slice(8, 10)}</s.Day>
             </s.DateWrapper1>
             <s.PickIconWhite src="/boardList/Bookmark(white).png" />
             <s.UpperInfoWrapper>
@@ -136,7 +136,7 @@ export default function BoardListUI(props) {
             ) : (
               <s.Contents></s.Contents>
             )}
-            <s.Writer>{el?.user.nickName}</s.Writer>
+            <s.Writer>{el?.user?.nickName}</s.Writer>
             <s.Price>{el?.price}</s.Price>
           </s.ProductInfoWrapper>
         ))}

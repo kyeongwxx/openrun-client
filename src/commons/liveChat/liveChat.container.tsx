@@ -24,7 +24,7 @@ export default function LiveChat() {
 
   const messagesEndRef = useRef(null);
 
-  const { data } = useQuery(FETCH_CHAT_LOGS, {
+  const { data, refetch } = useQuery(FETCH_CHAT_LOGS, {
     variables: { room: `first${router.query.id}` },
   });
   console.log(data);
@@ -81,6 +81,7 @@ export default function LiveChat() {
     socket.emit("send", `first${router.query.id}`, nickName, message);
     resetField("message");
     await delay(100);
+    refetch();
 
     return messagesEndRef?.current?.scrollIntoView({
       behavior: "smooth",

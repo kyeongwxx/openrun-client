@@ -14,9 +14,9 @@ export const FETCH_BOARDS = gql`
       category {
         name
       }
-      # location {
-      #   address
-      # }
+      location {
+        address
+      }
       image {
         url
       }

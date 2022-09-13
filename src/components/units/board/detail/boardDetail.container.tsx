@@ -24,6 +24,7 @@ export default function BoardDetail() {
     variables: { boardId: router.query.id },
   });
   console.log(runner);
+
   // LiveChat 모달
   const [showModal, setShowModal] = useState(false);
   const openCloseModal = () => {

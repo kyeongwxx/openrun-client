@@ -8,10 +8,8 @@ const FETCH_BOARD = gql`
       id
       title
       contents
-      status
       price
-      eventDay
-      eventTime
+      dueDate
       category {
         name
       }
@@ -32,6 +30,5 @@ export default function BoardEditPage() {
   const { data } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.id },
   });
-  console.log(router.query.id);
   return <BoardWrite data={data} isEdit={true} />;
 }
