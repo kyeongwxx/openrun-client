@@ -15,4 +15,6 @@ export interface ISignUpProps {
   onClickCheckCertify: (data: any) => Promise<void>;
   onClickPhoneCertify: (data: any) => Promise<void>;
   isOpen: boolean;
+  phoneCertifyFail: boolean;
+  checkCertifyResult: boolean;
 }

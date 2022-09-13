@@ -11,6 +11,7 @@ import {
   IMutationSendTokenToPhoneArgs,
 } from "../../../commons/types/generated/types";
 import { schema } from "../../../commons/yup/signUp";
+import { openValue } from "../../commons/store";
 
 import SignUpUI from "./signUp.presenter";
 import {
@@ -21,6 +22,10 @@ import {
 
 export default function SignUp() {
   const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useRecoilState(openValue);
+  const [phoneCertifyFail, setPhoneCertifyFail] = useState(false);
+  const [checkCertifyResult, setCheckCertifyResult] = useState(false);
+
   const [createUser] = useMutation<
     Pick<IMutation, "createUser">,
     IMutationCreateUserArgs
@@ -73,6 +78,8 @@ export default function SignUp() {
     }
   };
   const onClickCheckCertify = async () => {
+    setPhoneCertifyFail(false);
+    setCheckCertifyResult(false);
     try {
       const result = await checkTokenByPhone({
         variables: {
@@ -80,6 +87,16 @@ export default function SignUp() {
           token: getValues("token"),
         },
       });
+      if (!result.data?.checkTokenByPhone) {
+        setPhoneCertifyFail(true);
+        setOpen(true);
+        return;
+      }
+
+      setOpen(true);
+      setCheckCertifyResult(true);
+
+      console.log(result);
     } catch (error) {
       console.log(error);
     }
@@ -93,6 +110,8 @@ export default function SignUp() {
       onClickCheckCertify={onClickCheckCertify}
       onClickPhoneCertify={onClickPhoneCertify}
       isOpen={isOpen}
+      phoneCertifyFail={phoneCertifyFail}
+      checkCertifyResult={checkCertifyResult}
     />
   );
 }

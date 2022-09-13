@@ -16,10 +16,16 @@ export const Button = styled.button<{ width: string; fontWeight: string }>`
   cursor: pointer;
 `;
 export default function BlackButton(props) {
-  const { onClick, type, title, width, fontWeight } = props;
+  const { onClick, type, title, width, fontWeight, disabled } = props;
 
   return (
-    <Button onClick={onClick} type={type} width={width} fontWeight={fontWeight}>
+    <Button
+      onClick={onClick}
+      type={type}
+      width={width}
+      fontWeight={fontWeight}
+      disabled={disabled}
+    >
       {title}
     </Button>
   );
