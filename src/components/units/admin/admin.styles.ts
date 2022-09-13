@@ -32,10 +32,10 @@ export const InnerWrapper = styled.div`
   }
 `;
 export const Box = styled.div`
-  width: 500px;
+  width: 1000px;
   height: 400px;
 
-  margin-bottom: 10rem;
+  margin-bottom: 15rem;
 
   @media (max-width: 767px) {
     width: 500px;

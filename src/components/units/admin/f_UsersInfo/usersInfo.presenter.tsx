@@ -7,6 +7,7 @@ export default function UsersInfoUI(props: any) {
   console.log(props.data?.fetchUsers);
   return (
     <s.Wrapper>
+      {console.log(props.data)}
       <s.Row>
         {/* <s.ColumnHeader>회원 유형</s.ColumnHeader> */}
         <s.ColumnHeader>id</s.ColumnHeader>
@@ -25,6 +26,7 @@ export default function UsersInfoUI(props: any) {
           {props.data?.fetchUsers.map((el: any) => (
             <s.Row key={el.id}>
               {/* <s.ColumnBasic>{el.isAdmin}</s.ColumnBasic> */}
+              {/* {console.log(`test${JSON.stringify(el)}`)} */}
               <s.ColumnBasic>{el.nickName}</s.ColumnBasic>
               <s.ColumnBasic>{el.email}</s.ColumnBasic>
               <s.ColumnBasic>{getDate(el.createdAt)}</s.ColumnBasic>
@@ -32,7 +34,7 @@ export default function UsersInfoUI(props: any) {
               <s.ColumnBasic>{el.paymentTotal}</s.ColumnBasic>
               <s.ColumnBasic>{el.fetchPayments}</s.ColumnBasic>
             </s.Row>
-          ))}
+          ))}{" "}
         </s.Scroll>
       </InfiniteScroll>
     </s.Wrapper>
