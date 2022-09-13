@@ -15,7 +15,7 @@ export default function MypageDealList() {
     //     if (!fetchMoreResult?.fetchPaymentHistory)
     //       return { fetchPaymentHistory: [...prev.fetchPaymentHistory] };
     //     return {
-    //       fetchWriteBoards: [
+    //       fetchPaymentHistory: [
     //         ...prev.fetchPaymentHistory,
     //         ...fetchMoreResult?.fetchPaymentHistory,
     //       ],

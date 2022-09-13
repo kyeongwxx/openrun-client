@@ -75,6 +75,16 @@ export const FavoriteBoards = styled(InfiniteScroll)`
   }
 `;
 
+export const NoDataImg = styled.img`
+  width: 80%;
+  height: 100%;
+  object-fit: contain;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+`;
+
 export const FavoriteBoard = styled.div`
   width: 100%;
   height: 100px;
@@ -84,7 +94,7 @@ export const FavoriteBoard = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: #fafafa;
+  background-color: rgb(244, 244, 244);
   @media (max-width: 767px) {
     width: 48%;
     height: 180px;
@@ -108,6 +118,7 @@ export const BoardInfoWrapper = styled.div<{ width: string }>`
 export const BoardImg = styled.img`
   width: 90px;
   height: 90px;
+  margin-left: 5px;
 
   border-radius: 20px;
   background-color: aqua;
