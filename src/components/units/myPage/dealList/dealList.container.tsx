@@ -1,9 +1,12 @@
 import { useQuery } from "@apollo/client";
+import { useRecoilState } from "recoil";
 import { IQuery } from "../../../../commons/types/generated/types";
+import { openValue } from "../../../commons/store";
 import MypageDealUI from "./dealList.presenter";
 import { FETCH_PAYMENT_HISTORY } from "./dealList.queries";
 
 export default function MypageDealList() {
+  const [open, setOpen] = useRecoilState(openValue);
   const { data, fetchMore } = useQuery<Pick<IQuery, "fetchPaymentHistory">>(
     FETCH_PAYMENT_HISTORY
   );
@@ -23,8 +26,16 @@ export default function MypageDealList() {
     //   },
     // });
   };
+  const onClickCompleteModal = () => {
+    setOpen(true);
+  };
+  console.log(open);
   console.log(data);
   return (
-    <MypageDealUI data={data?.fetchPaymentHistory} onFetchMore={onFetchMore} />
+    <MypageDealUI
+      data={data?.fetchPaymentHistory}
+      onFetchMore={onFetchMore}
+      onClickCompleteModal={onClickCompleteModal}
+    />
   );
 }

@@ -51,6 +51,7 @@ export const ActiveListWrapper = styled.section`
 
   @media (max-width: 767px) {
     flex-direction: column;
+    justify-content: flex-start;
   }
 `;
 
@@ -60,9 +61,19 @@ export const ActiveTitle = styled.div`
   font-weight: 700;
   color: #333;
 `;
+export const NodataImg = styled.img`
+  width: 80%;
+  height: 100%;
+
+  object-fit: contain;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+`;
 export const InfiniteScrollLimit = styled.div`
   overflow: auto;
   width: 80%;
+
   @media (max-width: 767px) {
     width: 100%;
   }
@@ -96,7 +107,6 @@ export const ActiveBoard = styled.div`
   cursor: pointer;
 
   @media (max-width: 767px) {
-    width: 90%;
     height: 100px;
   }
 `;
