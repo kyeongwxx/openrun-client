@@ -57,7 +57,7 @@ export default function LayoutNavigation() {
         setAccessToken(" ");
         setIsLogout(true);
         // deleteCookie("refreshToken");
-        router.push("/main");
+        // router.push("/main");
       }
     } catch (error) {
       console.log(error);

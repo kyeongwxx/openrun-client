@@ -7,8 +7,11 @@ import { ISignUpProps } from "./signUp.types";
 
 import CheckBox from "../../../commons/checkBox";
 import YupWarningMsg from "../../../commons/div/yupWarningMsg";
+import { openValue } from "../../commons/store";
+import BasicModal from "../../../commons/modal";
 
 export default function SignUpUI(props: ISignUpProps) {
+  const [open, setOpen] = useRecoilState(openValue);
   return (
     <s.Wrapper>
       <s.Title>회원가입</s.Title>
@@ -96,6 +99,7 @@ export default function SignUpUI(props: ISignUpProps) {
         ) : (
           <></>
         )}
+        {console.log(props.checkCertifyResult)}
 
         <BlackButton
           onClick={props.onClickSignUp}
@@ -103,8 +107,22 @@ export default function SignUpUI(props: ISignUpProps) {
           width="100%"
           fontWeight="700"
           title="회원가입"
+          disabled={props.checkCertifyResult ? false : true}
         />
       </form>
+
+      {open ? (
+        <BasicModal
+          title="본인 인증"
+          description={
+            props.phoneCertifyFail
+              ? "본인 인증에 실패했습니다."
+              : "본인 인증에 성공했습니다."
+          }
+        />
+      ) : (
+        <></>
+      )}
     </s.Wrapper>
   );
 }

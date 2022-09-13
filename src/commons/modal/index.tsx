@@ -1,14 +1,12 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
+
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { useRecoilState } from "recoil";
 import { openValue } from "../../components/commons/store";
 import { createTheme } from "@mui/material/styles";
-import { TextField, Paper, AppBar, autocompleteClasses } from "@mui/material";
-import styled from "@emotion/styled";
-import { makeStyles } from "@mui/material";
+
 import * as s from "./style";
 
 export default function BasicModal(props) {
@@ -42,7 +40,6 @@ export default function BasicModal(props) {
 
   return (
     <div>
-      <Button onClick={handleOpen}>버튼</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -52,7 +49,7 @@ export default function BasicModal(props) {
         <s.Box2 sx={style}>
           <s.NavBar
             sx={{
-              backgroundColor: " #8661d5",
+              backgroundImage: "linear-gradient(270deg, #2f88e5, #5920d3)",
             }}
           >
             <Typography id="modal-modal-title" variant="h6" component="h2">
@@ -66,6 +63,7 @@ export default function BasicModal(props) {
           >
             {props.description}
           </Typography>
+          <Button onClick={handleClose}>확인</Button>
         </s.Box2>
       </Modal>
     </div>
