@@ -4,7 +4,7 @@ import {
   IQuery,
   IQueryFetchBoardsArgs,
 } from "../../../../commons/types/generated/types";
-import { FETCH_REPORTS } from "./reports.quries";
+import { FETCH_REPORTS } from "./reports.queries";
 
 export default function Reports() {
   const { data } = useQuery(FETCH_REPORTS);

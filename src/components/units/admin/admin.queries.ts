@@ -7,6 +7,9 @@ export const FETCH_USERS = gql`
       email
       isAdmin
       createdAt
+      boardTotal
+      paymentTotal
+      nickName
     }
   }
 `;

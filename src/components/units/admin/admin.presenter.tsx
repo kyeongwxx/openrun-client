@@ -11,7 +11,7 @@ export default function AdminUI(props) {
       <s.InnerWrapper>
         <s.Box>
           <s.Title>가입자 현황</s.Title>
-
+          <UsersChart />
         </s.Box>
 
         <s.Box>
