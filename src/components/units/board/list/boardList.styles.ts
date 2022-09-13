@@ -7,6 +7,13 @@ export const Wrapper = styled.main`
   flex-direction: column;
   align-items: center;
 `;
+export const InnerWrapper = styled.main`
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export const CategoryWrapper = styled.div`
   display: flex;
@@ -145,7 +152,7 @@ export const UpperInfoWrapper = styled.div`
   align-items: center;
   padding-bottom: 0.563rem;
 `;
-export const Brand = styled.div`
+export const Category = styled.div`
   font-weight: 700;
   font-size: 1rem;
   color: rgba(0, 0, 0, 0.7);
