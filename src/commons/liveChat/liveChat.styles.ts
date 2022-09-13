@@ -34,7 +34,7 @@ export const TalkHeader = styled.div`
 export const TalkContents = styled.div`
   width: 100%;
   height: 450px;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: 20px;
   padding-bottom: 0px;
 `;
@@ -53,6 +53,7 @@ export const Text = styled.div`
   padding: 10px;
   margin-bottom: 15px;
   font-size: 13px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
 export const Left = styled.div`
