@@ -7,7 +7,7 @@ import Upload from "../../../../commons/uploads/Uploads.container";
 import { v4 as uuidv4 } from "uuid";
 import YupWarningMsg from "../../../../commons/div/yupWarningMsg";
 
-export default function BoardWriteUI(props) {
+export default function BoardWriteUI(props: any) {
   return (
     <form
       onSubmit={
