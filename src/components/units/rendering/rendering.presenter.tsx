@@ -2,13 +2,15 @@ import * as s from "./rendering.styles";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useRef } from "react";
 import * as React from "react";
+import { useMoveToPage } from "../../commons/hooks/useMoveToPage";
 
 export default function RenderingUI() {
   const [ref, inView] = useInView({
     // root: null,
-    rootMargin: "600px",
+    rootMargin: "1000px",
     threshold: 0.1,
   });
+  const { onClickMoveToPage } = useMoveToPage();
 
   return (
     <s.Wrapper>
@@ -23,7 +25,9 @@ export default function RenderingUI() {
               오픈런을 이용해보세요
             </s.TextSmall>
           </s.TextBox>
-          <s.MoveToBtn>시작하기</s.MoveToBtn>
+          <s.MoveToBtn onClick={onClickMoveToPage(`/main/`)}>
+            시작하기
+          </s.MoveToBtn>
           <s.ImgDiv className={inView ? "isActive" : ""} ref={ref}>
             <s.ItemImg
               src="/img/queue.png"
@@ -98,7 +102,7 @@ export default function RenderingUI() {
           </s.Box3Wrapper>
         </s.Box3>
 
-        <s.Box2>
+        <s.Box4>
           <s.TextBox>
             <s.TextMid>고객님들의 후기를 들어보세요</s.TextMid>
             <s.TextSmall>
@@ -126,14 +130,16 @@ export default function RenderingUI() {
               ref={ref}
             ></s.ItemImg7>
           </s.ImgDiv5>
-        </s.Box2>
+        </s.Box4>
 
         <s.BottomWrapper>
           <s.BottomMentWrapper>
             <s.Gradation>오픈런</s.Gradation>
             <s.BottomMent>, 지금 바로 시작하세요</s.BottomMent>
           </s.BottomMentWrapper>
-          <s.HomeBtn>홈페이지로 이동하기</s.HomeBtn>
+          <s.HomeBtn onClick={onClickMoveToPage(`/main/`)}>
+            홈페이지로 이동하기
+          </s.HomeBtn>
         </s.BottomWrapper>
       </s.EventWrapper>
     </s.Wrapper>
