@@ -9,6 +9,22 @@ export const Wrapper = styled.main`
     display: none;
   }
 `;
+export const ScrollButton = styled.div`
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  position: fixed;
+  border-radius: 24px;
+  z-index: 90;
+  bottom: 100px;
+  right: 25px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  line-height: 60px;
+  font-weight: 700;
+  color: #333;
+  cursor: pointer;
+`;
 
 export const SelectorWrapper = styled.div`
   width: 200px;
@@ -46,12 +62,20 @@ export const FavoriteListWrapper = styled.section`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
   @media (max-width: 767px) {
     flex-direction: column;
     /* justify-content: space-between; */
   }
 `;
+export const InfiniteScrollLimit = styled.div`
+  overflow: auto;
+  width: 80%;
 
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+`;
 export const FavoriteTitle = styled.div`
   cursor: pointer;
   margin-top: 5px;
@@ -60,7 +84,7 @@ export const FavoriteTitle = styled.div`
 `;
 
 export const FavoriteBoards = styled(InfiniteScroll)`
-  width: 80%;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -94,6 +118,7 @@ export const FavoriteBoard = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
   background-color: rgb(244, 244, 244);
   @media (max-width: 767px) {
     width: 48%;

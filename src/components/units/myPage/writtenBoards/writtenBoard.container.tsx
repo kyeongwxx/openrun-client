@@ -1,18 +1,29 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useRecoilState } from "recoil";
-import { IQuery } from "../../../../commons/types/generated/types";
-import { selectorValue } from "../../../commons/store";
+import { useRef } from "react";
+
+import {
+  IQuery,
+  IQueryFetchWriteBoardsArgs,
+} from "../../../../commons/types/generated/types";
+
 import MypageWrittenBoardsUI from "./writtenBoard.presenter";
 import { FETCH_WRITE_BOARDS } from "./writtenBoard.queries";
 
 export default function MypageWrittenBoards() {
   const router = useRouter();
-  const { data, fetchMore } = useQuery(FETCH_WRITE_BOARDS);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const { data, fetchMore } = useQuery<
+    Pick<IQuery, "fetchWriteBoards">,
+    IQueryFetchWriteBoardsArgs
+  >(FETCH_WRITE_BOARDS);
   console.log(data);
 
   const onClickMoveToDetail = (boardId: string) => () => {
     router.push(`/board/${boardId}`);
+  };
+  const onClickTop = () => {
+    scrollRef.current?.scrollTo({ left: 0, top: 0, behavior: "smooth" });
   };
 
   const onFetchMore = () => {
@@ -38,6 +49,8 @@ export default function MypageWrittenBoards() {
       onFetchMore={onFetchMore}
       data={data?.fetchWriteBoards}
       onClickMoveToDetail={onClickMoveToDetail}
+      onClickTop={onClickTop}
+      scrollRef={scrollRef}
     />
   );
 }

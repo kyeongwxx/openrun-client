@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 import { FETCH_WRITE_BOARDS } from "../../../units/myPage/writtenBoards/writtenBoard.queries";
 import { userInfoValue } from "../../store";

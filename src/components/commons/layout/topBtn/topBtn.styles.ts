@@ -4,7 +4,7 @@ export const Button = styled.div`
   height: 60px;
   background-color: #fff;
   position: fixed;
-  border-radius: 50%;
+  border-radius: 24px;
   z-index: 90;
   bottom: 100px;
   right: 25px;
