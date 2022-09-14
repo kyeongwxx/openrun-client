@@ -116,29 +116,23 @@ export const DateWrapper1 = styled.div`
   position: absolute;
   top: 2%;
   left: 4%;
-  color: #ffffff;
+  border-radius: 24px;
 `;
-export const DateWrapper2 = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  top: 2%;
-  left: 4%;
-  color: #555;
-`;
+
 export const Month = styled.div`
   font-weight: 400;
   font-size: 1.125rem;
+  color: #fff;
 `;
 export const DivideLine2 = styled.div`
-  border-bottom: 2px solid;
+  border-bottom: 2px solid #fff;
   width: 2.156rem;
   margin: 0.5rem 0;
 `;
 export const Day = styled.div`
   font-weight: 700;
   font-size: 1.125rem;
+  color: #fff;
 `;
 export const PickIconWhite = styled.img`
   position: absolute;

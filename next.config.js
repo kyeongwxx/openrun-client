@@ -23,5 +23,11 @@ module.exports = withAntdLess({
     "@primary-color": "#6400FF",
     "@border-radius-base": "16px",
   },
+  lessVarsFilePath: "./styles/variables.less",
+  ...nextConfig,
+
+  future: {
+    webpack5: true,
+  },
   ...nextConfig,
 });

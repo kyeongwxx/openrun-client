@@ -10,6 +10,7 @@ import Map from "../../../../commons/maps-detail/map.container";
 import Dompurify from "dompurify";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import MainSlider from "../../../../commons/carousel";
+import LiveChat from "../../../../commons/liveChat/liveChat.container";
 
 const theme = createTheme({
   components: {

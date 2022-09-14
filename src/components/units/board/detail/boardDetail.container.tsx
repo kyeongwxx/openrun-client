@@ -41,6 +41,13 @@ export default function BoardDetail() {
 
   // 페이지 이동 함수
   const onClickMoveToProductEdit = () => {
+    if (data?.fetchBoard?.user?.id !== login?.fetchLoginUser?.id) {
+      Modal.warning({
+        title: "Warning",
+        content: "권한이 없습니다.",
+      });
+      return;
+    }
     router.push(`/board/${router.query.id}/edit`);
   };
 
@@ -50,7 +57,10 @@ export default function BoardDetail() {
   const onClickDelete = async (event: any) => {
     try {
       if (data?.fetchBoard?.user?.id !== login?.fetchLoginUser?.id) {
-        alert("권한이 없습니다.");
+        Modal.warning({
+          title: "Warning",
+          content: "권한이 없습니다.",
+        });
         return;
       }
       deleteBoard({
@@ -59,7 +69,10 @@ export default function BoardDetail() {
         },
         refetchQueries: [{ query: FETCH_BOARDS }],
       });
-      alert("상품이 삭제되었습니다.");
+      Modal.success({
+        title: "Success",
+        content: "게시물이 삭제되었습니다.",
+      });
       router.push("/board");
     } catch (error: any) {
       console.log(error.message);
@@ -81,7 +94,10 @@ export default function BoardDetail() {
       const result = await applyRunner({
         variables: { boardId: router.query.id },
       });
-      alert("runner 신청 성공");
+      Modal.success({
+        title: "Success",
+        content: "runner 신청이 완료되었습니다.",
+      });
     } catch (error: any) {
       alert(error.message);
     }
@@ -98,7 +114,10 @@ export default function BoardDetail() {
         },
       });
       console.log(result);
-      alert("runner 채택 성공");
+      Modal.success({
+        title: "Success",
+        content: "runner 채택이 완료되었습니다.",
+      });
     } catch (error: any) {
       alert(error.message);
     }
