@@ -2,19 +2,21 @@ import * as s from "./writtenBoard.styles";
 import { v4 as uuidv4 } from "uuid";
 import Selector from "../../../../commons/selector";
 import { dateSplit } from "../../../../commons/function/dateSlice";
-export default function MypageWrittenBoardsUI(props) {
+import { IWrittenBoardsProps } from "../myPage.types";
+export default function MypageWrittenBoardsUI(props: IWrittenBoardsProps) {
   return (
     <s.Wrapper>
       {/* <s.SelectorWrapper>
         <Selector title="정렬하기" sortValue={["1", "2", "3"]} />
       </s.SelectorWrapper> */}
+      <s.Button onClick={props.onClickTop}>Top</s.Button>
 
       <s.ActiveListWrapper>
         <s.ActiveTitle>작성게시글</s.ActiveTitle>
         {props.data?.length === 0 ? (
           <s.NodataImg src="/img/nodata.png" />
         ) : (
-          <s.InfiniteScrollLimit>
+          <s.InfiniteScrollLimit id="scroll" ref={props.scrollRef}>
             <s.ActiveBoards
               pageStart={0}
               loadMore={props.onFetchMore}

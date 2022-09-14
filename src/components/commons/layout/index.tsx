@@ -21,17 +21,19 @@ export default function Layout(props: ILayoutProps) {
     `/myPage/paymentPoint/`,
     `/myPage/writtenBoards/`,
   ];
+  const SHOW_BOARD = ["/board/"];
   const HIDDEN_MYPAGE = ["/"];
 
   const isShowMyPage = SHOW_MYPAGE.includes(router.asPath);
   const IsHidden = HIDDEN_MYPAGE.includes(router.asPath);
+  const isShowBoard = SHOW_BOARD.includes(router.asPath);
   return (
     <s.Wrapper>
       {!IsHidden && <LayoutNavigation />}
       {!IsHidden && <LayoutHeader />}
       <Container maxWidth="xl">
         {isShowMyPage && <LayoutMyPage />}
-        {/* <LayoutTopBtn /> */}
+        {isShowBoard && <LayoutTopBtn />}
 
         <div>{props.children}</div>
       </Container>
