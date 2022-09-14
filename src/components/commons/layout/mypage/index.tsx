@@ -59,7 +59,7 @@ export default function LayoutMyPage() {
           <s.DivideLine />
           <s.userInfoNumbers>
             <s.Text size="1.5rem" color="#333" weight="700">
-              {userInfo?.point}P
+              {userInfo?.point}
             </s.Text>
             <s.Text size="0.7rem" color="#333" weight="400">
               포인트
@@ -67,24 +67,6 @@ export default function LayoutMyPage() {
           </s.userInfoNumbers>
         </s.UserDetail>
       </s.ProfileWrapper>
-      {/* <s.MenuWrapper>
-        <s.Menus>
-          <s.Menu onClick={onClickMoveToPage(`/myPage`)}>MY</s.Menu>
-          <s.Menu onClick={onClickMoveToPage(`/myPage/writtenBoards`)}>
-            작성한게시글
-          </s.Menu>
-          <s.Menu onClick={onClickMoveToPage(`/myPage/paymentPoint`)}>
-            포인트
-          </s.Menu>
-          <s.Menu onClick={onClickMoveToPage(`/myPage/favoriteList`)}>
-            찜목록
-          </s.Menu>
-          <s.Menu onClick={onClickMoveToPage(`/myPage/dealList`)}>
-            거래내역
-          </s.Menu>
-        </s.Menus>
-        <s.DivideLineHorizontal color="#656565" />
-      </s.MenuWrapper> */}
 
       <s.MenuWrapper>
         <CenteredTabs
@@ -97,9 +79,8 @@ export default function LayoutMyPage() {
             "/myPage/dealList",
           ]}
         />
-
-        <s.DivideLineHorizontal color="#656565" />
       </s.MenuWrapper>
+      <s.DivideLineHorizontal color="#656565" />
     </s.Wrapper>
   );
 }

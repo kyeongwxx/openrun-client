@@ -1,9 +1,17 @@
 import styled from "@emotion/styled";
+import { Container } from "@mui/system";
 import Slider from "react-slick";
 
 export const CustomSlider = styled(Slider)`
   /* height: 600px; //슬라이드 컨테이너 영역 */
   overflow: hidden;
+
+  margin: auto;
+
+  border: none;
+  @media (min-width: 1200px) {
+    width: 1165px;
+  }
 
   .slick-list {
     // 부모

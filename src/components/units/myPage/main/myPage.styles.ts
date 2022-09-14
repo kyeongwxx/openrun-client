@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
+import { Container } from "@mui/system";
 
 export const Wrapper = styled.main`
-  width: 95%;
+  width: 100%;
   margin: auto;
 `;
 
@@ -83,12 +84,13 @@ export const Menu = styled.div`
   cursor: pointer;
 `;
 
-export const ActiveListWrapper = styled.section`
+export const ActiveListWrapper = styled(Container)`
   width: 100%;
   height: 400px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin: auto;
 
   @media (max-width: 767px) {
     flex-direction: column;

@@ -16,10 +16,8 @@ export default function MainSlider(props: ICarouselProps) {
     autoplay: true,
     speed: 1500,
     autoplaySpeed: 2000,
-
     cssEase: "cubic-bezier(0.535, 0.600, 0.340, 0.785)",
     appendDots: (dots: any) => <ul> {dots} </ul>,
-
     customPaging: (i) => (
       <div className="ft-slick__dots--custom">
         <div className="loading" />
@@ -29,8 +27,8 @@ export default function MainSlider(props: ICarouselProps) {
   return (
     <CustomSlider {...settings}>
       <s.AdCarousel src={props.Src} color="#8be1f2" />
-      <s.AdCarousel />
-      <s.AdCarousel />
+      <s.AdCarousel src={props.Src} color="#8be1f2" />
+      <s.AdCarousel src={props.Src} color="#8be1f2" />
     </CustomSlider>
   );
 }

@@ -67,19 +67,6 @@ export default function MainUI() {
           </s.CategoryImages>
         </s.BestProductCategory>
       </s.ProductWrapper>
-      {/* <s.ProductWrapper>
-        <s.ProductWrapperText>
-          <s.H1 color="#333">Brand New Items</s.H1>
-          <s.TEXT color="#333">신상품을 한눈에</s.TEXT>
-        </s.ProductWrapperText>
-        <s.NewProductCategory>
-          <s.NewItemsImages>
-            <s.NewItemsImage />
-            <s.NewItemsImage />
-            <s.NewItemsImage />
-          </s.NewItemsImages>
-        </s.NewProductCategory>
-      </s.ProductWrapper> */}
       <s.BannerDiv>
         <s.BannerWrapperText>
           <s.H1 color="#4E6781">러너 1:1 매칭 </s.H1>

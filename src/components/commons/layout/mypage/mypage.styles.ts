@@ -1,14 +1,16 @@
 import styled from "@emotion/styled";
+import { Container } from "@mui/system";
 
 export const Wrapper = styled.main`
-  width: 95%;
+  width: 100%;
   margin: auto;
 `;
 
-export const ProfileWrapper = styled.section`
-  width: 100%;
+export const ProfileWrapper = styled(Container)`
   height: 156px;
   background-color: #f2f2f2;
+
+  margin: auto;
   border-radius: 16px;
   display: flex;
   flex-direction: row;
@@ -118,23 +120,22 @@ export const DivideLine = styled.div`
   height: 40%;
   background-color: rgba(0, 0, 0, 0.2);
 `;
-export const DivideLineHorizontal = styled.div<{ color: string }>`
-  width: 100%;
+export const DivideLineHorizontal = styled(Container)<{ color: string }>`
   height: 1px;
+  margin-bottom: 100px;
+
   background-color: ${(props) => props.color};
+  @media (max-width: 767px) {
+    margin-bottom: 40px;
+  }
 `;
 
-export const MenuWrapper = styled.section`
-  width: 100%;
-  height: 156px;
+export const MenuWrapper = styled(Container)`
+  height: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  @media (max-width: 767px) {
-    height: 100px;
-  }
 `;
 
 export const Menus = styled.div`

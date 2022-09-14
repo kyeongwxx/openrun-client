@@ -1,23 +1,25 @@
 import styled from "@emotion/styled";
+import { Container } from "@mui/system";
 import InfiniteScroll from "react-infinite-scroller";
 
 export const Wrapper = styled.main`
-  width: 95%;
+  width: 100%;
   margin: auto;
 
   ::-webkit-scrollbar {
     display: none;
   }
 `;
-export const PointWrapper = styled.section`
-  width: 100%;
+export const PointWrapper = styled(Container)`
   height: 100px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin: auto;
 
   @media (max-width: 767px) {
     flex-direction: column;
+    width: 100%;
   }
 `;
 
@@ -76,16 +78,21 @@ export const DivideLine = styled.div`
   background-color: rgba(0, 0, 0, 0.2);
 `;
 
-export const DivideLineHorizontal = styled.div<{ color: string }>`
-  width: 100%;
+export const DivideLineHorizontal = styled(Container)<{ color: string }>`
   height: 1px;
   background-color: ${(props) => props.color};
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 
-export const PointHistoriesWrapper = styled.div`
-  width: 100%;
+export const PointHistoriesWrapper = styled(Container)`
   height: 400px;
   overflow: auto;
+  margin: auto;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 
 export const PointHistories = styled(InfiniteScroll)`
@@ -121,9 +128,11 @@ export const None = styled.div`
 `;
 
 export const PaymentWrapper = styled.section`
-  width: 100%;
+  width: 90%;
   height: 400px;
   /* margin-left: 20%; */
+  margin: auto;
+
   display: flex;
   flex-direction: column;
   justify-content: space-around;
