@@ -2,6 +2,7 @@ import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useRef, useState } from "react";
 import { useRecoilState } from "recoil";
+import CenteredTabs from "../../../../commons/tabs";
 import { FETCH_WRITE_BOARDS } from "../../../units/myPage/writtenBoards/writtenBoard.queries";
 import { userInfoValue } from "../../store";
 import * as s from "./mypage.styles";
@@ -66,7 +67,7 @@ export default function LayoutMyPage() {
           </s.userInfoNumbers>
         </s.UserDetail>
       </s.ProfileWrapper>
-      <s.MenuWrapper>
+      {/* <s.MenuWrapper>
         <s.Menus>
           <s.Menu onClick={onClickMoveToPage(`/myPage`)}>MY</s.Menu>
           <s.Menu onClick={onClickMoveToPage(`/myPage/writtenBoards`)}>
@@ -82,6 +83,21 @@ export default function LayoutMyPage() {
             거래내역
           </s.Menu>
         </s.Menus>
+        <s.DivideLineHorizontal color="#656565" />
+      </s.MenuWrapper> */}
+
+      <s.MenuWrapper>
+        <CenteredTabs
+          tabs={["MY", "내가 쓴 글", "포인트", "찜목록", "거래내역"]}
+          address={[
+            "/myPage",
+            "/myPage/writtenBoards",
+            "/myPage/paymentPoint",
+            "/myPage/favoriteList",
+            "/myPage/dealList",
+          ]}
+        />
+
         <s.DivideLineHorizontal color="#656565" />
       </s.MenuWrapper>
     </s.Wrapper>
