@@ -1,6 +1,8 @@
 import { useQuery } from "@apollo/client";
-import { useRef } from "react";
+import { Modal } from "antd";
+import { MouseEventHandler, useRef } from "react";
 import { useRecoilState } from "recoil";
+import CompleteRate from "../../../../commons/rate";
 import { IQuery } from "../../../../commons/types/generated/types";
 import { openValue } from "../../../commons/store";
 import MypageDealUI from "./dealList.presenter";
@@ -31,8 +33,14 @@ export default function MypageDealList() {
     //   },
     // });
   };
-  const onClickCompleteModal = () => {
-    setOpen(true);
+  const onClickCompleteModal = (nickName: string) => () => {
+    Modal.success({
+      title: `${nickName}님 러너 평가`,
+      content: <CompleteRate />,
+      onOk: () => {
+        console.log("dd");
+      },
+    });
   };
   console.log(open);
   console.log(data);

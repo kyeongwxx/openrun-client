@@ -60,7 +60,6 @@ export const FavoriteListWrapper = styled(Container)`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: orange;
 
   @media (max-width: 767px) {
     flex-direction: column;
@@ -70,8 +69,8 @@ export const FavoriteListWrapper = styled(Container)`
 `;
 export const InfiniteScrollLimit = styled.div`
   overflow: auto;
-  /* width: 80%; */
-  background-color: aqua;
+  width: 80%;
+  /* background-color: aqua; */
 
   @media (max-width: 767px) {
     width: 100%;
