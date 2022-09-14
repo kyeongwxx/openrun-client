@@ -72,7 +72,7 @@ export default function BoardWrite(props: any) {
   };
 
   // 파일 업로드
-  const [fileUrls, setFileUrls] = useState(["", ""]);
+  const [fileUrls, setFileUrls] = useState([""]);
   const onChangeFileUrls = (fileUrl: string, index: number) => {
     const newFileUrls = [...fileUrls];
     newFileUrls[index] = fileUrl;

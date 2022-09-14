@@ -4,7 +4,7 @@ import UploadUI from "./Uploads.presenter";
 import { UPLOAD_FILE } from "./Uploads.queries";
 import { checkValidationImages } from "./Uploads.validation";
 
-export default function Upload(props) {
+export default function Upload(props: any) {
   const fileRef = useRef(null);
   const [uploadFile] = useMutation(UPLOAD_FILE);
 
@@ -12,7 +12,7 @@ export default function Upload(props) {
     fileRef.current?.click();
   };
 
-  const onChangeFile = async (event) => {
+  const onChangeFile = async (event: any) => {
     const file = checkValidationImages(event.target.files?.[0]);
     if (!file) return;
 
@@ -20,7 +20,7 @@ export default function Upload(props) {
       const result = await uploadFile({ variables: { file } });
       props.onChangeFileUrls(result.data.uploadFile, props.index);
       console.log(result);
-    } catch (error) {
+    } catch (error: any) {
       alert(error.message);
     }
   };
