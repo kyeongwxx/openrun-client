@@ -1,8 +1,10 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useRecoilState } from "recoil";
 import MediaQueryMobile from "../../../../commons/mediaQuery/mediaQueryStandardMobile";
 import MediaQueryPc from "../../../../commons/mediaQuery/mediaQueryStandardPc";
+import { openValue } from "../../../commons/store";
 import { FETCH_BOARDS } from "../list/boardList.queries";
 import BoardDetailUI from "./boardDetail.presenter";
 import {
@@ -25,6 +27,9 @@ export default function BoardDetail() {
     variables: { boardId: router.query.id },
   });
   console.log(runner);
+
+  // 알림창 모달
+  const [open, setOpen] = useRecoilState(openValue);
 
   // LiveChat 모달
   const [showModal, setShowModal] = useState(false);
@@ -66,6 +71,11 @@ export default function BoardDetail() {
   // runner 신청
   const [applyRunner] = useMutation(APPLY_RUNNER);
   const onClickApply = async () => {
+    if (data.fetchBoard.user.id === login.fetchLoginUser.id) {
+      setOpen(true);
+      return;
+    }
+
     try {
       const result = await applyRunner({
         variables: { boardId: router.query.id },

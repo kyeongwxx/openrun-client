@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import BoardWriteUI from "./boardWrite.presenter";
-import * as yup from "yup";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { CREATE_BOARD, UPDATE_BOARD } from "./boardWrite.queries";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
@@ -17,7 +16,7 @@ import MediaQueryMobile from "../../../../commons/mediaQuery/mediaQueryStandardM
 import MediaQueryPc from "../../../../commons/mediaQuery/mediaQueryStandardPc";
 import { schema } from "../../../../commons/yup/boardWrite";
 
-export default function BoardWrite(props) {
+export default function BoardWrite(props: any) {
   const router = useRouter();
   const [accessToken] = useRecoilState(accessTokenState);
 
@@ -31,9 +30,9 @@ export default function BoardWrite(props) {
   const isPc = MediaQueryPc();
 
   // selector, calendar, timePicker 라이브러리 global state
-  const [sortValue, setSortValue] = useRecoilState(selectorValue);
-  const [dayValue, setDayValue] = useRecoilState(dayState);
-  const [timeValue, setTimeValue] = useRecoilState(timeState);
+  const [sortValue] = useRecoilState(selectorValue);
+  const [dayValue] = useRecoilState(dayState);
+  const [timeValue] = useRecoilState(timeState);
 
   console.log(`sortValue : ${sortValue}`);
   console.log(`dayValue : ${String(dayValue).slice(0, 15)}`);
@@ -88,7 +87,7 @@ export default function BoardWrite(props) {
 
   // 게시물 등록 함수
   const [createBoard] = useMutation(CREATE_BOARD);
-  const onClickCreate = async (data) => {
+  const onClickCreate = async (data: any) => {
     try {
       const result = await createBoard({
         variables: {
@@ -112,7 +111,7 @@ export default function BoardWrite(props) {
       console.log(data);
       alert("게시물 등록 성공");
       router.push(`/board/${result.data.createBoard.id}`);
-    } catch (error) {
+    } catch (error: any) {
       alert(error.message);
       if (!accessToken) router.push("/signIn");
     }
