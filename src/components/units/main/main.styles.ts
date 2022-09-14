@@ -1,27 +1,18 @@
 import styled from "@emotion/styled";
+import { Container } from "@mui/system";
 
 export const Wrapper = styled.main`
-  width: 95%;
-  margin: auto;
+  width: 100%;
 `;
 
-export const DateCarousel = styled.section`
-  width: 90%;
-  height: 143px;
-  margin: auto;
-  margin-top: 3%;
-  margin-bottom: 3%;
-`;
-
-export const EventProductWrapper = styled.section`
-  width: 90%;
+export const EventProductWrapper = styled(Container)`
   height: 600px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   overflow-y: scroll;
   justify-content: center;
-  margin: auto;
+
   ::-webkit-scrollbar {
     display: none;
   }
@@ -83,10 +74,9 @@ export const TEXT = styled.div`
   }
 `;
 
-export const ProductWrapper = styled.section`
-  width: 90%;
+export const ProductWrapper = styled(Container)`
   height: 690px;
-  margin: auto;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -97,14 +87,13 @@ export const ProductWrapper = styled.section`
   }
 `;
 
-export const ProductWrapperText = styled.div`
+export const ProductWrapperText = styled(Container)`
   text-align: center;
 `;
-export const BannerImg = styled.div<{
+export const BannerImg = styled(Container)<{
   height: string;
   url: string;
 }>`
-  width: 100%;
   height: ${(props) => props.height};
   background-image: url(${(props) => props.url});
   background-repeat: no-repeat;
@@ -113,6 +102,7 @@ export const BannerImg = styled.div<{
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: aliceblue;
 
   @media (max-width: 767px) {
     background-size: contain;
@@ -154,15 +144,16 @@ export const BestRunner = styled.div`
   }
 `;
 
-export const BannerDiv = styled.div`
-  width: 100%;
+export const BannerDiv = styled(Container)`
   height: 420px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: #d2e0ec;
+  margin: auto;
   margin-bottom: 100px;
+
   @media (max-width: 767px) {
     height: 100px;
     margin-bottom: 30px;
@@ -240,7 +231,7 @@ export const NewItemsImage = styled.img`
   width: 33%;
   margin: 1%;
   border-radius: 24px;
-  background-color: orange;
+
   @media (max-width: 767px) {
     width: 100%;
     height: 300px;
@@ -254,7 +245,6 @@ export const BannerWrapperText = styled.div`
 `;
 
 export const NewsCategory = styled.div`
-  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: row;
@@ -272,7 +262,7 @@ export const NewsImages = styled.div<{ justify: string }>`
 `;
 
 export const NewsImage = styled.div`
-  width: 95%;
+  width: 100%;
   height: 40%;
   border-radius: 24px;
   margin-top: 30px;

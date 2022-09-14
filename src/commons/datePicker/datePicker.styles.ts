@@ -1,22 +1,20 @@
 import styled from "@emotion/styled";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+import { Container } from "@mui/system";
 
-export const Wrapper = styled.main`
-  width: 95%;
-  margin: auto;
-`;
+export const Wrapper = styled.main``;
 
-export const Carousel = styled.section`
+export const Carousel = styled(Container)`
   width: 100%;
   height: 143px;
-  margin: auto;
+
   margin-top: 3%;
   margin-bottom: 3%;
 `;
 
 export const ButtonWrapper = styled.div`
-  width: 90%;
+  width: 100%;
   height: 143px;
   margin: auto;
   display: flex;

@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { useRouter } from "next/router";
+import * as s from "./tabs.styles";
 
 export default function CenteredTabs(props) {
   const [value, setValue] = useState(0);
@@ -18,11 +19,17 @@ export default function CenteredTabs(props) {
 
   return (
     <>
-      <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
-        <Tabs value={value} onChange={handleChange} centered>
+      {/* <Box sx={{ width: "100%", bgcolor: "background.paper" }}> */}
+      <s.BoxCustom>
+        <s.TabsCustom
+          variant="scrollable"
+          value={value}
+          onChange={handleChange}
+          centered
+        >
           {props.tabs.map((el, index) =>
             props.address ? (
-              <Tab
+              <s.TabCustom
                 label={el}
                 onClick={onClickMoveToPage(props.address[index])}
               />
@@ -30,8 +37,8 @@ export default function CenteredTabs(props) {
               <Tab label={el} />
             )
           )}
-        </Tabs>
-      </Box>
+        </s.TabsCustom>
+      </s.BoxCustom>
     </>
   );
 }

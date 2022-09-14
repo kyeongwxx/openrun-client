@@ -33,6 +33,9 @@ export const MenuList = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  @media (max-width: 767px) {
+    width: 30%;
+  }
 `;
 
 export const MenuIcon = styled.div`

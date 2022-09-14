@@ -1,10 +1,9 @@
 import styled from "@emotion/styled";
+import { Container } from "@mui/system";
 import InfiniteScroll from "react-infinite-scroller";
 
 export const Wrapper = styled.main`
-  width: 95%;
-  margin: auto;
-
+  width: 100%;
   ::-webkit-scrollbar {
     display: none;
   }
@@ -56,21 +55,23 @@ export const DivideLineHorizontal = styled.div<{ color: string }>`
   background-color: ${(props) => props.color};
 `;
 
-export const FavoriteListWrapper = styled.section`
-  width: 100%;
+export const FavoriteListWrapper = styled(Container)`
   height: 400px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  background-color: orange;
 
   @media (max-width: 767px) {
     flex-direction: column;
+
     /* justify-content: space-between; */
   }
 `;
 export const InfiniteScrollLimit = styled.div`
   overflow: auto;
-  width: 80%;
+  /* width: 80%; */
+  background-color: aqua;
 
   @media (max-width: 767px) {
     width: 100%;

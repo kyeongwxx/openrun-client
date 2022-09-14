@@ -1,8 +1,9 @@
 import styled from "@emotion/styled";
+import { Container } from "@mui/system";
 import InfiniteScroll from "react-infinite-scroller";
 
 export const Wrapper = styled.main`
-  width: 95%;
+  width: 100%;
   margin: auto;
 
   ::-webkit-scrollbar {
@@ -40,15 +41,15 @@ export const DivideLineHorizontal = styled.div<{ color: string }>`
   background-color: ${(props) => props.color};
 `;
 
-export const FavoriteListWrapper = styled.section`
-  width: 100%;
+export const FavoriteListWrapper = styled(Container)`
   height: 400px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  margin: auto;
   @media (max-width: 767px) {
     flex-direction: column;
-    /* justify-content: space-between; */
   }
 `;
 
@@ -62,7 +63,6 @@ export const FavoriteTitle = styled.div`
 export const NodataImg = styled.img`
   width: 80%;
   height: 100%;
-
   object-fit: contain;
   @media (max-width: 767px) {
     width: 100%;
@@ -98,20 +98,12 @@ export const FavoriteBoard = styled.div`
 export const BoardImg = styled.img`
   width: 90px;
   height: 90px;
-
   border-radius: 20px;
-  background-color: aqua;
-  @media (max-width: 767px) {
-    /* width: 60px;
-    height: 90px;
-    border-radius: 10px; */
-  }
 `;
 
 export const BoardContents = styled.div`
   width: 60%;
   height: 90px;
-
   border-radius: 20px;
   display: flex;
   flex-direction: column;

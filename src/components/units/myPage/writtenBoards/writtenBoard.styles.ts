@@ -1,8 +1,9 @@
 import styled from "@emotion/styled";
+import { Container } from "@mui/system";
 import InfiniteScroll from "react-infinite-scroller";
 
 export const Wrapper = styled.main`
-  width: 95%;
+  width: 100%;
   margin: auto;
 
   ::-webkit-scrollbar {
@@ -58,7 +59,7 @@ export const DivideLineHorizontal = styled.div<{ color: string }>`
   background-color: ${(props) => props.color};
 `;
 
-export const ActiveListWrapper = styled.section`
+export const ActiveListWrapper = styled(Container)`
   width: 100%;
   height: 400px;
   display: flex;
