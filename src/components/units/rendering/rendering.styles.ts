@@ -34,8 +34,7 @@ export const EventWrapper = styled.div`
 
 export const Box = styled.div`
   width: 100%;
-  /* height: 40%; */
-
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -43,10 +42,15 @@ export const Box = styled.div`
 
   @media (max-width: 767px) {
     width: 1000px;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+  @media (max-height: 737px) {
+    height: 67rem;
+    margin-top: -8rem;
   }
 `;
 export const Box2 = styled.div`
@@ -101,19 +105,26 @@ export const Box4 = styled.div`
 `;
 export const MoveToBtn = styled.button`
   width: 15rem;
-  height: 2.8rem;
+  height: 10rem;
   border-radius: 14px;
 
   margin-bottom: 3rem;
-  margin-top: 1.5rem;
+  margin-top: -2.5rem;
   background: linear-gradient(93.72deg, #5920d3 0%, #2f88e5 99.32%);
+
   color: #fff;
-  font-weight: 400;
+  font-weight: 700;
+  font-size: 1.1rem;
   border: none;
   cursor: pointer;
 
   @media (max-width: 767px) {
-    width: 8rem;
+    width: 10rem;
+    height: 9rem;
+    margin-top: -5rem;
+  }
+  @media (max-height: 737px) {
+    margin-top: -8rem;
   }
 `;
 export const ImgInfoBox = styled.div`
@@ -146,6 +157,8 @@ export const ImgDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+
+  margin-bottom: -5rem;
   .isActive {
     animation: fadeInUp;
     animation-duration: 1s;
@@ -278,13 +291,11 @@ export const TextBox = styled.div`
   margin-top: 3rem;
   margin-bottom: 1rem;
   @media (max-width: 767px) {
-    /* margin-left: 1rem; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  // border: 1px solid blue;
 `;
 
 export const TextWrapper = styled.div`
@@ -321,7 +332,7 @@ export const GrayLine = styled.div`
 export const TextMid = styled.div`
   font-weight: 700;
   font-size: 1.7rem;
-  margin-bottom: 5px;
+  margin-bottom: 1rem;
   @media (max-width: 767px) {
     font-size: 1.3rem;
   }
@@ -338,9 +349,8 @@ export const TextBig = styled.div`
 export const TextSmall = styled.div`
   color: #555;
   font-weight: 400;
-  font-size: 20px;
-  font-size: 0.8rem;
-  width: 400px;
+  font-size: 1rem;
+  width: 1000px;
   text-align: center;
   margin-top: 20px;
 `;
@@ -383,9 +393,9 @@ export const HomeBtn = styled.div`
   width: 15rem;
   height: 4rem;
   border-radius: 15px;
-  border: 1px solid #000;
-  background-color: #fff;
-
+  border: none;
+  background: linear-gradient(93.72deg, #5920d3 0%, #2f88e5 99.32%);
+  color: #fff;
   font-weight: 800;
 
   display: flex;
