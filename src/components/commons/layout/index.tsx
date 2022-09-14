@@ -6,20 +6,13 @@ import LayoutHeader from "./header";
 import * as s from "./layoutMain.styles";
 import LayoutMyPage from "./mypage";
 import LayoutNavigation from "./navigation";
+import LayoutTopBtn from "./topBtn";
 interface ILayoutProps {
   children: ReactNode;
 }
 
 export default function Layout(props: ILayoutProps) {
   const router = useRouter();
-
-  // const SHOW_MYPAGE = [
-  //   "/myPage",
-  //   `/myPage/dealList/${router.query.id}`,
-  //   `/myPage/favoriteList/${router.query.id}`,
-  //   `/myPage/pointPayment/${router.query.id}`,
-  //   `/myPage/writtenBoards/${router.query.id}`,
-  // ];
 
   const SHOW_MYPAGE = [
     "/myPage/",
@@ -38,6 +31,7 @@ export default function Layout(props: ILayoutProps) {
       {!IsHidden && <LayoutHeader />}
       <Container maxWidth="xl">
         {isShowMyPage && <LayoutMyPage />}
+        {/* <LayoutTopBtn /> */}
 
         <div>{props.children}</div>
       </Container>
