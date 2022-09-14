@@ -1,10 +1,8 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { useRecoilState } from "recoil";
 import MediaQueryMobile from "../../../../commons/mediaQuery/mediaQueryStandardMobile";
 import MediaQueryPc from "../../../../commons/mediaQuery/mediaQueryStandardPc";
-import { openValue } from "../../../commons/store";
 import { FETCH_BOARDS } from "../list/boardList.queries";
 import BoardDetailUI from "./boardDetail.presenter";
 import {
