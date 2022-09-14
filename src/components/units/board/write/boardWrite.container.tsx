@@ -15,6 +15,7 @@ import {
 import MediaQueryMobile from "../../../../commons/mediaQuery/mediaQueryStandardMobile";
 import MediaQueryPc from "../../../../commons/mediaQuery/mediaQueryStandardPc";
 import { schema } from "../../../../commons/yup/boardWrite";
+import { Modal } from "antd";
 
 export default function BoardWrite(props: any) {
   const router = useRouter();
@@ -109,7 +110,10 @@ export default function BoardWrite(props: any) {
       });
       console.log(result);
       console.log(data);
-      alert("게시물 등록 성공");
+      Modal.success({
+        title: "Success",
+        content: "게시물 등록이 완료되었습니다.",
+      });
       router.push(`/board/${result.data.createBoard.id}`);
     } catch (error: any) {
       alert(error.message);
@@ -119,6 +123,7 @@ export default function BoardWrite(props: any) {
 
   // 게시물 수정 함수
   const [updateBoard] = useMutation(UPDATE_BOARD);
+
   const onClickUpdate = async (data: any) => {
     try {
       const result = await updateBoard({
@@ -141,7 +146,10 @@ export default function BoardWrite(props: any) {
         },
       });
       console.log(data);
-      alert("게시물 수정 성공");
+      Modal.success({
+        title: "Success",
+        content: "게시물 수정이 완료되었습니다.",
+      });
       router.push(`/board/${result.data?.updateBoard.id}`);
     } catch (error: any) {
       console.log(error.message);

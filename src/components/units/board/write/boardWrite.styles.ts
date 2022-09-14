@@ -72,6 +72,13 @@ export const CalenderWrapper = styled.div`
   }
   padding-bottom: 3.75rem;
 `;
+export const TimePickerWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+export const DateGuide = styled.div`
+  margin-top: 1rem;
+`;
 export const ProductDateWrapper = styled.div`
   margin-top: 3.75rem;
 `;

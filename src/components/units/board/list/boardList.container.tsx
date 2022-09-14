@@ -27,7 +27,7 @@ export default function BoardList() {
     if (!data) return;
 
     fetchMore({
-      variables: { page: Math.ceil(data?.fetchBoards.length / 10) + 1 },
+      variables: { page: Math.ceil(data?.fetchBoards.length / 12) + 1 },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult.fetchBoards)
           return { fetchBoards: [...prev.fetchBoards] };
@@ -38,6 +38,7 @@ export default function BoardList() {
       },
     });
   };
+  console.log(data);
 
   // search 함수
   // const [keyword, setKeyword] = useState("");
