@@ -44,8 +44,8 @@ export default function BoardListUI(props: any) {
               <TabList
                 onChange={handleChange}
                 centered
-                textColor="secondary"
-                indicatorColor="secondary"
+                textColor="primary"
+                indicatorColor="primary"
                 aria-label="secondary tabs example"
               >
                 <Tab label="ALL" value="1" />

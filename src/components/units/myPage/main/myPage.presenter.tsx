@@ -13,7 +13,7 @@ export default function MyPageUI() {
       </s.ActiveListWrapper>
       <s.DivideLineHorizontal color="#F2F2F2" />
       <s.ActiveListWrapper>
-        <s.ActiveTitle>채딩중인 대화</s.ActiveTitle>
+        <s.ActiveTitle>채팅중인 대화</s.ActiveTitle>
         <s.ActiveImages>
           <s.ActiveImage height="150px" />
           <s.ActiveImage height="150px" />
