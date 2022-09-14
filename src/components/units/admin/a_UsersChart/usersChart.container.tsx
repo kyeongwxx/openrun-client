@@ -20,7 +20,7 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-import { FETCH_USERS_COUNT } from "./usersChart.queries";
+import { FETCH_USERS_COUNT_BY_DATE } from "./usersChart.queries";
 import { useQuery } from "@apollo/client";
 import { IQuery } from "../../../../commons/types/generated/types";
 import moment from "moment";
@@ -34,13 +34,9 @@ export const options = {
     },
     title: {
       display: true,
-      // text: "Chart.js Line Chart",
     },
   },
 };
-
-// const { data } = useQuery<Pick<IQuery, "fetchUsersCount">IQuery>(FETCH_USERS_COUNT);
-//fetchUsersCount에 일자별 요소가 없기때문에 일자별로 데이터를 받아올 수 없다.
 
 const labels = Array(14)
   .fill(0)
@@ -56,7 +52,7 @@ export const data = {
       label: "신규 유저 가입 수",
       data: [10, 60, 30, 40, 28, 5, 70, 80, 15, 2, 50, 40, 25, 42],
       // data: labels.map(() =>
-      //   data?.fetchUsersCount.number({ min: 0, max: 100 })
+      //   data?.fetchUsersCountByDate.number({ min: 0, max: 100 })
       // ),
       borderColor: "rgb(255, 99, 132)",
       backgroundColor: "rgba(255, 99, 132, 0.5)",
@@ -65,5 +61,15 @@ export const data = {
 };
 
 export default function UsersChart() {
-  return <Line options={options} data={data} />;
+  // const number = useQuery<Pick<IQuery, "fetchUsersCountByDate">>(
+  //   FETCH_USERS_COUNT_BY_DATE
+  // );
+
+  return (
+    <Line
+      options={options}
+      data={data}
+      // number={number}
+    />
+  );
 }
