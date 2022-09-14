@@ -62,9 +62,8 @@ export const Box2 = styled.div`
   background-color: #eef9ff;
 
   @media (max-width: 767px) {
-    width: 800px;
-    display: flex;
-    flex-direction: column;
+    height: 55rem;
+    padding-top: 3rem;
   }
 `;
 export const Box3 = styled.div`
@@ -78,22 +77,39 @@ export const Box3 = styled.div`
   margin-bottom: 20rem;
   margin-top: 5rem;
   @media (max-width: 767px) {
-    width: 300px;
     display: flex;
     flex-direction: column;
+    padding-bottom: -10rem;
   }
 `;
+export const Box4 = styled.div`
+  width: 100%;
+  height: 60rem;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  //padding-bottom: 10rem;
+  background-color: #eef9ff;
+
+  @media (max-width: 767px) {
+    height: 100rem;
+    padding-top: 3rem;
+  }
+`;
 export const MoveToBtn = styled.button`
   width: 15rem;
   height: 2.8rem;
   border-radius: 14px;
-  margin-bottom: 40px;
+
+  margin-bottom: 3rem;
+  margin-top: 1.5rem;
   background: linear-gradient(93.72deg, #5920d3 0%, #2f88e5 99.32%);
   color: #fff;
   font-weight: 400;
   border: none;
-
   cursor: pointer;
 
   @media (max-width: 767px) {
@@ -106,9 +122,19 @@ export const ImgInfoBox = styled.div`
   justify-content: flex-start;
   padding-right: 10rem;
   margin-top: -5rem;
+
+  @media (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 3rem;
+    margin-left: 3rem;
+  }
 `;
 
 export const Box3Wrapper = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -116,7 +142,10 @@ export const Box3Wrapper = styled.div`
 `;
 export const ImgDiv = styled.div`
   width: auto;
-  /* height: 1000px; */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   .isActive {
     animation: fadeInUp;
     animation-duration: 1s;
@@ -143,36 +172,45 @@ export const ImgDiv4 = styled.div`
   }
 `;
 export const ImgDiv5 = styled.div`
-  width: auto;
-  padding-bottom: 9rem;
+  width: 100%;
+  padding-bottom: 14rem;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
   .isActive {
     animation: fadeInUp;
     animation-duration: 5s;
   }
+  @media (max-width: 767px) {
+    flex-direction: column;
+    margin-right: 5.5rem;
+  }
 `;
 export const ItemImg = styled.img`
-  width: 42rem;
-
+  width: 45rem;
   margin-bottom: 14rem;
   .isActive {
     animation: fadeInUp;
     animation-duration: 1s;
   }
   @media (max-width: 767px) {
-    width: 800px;
+    width: 35rem;
   }
 `;
 export const ItemImg2 = styled.img`
   width: 52rem;
   margin-top: 3rem;
   border-radius: 15px;
+
   .isActive {
     animation: fadeInLeft;
     animation-duration: 2s;
   }
   @media (max-width: 767px) {
-    width: 400px;
-
+    width: 35rem;
     margin-left: 6rem;
   }
 `;
@@ -180,7 +218,7 @@ export const ItemImg3 = styled.img`
   width: 50rem;
 
   @media (max-width: 767px) {
-    width: 400px;
+    width: 30rem;
     margin-left: 6rem;
   }
 `;
@@ -226,6 +264,7 @@ export const ImgWrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-right: 6rem;
   }
 `;
 export const TextBox = styled.div`
@@ -255,15 +294,22 @@ export const TextWrapper = styled.div`
   justify-content: center;
 
   margin-left: 6rem;
+  @media (max-width: 767px) {
+  }
 `;
 export const TextComponent = styled.div`
   font-size: 1.25rem;
   font-weight: 600;
 
-  padding-top: 50px;
-  margin-bottom: 50px;
+  padding-top: 3rem;
+  margin-bottom: 3rem;
   display: flex;
   flex-direction: row;
+  @media (max-width: 767px) {
+    font-size: 1rem;
+    padding-top: 2rem;
+    margin-bottom: 2rem;
+  }
 `;
 export const GrayLine = styled.div`
   width: 380px;
@@ -322,9 +368,16 @@ export const Gradation = styled.div`
   color: transparent;
   background: linear-gradient(93.72deg, #5920d3 0%, #2f88e5 99.32%);
   -webkit-background-clip: text;
+
+  @media (max-width: 767px) {
+    font-size: 2.5rem;
+  }
 `;
 export const BottomMent = styled.div`
   font-size: 3.5rem;
+  @media (max-width: 767px) {
+    font-size: 2.5rem;
+  }
 `;
 export const HomeBtn = styled.div`
   width: 15rem;
@@ -339,6 +392,8 @@ export const HomeBtn = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  @media (max-width: 767px) {
+    font-size: 1rem;
+  }
   cursor: pointer;
 `;
