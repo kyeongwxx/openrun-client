@@ -16,6 +16,7 @@ import {
   FETCH_LOGIN_USER,
   FETCH_RUNNER_BY_BOARD,
 } from "./boardDetail.queries";
+import { Modal } from "antd";
 
 export default function BoardDetail() {
   const router = useRouter();
@@ -27,9 +28,6 @@ export default function BoardDetail() {
     variables: { boardId: router.query.id },
   });
   console.log(runner);
-
-  // 알림창 모달
-  const [open, setOpen] = useRecoilState(openValue);
 
   // LiveChat 모달
   const [showModal, setShowModal] = useState(false);
@@ -72,7 +70,10 @@ export default function BoardDetail() {
   const [applyRunner] = useMutation(APPLY_RUNNER);
   const onClickApply = async () => {
     if (data.fetchBoard.user.id === login.fetchLoginUser.id) {
-      setOpen(true);
+      Modal.warning({
+        title: "Warning",
+        content: "본인이 작성한 게시글에는 신청이 제한됩니다.",
+      });
       return;
     }
 
