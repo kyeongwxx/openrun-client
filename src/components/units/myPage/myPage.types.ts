@@ -23,7 +23,8 @@ export interface IEditAccountProps {
 
 export interface IDealListProps {
   onFetchMore: () => void;
-  onClickCompleteModal: () => void;
+  onClickCompleteModal: (nickName: string) => () => void;
+
   onClickTop: () => void;
   scrollRef: RefObject<HTMLDivElement>;
   data?: IPaymentHistory[];

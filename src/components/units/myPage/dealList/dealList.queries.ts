@@ -6,9 +6,15 @@ export const FETCH_PAYMENT_HISTORY = gql`
       id
       price
       status
+      # user {
+      #   id
+      #   nickName
+      # }
+
       board {
         title
         dueDate
+        status
         image {
           url
         }
