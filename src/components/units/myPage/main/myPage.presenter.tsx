@@ -1,7 +1,8 @@
 import * as s from "./myPage.styles";
-export default function MyPageUI() {
+export default function MyPageUI(props) {
   return (
     <s.Wrapper>
+      <s.Button onClick={props.onClickTop} />
       <s.ActiveListWrapper>
         <s.ActiveTitle>거래중인 제품</s.ActiveTitle>
         <s.ActiveImages>
@@ -34,3 +35,4 @@ export default function MyPageUI() {
     </s.Wrapper>
   );
 }
+//id="scroll" ref={scrollRef}
