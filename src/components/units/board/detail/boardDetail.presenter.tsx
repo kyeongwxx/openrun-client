@@ -9,8 +9,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Map from "../../../../commons/maps-detail/map.container";
 import Dompurify from "dompurify";
 import { AiOutlineCheckCircle } from "react-icons/ai";
-import MainSlider from "../../../../commons/carousel";
 import LiveChat from "../../../../commons/liveChat/liveChat.container";
+import { ImHeart } from "react-icons/im";
 
 const theme = createTheme({
   components: {
@@ -41,7 +41,7 @@ export default function BoardDetailUI(props: any) {
         <s.ImageWrapper>
           <s.Image
             src={
-              props.data?.fetchBoard?.image[0].url
+              props.data?.fetchBoard?.image?.url
                 ? `https://storage.googleapis.com/openrun-storage/${props.data?.fetchBoard?.image[0]?.url}`
                 : "/boardList/default.jpeg"
             }
@@ -97,7 +97,21 @@ export default function BoardDetailUI(props: any) {
               {props.isPc && <s.ChatText>채팅하기</s.ChatText>}
             </s.ChatBtn>
             {props.showModal ? <LiveChat /> : null}
-            <s.PickBtn onClick={props.onClickAddInterestList}>찜하기</s.PickBtn>
+            {props.interestedBoard?.length ? (
+              <s.PickBtn onClick={props.onClickAddInterestList}>
+                <s.PickText>
+                  찜해제
+                  <ImHeart style={{ color: "#e35c61" }} />
+                </s.PickText>
+              </s.PickBtn>
+            ) : (
+              <s.PickBtn onClick={props.onClickAddInterestList}>
+                <s.PickText>
+                  찜하기
+                  <ImHeart style={{ color: "gray" }} />
+                </s.PickText>
+              </s.PickBtn>
+            )}
             <s.ApplyBtn type="button" onClick={props.onClickApply}>
               신청하기
             </s.ApplyBtn>

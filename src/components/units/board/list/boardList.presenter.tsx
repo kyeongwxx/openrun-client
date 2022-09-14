@@ -113,8 +113,8 @@ export default function BoardListUI(props: any) {
                         <s.ProductImage
                           key={el}
                           src={
-                            el?.image[0]?.url
-                              ? `https://storage.googleapis.com/openrun-storage/${el?.image[0]?.url}`
+                            el?.image?.url
+                              ? `https://storage.googleapis.com/openrun-storage/${el?.image?.url}`
                               : "/boardList/default.jpeg"
                           }
                         />
@@ -124,7 +124,13 @@ export default function BoardListUI(props: any) {
                         <s.DivideLine2 />
                         <s.Day>{el?.dueDate?.slice(8, 10)}</s.Day>
                       </s.DateWrapper1>
-                      <s.PickIconWhite src="/boardList/Bookmark(white).png" />
+                      {props.interestedId?.fetchInterestBoardId?.includes(
+                        el.id
+                      ) ? (
+                        <s.PickIconWhite src="/boardList/Bookmark(black).png" />
+                      ) : (
+                        <s.PickIconWhite src="/boardList/Bookmark(white).png" />
+                      )}
                       <s.UpperInfoWrapper>
                         <s.Category>{el?.category?.name}</s.Category>
                         {(el?.location?.address?.slice(0, 2) === "서울" ||
@@ -268,8 +274,8 @@ export default function BoardListUI(props: any) {
                           <s.ProductImage
                             key={el}
                             src={
-                              el?.image[0]?.url
-                                ? `https://storage.googleapis.com/openrun-storage/${el?.image[0]?.url}`
+                              el?.image?.url
+                                ? `https://storage.googleapis.com/openrun-storage/${el?.image?.url}`
                                 : "/boardList/default.jpeg"
                             }
                           />
@@ -279,7 +285,13 @@ export default function BoardListUI(props: any) {
                           <s.DivideLine2 />
                           <s.Day>{el?.dueDate?.slice(8, 10)}</s.Day>
                         </s.DateWrapper1>
-                        <s.PickIconWhite src="/boardList/Bookmark(white).png" />
+                        {props.interestedId?.fetchInterestBoardId?.includes(
+                          el.id
+                        ) ? (
+                          <s.PickIconWhite src="/boardList/Bookmark(black).png" />
+                        ) : (
+                          <s.PickIconWhite src="/boardList/Bookmark(white).png" />
+                        )}
                         <s.UpperInfoWrapper>
                           <s.Category>{el?.category?.name}</s.Category>
                           {(el?.location?.address?.slice(0, 2) === "서울" ||
@@ -426,8 +438,8 @@ export default function BoardListUI(props: any) {
                           <s.ProductImage
                             key={el}
                             src={
-                              el?.image[0]?.url
-                                ? `https://storage.googleapis.com/openrun-storage/${el?.image[0]?.url}`
+                              el?.image?.url
+                                ? `https://storage.googleapis.com/openrun-storage/${el?.image?.url}`
                                 : "/boardList/default.jpeg"
                             }
                           />
@@ -437,7 +449,13 @@ export default function BoardListUI(props: any) {
                           <s.DivideLine2 />
                           <s.Day>{el?.dueDate?.slice(8, 10)}</s.Day>
                         </s.DateWrapper1>
-                        <s.PickIconWhite src="/boardList/Bookmark(white).png" />
+                        {props.interestedId?.fetchInterestBoardId?.includes(
+                          el.id
+                        ) ? (
+                          <s.PickIconWhite src="/boardList/Bookmark(black).png" />
+                        ) : (
+                          <s.PickIconWhite src="/boardList/Bookmark(white).png" />
+                        )}
                         <s.UpperInfoWrapper>
                           <s.Category>{el?.category?.name}</s.Category>
                           {(el?.location?.address?.slice(0, 2) === "서울" ||
@@ -584,8 +602,8 @@ export default function BoardListUI(props: any) {
                           <s.ProductImage
                             key={el}
                             src={
-                              el?.image[0]?.url
-                                ? `https://storage.googleapis.com/openrun-storage/${el?.image[0]?.url}`
+                              el?.image?.url
+                                ? `https://storage.googleapis.com/openrun-storage/${el?.image?.url}`
                                 : "/boardList/default.jpeg"
                             }
                           />
@@ -595,7 +613,13 @@ export default function BoardListUI(props: any) {
                           <s.DivideLine2 />
                           <s.Day>{el?.dueDate?.slice(8, 10)}</s.Day>
                         </s.DateWrapper1>
-                        <s.PickIconWhite src="/boardList/Bookmark(white).png" />
+                        {props.interestedId?.fetchInterestBoardId?.includes(
+                          el.id
+                        ) ? (
+                          <s.PickIconWhite src="/boardList/Bookmark(black).png" />
+                        ) : (
+                          <s.PickIconWhite src="/boardList/Bookmark(white).png" />
+                        )}
                         <s.UpperInfoWrapper>
                           <s.Category>{el?.category?.name}</s.Category>
                           {(el?.location?.address?.slice(0, 2) === "서울" ||
@@ -742,8 +766,8 @@ export default function BoardListUI(props: any) {
                           <s.ProductImage
                             key={el}
                             src={
-                              el?.image[0]?.url
-                                ? `https://storage.googleapis.com/openrun-storage/${el?.image[0]?.url}`
+                              el?.image?.url
+                                ? `https://storage.googleapis.com/openrun-storage/${el?.image?.url}`
                                 : "/boardList/default.jpeg"
                             }
                           />
@@ -753,7 +777,13 @@ export default function BoardListUI(props: any) {
                           <s.DivideLine2 />
                           <s.Day>{el?.dueDate?.slice(8, 10)}</s.Day>
                         </s.DateWrapper1>
-                        <s.PickIconWhite src="/boardList/Bookmark(white).png" />
+                        {props.interestedId?.fetchInterestBoardId?.includes(
+                          el.id
+                        ) ? (
+                          <s.PickIconWhite src="/boardList/Bookmark(black).png" />
+                        ) : (
+                          <s.PickIconWhite src="/boardList/Bookmark(white).png" />
+                        )}
                         <s.UpperInfoWrapper>
                           <s.Category>{el?.category?.name}</s.Category>
                           {(el?.location?.address?.slice(0, 2) === "서울" ||
@@ -900,8 +930,8 @@ export default function BoardListUI(props: any) {
                           <s.ProductImage
                             key={el}
                             src={
-                              el?.image[0]?.url
-                                ? `https://storage.googleapis.com/openrun-storage/${el?.image[0]?.url}`
+                              el?.image?.url
+                                ? `https://storage.googleapis.com/openrun-storage/${el?.image?.url}`
                                 : "/boardList/default.jpeg"
                             }
                           />
@@ -911,7 +941,13 @@ export default function BoardListUI(props: any) {
                           <s.DivideLine2 />
                           <s.Day>{el?.dueDate?.slice(8, 10)}</s.Day>
                         </s.DateWrapper1>
-                        <s.PickIconWhite src="/boardList/Bookmark(white).png" />
+                        {props.interestedId?.fetchInterestBoardId?.includes(
+                          el.id
+                        ) ? (
+                          <s.PickIconWhite src="/boardList/Bookmark(black).png" />
+                        ) : (
+                          <s.PickIconWhite src="/boardList/Bookmark(white).png" />
+                        )}
                         <s.UpperInfoWrapper>
                           <s.Category>{el?.category?.name}</s.Category>
                           {(el?.location?.address?.slice(0, 2) === "서울" ||

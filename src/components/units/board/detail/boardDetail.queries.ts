@@ -78,12 +78,12 @@ export const FETCH_LOGIN_USER = gql`
 `;
 export const ADD_INTEREST_LIST = gql`
   mutation addInterestList($boardId: String!) {
-    addInterestList(boardId: $boardId) {
-      id
-      user {
-        id
-        nickName
-      }
+    addInterestList(boardId: $boardId)
+  }
+`;
+export const FETCH_INTEREST_BOARDS = gql`
+  query fetchInterestBoards {
+    fetchInterestBoards {
       board {
         id
       }

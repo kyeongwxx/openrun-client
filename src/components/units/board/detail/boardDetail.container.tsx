@@ -11,6 +11,7 @@ import {
   APPLY_RUNNER,
   DELETE_BOARD,
   FETCH_BOARD,
+  FETCH_INTEREST_BOARDS,
   FETCH_LOGIN_USER,
   FETCH_RUNNER_BY_BOARD,
 } from "./boardDetail.queries";
@@ -21,11 +22,11 @@ export default function BoardDetail() {
   const { data } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.id },
   });
-  console.log(data);
+  // console.log(data);
   const { data: runner } = useQuery(FETCH_RUNNER_BY_BOARD, {
     variables: { boardId: router.query.id },
   });
-  console.log(runner);
+  // console.log(runner);
 
   // LiveChat 모달
   const [showModal, setShowModal] = useState(false);
@@ -122,17 +123,37 @@ export default function BoardDetail() {
   };
   // 찜하기
   const [addInterestList] = useMutation(ADD_INTEREST_LIST);
+  const { data: interested } = useQuery(FETCH_INTEREST_BOARDS);
+  const interestedBoard = interested?.fetchInterestBoards.filter(
+    (el: any) => el.board.id === router.query.id
+  );
+
   const onClickAddInterestList = async () => {
     try {
       const result = await addInterestList({
         variables: { boardId: router.query.id },
+        refetchQueries: [
+          {
+            query: FETCH_INTEREST_BOARDS,
+          },
+        ],
       });
-      console.log(result);
-      alert("찜하기 성공");
+      if (result.data.addInterestList) {
+        Modal.success({
+          title: "Success",
+          content: "찜 목록에 담았습니다.",
+        });
+      } else {
+        Modal.info({
+          title: "Info",
+          content: "찜 목록에서 해제되었습니다.",
+        });
+      }
     } catch (error: any) {
       alert(error.message);
     }
   };
+  // console.log(interestedBoard[0].board.id);
 
   return (
     <BoardDetailUI
@@ -148,6 +169,7 @@ export default function BoardDetail() {
       onClickApply={onClickApply}
       onClickAdopt={onClickAdopt}
       onClickAddInterestList={onClickAddInterestList}
+      interestedBoard={interestedBoard}
     />
   );
 }

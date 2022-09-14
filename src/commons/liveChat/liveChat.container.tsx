@@ -28,9 +28,9 @@ export default function LiveChat() {
   const { data, refetch } = useQuery(FETCH_CHAT_LOGS, {
     variables: { room: `first${router.query.id}` },
   });
-  console.log(data);
+  // console.log(data);
   const { data: chatRoom } = useQuery(FETCH_USER_CHAT_ROOM);
-  console.log(chatRoom);
+  // console.log(chatRoom);
 
   const { data: login } = useQuery(FETCH_LOGIN_USER);
 
@@ -62,14 +62,15 @@ export default function LiveChat() {
   const { data: runner } = useQuery(FETCH_RUNNER_BY_BOARD, {
     variables: { boardId: router.query.id },
   });
+
   const adoptedRunner = runner?.fetchRunnerByBoard.filter(
-    (el: any) => el.isChecked === false
+    (el: any) => el.isChecked === true
   );
 
   const onClickCreate = async (data: any) => {
     socket.emit("message", [
       nickName,
-      adoptedRunner[0].user.id,
+      adoptedRunner[0]?.user?.id,
       router.query.id,
     ]);
     socket.on(`first${router.query.id}`, (data) => {
