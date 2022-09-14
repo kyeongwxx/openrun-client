@@ -2,7 +2,12 @@ import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { ChangeEvent, MouseEvent, useState } from "react";
 import BoardListUI from "./boardList.presenter";
-import { FETCH_BOARDS, FETCH_EVENTS } from "./boardList.queries";
+import {
+  FETCH_BOARDS,
+  FETCH_EVENTS,
+  FETCH_INTEREST_BOARDS,
+  FETCH_INTEREST_BOARD_ID,
+} from "./boardList.queries";
 import _ from "lodash";
 import MediaQueryMobile from "../../../../commons/mediaQuery/mediaQueryStandardMobile";
 import MediaQueryPc from "../../../../commons/mediaQuery/mediaQueryStandardPc";
@@ -60,9 +65,20 @@ export default function BoardList() {
     console.log(event.currentTarget.id);
   };
 
+  // 찜한 게시물 표시
+  const { data: interestedId } = useQuery(FETCH_INTEREST_BOARD_ID);
+
+  // console.log(interestedId);
+
+  const matchedId = data?.fetchBoards?.filter((el) =>
+    interestedId?.fetchInterestBoardId?.includes(el.id)
+  );
+  // console.log(matchedId);
+
   return (
     <BoardListUI
       data={data}
+      interestedId={interestedId}
       isMobile={isMobile}
       isPc={isPc}
       refetch={refetch}

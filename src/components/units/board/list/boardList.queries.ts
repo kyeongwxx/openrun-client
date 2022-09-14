@@ -26,3 +26,17 @@ export const FETCH_BOARDS = gql`
     }
   }
 `;
+export const FETCH_INTEREST_BOARDS = gql`
+  query fetchInterestBoards {
+    fetchInterestBoards {
+      board {
+        id
+      }
+    }
+  }
+`;
+export const FETCH_INTEREST_BOARD_ID = gql`
+  query fetchInterestBoardId {
+    fetchInterestBoardId
+  }
+`;

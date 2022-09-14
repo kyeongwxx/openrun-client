@@ -189,6 +189,13 @@ export const PickBtn = styled.button`
   background: #ffffff;
   border: 1px solid #555;
   border-radius: 16px;
+  cursor: pointer;
+`;
+export const PickText = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 `;
 export const ApplyBtn = styled.button`
   width: 40%;
