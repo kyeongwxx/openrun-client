@@ -10,10 +10,6 @@ import Map from "../../../../commons/maps-detail/map.container";
 import Dompurify from "dompurify";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import MainSlider from "../../../../commons/carousel";
-import LiveChat from "../../../../commons/liveChat/liveChat.container";
-import { useRecoilState } from "recoil";
-import { openValue } from "../../../commons/store";
-import BasicModal from "../../../../commons/modal";
 
 const theme = createTheme({
   components: {
@@ -32,8 +28,6 @@ const theme = createTheme({
 });
 
 export default function BoardDetailUI(props: any) {
-  // 알림창 모달
-  const [open, setOpen] = useRecoilState(openValue);
   // tabs 설정
   const [value, setValue] = React.useState("1");
 
@@ -42,14 +36,6 @@ export default function BoardDetailUI(props: any) {
   };
   return (
     <s.Wrapper>
-      {open ? (
-        <BasicModal
-          title="Warning"
-          description="본인이 작성한 게시글에는 신청이 제한됩니다."
-        />
-      ) : (
-        <></>
-      )}
       <s.ProductWrapper>
         <s.ImageWrapper>
           <s.Image

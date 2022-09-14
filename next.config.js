@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const withAntdLess = require("next-plugin-antd-less");
+
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
@@ -15,4 +18,10 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withAntdLess({
+  modifyVars: {
+    "@primary-color": "#6400FF",
+    "@border-radius-base": "16px",
+  },
+  ...nextConfig,
+});
