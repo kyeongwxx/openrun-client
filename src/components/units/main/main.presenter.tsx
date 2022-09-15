@@ -8,8 +8,9 @@ export default function MainUI() {
         Src={[
           "/img/carousel/main6.jpeg",
           "/img/carousel/main2.jpeg",
-          "/img/carousel/main3.jpeg",
-          "/img/carousel/main7.jpeg",
+          "/img/carousel/main9.jpeg",
+          "/img/carousel/main10.jpeg",
+          "/img/carousel/main11.jpeg",
         ]}
       />
       <DatePicker />

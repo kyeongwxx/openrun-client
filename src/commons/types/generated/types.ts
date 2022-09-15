@@ -39,6 +39,7 @@ export type IBoard = {
   image?: Maybe<IImage>;
   location?: Maybe<ILocation>;
   price?: Maybe<Scalars['Int']>;
+  runnerTotal?: Maybe<Scalars['Int']>;
   status?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   updatedAt: Scalars['DateTime'];
@@ -84,7 +85,7 @@ export type ICreateBoardInput = {
   contents?: InputMaybe<Scalars['String']>;
   eventDay?: InputMaybe<Scalars['String']>;
   eventTime?: InputMaybe<Scalars['String']>;
-  image?: InputMaybe<Scalars['String']>;
+  image?: InputMaybe<Array<Scalars['String']>>;
   location?: InputMaybe<ILocationInput>;
   price?: InputMaybe<Scalars['Int']>;
   title: Scalars['String'];
@@ -209,6 +210,7 @@ export type IMutation = {
   updateBoard: IBoard;
   updateLoginUser: IUser;
   updateNotifications: Scalars['Boolean'];
+  updateUserPoint: IUser;
   uploadFile: Scalars['String'];
 };
 
@@ -337,6 +339,12 @@ export type IMutationUpdateLoginUserArgs = {
 };
 
 
+export type IMutationUpdateUserPointArgs = {
+  email: Scalars['String'];
+  point: Scalars['Float'];
+};
+
+
 export type IMutationUploadFileArgs = {
   file: Scalars['Upload'];
 };
@@ -400,6 +408,7 @@ export type IQuery = {
   fetchPayments: Array<IPaymentByDate>;
   fetchPointChargeHistory: Array<IPayment>;
   fetchReports: Array<IReport>;
+  fetchRunner: IUser;
   fetchRunnerByBoard: Array<IRunner>;
   fetchUserChatRoom: Array<IChatRoom>;
   fetchUsers: Array<IUser>;
@@ -457,6 +466,11 @@ export type IQueryFetchPointChargeHistoryArgs = {
 };
 
 
+export type IQueryFetchRunnerArgs = {
+  boardId: Scalars['String'];
+};
+
+
 export type IQueryFetchRunnerByBoardArgs = {
   boardId: Scalars['String'];
 };
@@ -504,7 +518,7 @@ export type IUpdateBoardInput = {
   contents?: InputMaybe<Scalars['String']>;
   eventDay?: InputMaybe<Scalars['String']>;
   eventTime?: InputMaybe<Scalars['String']>;
-  image?: InputMaybe<Scalars['String']>;
+  image?: InputMaybe<Array<Scalars['String']>>;
   location?: InputMaybe<ILocationInput>;
   price?: InputMaybe<Scalars['Int']>;
   title?: InputMaybe<Scalars['String']>;

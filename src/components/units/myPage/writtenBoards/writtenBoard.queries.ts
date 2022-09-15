@@ -9,6 +9,7 @@ export const FETCH_WRITE_BOARDS = gql`
       status
       price
       dueDate
+      runnerTotal
       user {
         id
         nickName
@@ -17,6 +18,15 @@ export const FETCH_WRITE_BOARDS = gql`
       image {
         url
       }
+    }
+  }
+`;
+
+export const FETCH_RUNNER = gql`
+  query fetchRunner($boardId: String!) {
+    fetchRunner(boardId: $boardId) {
+      id
+      nickName
     }
   }
 `;
@@ -35,6 +45,15 @@ export const COMPLETE_BUSINESS = gql`
         id
         nickName
       }
+    }
+  }
+`;
+
+export const CREATE_REPORT = gql`
+  mutation createReport($createReportInput: CreateReportInput!) {
+    createReport(createReportInput: $createReportInput) {
+      id
+      contents
     }
   }
 `;

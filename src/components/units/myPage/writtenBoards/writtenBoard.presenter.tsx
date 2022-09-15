@@ -1,9 +1,9 @@
 import * as s from "./writtenBoard.styles";
 import { v4 as uuidv4 } from "uuid";
-import Selector from "../../../../commons/selector";
+
 import { dateSplit } from "../../../../commons/function/dateSlice";
 import { IWrittenBoardsProps } from "../myPage.types";
-import { CheckCircleOutline, ReportGmailerrorred } from "@mui/icons-material";
+
 export default function MypageWrittenBoardsUI(props: IWrittenBoardsProps) {
   return (
     <s.Wrapper>
@@ -13,7 +13,7 @@ export default function MypageWrittenBoardsUI(props: IWrittenBoardsProps) {
       <s.Button onClick={props.onClickTop}>Top</s.Button>
 
       <s.ActiveListWrapper>
-        <s.ActiveTitle>작성게시글</s.ActiveTitle>
+        <s.ActiveTitle>내가 쓴 글</s.ActiveTitle>
         {props.data?.length === 0 ? (
           <s.NodataImg src="/img/nodata.png" />
         ) : (
@@ -26,25 +26,39 @@ export default function MypageWrittenBoardsUI(props: IWrittenBoardsProps) {
             >
               {props.data ? (
                 props.data?.map((el) => (
-                  <s.ActiveBoard
-                    key={uuidv4()}
-                    onClick={props.onClickMoveToDetail(el.id)}
-                  >
+                  <s.ActiveBoard key={uuidv4()}>
+                    <s.Status
+                      color={
+                        el?.status === "모집중"
+                          ? "#7DD03C"
+                          : el.status === "진행중"
+                          ? "#ff9100"
+                          : "#D03C3C"
+                      }
+                      border={
+                        el?.status === "모집중"
+                          ? "#7DD03C"
+                          : el.status === "진행중"
+                          ? "#ff9100"
+                          : "#D03C3C"
+                      }
+                    >
+                      {el.status}
+                    </s.Status>
                     <s.BoardImg
                       src={
                         el.image
-                          ? `https://storage.googleapis.com/openrun-storage/${el.image[0].url}`
+                          ? `https://storage.googleapis.com/openrun-storage/${el.image.url}`
                           : "/img/noimage.png"
                       }
+                      onClick={props.onClickMoveToDetail(el.id)}
                     />
 
-                    <s.BoardContents>
+                    <s.BoardContents onClick={props.onClickMoveToDetail(el.id)}>
                       <s.BoardContent weight="700" size="1.2rem" color="#333">
                         {el.title}
                       </s.BoardContent>
-                      <s.BoardContent weight="400" size="0.8rem" color="#333">
-                        {dateSplit(el.dueDate)}
-                      </s.BoardContent>
+
                       <s.BoardContent
                         weight="400"
                         size="0.8rem"
@@ -52,32 +66,40 @@ export default function MypageWrittenBoardsUI(props: IWrittenBoardsProps) {
                       >
                         {el.price}원
                       </s.BoardContent>
+                      <s.BoardContent weight="400" size="0.8rem" color="#333">
+                        {dateSplit(el.dueDate)}
+                      </s.BoardContent>
                     </s.BoardContents>
-                    <s.Status>{el.status}</s.Status>
 
                     {el?.status === "진행중" ? (
                       <s.BtnWrapper>
-                        <s.ButtonC>
-                          <ReportGmailerrorred style={{ color: "#D44D4D" }} />
+                        <s.ButtonC onClick={props.onClickReportModal(el?.id)}>
+                          <s.Exclamation />
                           <s.Text size="1rem" color="#D44D4D" weight="400">
                             신고하기
                           </s.Text>
                         </s.ButtonC>
                         <s.DivideLine />
                         <s.ButtonC
-                          onClick={props.onClickCompleteModal(
-                            el.user?.nickName || "",
-                            el?.id || ""
-                          )}
+                          onClick={props.onClickCompleteModal(el?.id || "")}
                         >
-                          <CheckCircleOutline style={{ color: "#1F8716" }} />
+                          <s.Check />
                           <s.Text size="1rem" color="#1F8716" weight="400">
                             거래완료
                           </s.Text>
                         </s.ButtonC>
                       </s.BtnWrapper>
                     ) : (
-                      <div key={uuidv4()} />
+                      <s.BtnWrapper key={uuidv4()}>
+                        {el.status === "모집중" ? (
+                          <>
+                            <s.Runner />
+                            {el?.runnerTotal}
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                      </s.BtnWrapper>
                     )}
                   </s.ActiveBoard>
                 ))

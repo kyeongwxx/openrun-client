@@ -6,6 +6,7 @@ export const FETCH_INTEREST_BOARDS = gql`
       id
       user {
         id
+        nickName
       }
       board {
         id
