@@ -120,8 +120,7 @@ export default function BoardListUI(props: any) {
                         />
                       </s.ImageWrapper>
                       <s.DateWrapper1>
-                        <s.Month>{el?.dueDate?.slice(6, 7)}</s.Month>
-                        <s.DivideLine2 />
+                        <s.Month>{el?.dueDate?.slice(6, 7)}월</s.Month>
                         <s.Day>{el?.dueDate?.slice(8, 10)}</s.Day>
                       </s.DateWrapper1>
                       {props.interestedId?.fetchInterestBoardId?.includes(
@@ -204,7 +203,18 @@ export default function BoardListUI(props: any) {
                         <s.Contents></s.Contents>
                       )}
                       <s.Writer>{el?.user?.nickName}</s.Writer>
-                      <s.Price>{el?.price}</s.Price>
+                      <s.StatusPriceWrapper>
+                        {el.status === "모집중" && (
+                          <s.Status1>{el.status}</s.Status1>
+                        )}
+                        {el.status === "진행중" && (
+                          <s.Status2>{el.status}</s.Status2>
+                        )}
+                        {el.status === "거래완료" && (
+                          <s.Status3>{el.status}</s.Status3>
+                        )}
+                        <s.Price>{el?.price.toLocaleString("ko-KR")}원</s.Price>
+                      </s.StatusPriceWrapper>
                     </s.ProductInfoWrapper>
                   ))}
                 </s.ProductWrapper>
@@ -368,7 +378,7 @@ export default function BoardListUI(props: any) {
                           <s.Contents></s.Contents>
                         )}
                         <s.Writer>{el?.user?.nickName}</s.Writer>
-                        <s.Price>{el?.price}</s.Price>
+                        <s.Price>{el?.price.toLocaleString("ko-KR")}원</s.Price>
                       </s.ProductInfoWrapper>
                     ))}
                 </s.ProductWrapper>
@@ -532,7 +542,7 @@ export default function BoardListUI(props: any) {
                           <s.Contents></s.Contents>
                         )}
                         <s.Writer>{el?.user?.nickName}</s.Writer>
-                        <s.Price>{el?.price}</s.Price>
+                        <s.Price>{el?.price.toLocaleString("ko-KR")}원</s.Price>
                       </s.ProductInfoWrapper>
                     ))}
                 </s.ProductWrapper>
@@ -696,7 +706,7 @@ export default function BoardListUI(props: any) {
                           <s.Contents></s.Contents>
                         )}
                         <s.Writer>{el?.user?.nickName}</s.Writer>
-                        <s.Price>{el?.price}</s.Price>
+                        <s.Price>{el?.price.toLocaleString("ko-KR")}원</s.Price>
                       </s.ProductInfoWrapper>
                     ))}
                 </s.ProductWrapper>
@@ -860,7 +870,7 @@ export default function BoardListUI(props: any) {
                           <s.Contents></s.Contents>
                         )}
                         <s.Writer>{el?.user?.nickName}</s.Writer>
-                        <s.Price>{el?.price}</s.Price>
+                        <s.Price>{el?.price.toLocaleString("ko-KR")}원</s.Price>
                       </s.ProductInfoWrapper>
                     ))}
                 </s.ProductWrapper>
@@ -1024,7 +1034,7 @@ export default function BoardListUI(props: any) {
                           <s.Contents></s.Contents>
                         )}
                         <s.Writer>{el?.user?.nickName}</s.Writer>
-                        <s.Price>{el?.price}</s.Price>
+                        <s.Price>{el?.price.toLocaleString("ko-KR")}원</s.Price>
                       </s.ProductInfoWrapper>
                     ))}
                 </s.ProductWrapper>

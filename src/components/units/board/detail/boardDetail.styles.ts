@@ -47,7 +47,7 @@ export const StatusWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
 `;
-export const Status = styled.div`
+export const Status1 = styled.div`
   width: 47px;
   height: 25px;
   text-align: center;
@@ -56,6 +56,28 @@ export const Status = styled.div`
   font-size: 0.75rem;
   color: #7dd03c;
   border: 1px solid #7dd03c;
+  margin-bottom: 2rem;
+`;
+export const Status2 = styled.div`
+  width: 47px;
+  height: 25px;
+  text-align: center;
+  line-height: 25px;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: #ff9100;
+  border: 1px solid #ff9100;
+  margin-bottom: 2rem;
+`;
+export const Status3 = styled.div`
+  width: 47px;
+  height: 25px;
+  text-align: center;
+  line-height: 25px;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: #d03c3c;
+  border: 1px solid #d03c3c;
   margin-bottom: 2rem;
 `;
 export const MutationBtns = styled.div`
