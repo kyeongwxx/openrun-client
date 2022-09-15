@@ -28,7 +28,7 @@ export const ColumnHeader = styled.title`
   justify-content: space-around;
 `;
 export const ColumnBasic = styled.div`
-  width: 10%;
+  width: 30%;
   text-align: center;
   cursor: pointer;
 `;

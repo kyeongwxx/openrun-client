@@ -3,7 +3,7 @@ import * as s from "./admin.styles";
 import UsersChart from "./a_UsersChart/usersChart.container";
 import DailyPayments from "./b_DailyPayments/dailyPayments.container";
 import Reports from "./d_Reports/reports.container";
-import AdminInfoUI from "./e_AdminInfo/adminInfo.presenter";
+import AdminInfoUI from "./e_AdminInfo/adminInfo.container";
 import UsersInfo from "./f_UsersInfo/usersInfo.container";
 
 export default function AdminUI(props) {

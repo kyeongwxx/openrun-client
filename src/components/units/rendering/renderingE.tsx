@@ -33,15 +33,15 @@ const Container = styled.div`
 
     & > span:nth-of-type(1) {
       padding-bottom: 2.8rem;
-      font-weight: 700;
-      font-size: 3.125rem;
+      font-weight: 800;
+      font-size: 4rem;
       letter-spacing: -0.05em;
       color: transparent;
       background: linear-gradient(93.72deg, #5920d3 0%, #2f88e5 99.32%);
       -webkit-background-clip: text;
 
       @media (max-width: 1250px) {
-        font-size: 2.5rem;
+        font-size: 4rem;
         word-break: keep-all;
         text-align: center;
       }
@@ -80,6 +80,11 @@ const Container = styled.div`
         border: 1px solid #5920d3;
       }
     }
+    @media (max-width: 767px) {
+      & > span:nth-of-type(1) {
+        font-size: 4rem;
+      }
+    }
   }
 `;
 
@@ -92,7 +97,9 @@ export default function E() {
   return (
     <Container>
       <div ref={ref} className={inView ? "isActive" : ""}>
-        <span>오픈런</span>
+        <span>
+          <strong>오픈런</strong>
+        </span>
         <span> 지금 바로 시작하세요</span>
         <button onClick={() => router.push("/main")}>
           홈페이지로 이동하기
