@@ -35,5 +35,7 @@ export interface IWrittenBoardsProps {
   onClickTop: () => void;
   scrollRef: RefObject<HTMLDivElement>;
   data?: IBoard[];
-  onClickCompleteModal: (nickName: string, boardId: string) => () => void;
+  onClickCompleteModal: (boardId: string) => () => void;
+
+  onClickReportModal: (boardId: string) => () => void;
 }

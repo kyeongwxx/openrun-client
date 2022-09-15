@@ -111,28 +111,40 @@ export const NoDataImg = styled.img`
 
 export const FavoriteBoard = styled.div`
   width: 100%;
-  height: 100px;
+  height: 150px;
   margin: 1%;
   border-radius: 16px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 
   background-color: rgb(244, 244, 244);
   @media (max-width: 767px) {
     width: 48%;
-    height: 180px;
+    height: 150px;
     display: flex;
     flex-direction: column;
   }
 `;
 
+export const Status = styled.div<{ color: string; border: string }>`
+  width: 80px;
+
+  text-align: center;
+  border: 1px solid ${(props) => props.border};
+  color: ${(props) => props.color};
+  font-weight: 700;
+
+  @media (max-width: 767px) {
+    font-size: 0.8rem;
+  }
+`;
 export const BoardInfoWrapper = styled.div<{ width: string }>`
   width: ${(props) => props.width};
 
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   @media (max-width: 767px) {
@@ -158,11 +170,10 @@ export const BoardImg = styled.img`
 export const BoardContents = styled.div`
   width: 70%;
   height: 90px;
-
-  border-radius: 20px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
   @media (max-width: 767px) {
     width: 60%;

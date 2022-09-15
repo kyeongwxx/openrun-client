@@ -1,36 +1,99 @@
 import * as s from "./favoriteList.styles";
 import InfiniteScroll from "react-infinite-scroller";
+import { v4 as uuidv4 } from "uuid";
+import { el } from "date-fns/locale";
+import { dateSplit } from "../../../../commons/function/dateSlice";
 
 export default function MypageFavoriteListUI(props) {
   return (
     <s.Wrapper>
+      <s.Button onClick={props.onClickTop}>Top</s.Button>
       <s.FavoriteListWrapper>
         <s.FavoriteTitle>찜목록</s.FavoriteTitle>
         {props.data?.length === 0 ? (
           <s.NodataImg src="/img/nodata.png" />
         ) : (
-          <s.FavoriteBoards
-            pageStart={0}
-            loadMore={props.onFetchMore}
-            hasMore={true}
-            useWindow={false}
-          >
-            {/* <s.FavoriteBoard onClick={props.onClickMoveToBoardDetail(props.data?.id)}> */}
-            <s.FavoriteBoard>
-              <s.BoardImg />
-              <s.BoardContents>
-                {/* <s.BoardContent weight="700" size="1rem" color="#5e5e5e">
-                {props.data?.board.title}
-              </s.BoardContent> */}
-                <s.BoardContent weight="700" size="1.2rem" color="#333">
-                  {/* {props.data?.board.title} */}
-                </s.BoardContent>
-              </s.BoardContents>
-              <s.Text size="1rem" color="#5e5e5e" weight="400">
-                {/* {props.data?.board.dueDate} */}
-              </s.Text>
-            </s.FavoriteBoard>
-          </s.FavoriteBoards>
+          <s.InfiniteScrollLimit id="scroll" ref={props.scrollRef}>
+            <s.FavoriteBoards
+              pageStart={0}
+              loadMore={props.onFetchMore}
+              hasMore={true}
+              useWindow={false}
+            >
+              {props.data?.map((el) => (
+                <s.FavoriteBoard
+                  onClick={props.onClickMoveToBoardDetail(el.board?.id)}
+                  key={uuidv4()}
+                >
+                  <s.Status
+                    color={
+                      el.board?.status === "모집중"
+                        ? "#7DD03C"
+                        : el.status === "진행중"
+                        ? "#ff9100"
+                        : "#D03C3C"
+                    }
+                    border={
+                      el.board?.status === "모집중"
+                        ? "#7DD03C"
+                        : el.status === "진행중"
+                        ? "#ff9100"
+                        : "#D03C3C"
+                    }
+                  >
+                    {el.board?.status}
+                  </s.Status>
+
+                  <s.BoardImg
+                    src={
+                      el.board?.image
+                        ? `https://storage.googleapis.com/openrun-storage/${el.board?.image.url}`
+                        : "/img/noimage.png"
+                    }
+                  />
+
+                  <s.BoardContents>
+                    <s.BoardContent
+                      weight="700"
+                      size="1.2rem"
+                      color="# 333"
+                      align="left"
+                    >
+                      {el.board?.title}
+                    </s.BoardContent>
+                    <s.BoardContent
+                      weight="400"
+                      size="0.8rem"
+                      color="#5e5e5e"
+                      align="right"
+                    >
+                      {el.board?.price}원
+                    </s.BoardContent>
+                    <s.BoardContent
+                      weight="400"
+                      size="0.8rem"
+                      color="#5e5e5e"
+                      align="right"
+                    >
+                      {dateSplit(el.board?.dueDate)}
+                    </s.BoardContent>
+                    <s.BoardContent
+                      weight="400"
+                      size="0.8rem"
+                      color="#5e5e5e"
+                      align="right"
+                    >
+                      {el.board?.user?.nickName}
+                    </s.BoardContent>
+                  </s.BoardContents>
+
+                  {/* <s.Text size="1rem" color="#5e5e5e" weight="400">
+                    {el.board?.duDate}
+                  </s.Text> */}
+                </s.FavoriteBoard>
+              ))}
+            </s.FavoriteBoards>
+          </s.InfiniteScrollLimit>
         )}
       </s.FavoriteListWrapper>
     </s.Wrapper>

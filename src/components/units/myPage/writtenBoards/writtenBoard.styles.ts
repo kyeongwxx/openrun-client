@@ -1,4 +1,6 @@
 import styled from "@emotion/styled";
+import { CheckCircleOutline, ReportGmailerrorred } from "@mui/icons-material";
+import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
 import { Container } from "@mui/system";
 import InfiniteScroll from "react-infinite-scroller";
 
@@ -117,14 +119,13 @@ export const ActiveBoard = styled.div`
   border-radius: 16px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   background-color: rgb(244, 244, 244);
 
-  cursor: pointer;
-
   @media (max-width: 767px) {
     height: 100px;
+    justify-content: space-between;
   }
 `;
 
@@ -135,6 +136,7 @@ export const BoardImg = styled.img`
 
   border-radius: 20px;
   object-fit: contain;
+  cursor: pointer;
   @media (max-width: 767px) {
     /* width: 60px;
     height: 90px;
@@ -143,20 +145,27 @@ export const BoardImg = styled.img`
 `;
 
 export const BoardContents = styled.div`
-  width: 70%;
+  width: 40%;
   height: 90px;
 
-  border-radius: 16px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
   @media (max-width: 767px) {
-    font-size: 0.8rem;
+    flex-direction: column;
+    height: 70px;
+    justify-content: space-evenly;
   }
 `;
-export const Status = styled.div`
-  width: 50px;
+export const Status = styled.div<{ color: string; border: string }>`
+  width: 80px;
+
+  text-align: center;
+  border: 1px solid ${(props) => props.border};
+  color: ${(props) => props.color};
+  font-weight: 700;
 
   @media (max-width: 767px) {
     font-size: 0.8rem;
@@ -171,18 +180,20 @@ export const BoardContent = styled.div<{
   color: ${(props) => props.color};
   font-weight: ${(props) => props.weight};
   font-size: ${(props) => props.size};
-  margin-left: 10px;
+  width: 30%;
+
+  cursor: pointer;
 
   @media (max-width: 767px) {
-    font-size: 0.8rem;
-    /* width: 90%;
-    height: 100px; */
+    font-size: 0.5rem;
+    width: 90%;
   }
 `;
 
 export const BtnWrapper = styled.div`
-  width: 200px;
+  width: 20%;
   height: 90px;
+
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -190,7 +201,8 @@ export const BtnWrapper = styled.div`
 
   @media (max-width: 767px) {
     width: 50%;
-    height: 30px;
+    height: 50px;
+    /* flex-direction: column; */
   }
 `;
 
@@ -202,9 +214,22 @@ export const ButtonC = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+`;
 
+export const Exclamation = styled(ReportGmailerrorred)`
+  color: #d44d4d;
   @media (max-width: 767px) {
-    width: 50%;
-    height: 100%;
+    font-size: 0.8rem;
   }
+`;
+
+export const Check = styled(CheckCircleOutline)`
+  color: #1f8716;
+  @media (max-width: 767px) {
+    font-size: 0.8rem;
+  }
+`;
+
+export const Runner = styled(DirectionsRunIcon)`
+  color: #333;
 `;

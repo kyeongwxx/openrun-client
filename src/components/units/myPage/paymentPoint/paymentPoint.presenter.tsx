@@ -16,7 +16,7 @@ export default function MypagePaymentPointUI(props) {
               사용가능한 포인트
             </s.Text>
             <s.Text size="1.5rem" color="#333" weight="700">
-              {userInfo?.point}P
+              {userInfo?.point}
             </s.Text>
           </s.AvailablePoint>
           <s.ChargePoint onClick={props.onClickChargePoint}>

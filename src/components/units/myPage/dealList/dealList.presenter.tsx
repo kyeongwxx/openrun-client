@@ -2,6 +2,7 @@ import * as s from "./dealList.styles";
 import { v4 as uuidv4 } from "uuid";
 
 import { IDealListProps } from "../myPage.types";
+import { dateSplit } from "../../../../commons/function/dateSlice";
 
 export default function MypageDealUI(props: IDealListProps) {
   return (
@@ -26,8 +27,13 @@ export default function MypageDealUI(props: IDealListProps) {
                   el.board?.status === "완료" ? (
                     <s.FavoriteBoard key={uuidv4()}>
                       {console.log(el)}
+                      <s.Status
+                        color={el?.status === "seller" ? "#D44D4D" : "#1F8716"}
+                        border={el?.status === "seller" ? "#D44D4D" : "#1F8716"}
+                      >
+                        {el.status}
+                      </s.Status>
                       <s.BoardInfoWrapper width="40%">
-                        <s.BoardImg />
                         <s.BoardContents>
                           <s.BoardContent
                             weight="700"
@@ -36,9 +42,9 @@ export default function MypageDealUI(props: IDealListProps) {
                           >
                             {el.board?.title}
                           </s.BoardContent>
-                          {el.board.user?.nickName}
+
                           <s.Text size="0.6rem" color="#5e5e5e" weight="400">
-                            {el.board?.dueDate}
+                            {dateSplit(el.board?.dueDate)}
                           </s.Text>
                         </s.BoardContents>
                       </s.BoardInfoWrapper>

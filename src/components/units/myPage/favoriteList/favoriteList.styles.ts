@@ -11,6 +11,23 @@ export const Wrapper = styled.main`
   }
 `;
 
+export const Button = styled.div`
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  position: fixed;
+  border-radius: 24px;
+  z-index: 90;
+  bottom: 100px;
+  right: 25px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  line-height: 60px;
+  font-weight: 700;
+  color: #333;
+  cursor: pointer;
+`;
+
 export const SelectorWrapper = styled.div`
   width: 200px;
   margin-bottom: 40px;
@@ -69,8 +86,17 @@ export const NodataImg = styled.img`
   }
 `;
 
-export const FavoriteBoards = styled(InfiniteScroll)`
+export const InfiniteScrollLimit = styled.div`
+  overflow: auto;
   width: 80%;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+`;
+
+export const FavoriteBoards = styled(InfiniteScroll)`
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -89,30 +115,47 @@ export const FavoriteBoard = styled.div`
   border-radius: 16px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-  background-color: #fafafa;
+  background-color: rgb(244, 244, 244);
+
   cursor: pointer;
 `;
+export const Status = styled.div<{ color: string; border: string }>`
+  width: 80px;
 
+  text-align: center;
+  border: 1px solid ${(props) => props.border};
+  color: ${(props) => props.color};
+  font-weight: 700;
+
+  @media (max-width: 767px) {
+    font-size: 0.8rem;
+    width: 50px;
+  }
+`;
 export const BoardImg = styled.img`
   width: 90px;
   height: 90px;
   border-radius: 20px;
+  object-fit: contain;
 `;
 
 export const BoardContents = styled.div`
   width: 60%;
   height: 90px;
-  border-radius: 20px;
+
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-evenly;
+  align-items: center;
 
   @media (max-width: 767px) {
     width: 50%;
 
     font-size: 0.5rem;
+    flex-direction: column;
+    justify-content: center;
   }
 `;
 
@@ -120,14 +163,21 @@ export const BoardContent = styled.div<{
   weight: string;
   size: string;
   color: string;
+  align: string;
 }>`
   color: ${(props) => props.color};
   font-weight: ${(props) => props.weight};
   font-size: ${(props) => props.size};
-  background-color: pink;
+  width: 120px;
+
+  text-align: ${(props) => props.align};
+
   @media (max-width: 767px) {
     font-size: 0.8rem;
-    /* width: 90%;
-    height: 100px; */
+    width: 100%;
+    margin-bottom: 2px;
+    margin-left: 10px;
+    text-align: left;
+    /* height: 100px; */
   }
 `;

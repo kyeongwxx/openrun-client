@@ -1,12 +1,14 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useRef, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 import { Modal, Rate } from "antd";
+import { GraphQLClient } from "graphql-request";
 
 import {
   IMutation,
   IMutationCreateRatingArgs,
   IQuery,
+  IQueryFetchRunnerArgs,
   IQueryFetchWriteBoardsArgs,
 } from "../../../../commons/types/generated/types";
 
@@ -14,22 +16,33 @@ import MypageWrittenBoardsUI from "./writtenBoard.presenter";
 import {
   COMPLETE_BUSINESS,
   CREATE_RATING,
+  CREATE_REPORT,
+  FETCH_RUNNER,
   FETCH_WRITE_BOARDS,
 } from "./writtenBoard.queries";
+import { useRecoilState } from "recoil";
+import { accessTokenState } from "../../../commons/store";
+import ReportInput from "../../../../commons/input/report";
 
 export default function MypageWrittenBoards() {
   const router = useRouter();
-  const [userRate, setUserRate] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [accessToken] = useRecoilState(accessTokenState);
+  const [userRate, setUserRate] = useState(0);
+  const [inputValue, setInputValue] = useState("");
+
   const { data, fetchMore } = useQuery<
     Pick<IQuery, "fetchWriteBoards">,
     IQueryFetchWriteBoardsArgs
   >(FETCH_WRITE_BOARDS);
+
   const [createRating] = useMutation<
     Pick<IMutation, "createRating">,
     IMutationCreateRatingArgs
   >(CREATE_RATING);
   const [completeBusiness] = useMutation(COMPLETE_BUSINESS);
+
+  const [createReport] = useMutation(CREATE_REPORT);
 
   const onClickMoveToDetail = (boardId: string) => () => {
     router.push(`/board/${boardId}`);
@@ -54,29 +67,67 @@ export default function MypageWrittenBoards() {
       },
     });
   };
-  console.log(data);
 
-  const onClickCompleteModal = (nickName: string, boardId: string) => () => {
-    Modal.success({
-      title: `${nickName}님 러너 평가`,
-      content: <Rate onChange={setUserRate} />,
+  // 거래 완료 모달
+  const onClickCompleteModal = (boardId: string) => async () => {
+    try {
+      const graphQlClient = new GraphQLClient(
+        "https://openrunbackend.shop/graphql",
+        {
+          credentials: "include",
+          headers: { Authorization: `Bearer ${accessToken}` },
+        }
+      );
+      const runnerResult = await graphQlClient.request(FETCH_RUNNER, {
+        boardId: boardId,
+      });
+      Modal.success({
+        title: `${runnerResult.fetchRunner?.nickName}님 러너 평가`,
+        content: <Rate onChange={setUserRate} />,
+        onOk: async () => {
+          try {
+            const rateResult = await createRating({
+              variables: {
+                boardId,
+                rate: userRate,
+              },
+            });
+            const completeResult = await completeBusiness({
+              variables: {
+                boardId,
+              },
+              refetchQueries: [{ query: FETCH_WRITE_BOARDS }],
+            });
+          } catch (error) {
+            console.log(error);
+          }
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // 신고하기 모달
+  const onClickReportModal = (boardId: string) => () => {
+    console.log(boardId);
+    Modal.warning({
+      title: "신고하기",
+      content: (
+        <ReportInput onChange={(event) => setInputValue(event.target.value)} />
+      ),
       onOk: async () => {
-        console.log("dd");
+        console.log(inputValue);
         try {
-          const rateResult = await createRating({
+          const result = await createReport({
             variables: {
-              boardId,
-              rate: userRate,
+              createReportInput: {
+                boardId,
+                contents: inputValue,
+              },
             },
           });
-          const completeResult = await completeBusiness({
-            variables: {
-              boardId,
-            },
-            refetchQueries: [{ query: FETCH_WRITE_BOARDS }],
-          });
-          console.log(rateResult);
-          console.log(completeResult);
+          console.log(result);
         } catch (error) {
           console.log(error);
         }
@@ -92,6 +143,7 @@ export default function MypageWrittenBoards() {
       onClickTop={onClickTop}
       scrollRef={scrollRef}
       onClickCompleteModal={onClickCompleteModal}
+      onClickReportModal={onClickReportModal}
     />
   );
 }
