@@ -134,7 +134,7 @@ export const Day = styled.div`
   font-size: 1.125rem;
   color: #fff;
 `;
-export const PickIconWhite = styled.img`
+export const PickIcon = styled.img`
   position: absolute;
   top: 2%;
   right: 4%;

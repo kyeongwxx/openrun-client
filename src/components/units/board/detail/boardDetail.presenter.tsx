@@ -101,14 +101,14 @@ export default function BoardDetailUI(props: any) {
               <s.PickBtn onClick={props.onClickAddInterestList}>
                 <s.PickText>
                   찜해제
-                  <ImHeart style={{ color: "#e35c61" }} />
+                  <s.PickIcon src="/boardList/Bookmark(filled).png" />
                 </s.PickText>
               </s.PickBtn>
             ) : (
               <s.PickBtn onClick={props.onClickAddInterestList}>
                 <s.PickText>
                   찜하기
-                  <ImHeart style={{ color: "gray" }} />
+                  <s.PickIcon src="/boardList/Bookmark.png" />
                 </s.PickText>
               </s.PickBtn>
             )}
