@@ -187,9 +187,11 @@ export const ChatBtn = styled.button`
   width: 15%;
   height: 63px;
   background: #ffffff;
-  border: 1px solid #555;
+  border: none;
   border-radius: 16px;
   cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  color: #222222;
 `;
 export const ChatIcon = styled.img`
   width: 50%;
@@ -200,7 +202,6 @@ export const ChatIcon = styled.img`
 export const ChatText = styled.div`
   font-weight: 400;
   font-size: 0.75rem;
-  color: #222222;
 `;
 export const PickBtn = styled.button`
   width: 40%;
@@ -209,9 +210,10 @@ export const PickBtn = styled.button`
   font-size: 1.25rem;
   color: #000000;
   background: #ffffff;
-  border: 1px solid #555;
+  border: none;
   border-radius: 16px;
   cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 `;
 export const PickText = styled.div`
   display: flex;
@@ -229,6 +231,7 @@ export const ApplyBtn = styled.button`
   background: linear-gradient(93.72deg, #5920d3 0%, #2f88e5 99.32%);
   border: none;
   border-radius: 16px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 `;
 export const RequestWrapper = styled.div`
   width: 100%;
@@ -240,6 +243,7 @@ export const RequestWrapper = styled.div`
   color: #656565;
   padding: 2rem;
   margin-top: 3rem;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 `;
 
 export const ApplyWrapper = styled.div`
@@ -265,6 +269,8 @@ export const ApplyItem = styled.div`
   background: #f5f5f5;
   border-radius: 16px;
   align-items: center;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+
   @media (max-width: 767px) {
     width: 82%;
   }
@@ -321,6 +327,8 @@ export const SelectBtn = styled.div`
   color: #ffffff;
   text-align: center;
   line-height: 53px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
   @media (max-width: 767px) {
     width: 15%;
     font-size: 0.9rem;
@@ -329,3 +337,26 @@ export const SelectBtn = styled.div`
     justify-content: center;
   }
 `;
+export const DefaultApplyList = styled.div`
+  width: 100%;
+  height: 326px;
+  background: #fafafa;
+  border-radius: 16px;
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: #656565;
+  padding: 2rem;
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+`;
+export const Info = styled.img`
+  width: 10%;
+  @media (max-width: 767px) {
+    width: 15%;
+  }
+`;
+export const DefaultText = styled.div``;

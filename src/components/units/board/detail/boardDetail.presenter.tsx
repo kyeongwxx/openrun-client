@@ -153,36 +153,47 @@ export default function BoardDetailUI(props: any) {
               )}
             </TabPanel>
             <TabPanel value="2">
-              <s.ApplyWrapper>
-                {props.runner?.fetchRunnerByBoard?.map((el: any, i: any) => (
-                  <s.ApplyList>
-                    <s.ApplyItem>
-                      <s.RunnerIcon src="/boardDetail/RunnerIcon.png" />
-                      <s.RunnerName>{el?.user?.nickName}</s.RunnerName>
-                      <s.Rating>
-                        <s.Star src="/boardDetail/Star.png" />
-                      </s.Rating>
-                      <s.CntWrapper>
-                        {props.isPc && <s.RunCnt>줄서기 300건</s.RunCnt>}
-                        <s.SuccessRate>성공률 95%</s.SuccessRate>
-                      </s.CntWrapper>
-                    </s.ApplyItem>
-                    {props.isPc && (
-                      <s.SelectBtn onClick={props.onClickAdopt(el?.user?.id)}>
-                        채택하기
-                      </s.SelectBtn>
-                    )}
-                    {props.isMobile && (
-                      <s.SelectBtn>
-                        <AiOutlineCheckCircle
-                          size={30}
-                          onClick={props.onClickAdopt}
-                        />
-                      </s.SelectBtn>
-                    )}
-                  </s.ApplyList>
-                ))}
-              </s.ApplyWrapper>
+              {props.runner?.fetchRunnerByBoard?.length !== 0 ? (
+                <s.ApplyWrapper>
+                  {props.runner?.fetchRunnerByBoard?.map((el: any) => (
+                    <s.ApplyList>
+                      <s.ApplyItem>
+                        <s.RunnerIcon src="/boardDetail/RunnerIcon.png" />
+                        <s.RunnerName>{el?.user?.nickName}</s.RunnerName>
+                        <s.Rating>
+                          <s.Star src="/boardDetail/Star.png" />
+                        </s.Rating>
+                        <s.CntWrapper>
+                          {props.isPc && <s.RunCnt>줄서기 300건</s.RunCnt>}
+                          <s.SuccessRate>성공률 95%</s.SuccessRate>
+                        </s.CntWrapper>
+                      </s.ApplyItem>
+                      {props.isPc && (
+                        <s.SelectBtn onClick={props.onClickAdopt(el?.user?.id)}>
+                          채택하기
+                        </s.SelectBtn>
+                      )}
+                      {props.isMobile && (
+                        <s.SelectBtn>
+                          <AiOutlineCheckCircle
+                            size={30}
+                            onClick={props.onClickAdopt}
+                          />
+                        </s.SelectBtn>
+                      )}
+                    </s.ApplyList>
+                  ))}
+                </s.ApplyWrapper>
+              ) : (
+                <s.DefaultApplyList>
+                  <s.Info src="/boardDetail/Info.png" />
+                  <s.DefaultText>
+                    신청 내역이 없습니다.
+                    <br />
+                    거래에 참여해보세요!
+                  </s.DefaultText>
+                </s.DefaultApplyList>
+              )}
             </TabPanel>
           </TabContext>
         </Box>
