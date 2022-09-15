@@ -104,11 +104,12 @@ export default function BoardDetail() {
 
   // runner 채택
   const [adoptRunner] = useMutation(ADOPT_RUNNER);
-  const onClickAdopt = async () => {
+  console.log(runner?.fetchRunnerByBoard);
+  const onClickAdopt = (id: string) => async () => {
     try {
       const result = await adoptRunner({
         variables: {
-          userId: login.fetchLoginUser.id,
+          userId: id,
           boardId: router.query.id,
         },
       });

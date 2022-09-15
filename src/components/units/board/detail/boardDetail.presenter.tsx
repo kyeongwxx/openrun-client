@@ -147,7 +147,7 @@ export default function BoardDetailUI(props: any) {
             </TabPanel>
             <TabPanel value="2">
               <s.ApplyWrapper>
-                {props.runner?.fetchRunnerByBoard?.map((el: any) => (
+                {props.runner?.fetchRunnerByBoard?.map((el: any, i: any) => (
                   <s.ApplyList>
                     <s.ApplyItem>
                       <s.RunnerIcon src="/boardDetail/RunnerIcon.png" />
@@ -161,7 +161,7 @@ export default function BoardDetailUI(props: any) {
                       </s.CntWrapper>
                     </s.ApplyItem>
                     {props.isPc && (
-                      <s.SelectBtn onClick={props.onClickAdopt}>
+                      <s.SelectBtn onClick={props.onClickAdopt(el?.user?.id)}>
                         채택하기
                       </s.SelectBtn>
                     )}

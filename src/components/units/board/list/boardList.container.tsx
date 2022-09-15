@@ -68,13 +68,6 @@ export default function BoardList() {
   // 찜한 게시물 표시
   const { data: interestedId } = useQuery(FETCH_INTEREST_BOARD_ID);
 
-  // console.log(interestedId);
-
-  const matchedId = data?.fetchBoards?.filter((el) =>
-    interestedId?.fetchInterestBoardId?.includes(el.id)
-  );
-  // console.log(matchedId);
-
   return (
     <BoardListUI
       data={data}
