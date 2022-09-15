@@ -127,9 +127,9 @@ export default function BoardListUI(props: any) {
                       {props.interestedId?.fetchInterestBoardId?.includes(
                         el.id
                       ) ? (
-                        <s.PickIconWhite src="/boardList/Bookmark(black).png" />
+                        <s.PickIcon src="/boardList/Bookmark(filled).png" />
                       ) : (
-                        <s.PickIconWhite src="/boardList/Bookmark(white).png" />
+                        <s.PickIcon src="/boardList/Bookmark.png" />
                       )}
                       <s.UpperInfoWrapper>
                         <s.Category>{el?.category?.name}</s.Category>
@@ -288,9 +288,9 @@ export default function BoardListUI(props: any) {
                         {props.interestedId?.fetchInterestBoardId?.includes(
                           el.id
                         ) ? (
-                          <s.PickIconWhite src="/boardList/Bookmark(black).png" />
+                          <s.PickIcon src="/boardList/Bookmark(black).png" />
                         ) : (
-                          <s.PickIconWhite src="/boardList/Bookmark(white).png" />
+                          <s.PickIcon src="/boardList/Bookmark(white).png" />
                         )}
                         <s.UpperInfoWrapper>
                           <s.Category>{el?.category?.name}</s.Category>
@@ -452,9 +452,9 @@ export default function BoardListUI(props: any) {
                         {props.interestedId?.fetchInterestBoardId?.includes(
                           el.id
                         ) ? (
-                          <s.PickIconWhite src="/boardList/Bookmark(black).png" />
+                          <s.PickIcon src="/boardList/Bookmark(black).png" />
                         ) : (
-                          <s.PickIconWhite src="/boardList/Bookmark(white).png" />
+                          <s.PickIcon src="/boardList/Bookmark(white).png" />
                         )}
                         <s.UpperInfoWrapper>
                           <s.Category>{el?.category?.name}</s.Category>
@@ -616,9 +616,9 @@ export default function BoardListUI(props: any) {
                         {props.interestedId?.fetchInterestBoardId?.includes(
                           el.id
                         ) ? (
-                          <s.PickIconWhite src="/boardList/Bookmark(black).png" />
+                          <s.PickIcon src="/boardList/Bookmark(black).png" />
                         ) : (
-                          <s.PickIconWhite src="/boardList/Bookmark(white).png" />
+                          <s.PickIcon src="/boardList/Bookmark(white).png" />
                         )}
                         <s.UpperInfoWrapper>
                           <s.Category>{el?.category?.name}</s.Category>
@@ -780,9 +780,9 @@ export default function BoardListUI(props: any) {
                         {props.interestedId?.fetchInterestBoardId?.includes(
                           el.id
                         ) ? (
-                          <s.PickIconWhite src="/boardList/Bookmark(black).png" />
+                          <s.PickIcon src="/boardList/Bookmark(black).png" />
                         ) : (
-                          <s.PickIconWhite src="/boardList/Bookmark(white).png" />
+                          <s.PickIcon src="/boardList/Bookmark(white).png" />
                         )}
                         <s.UpperInfoWrapper>
                           <s.Category>{el?.category?.name}</s.Category>
@@ -944,9 +944,9 @@ export default function BoardListUI(props: any) {
                         {props.interestedId?.fetchInterestBoardId?.includes(
                           el.id
                         ) ? (
-                          <s.PickIconWhite src="/boardList/Bookmark(black).png" />
+                          <s.PickIcon src="/boardList/Bookmark(black).png" />
                         ) : (
-                          <s.PickIconWhite src="/boardList/Bookmark(white).png" />
+                          <s.PickIcon src="/boardList/Bookmark(white).png" />
                         )}
                         <s.UpperInfoWrapper>
                           <s.Category>{el?.category?.name}</s.Category>

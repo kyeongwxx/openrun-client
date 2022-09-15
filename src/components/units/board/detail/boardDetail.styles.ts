@@ -197,6 +197,7 @@ export const PickText = styled.div`
   justify-content: center;
   align-items: center;
 `;
+export const PickIcon = styled.img``;
 export const ApplyBtn = styled.button`
   width: 40%;
   height: 63px;
