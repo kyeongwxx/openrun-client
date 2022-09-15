@@ -292,15 +292,14 @@ export default function BoardListUI(props: any) {
                         </s.ImageWrapper>
                         <s.DateWrapper1>
                           <s.Month>{el?.dueDate?.slice(6, 7)}</s.Month>
-                          <s.DivideLine2 />
                           <s.Day>{el?.dueDate?.slice(8, 10)}</s.Day>
                         </s.DateWrapper1>
                         {props.interestedId?.fetchInterestBoardId?.includes(
                           el.id
                         ) ? (
-                          <s.PickIcon src="/boardList/Bookmark(black).png" />
+                          <s.PickIcon src="/boardList/Bookmark(filled).png" />
                         ) : (
-                          <s.PickIcon src="/boardList/Bookmark(white).png" />
+                          <s.PickIcon src="/boardList/Bookmark.png" />
                         )}
                         <s.UpperInfoWrapper>
                           <s.Category>{el?.category?.name}</s.Category>
@@ -378,7 +377,20 @@ export default function BoardListUI(props: any) {
                           <s.Contents></s.Contents>
                         )}
                         <s.Writer>{el?.user?.nickName}</s.Writer>
-                        <s.Price>{el?.price.toLocaleString("ko-KR")}원</s.Price>
+                        <s.StatusPriceWrapper>
+                          {el.status === "모집중" && (
+                            <s.Status1>{el.status}</s.Status1>
+                          )}
+                          {el.status === "진행중" && (
+                            <s.Status2>{el.status}</s.Status2>
+                          )}
+                          {el.status === "거래완료" && (
+                            <s.Status3>{el.status}</s.Status3>
+                          )}
+                          <s.Price>
+                            {el?.price.toLocaleString("ko-KR")}원
+                          </s.Price>
+                        </s.StatusPriceWrapper>
                       </s.ProductInfoWrapper>
                     ))}
                 </s.ProductWrapper>
@@ -456,15 +468,14 @@ export default function BoardListUI(props: any) {
                         </s.ImageWrapper>
                         <s.DateWrapper1>
                           <s.Month>{el?.dueDate?.slice(6, 7)}</s.Month>
-                          <s.DivideLine2 />
                           <s.Day>{el?.dueDate?.slice(8, 10)}</s.Day>
                         </s.DateWrapper1>
                         {props.interestedId?.fetchInterestBoardId?.includes(
                           el.id
                         ) ? (
-                          <s.PickIcon src="/boardList/Bookmark(black).png" />
+                          <s.PickIcon src="/boardList/Bookmark(filled).png" />
                         ) : (
-                          <s.PickIcon src="/boardList/Bookmark(white).png" />
+                          <s.PickIcon src="/boardList/Bookmark.png" />
                         )}
                         <s.UpperInfoWrapper>
                           <s.Category>{el?.category?.name}</s.Category>
@@ -542,7 +553,20 @@ export default function BoardListUI(props: any) {
                           <s.Contents></s.Contents>
                         )}
                         <s.Writer>{el?.user?.nickName}</s.Writer>
-                        <s.Price>{el?.price.toLocaleString("ko-KR")}원</s.Price>
+                        <s.StatusPriceWrapper>
+                          {el.status === "모집중" && (
+                            <s.Status1>{el.status}</s.Status1>
+                          )}
+                          {el.status === "진행중" && (
+                            <s.Status2>{el.status}</s.Status2>
+                          )}
+                          {el.status === "거래완료" && (
+                            <s.Status3>{el.status}</s.Status3>
+                          )}
+                          <s.Price>
+                            {el?.price.toLocaleString("ko-KR")}원
+                          </s.Price>
+                        </s.StatusPriceWrapper>
                       </s.ProductInfoWrapper>
                     ))}
                 </s.ProductWrapper>
@@ -620,15 +644,14 @@ export default function BoardListUI(props: any) {
                         </s.ImageWrapper>
                         <s.DateWrapper1>
                           <s.Month>{el?.dueDate?.slice(6, 7)}</s.Month>
-                          <s.DivideLine2 />
                           <s.Day>{el?.dueDate?.slice(8, 10)}</s.Day>
                         </s.DateWrapper1>
                         {props.interestedId?.fetchInterestBoardId?.includes(
                           el.id
                         ) ? (
-                          <s.PickIcon src="/boardList/Bookmark(black).png" />
+                          <s.PickIcon src="/boardList/Bookmark(filled).png" />
                         ) : (
-                          <s.PickIcon src="/boardList/Bookmark(white).png" />
+                          <s.PickIcon src="/boardList/Bookmark.png" />
                         )}
                         <s.UpperInfoWrapper>
                           <s.Category>{el?.category?.name}</s.Category>
@@ -706,7 +729,20 @@ export default function BoardListUI(props: any) {
                           <s.Contents></s.Contents>
                         )}
                         <s.Writer>{el?.user?.nickName}</s.Writer>
-                        <s.Price>{el?.price.toLocaleString("ko-KR")}원</s.Price>
+                        <s.StatusPriceWrapper>
+                          {el.status === "모집중" && (
+                            <s.Status1>{el.status}</s.Status1>
+                          )}
+                          {el.status === "진행중" && (
+                            <s.Status2>{el.status}</s.Status2>
+                          )}
+                          {el.status === "거래완료" && (
+                            <s.Status3>{el.status}</s.Status3>
+                          )}
+                          <s.Price>
+                            {el?.price.toLocaleString("ko-KR")}원
+                          </s.Price>
+                        </s.StatusPriceWrapper>
                       </s.ProductInfoWrapper>
                     ))}
                 </s.ProductWrapper>
@@ -784,15 +820,14 @@ export default function BoardListUI(props: any) {
                         </s.ImageWrapper>
                         <s.DateWrapper1>
                           <s.Month>{el?.dueDate?.slice(6, 7)}</s.Month>
-                          <s.DivideLine2 />
                           <s.Day>{el?.dueDate?.slice(8, 10)}</s.Day>
                         </s.DateWrapper1>
                         {props.interestedId?.fetchInterestBoardId?.includes(
                           el.id
                         ) ? (
-                          <s.PickIcon src="/boardList/Bookmark(black).png" />
+                          <s.PickIcon src="/boardList/Bookmark(filled).png" />
                         ) : (
-                          <s.PickIcon src="/boardList/Bookmark(white).png" />
+                          <s.PickIcon src="/boardList/Bookmark.png" />
                         )}
                         <s.UpperInfoWrapper>
                           <s.Category>{el?.category?.name}</s.Category>
@@ -870,7 +905,20 @@ export default function BoardListUI(props: any) {
                           <s.Contents></s.Contents>
                         )}
                         <s.Writer>{el?.user?.nickName}</s.Writer>
-                        <s.Price>{el?.price.toLocaleString("ko-KR")}원</s.Price>
+                        <s.StatusPriceWrapper>
+                          {el.status === "모집중" && (
+                            <s.Status1>{el.status}</s.Status1>
+                          )}
+                          {el.status === "진행중" && (
+                            <s.Status2>{el.status}</s.Status2>
+                          )}
+                          {el.status === "거래완료" && (
+                            <s.Status3>{el.status}</s.Status3>
+                          )}
+                          <s.Price>
+                            {el?.price.toLocaleString("ko-KR")}원
+                          </s.Price>
+                        </s.StatusPriceWrapper>
                       </s.ProductInfoWrapper>
                     ))}
                 </s.ProductWrapper>
@@ -948,15 +996,14 @@ export default function BoardListUI(props: any) {
                         </s.ImageWrapper>
                         <s.DateWrapper1>
                           <s.Month>{el?.dueDate?.slice(6, 7)}</s.Month>
-                          <s.DivideLine2 />
                           <s.Day>{el?.dueDate?.slice(8, 10)}</s.Day>
                         </s.DateWrapper1>
                         {props.interestedId?.fetchInterestBoardId?.includes(
                           el.id
                         ) ? (
-                          <s.PickIcon src="/boardList/Bookmark(black).png" />
+                          <s.PickIcon src="/boardList/Bookmark(filled).png" />
                         ) : (
-                          <s.PickIcon src="/boardList/Bookmark(white).png" />
+                          <s.PickIcon src="/boardList/Bookmark.png" />
                         )}
                         <s.UpperInfoWrapper>
                           <s.Category>{el?.category?.name}</s.Category>
@@ -1034,7 +1081,20 @@ export default function BoardListUI(props: any) {
                           <s.Contents></s.Contents>
                         )}
                         <s.Writer>{el?.user?.nickName}</s.Writer>
-                        <s.Price>{el?.price.toLocaleString("ko-KR")}원</s.Price>
+                        <s.StatusPriceWrapper>
+                          {el.status === "모집중" && (
+                            <s.Status1>{el.status}</s.Status1>
+                          )}
+                          {el.status === "진행중" && (
+                            <s.Status2>{el.status}</s.Status2>
+                          )}
+                          {el.status === "거래완료" && (
+                            <s.Status3>{el.status}</s.Status3>
+                          )}
+                          <s.Price>
+                            {el?.price.toLocaleString("ko-KR")}원
+                          </s.Price>
+                        </s.StatusPriceWrapper>
                       </s.ProductInfoWrapper>
                     ))}
                 </s.ProductWrapper>
