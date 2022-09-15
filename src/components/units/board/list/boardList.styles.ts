@@ -114,30 +114,31 @@ export const DateWrapper1 = styled.div`
   flex-direction: column;
   align-items: center;
   position: absolute;
-  top: 2%;
-  left: 4%;
+  top: 4%;
+  left: 6%;
   border-radius: 24px;
 `;
 
 export const Month = styled.div`
-  font-weight: 400;
-  font-size: 1.125rem;
+  font-weight: 350;
+  font-size: 1rem;
   color: #fff;
-`;
-export const DivideLine2 = styled.div`
-  border-bottom: 2px solid #fff;
-  width: 2.156rem;
-  margin: 0.5rem 0;
+  z-index: 1;
+  text-shadow: 1px 1px 1px #555;
 `;
 export const Day = styled.div`
-  font-weight: 700;
-  font-size: 1.125rem;
+  font-weight: 450;
+  font-size: 1.4rem;
   color: #fff;
+  height: 60px;
+  line-height: 15px;
+  z-index: 1;
+  text-shadow: 1px 1px 1px #555;
 `;
 export const PickIcon = styled.img`
   position: absolute;
-  top: 2%;
-  right: 4%;
+  top: 4%;
+  right: 6%;
 `;
 export const UpperInfoWrapper = styled.div`
   display: flex;
@@ -150,7 +151,7 @@ export const Category = styled.div`
   font-weight: 700;
   font-size: 1rem;
   color: rgba(0, 0, 0, 0.7);
-  padding: 0 10px;
+  padding: 0 20px;
 `;
 export const Region = styled.div`
   width: 25%;
@@ -252,7 +253,7 @@ export const Title = styled.div`
   font-weight: 700;
   font-size: 1.25rem;
   color: #000000;
-  padding: 0 10px;
+  padding: 0 20px;
   padding-bottom: 0.813rem;
   cursor: pointer;
   :hover {
@@ -267,24 +268,59 @@ export const Contents = styled.div`
   font-weight: 400;
   font-size: 0.875rem;
   color: #656565;
-  padding: 0 10px;
+  padding: 0 20px;
   padding-bottom: 0.688rem;
 `;
 export const Writer = styled.div`
   font-weight: 700;
   font-size: 0.875rem;
   color: #a3a3a3;
-  padding: 0 10px;
+  padding: 0 20px;
 
   padding-bottom: 0.688rem;
 `;
+export const StatusPriceWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  padding-bottom: 10px;
+`;
+export const Status1 = styled.div`
+  width: 47px;
+  height: 25px;
+  text-align: center;
+  line-height: 25px;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: #7dd03c;
+  border: 1px solid #7dd03c;
+`;
+export const Status2 = styled.div`
+  width: 47px;
+  height: 25px;
+  text-align: center;
+  line-height: 25px;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: #ff9100;
+  border: 1px solid #ff9100;
+`;
+export const Status3 = styled.div`
+  width: 47px;
+  height: 25px;
+  text-align: center;
+  line-height: 25px;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: #d03c3c;
+  border: 1px solid #d03c3c;
+`;
 export const Price = styled.div`
-  width: 100%;
-  text-align: right;
   font-weight: 700;
   font-size: 1.5rem;
   color: #000000;
-  padding: 10px;
 `;
 export const FetchMoreBtnWrapper = styled.div`
   width: 15%;

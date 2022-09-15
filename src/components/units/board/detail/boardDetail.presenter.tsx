@@ -10,7 +10,6 @@ import Map from "../../../../commons/maps-detail/map.container";
 import Dompurify from "dompurify";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import LiveChat from "../../../../commons/liveChat/liveChat.container";
-import { ImHeart } from "react-icons/im";
 
 const theme = createTheme({
   components: {
@@ -42,14 +41,22 @@ export default function BoardDetailUI(props: any) {
           <s.Image
             src={
               props.data?.fetchBoard?.image?.url
-                ? `https://storage.googleapis.com/openrun-storage/${props.data?.fetchBoard?.image[0]?.url}`
+                ? `https://storage.googleapis.com/openrun-storage/${props.data?.fetchBoard?.image?.url}`
                 : "/boardList/default.jpeg"
             }
           />
         </s.ImageWrapper>
         <s.ProductInfoWrapper>
           <s.StatusWrapper>
-            <s.Status>모집중</s.Status>
+            {props.data?.fetchBoard?.status === "모집중" && (
+              <s.Status1>{props.data?.fetchBoard?.status}</s.Status1>
+            )}
+            {props.data?.fetchBoard?.status === "진행중" && (
+              <s.Status2>{props.data?.fetchBoard?.status}</s.Status2>
+            )}
+            {props.data?.fetchBoard?.status === "거래완료" && (
+              <s.Status3>{props.data?.fetchBoard?.status}</s.Status3>
+            )}
             <s.MutationBtns>
               <s.UpdateBtn
                 src="/boardDetail/Update.png"
