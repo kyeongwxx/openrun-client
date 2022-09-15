@@ -6,12 +6,13 @@ export const FETCH_PAYMENT_HISTORY = gql`
       id
       price
       status
-      # user {
-      #   id
-      #   nickName
-      # }
+      user {
+        id
+        nickName
+      }
 
       board {
+        id
         title
         dueDate
         status
@@ -27,20 +28,20 @@ export const FETCH_PAYMENT_HISTORY = gql`
   }
 `;
 
-export const CREATE_RATING = gql`
-  mutation createRating($boardId: String!, $rate: Float!) {
-    createRating(boardId: $boardId, rate: $rate)
-  }
-`;
+// export const CREATE_RATING = gql`
+//   mutation createRating($boardId: String!, $rate: Float!) {
+//     createRating(boardId: $boardId, rate: $rate)
+//   }
+// `;
 
-export const COMPLETE_BUSINESS = gql`
-  mutation completeBusiness($boardId: String!) {
-    completeBusiness(boardId: $boardId) {
-      id
-      user {
-        id
-        nickName
-      }
-    }
-  }
-`;
+// export const COMPLETE_BUSINESS = gql`
+//   mutation completeBusiness($boardId: String!) {
+//     completeBusiness(boardId: $boardId) {
+//       id
+//       user {
+//         id
+//         nickName
+//       }
+//     }
+//   }
+// `;

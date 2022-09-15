@@ -1,3 +1,3 @@
 export interface ICarouselProps {
-  Src?: string;
+  Src: string[];
 }

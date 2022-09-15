@@ -5,6 +5,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { useRouter } from "next/router";
 import * as s from "./tabs.styles";
+import { v4 as uuidv4 } from "uuid";
 
 export default function CenteredTabs(props) {
   const [value, setValue] = useState(0);
@@ -25,16 +26,17 @@ export default function CenteredTabs(props) {
           variant="scrollable"
           value={value}
           onChange={handleChange}
-          centered
+          scrollButtons={false}
         >
           {props.tabs.map((el, index) =>
             props.address ? (
               <s.TabCustom
+                key={uuidv4()}
                 label={el}
                 onClick={onClickMoveToPage(props.address[index])}
               />
             ) : (
-              <Tab label={el} />
+              <Tab key={uuidv4()} label={el} />
             )
           )}
         </s.TabsCustom>

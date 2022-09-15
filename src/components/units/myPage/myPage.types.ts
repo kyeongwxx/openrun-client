@@ -23,7 +23,6 @@ export interface IEditAccountProps {
 
 export interface IDealListProps {
   onFetchMore: () => void;
-  onClickCompleteModal: (nickName: string) => () => void;
 
   onClickTop: () => void;
   scrollRef: RefObject<HTMLDivElement>;
@@ -36,4 +35,5 @@ export interface IWrittenBoardsProps {
   onClickTop: () => void;
   scrollRef: RefObject<HTMLDivElement>;
   data?: IBoard[];
+  onClickCompleteModal: (nickName: string, boardId: string) => () => void;
 }

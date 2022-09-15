@@ -179,3 +179,32 @@ export const BoardContent = styled.div<{
     height: 100px; */
   }
 `;
+
+export const BtnWrapper = styled.div`
+  width: 200px;
+  height: 90px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+
+  @media (max-width: 767px) {
+    width: 50%;
+    height: 30px;
+  }
+`;
+
+export const ButtonC = styled.div`
+  width: 35%;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  @media (max-width: 767px) {
+    width: 50%;
+    height: 100%;
+  }
+`;

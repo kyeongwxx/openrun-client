@@ -37,7 +37,7 @@ export default function Layout(props: ILayoutProps) {
 
         <div>{props.children}</div>
       </Container>
-      <LayoutFooter />
+      {!IsHidden && <LayoutFooter />}
     </s.Wrapper>
   );
 }
