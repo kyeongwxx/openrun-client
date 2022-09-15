@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import Selector from "../../../../commons/selector";
 import { dateSplit } from "../../../../commons/function/dateSlice";
 import { IWrittenBoardsProps } from "../myPage.types";
+import { CheckCircleOutline, ReportGmailerrorred } from "@mui/icons-material";
 export default function MypageWrittenBoardsUI(props: IWrittenBoardsProps) {
   return (
     <s.Wrapper>
@@ -53,6 +54,31 @@ export default function MypageWrittenBoardsUI(props: IWrittenBoardsProps) {
                       </s.BoardContent>
                     </s.BoardContents>
                     <s.Status>{el.status}</s.Status>
+
+                    {el?.status === "진행중" ? (
+                      <s.BtnWrapper>
+                        <s.ButtonC>
+                          <ReportGmailerrorred style={{ color: "#D44D4D" }} />
+                          <s.Text size="1rem" color="#D44D4D" weight="400">
+                            신고하기
+                          </s.Text>
+                        </s.ButtonC>
+                        <s.DivideLine />
+                        <s.ButtonC
+                          onClick={props.onClickCompleteModal(
+                            el.user?.nickName || "",
+                            el?.id || ""
+                          )}
+                        >
+                          <CheckCircleOutline style={{ color: "#1F8716" }} />
+                          <s.Text size="1rem" color="#1F8716" weight="400">
+                            거래완료
+                          </s.Text>
+                        </s.ButtonC>
+                      </s.BtnWrapper>
+                    ) : (
+                      <div key={uuidv4()} />
+                    )}
                   </s.ActiveBoard>
                 ))
               ) : (

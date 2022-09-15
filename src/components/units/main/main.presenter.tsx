@@ -4,7 +4,14 @@ import * as s from "./main.styles";
 export default function MainUI() {
   return (
     <s.Wrapper>
-      <MainSlider Src="/img/mainBanner.png" />
+      <MainSlider
+        Src={[
+          "/img/carousel/main6.jpeg",
+          "/img/carousel/main2.jpeg",
+          "/img/carousel/main3.jpeg",
+          "/img/carousel/main7.jpeg",
+        ]}
+      />
       <DatePicker />
       <s.EventProductWrapper>
         <s.EventProduct>

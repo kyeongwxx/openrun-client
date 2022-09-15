@@ -36,7 +36,7 @@ export type IBoard = {
   deletedAt?: Maybe<Scalars['DateTime']>;
   dueDate?: Maybe<Scalars['DateTime']>;
   id: Scalars['String'];
-  image?: Maybe<Array<IImage>>;
+  image?: Maybe<IImage>;
   location?: Maybe<ILocation>;
   price?: Maybe<Scalars['Int']>;
   status?: Maybe<Scalars['String']>;
@@ -67,12 +67,24 @@ export type IChatRoom = {
   seller: IUser;
 };
 
+export type ICreateAdminInput = {
+  email?: InputMaybe<Scalars['String']>;
+  isAdmin?: InputMaybe<Scalars['Boolean']>;
+  nickName?: InputMaybe<Scalars['String']>;
+  password?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
+  point?: InputMaybe<Scalars['Int']>;
+  rating?: InputMaybe<Scalars['Float']>;
+  report?: InputMaybe<Scalars['Int']>;
+  successRate?: InputMaybe<Scalars['Int']>;
+};
+
 export type ICreateBoardInput = {
   category?: InputMaybe<Scalars['String']>;
   contents?: InputMaybe<Scalars['String']>;
   eventDay?: InputMaybe<Scalars['String']>;
   eventTime?: InputMaybe<Scalars['String']>;
-  image?: InputMaybe<Array<Scalars['String']>>;
+  image?: InputMaybe<Scalars['String']>;
   location?: InputMaybe<ILocationInput>;
   price?: InputMaybe<Scalars['Int']>;
   title: Scalars['String'];
@@ -119,28 +131,27 @@ export type IEvent = {
 
 export type IImage = {
   __typename?: 'Image';
-  board: IBoard;
   id: Scalars['String'];
   url?: Maybe<Scalars['String']>;
 };
 
 export type IInquiry = {
   __typename?: 'Inquiry';
-  board: IBoard;
-  contents: Scalars['String'];
-  createdAt: Scalars['DateTime'];
+  board?: Maybe<IBoard>;
+  contents?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
   id: Scalars['String'];
-  title: Scalars['String'];
-  type: Scalars['String'];
-  user: IUser;
+  title?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['String']>;
+  user?: Maybe<IUser>;
 };
 
 export type IInquiryAnswer = {
   __typename?: 'InquiryAnswer';
-  contents: Scalars['String'];
-  createdAt: Scalars['DateTime'];
+  contents?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
   id: Scalars['String'];
-  inquiry: IInquiry;
+  inquiry?: Maybe<IInquiry>;
 };
 
 export type IInterest = {
@@ -152,13 +163,13 @@ export type IInterest = {
 
 export type ILocation = {
   __typename?: 'Location';
-  address: Scalars['String'];
-  addressDetail: Scalars['String'];
-  deletedAt: Scalars['DateTime'];
+  address?: Maybe<Scalars['String']>;
+  addressDetail?: Maybe<Scalars['String']>;
+  deletedAt?: Maybe<Scalars['DateTime']>;
   id: Scalars['String'];
-  lat: Scalars['Float'];
-  lng: Scalars['Float'];
-  zipcode: Scalars['String'];
+  lat?: Maybe<Scalars['Float']>;
+  lng?: Maybe<Scalars['Float']>;
+  zipcode?: Maybe<Scalars['String']>;
 };
 
 export type ILocationInput = {
@@ -171,12 +182,14 @@ export type ILocationInput = {
 
 export type IMutation = {
   __typename?: 'Mutation';
-  addInterestList: IInterest;
+  addInterestList: Scalars['Boolean'];
   adoptRunner: IRunner;
   applyRunner: IRunner;
   cancelPayment: IPayment;
   chargePayment: IPayment;
   checkTokenByPhone: Scalars['Boolean'];
+  completeBusiness: IBoard;
+  createAdmin: IUser;
   createBoard: IBoard;
   createCategory: ICategory;
   createEvent: IEvent;
@@ -195,8 +208,8 @@ export type IMutation = {
   test: IPaymentHistory;
   updateBoard: IBoard;
   updateLoginUser: IUser;
+  updateNotifications: Scalars['Boolean'];
   uploadFile: Scalars['String'];
-  uploadFiles: Array<Scalars['String']>;
 };
 
 
@@ -231,6 +244,16 @@ export type IMutationChargePaymentArgs = {
 export type IMutationCheckTokenByPhoneArgs = {
   phone: Scalars['String'];
   token: Scalars['String'];
+};
+
+
+export type IMutationCompleteBusinessArgs = {
+  boardId: Scalars['String'];
+};
+
+
+export type IMutationCreateAdminArgs = {
+  createAdminInput: ICreateAdminInput;
 };
 
 
@@ -318,19 +341,31 @@ export type IMutationUploadFileArgs = {
   file: Scalars['Upload'];
 };
 
-
-export type IMutationUploadFilesArgs = {
-  files: Array<Scalars['Upload']>;
+export type INotification = {
+  __typename?: 'Notification';
+  board?: Maybe<IBoard>;
+  contents?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  isNew?: Maybe<Scalars['Boolean']>;
+  user?: Maybe<IUser>;
 };
 
 export type IPayment = {
   __typename?: 'Payment';
-  amount: Scalars['Int'];
-  createdAt: Scalars['DateTime'];
+  amount?: Maybe<Scalars['Int']>;
+  count?: Maybe<Scalars['Int']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
   id: Scalars['String'];
   impUid: Scalars['String'];
-  status: Scalars['String'];
-  user: IUser;
+  status?: Maybe<Scalars['String']>;
+  user?: Maybe<IUser>;
+};
+
+export type IPaymentByDate = {
+  __typename?: 'PaymentByDate';
+  amount?: Maybe<Scalars['Int']>;
+  count?: Maybe<Scalars['Int']>;
+  id: Scalars['String'];
 };
 
 export type IPaymentHistory = {
@@ -352,22 +387,24 @@ export type IQuery = {
   fetchCategories: Array<ICategory>;
   fetchChatLogs: Array<IChatMessage>;
   fetchEvent: IEvent;
-  fetchEvents: Array<Array<IEvent>>;
   fetchEventsByDate: Array<IEvent>;
   fetchInquiry: Array<IInquiry>;
+  fetchInterestBoardId: Array<Scalars['String']>;
   fetchInterestBoards: Array<IInterest>;
   fetchLoginUser: IUser;
   fetchLoginUserInquiry: Array<IInquiry>;
   fetchLoginUserInquiryAnswer: Array<IInquiryAnswer>;
+  fetchNotifications: Array<INotification>;
   fetchPaymentHistory: Array<IPaymentHistory>;
   fetchPaymentHistoryCount: Scalars['Int'];
-  fetchPayments: Scalars['Int'];
+  fetchPayments: Array<IPaymentByDate>;
   fetchPointChargeHistory: Array<IPayment>;
   fetchReports: Array<IReport>;
   fetchRunnerByBoard: Array<IRunner>;
   fetchUserChatRoom: Array<IChatRoom>;
   fetchUsers: Array<IUser>;
   fetchUsersCount: Scalars['Int'];
+  fetchUsersCountByDate: Array<IUser>;
   fetchWriteBoards: Array<IBoard>;
 };
 
@@ -379,7 +416,9 @@ export type IQueryFetchBoardArgs = {
 
 export type IQueryFetchBoardsArgs = {
   dateType: Scalars['String'];
+  direcion?: InputMaybe<Scalars['String']>;
   page?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -390,11 +429,6 @@ export type IQueryFetchChatLogsArgs = {
 
 export type IQueryFetchEventArgs = {
   eventId: Scalars['String'];
-};
-
-
-export type IQueryFetchEventsArgs = {
-  search?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -410,6 +444,11 @@ export type IQueryFetchInterestBoardsArgs = {
 
 export type IQueryFetchLoginUserInquiryAnswerArgs = {
   inquiryId: Scalars['String'];
+};
+
+
+export type IQueryFetchPaymentHistoryArgs = {
+  page?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -465,7 +504,7 @@ export type IUpdateBoardInput = {
   contents?: InputMaybe<Scalars['String']>;
   eventDay?: InputMaybe<Scalars['String']>;
   eventTime?: InputMaybe<Scalars['String']>;
-  image?: InputMaybe<Array<Scalars['String']>>;
+  image?: InputMaybe<Scalars['String']>;
   location?: InputMaybe<ILocationInput>;
   price?: InputMaybe<Scalars['Int']>;
   title?: InputMaybe<Scalars['String']>;
@@ -484,6 +523,7 @@ export type IUser = {
   __typename?: 'User';
   bankAccount?: Maybe<IBankAccount>;
   boardTotal?: Maybe<Scalars['Int']>;
+  countByDate?: Maybe<Scalars['Int']>;
   createdAt?: Maybe<Scalars['DateTime']>;
   deleteAt?: Maybe<Scalars['DateTime']>;
   email?: Maybe<Scalars['String']>;
@@ -501,6 +541,5 @@ export type IUser = {
   rating?: Maybe<Scalars['Float']>;
   report?: Maybe<Scalars['Int']>;
   successRate?: Maybe<Scalars['Int']>;
-  sucessRate?: Maybe<Scalars['Int']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };

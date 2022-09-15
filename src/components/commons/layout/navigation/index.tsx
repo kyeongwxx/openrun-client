@@ -36,18 +36,10 @@ export default function LayoutNavigation() {
   const router = useRouter();
 
   const [logout] = useMutation<Pick<IMutation, "logout">>(LOGOUT);
-  // const { data } = useQuery(FETCH_LOGIN_USER);
-  // console.log(data);
 
   const onClickMoveToPage = (event: string) => () => {
     router.push(event);
   };
-
-  // const deleteCookie = (name) => {
-  //   document.cookie =
-  //     name +
-  //     "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;domain=.openrunbackend.shop.kr;path=/myPage/;";
-  // };
 
   const onClickLogout = async () => {
     try {
@@ -56,8 +48,7 @@ export default function LayoutNavigation() {
       if (result) {
         setAccessToken(" ");
         setIsLogout(true);
-        // deleteCookie("refreshToken");
-        // router.push("/main");
+        router.push("/main");
       }
     } catch (error) {
       console.log(error);
