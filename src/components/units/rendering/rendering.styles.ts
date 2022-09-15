@@ -1,6 +1,24 @@
 import styled from "@emotion/styled";
 import "animate.css";
 
+export const Main = styled.main`
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  ::-webkit-scrollbar {
+    width: 0;
+    background-color: transparent;
+  }
+
+  & > div {
+    scroll-snap-align: start;
+    height: 100vh;
+  }
+`;
 export const Wrapper = styled.main`
   width: 100%;
 
@@ -161,7 +179,7 @@ export const ImgDiv = styled.div`
   margin-bottom: -5rem;
   .isActive {
     animation: fadeInUp;
-    animation-duration: 1s;
+    animation-duration: 2s;
   }
 `;
 export const ImgDiv2 = styled.div`
