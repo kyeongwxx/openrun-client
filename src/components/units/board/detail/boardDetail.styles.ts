@@ -17,12 +17,16 @@ export const ProductWrapper = styled.div`
     align-items: center;
   }
 `;
+export const ImgTimerWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-right: 6.438rem;
+`;
 export const ImageWrapper = styled.div`
   width: 100%;
   height: 400px;
   margin: 0 auto;
   overflow: hidden;
-  padding-right: 6.438rem;
   @media (max-width: 767px) {
     width: 50%;
     height: 200px;
