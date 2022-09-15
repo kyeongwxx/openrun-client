@@ -10,6 +10,7 @@ import Map from "../../../../commons/maps-detail/map.container";
 import Dompurify from "dompurify";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import LiveChat from "../../../../commons/liveChat/liveChat.container";
+import Timer from "../../../../commons/timer";
 
 const theme = createTheme({
   components: {
@@ -37,15 +38,18 @@ export default function BoardDetailUI(props: any) {
   return (
     <s.Wrapper>
       <s.ProductWrapper>
-        <s.ImageWrapper>
-          <s.Image
-            src={
-              props.data?.fetchBoard?.image?.url
-                ? `https://storage.googleapis.com/openrun-storage/${props.data?.fetchBoard?.image?.url}`
-                : "/boardList/default.jpeg"
-            }
-          />
-        </s.ImageWrapper>
+        <s.ImgTimerWrapper>
+          <s.ImageWrapper>
+            <s.Image
+              src={
+                props.data?.fetchBoard?.image?.url
+                  ? `https://storage.googleapis.com/openrun-storage/${props.data?.fetchBoard?.image?.url}`
+                  : "/boardList/default.jpeg"
+              }
+            />
+          </s.ImageWrapper>
+          <Timer />
+        </s.ImgTimerWrapper>
         <s.ProductInfoWrapper>
           <s.StatusWrapper>
             {props.data?.fetchBoard?.status === "모집중" && (
