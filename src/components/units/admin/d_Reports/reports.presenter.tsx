@@ -8,23 +8,16 @@ export default function ReportsUI(props) {
   return (
     <s.Wrapper>
       <s.Row>
-        <s.ColumnHeader>유형</s.ColumnHeader>
-        <s.ColumnHeader>상세내용</s.ColumnHeader>
-        <s.ColumnHeader>신고당한 유저 id</s.ColumnHeader>
-        <s.ColumnHeader>신고한 유저</s.ColumnHeader>
-        <s.ColumnHeader>신고 게시글</s.ColumnHeader>
         <s.ColumnHeader>신고 일자</s.ColumnHeader>
+        <s.ColumnHeader>신고게시글</s.ColumnHeader>
+        {/* 신고게시글 누르면 상세내역 나오는걸로 (모여모여참고) */}
+        <s.ColumnHeader>처리상태</s.ColumnHeader>
       </s.Row>
       {props.data?.fetchReports.map((el: any) => (
         <s.Row key={el.id}>
-          <s.ColumnBasic>{String(el.id).slice(-4).toUpperCase()}</s.ColumnBasic>
-          <s.ColumnTitle id={el.id}></s.ColumnTitle>
-          <s.ColumnBasic>{el.type}</s.ColumnBasic>
-          <s.ColumnBasic>{el.contents}</s.ColumnBasic>
-          <s.ColumnBasic>{el.id}</s.ColumnBasic>
-          <s.ColumnBasic>{el.user}</s.ColumnBasic>
-          <s.ColumnBasic>{el.board}</s.ColumnBasic>
           <s.ColumnBasic>{getDate(el.createdAt)}</s.ColumnBasic>
+          <s.ColumnBasic>{el.board}</s.ColumnBasic>
+          {/* <s.ColumnBtn>미처리/ 처리완료버튼</s.ColumnBtn> */}
         </s.Row>
       ))}
     </s.Wrapper>

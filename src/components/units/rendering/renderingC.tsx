@@ -7,7 +7,6 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  background: #ffffff;
 `;
 const Wrapper = styled.div`
   display: flex;
@@ -20,27 +19,19 @@ const Wrapper = styled.div`
   }
 `;
 
-export const ItemImg = styled.img`
-  width: 45rem;
-  margin-bottom: 14rem;
-  .isActive {
-    animation: fadeInUp;
-    animation-duration: 1s;
-  }
-  @media (max-width: 767px) {
-    width: 35rem;
-  }
-`;
 const Title = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   padding-bottom: 32rem;
-
+  transform: translate(0%, 10%);
   & > span:nth-of-type(1) {
     font-size: 3.125rem;
     font-weight: 500;
     line-height: 4.375rem;
     letter-spacing: -0.05em;
+    margin-top: 18rem;
   }
 
   & > p {
@@ -50,23 +41,30 @@ const Title = styled.div`
     line-height: 1.68rem;
     letter-spacing: -0.05em;
   }
-  & > button {
-    width: 15rem;
-    font-size: 1.5rem;
-    padding-top: 4rem;
-    background: linear-gradient(93.72deg, #5920d3 0%, #2f88e5 99.32%);
-    color: #fff;
-    border-radius: 0.5rem;
 
-    border: none;
+  @media (max-width: 1450px) {
+    transform: translate(0%, 1%);
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    flex-direction: column;
+
+    & > span:nth-of-type(1) {
+      font-size: 2.825rem;
+    }
+    & > p {
+      font-size: 1rem;
+      /* margin-bottom: 5rem; */
+      /* margin-top: -1rem; */
+    }
   }
-  @media (max-width: 1250px) {
-    transform: translateY(-80%);
+  @media (max-width: 767px) {
+    transform: translate(0%, 10%);
+    & > span:nth-of-type(1) {
+      font-size: 2.025rem;
+      margin-top: -4rem;
+    }
+    & > p {
+      margin-top: -3rem;
+    }
   }
 `;
 
@@ -74,34 +72,46 @@ const Info = styled.div`
   position: absolute;
   right: 23%;
   bottom: 5%;
+  padding-top: 4rem;
   transform: translateY(90%);
-  filter: blur(20px);
-  transition: all 1.5s ease;
+  filter: blur(100%);
+  transition: all 2s ease;
 
   &.isActive {
     filter: blur(0px);
-    transform: translateY(0.5%);
+    transform: translateY(-12%);
   }
   img {
-    width: 55rem;
+    width: 25vw;
+    transform: translate(70%, -30%);
   }
   @media (max-width: 1543px) {
-    transform: translate(100%, 0%);
+    transform: translate(100%, 20%);
     img {
-      width: 50vw;
+      width: 23vw;
     }
     &.isActive {
       transform: translate(0%, 1%);
     }
   }
 
-  @media (max-width: 1250px) {
-    transform: translate(-50%, 90%);
+  @media (max-width: 1450px) {
+    transform: translate(-40%, 90%);
     img {
-      width: 50vw;
+      width: 25vw;
     }
     &.isActive {
-      transform: translate(-50%, 1%);
+      transform: translate(-50%, 20%);
+    }
+  }
+  @media (max-width: 767px) {
+    transform: translate(-50%, -1%);
+    img {
+      width: 40vw;
+      transform: translate(35%, 10%);
+    }
+    &.isActive {
+      transform: translate(-50%, -10%);
     }
   }
 `;
@@ -115,17 +125,17 @@ export default function C() {
       <Wrapper>
         <Title>
           <span>
-            <strong>채팅을 통해 러너와 대화해보세요</strong>
+            <strong>채팅을 통해 </strong>
+            <strong> 러너와 대화해보세요</strong>
           </span>
           <p>
             오픈 러너와 실시간으로 편안하게 소통하세요.
             <br />
-            개인 연락처를 주고 받지 않아도 서로의 위치를 확인할 수 있어요.
+            개인 연락처를 주고 받지 않아도 대화할 수 있어요.
           </p>
         </Title>
         <Info ref={ref} className={inView ? "isActive" : ""}>
-          <img src="/img/queue.png" alt="" />
-          {/* 이미지교체 필요 */}
+          <img src="/img/Group 25.png" alt="" />
         </Info>
       </Wrapper>
     </Container>
