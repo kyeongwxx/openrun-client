@@ -5,6 +5,7 @@ export const FETCH_BOARDS = gql`
     $dateType: String!
     $page: Int
     $search: String
+    $direcion: String
     $category: String
   ) {
     fetchBoards(
@@ -12,6 +13,7 @@ export const FETCH_BOARDS = gql`
       page: $page
       search: $search
       category: $category
+      direcion: $direcion
     ) {
       id
       title

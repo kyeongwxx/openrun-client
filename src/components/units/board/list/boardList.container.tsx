@@ -2,17 +2,12 @@ import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { ChangeEvent, MouseEvent, useState } from "react";
 import BoardListUI from "./boardList.presenter";
-import {
-  FETCH_BOARDS,
-  FETCH_EVENTS,
-  FETCH_INTEREST_BOARDS,
-  FETCH_INTEREST_BOARD_ID,
-} from "./boardList.queries";
+import { FETCH_BOARDS, FETCH_INTEREST_BOARD_ID } from "./boardList.queries";
 import _ from "lodash";
 import MediaQueryMobile from "../../../../commons/mediaQuery/mediaQueryStandardMobile";
 import MediaQueryPc from "../../../../commons/mediaQuery/mediaQueryStandardPc";
 import { useRecoilState } from "recoil";
-import { selectorValue } from "../../../commons/store";
+import { selectorValue, selectorValue2 } from "../../../commons/store";
 
 export default function BoardList() {
   const router = useRouter();
@@ -23,8 +18,13 @@ export default function BoardList() {
 
   // 기본 게시물 정렬
   const [sortValue] = useRecoilState(selectorValue);
+  const [sortValue2] = useRecoilState(selectorValue2);
   const { data, refetch, fetchMore } = useQuery(FETCH_BOARDS, {
-    variables: { dateType: sortValue || "최신순", page: 1 },
+    variables: {
+      dateType: sortValue || "최신순",
+      direcion: sortValue2,
+      page: 1,
+    },
   });
 
   // 더보기  함수
@@ -50,7 +50,12 @@ export default function BoardList() {
   const [keyword, setKeyword] = useState("");
 
   const getDebounce = _.debounce((value) => {
-    refetch({ dateType: sortValue || "최신순", search: value, page: 1 });
+    refetch({
+      dateType: sortValue || "최신순",
+      direcion: sortValue2,
+      search: value,
+      page: 1,
+    });
     setKeyword(value);
     console.log(value);
   }, 1000);

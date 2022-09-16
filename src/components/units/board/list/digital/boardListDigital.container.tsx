@@ -9,7 +9,7 @@ import _ from "lodash";
 import { useRecoilState } from "recoil";
 import MediaQueryMobile from "../../../../../commons/mediaQuery/mediaQueryStandardMobile";
 import MediaQueryPc from "../../../../../commons/mediaQuery/mediaQueryStandardPc";
-import { selectorValue } from "../../../../commons/store";
+import { selectorValue, selectorValue2 } from "../../../../commons/store";
 import BoardListDigitalUI from "./boardListDigital.presenter";
 
 export default function BoardListDigital() {
@@ -21,8 +21,14 @@ export default function BoardListDigital() {
 
   // 기본 게시물 정렬
   const [sortValue] = useRecoilState(selectorValue);
+  const [sortValue2] = useRecoilState(selectorValue2);
   const { data, refetch, fetchMore } = useQuery(FETCH_BOARDS, {
-    variables: { dateType: sortValue || "최신순", page: 1 },
+    variables: {
+      dateType: sortValue || "최신순",
+      direcion: sortValue2,
+      category: "DIGITAL",
+      page: 1,
+    },
   });
 
   // 더보기  함수
@@ -50,9 +56,10 @@ export default function BoardListDigital() {
   const getDebounce = _.debounce((value) => {
     refetch({
       dateType: sortValue || "최신순",
+      direcion: sortValue2,
+      category: "DIGITAL",
       search: value,
       page: 1,
-      category: "DIGITAL",
     });
     setKeyword(value);
     console.log(value);

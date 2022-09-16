@@ -17,6 +17,10 @@ export const selectorValue = atom({
   key: `selectorState/${v1()}`,
   default: "",
 });
+export const selectorValue2 = atom({
+  key: `selectorState/${v1()}`,
+  default: "",
+});
 
 export const selectorValues = atom({
   key: `selectorValues/${v1()}`,

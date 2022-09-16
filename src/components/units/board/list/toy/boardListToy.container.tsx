@@ -7,7 +7,7 @@ import { useRecoilState } from "recoil";
 import BoardListToyUI from "./boardListToy.presenter";
 import MediaQueryMobile from "../../../../../commons/mediaQuery/mediaQueryStandardMobile";
 import MediaQueryPc from "../../../../../commons/mediaQuery/mediaQueryStandardPc";
-import { selectorValue } from "../../../../commons/store";
+import { selectorValue, selectorValue2 } from "../../../../commons/store";
 import { FETCH_BOARDS, FETCH_INTEREST_BOARD_ID } from "./boardListToy.queries";
 
 export default function BoardListToy() {
@@ -19,9 +19,17 @@ export default function BoardListToy() {
 
   // 기본 게시물 정렬
   const [sortValue] = useRecoilState(selectorValue);
+  const [sortValue2] = useRecoilState(selectorValue2);
   const { data, refetch, fetchMore } = useQuery(FETCH_BOARDS, {
-    variables: { dateType: sortValue || "최신순", page: 1, category: "TOY" },
+    variables: {
+      dateType: sortValue || "최신순",
+      direcion: sortValue2,
+      category: "TOY",
+      page: 1,
+    },
   });
+  console.log(sortValue);
+  console.log(sortValue2);
 
   // 더보기  함수
   const onFetchMore = () => {
@@ -46,7 +54,13 @@ export default function BoardListToy() {
   const [keyword, setKeyword] = useState("");
 
   const getDebounce = _.debounce((value) => {
-    refetch({ dateType: sortValue || "최신순", search: value, page: 1 });
+    refetch({
+      dateType: sortValue || "최신순",
+      direcion: sortValue2,
+      category: "TOY",
+      search: value,
+      page: 1,
+    });
     setKeyword(value);
     console.log(value);
   }, 1000);
