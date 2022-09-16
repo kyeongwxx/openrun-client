@@ -47,6 +47,11 @@ export const logoutState = atom({
   default: false,
 });
 
+export const modalInputState = atom({
+  key: "modalInputState",
+  default: "",
+});
+
 export const restoreAccessTokenLoadable = selector({
   key: `restoreAccessTokenLoadable/${v1()}`,
   get: async () => {

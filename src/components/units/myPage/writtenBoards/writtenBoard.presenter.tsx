@@ -3,13 +3,13 @@ import { v4 as uuidv4 } from "uuid";
 
 import { dateSplit } from "../../../../commons/function/dateSlice";
 import { IWrittenBoardsProps } from "../myPage.types";
+import { Modal } from "antd";
+import ReportInput from "../../../../commons/input/report";
+import { Warning } from "@mui/icons-material";
 
 export default function MypageWrittenBoardsUI(props: IWrittenBoardsProps) {
   return (
     <s.Wrapper>
-      {/* <s.SelectorWrapper>
-        <Selector title="정렬하기" sortValue={["1", "2", "3"]} />
-      </s.SelectorWrapper> */}
       <s.Button onClick={props.onClickTop}>Top</s.Button>
 
       <s.ActiveListWrapper>
@@ -24,6 +24,14 @@ export default function MypageWrittenBoardsUI(props: IWrittenBoardsProps) {
               hasMore={true}
               useWindow={false}
             >
+              <Modal
+                title="신고하기"
+                open={props.isModalOpen}
+                closable={false}
+                onOk={props.onClickSubmitReport}
+              >
+                <ReportInput />
+              </Modal>
               {props.data ? (
                 props.data?.map((el) => (
                   <s.ActiveBoard key={uuidv4()}>
@@ -33,6 +41,8 @@ export default function MypageWrittenBoardsUI(props: IWrittenBoardsProps) {
                           ? "#7DD03C"
                           : el.status === "진행중"
                           ? "#ff9100"
+                          : el.status === "신고진행중"
+                          ? "#5e5e5e"
                           : "#D03C3C"
                       }
                       border={
@@ -40,6 +50,8 @@ export default function MypageWrittenBoardsUI(props: IWrittenBoardsProps) {
                           ? "#7DD03C"
                           : el.status === "진행중"
                           ? "#ff9100"
+                          : el.status === "신고진행중"
+                          ? "#5e5e5e"
                           : "#D03C3C"
                       }
                     >
@@ -73,18 +85,19 @@ export default function MypageWrittenBoardsUI(props: IWrittenBoardsProps) {
 
                     {el?.status === "진행중" ? (
                       <s.BtnWrapper>
-                        <s.ButtonC onClick={props.onClickReportModal(el?.id)}>
+                        <s.ButtonC onClick={props.showModal(el?.id || "")}>
                           <s.Exclamation />
-                          <s.Text size="1rem" color="#D44D4D" weight="400">
+                          <s.Text color="#D44D4D" weight="400">
                             신고하기
                           </s.Text>
                         </s.ButtonC>
+
                         <s.DivideLine />
                         <s.ButtonC
                           onClick={props.onClickCompleteModal(el?.id || "")}
                         >
                           <s.Check />
-                          <s.Text size="1rem" color="#1F8716" weight="400">
+                          <s.Text color="#1F8716" weight="400">
                             거래완료
                           </s.Text>
                         </s.ButtonC>

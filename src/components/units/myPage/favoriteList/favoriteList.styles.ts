@@ -28,15 +28,6 @@ export const Button = styled.div`
   cursor: pointer;
 `;
 
-export const SelectorWrapper = styled.div`
-  width: 200px;
-  margin-bottom: 40px;
-  float: right;
-  @media (max-width: 767px) {
-    width: 30%;
-  }
-`;
-
 export const Text = styled.div<{ size: string; color: string; weight: string }>`
   font-size: ${(props) => props.size};
   color: ${(props) => props.color};
@@ -118,7 +109,6 @@ export const FavoriteBoard = styled.div`
   justify-content: space-evenly;
   align-items: center;
   background-color: rgb(244, 244, 244);
-
   cursor: pointer;
 `;
 export const Status = styled.div<{ color: string; border: string }>`
@@ -130,8 +120,9 @@ export const Status = styled.div<{ color: string; border: string }>`
   font-weight: 700;
 
   @media (max-width: 767px) {
-    font-size: 0.8rem;
-    width: 50px;
+    width: 20%;
+    font-size: 4px;
+    margin: 0 10px;
   }
 `;
 export const BoardImg = styled.img`
@@ -141,19 +132,25 @@ export const BoardImg = styled.img`
   object-fit: contain;
 `;
 
-export const BoardContents = styled.div`
-  width: 60%;
-  height: 90px;
-
+export const BoardContentsWrapper = styled.div`
+  width: 70%;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+`;
+
+export const BoardContents = styled.div`
+  width: 80%;
+  height: 90px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
   @media (max-width: 767px) {
-    width: 50%;
+    width: 70%;
 
-    font-size: 0.5rem;
     flex-direction: column;
     justify-content: center;
   }
@@ -164,16 +161,16 @@ export const BoardContent = styled.div<{
   size: string;
   color: string;
   align: string;
+  width: string;
 }>`
   color: ${(props) => props.color};
   font-weight: ${(props) => props.weight};
   font-size: ${(props) => props.size};
-  width: 120px;
-
+  width: ${(props) => props.width};
   text-align: ${(props) => props.align};
 
   @media (max-width: 767px) {
-    font-size: 0.8rem;
+    font-size: 0.5rem;
     width: 100%;
     margin-bottom: 2px;
     margin-left: 10px;

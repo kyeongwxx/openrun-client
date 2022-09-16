@@ -40,13 +40,17 @@ export const SelectorWrapper = styled.div`
   }
 `;
 
-export const Text = styled.div<{ size: string; color: string; weight: string }>`
-  font-size: ${(props) => props.size};
+export const Text = styled.div<{ color: string; weight: string }>`
+  font-size: 0.7rem;
   color: ${(props) => props.color};
   font-weight: ${(props) => props.weight};
 
+  width: 100%;
+  text-align: center;
+
   @media (max-width: 767px) {
-    font-size: 0.5rem;
+    width: 110%;
+    font-size: 4px;
   }
 `;
 
@@ -166,9 +170,12 @@ export const Status = styled.div<{ color: string; border: string }>`
   border: 1px solid ${(props) => props.border};
   color: ${(props) => props.color};
   font-weight: 700;
+  font-size: 0.8rem;
 
   @media (max-width: 767px) {
-    font-size: 0.8rem;
+    width: 30%;
+    font-size: 4px;
+    margin-left: 10px;
   }
 `;
 

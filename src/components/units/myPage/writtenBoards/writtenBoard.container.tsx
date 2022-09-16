@@ -21,7 +21,7 @@ import {
   FETCH_WRITE_BOARDS,
 } from "./writtenBoard.queries";
 import { useRecoilState } from "recoil";
-import { accessTokenState } from "../../../commons/store";
+import { accessTokenState, modalInputState } from "../../../commons/store";
 import ReportInput from "../../../../commons/input/report";
 
 export default function MypageWrittenBoards() {
@@ -29,7 +29,10 @@ export default function MypageWrittenBoards() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [accessToken] = useRecoilState(accessTokenState);
   const [userRate, setUserRate] = useState(0);
-  const [inputValue, setInputValue] = useState("");
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [boardId, setBoardId] = useState("");
+  const [inputValue, setInputValue] = useRecoilState(modalInputState);
 
   const { data, fetchMore } = useQuery<
     Pick<IQuery, "fetchWriteBoards">,
@@ -109,30 +112,25 @@ export default function MypageWrittenBoards() {
   };
 
   // 신고하기 모달
-  const onClickReportModal = (boardId: string) => () => {
-    console.log(boardId);
-    Modal.warning({
-      title: "신고하기",
-      content: (
-        <ReportInput onChange={(event) => setInputValue(event.target.value)} />
-      ),
-      onOk: async () => {
-        console.log(inputValue);
-        try {
-          const result = await createReport({
-            variables: {
-              createReportInput: {
-                boardId,
-                contents: inputValue,
-              },
-            },
-          });
-          console.log(result);
-        } catch (error) {
-          console.log(error);
-        }
-      },
-    });
+  const showModal = (boardId: string) => () => {
+    setIsModalOpen(true);
+    setBoardId(boardId);
+  };
+  const onClickSubmitReport = async () => {
+    try {
+      const result = await createReport({
+        variables: {
+          createReportInput: {
+            boardId,
+            contents: inputValue,
+          },
+        },
+      });
+      console.log(result);
+      setIsModalOpen(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -143,7 +141,9 @@ export default function MypageWrittenBoards() {
       onClickTop={onClickTop}
       scrollRef={scrollRef}
       onClickCompleteModal={onClickCompleteModal}
-      onClickReportModal={onClickReportModal}
+      showModal={showModal}
+      isModalOpen={isModalOpen}
+      onClickSubmitReport={onClickSubmitReport}
     />
   );
 }

@@ -51,45 +51,40 @@ export default function MypageFavoriteListUI(props) {
                         : "/img/noimage.png"
                     }
                   />
-
-                  <s.BoardContents>
-                    <s.BoardContent
-                      weight="700"
-                      size="1.2rem"
-                      color="# 333"
-                      align="left"
-                    >
-                      {el.board?.title}
-                    </s.BoardContent>
-                    <s.BoardContent
-                      weight="400"
-                      size="0.8rem"
-                      color="#5e5e5e"
-                      align="right"
-                    >
-                      {el.board?.price}원
-                    </s.BoardContent>
-                    <s.BoardContent
-                      weight="400"
-                      size="0.8rem"
-                      color="#5e5e5e"
-                      align="right"
-                    >
-                      {dateSplit(el.board?.dueDate)}
-                    </s.BoardContent>
-                    <s.BoardContent
-                      weight="400"
-                      size="0.8rem"
-                      color="#5e5e5e"
-                      align="right"
-                    >
+                  <s.BoardContentsWrapper>
+                    <s.BoardContents>
+                      <s.BoardContent
+                        weight="700"
+                        size="1.2rem"
+                        color="# 333"
+                        align="left"
+                        width="60%"
+                      >
+                        {el.board?.title}
+                      </s.BoardContent>
+                      <s.BoardContent
+                        weight="400"
+                        size="0.8rem"
+                        color="#5e5e5e"
+                        align="left"
+                        width="15%"
+                      >
+                        {el.board?.price}원
+                      </s.BoardContent>
+                      <s.BoardContent
+                        weight="400"
+                        size="0.8rem"
+                        color="#5e5e5e"
+                        align="right"
+                        width="25%"
+                      >
+                        {dateSplit(el.board?.dueDate)}
+                      </s.BoardContent>
+                    </s.BoardContents>
+                    <s.Text weight="400" size="0.8rem" color="#5e5e5e">
                       {el.board?.user?.nickName}
-                    </s.BoardContent>
-                  </s.BoardContents>
-
-                  {/* <s.Text size="1rem" color="#5e5e5e" weight="400">
-                    {el.board?.duDate}
-                  </s.Text> */}
+                    </s.Text>
+                  </s.BoardContentsWrapper>
                 </s.FavoriteBoard>
               ))}
             </s.FavoriteBoards>
