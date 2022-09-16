@@ -17,9 +17,11 @@ export const ProductWrapper = styled.div`
     align-items: center;
   }
 `;
-export const ImgTimerWrapper = styled.div`
+export const ImgWrapper = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding-right: 6.438rem;
 `;
 export const ImageWrapper = styled.div`
@@ -40,7 +42,32 @@ export const Image = styled.img`
   height: 100%;
   object-fit: cover;
 `;
+export const TimerWrapper = styled.div``;
+export const Triangle = styled.div`
+  width: 0px;
+  height: 0px;
 
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid #555;
+  border-right: 6px solid transparent;
+  border-left: 6px solid #555;
+
+  margin-top: 1rem;
+`;
+export const InfoText = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 65%;
+  height: 45px;
+  background: #555;
+  color: #fff;
+  font-size: 1.25rem;
+`;
+export const Text = styled.div`
+  padding-left: 0.5rem;
+`;
 export const ProductInfoWrapper = styled.div`
   width: 75%;
   display: flex;
@@ -99,23 +126,36 @@ export const DeleteBtn = styled.img`
   margin-left: 0.4rem;
   cursor: pointer;
 `;
-export const Name = styled.div`
+export const Title = styled.div`
   font-weight: 700;
   font-size: 1.375rem;
   color: #555;
   padding-bottom: 2.188rem;
+  text-decoration: underline;
+`;
+export const CategoryWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
 `;
 export const Category = styled.div`
   font-weight: 700;
   font-size: 1.375rem;
   color: #555;
-  padding-bottom: 2.188rem;
+`;
+export const DateWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
 `;
 export const Date = styled.div`
   font-weight: 700;
   font-size: 1.375rem;
   color: #555;
-  padding-bottom: 2.188rem;
   display: flex;
   flex-direction: row;
 `;
@@ -123,31 +163,45 @@ export const eventDay = styled.div`
   margin-right: 1rem;
 `;
 export const eventTime = styled.div``;
+export const LocationWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+`;
 export const Location = styled.div`
   font-weight: 700;
   font-size: 1.125rem;
   color: rgba(0, 0, 0, 0.3);
-  padding-bottom: 1.188rem;
+`;
+export const AddressWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
 `;
 export const Address = styled.div`
   font-weight: 700;
   font-size: 1.375rem;
   color: #555;
-  padding-bottom: 0.5rem;
+  margin-right: 1rem;
 `;
 export const AddressDetail = styled.div`
   font-weight: 700;
   font-size: 1.375rem;
   color: #555;
-  padding-bottom: 2.188rem;
+`;
+export const PriceWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 `;
 export const Price = styled.div`
-  width: 90%;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.375rem;
   color: #555;
-  text-align: right;
-  padding: 2.188rem 0;
 `;
 export const DivideLine = styled.div`
   width: 100%;
@@ -186,6 +240,7 @@ export const BtnsWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   position: relative;
+  padding-top: 3rem;
 `;
 export const ChatBtn = styled.button`
   width: 15%;

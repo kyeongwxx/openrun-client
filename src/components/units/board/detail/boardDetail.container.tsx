@@ -92,6 +92,11 @@ export default function BoardDetail() {
     try {
       const result = await applyRunner({
         variables: { boardId: router.query.id },
+        refetchQueries: [
+          {
+            query: FETCH_RUNNER_BY_BOARD,
+          },
+        ],
       });
       Modal.success({
         title: "Success",
@@ -135,6 +140,9 @@ export default function BoardDetail() {
         refetchQueries: [
           {
             query: FETCH_INTEREST_BOARDS,
+          },
+          {
+            query: FETCH_BOARDS,
           },
         ],
       });

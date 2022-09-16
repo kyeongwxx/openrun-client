@@ -11,6 +11,7 @@ import Dompurify from "dompurify";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import LiveChat from "../../../../commons/liveChat/liveChat.container";
 import Timer from "../../../../commons/timer";
+import { AiOutlineClockCircle } from "react-icons/ai";
 
 const theme = createTheme({
   components: {
@@ -38,7 +39,7 @@ export default function BoardDetailUI(props: any) {
   return (
     <s.Wrapper>
       <s.ProductWrapper>
-        <s.ImgTimerWrapper>
+        <s.ImgWrapper>
           <s.ImageWrapper>
             <s.Image
               src={
@@ -48,8 +49,15 @@ export default function BoardDetailUI(props: any) {
               }
             />
           </s.ImageWrapper>
-          <Timer />
-        </s.ImgTimerWrapper>
+          <s.TimerWrapper>
+            <Timer />
+            <s.Triangle />
+            <s.InfoText>
+              <AiOutlineClockCircle />
+              <s.Text>줄서기까지 남은 시간을 확인하세요!</s.Text>
+            </s.InfoText>
+          </s.TimerWrapper>
+        </s.ImgWrapper>
         <s.ProductInfoWrapper>
           <s.StatusWrapper>
             {props.data?.fetchBoard?.status === "모집중" && (
@@ -73,35 +81,39 @@ export default function BoardDetailUI(props: any) {
               />
             </s.MutationBtns>
           </s.StatusWrapper>
-          <s.Name>{props.data?.fetchBoard?.title}</s.Name>
-          <s.Location>카테고리</s.Location>
-          <s.Category>{props.data?.fetchBoard?.category?.name}</s.Category>
-          <s.Location>희망시간</s.Location>
-          <s.Date>
-            <s.eventDay>
-              {props.data?.fetchBoard?.dueDate?.slice(0, 10)}
-            </s.eventDay>
-            <s.eventTime>
-              {props.data?.fetchBoard?.dueDate?.slice(11, 16)}
-            </s.eventTime>
-          </s.Date>
-          <s.Location>장소</s.Location>
-          <s.Address>{props.data?.fetchBoard?.location?.address}</s.Address>
-          <s.AddressDetail>
-            {props.data?.fetchBoard?.location?.addressDetail}
-          </s.AddressDetail>
+          <s.Title>{props.data?.fetchBoard?.title}</s.Title>
+          <s.CategoryWrapper>
+            <s.Location>카테고리</s.Location>
+            <s.Category>{props.data?.fetchBoard?.category?.name}</s.Category>
+          </s.CategoryWrapper>
+          <s.DateWrapper>
+            <s.Location>희망시간</s.Location>
+            <s.Date>
+              <s.eventDay>
+                {props.data?.fetchBoard?.dueDate?.slice(0, 10)}
+              </s.eventDay>
+              <s.eventTime>
+                {props.data?.fetchBoard?.dueDate?.slice(11, 16)}
+              </s.eventTime>
+            </s.Date>
+          </s.DateWrapper>
+          <s.LocationWrapper>
+            <s.Location>장소</s.Location>
+            <s.AddressWrapper>
+              <s.Address>{props.data?.fetchBoard?.location?.address}</s.Address>
+              <s.AddressDetail>
+                {props.data?.fetchBoard?.location?.addressDetail}
+              </s.AddressDetail>
+            </s.AddressWrapper>
+          </s.LocationWrapper>
           <Map address={props.data?.fetchBoard?.location?.address} />
-          <s.Price>
-            {props.data?.fetchBoard?.price?.toLocaleString("ko-KR")}원
-          </s.Price>
+          <s.PriceWrapper>
+            <s.Location>대행비</s.Location>
+            <s.Price>
+              {props.data?.fetchBoard?.price?.toLocaleString("ko-KR")}원
+            </s.Price>
+          </s.PriceWrapper>
           <s.DivideLine />
-          <s.PenaltyWrapper>
-            <s.BtnWrapper>
-              <s.PenaltyBtn></s.PenaltyBtn>
-              <s.PenaltyText>실패 시 패널티 적용 동의하기</s.PenaltyText>
-            </s.BtnWrapper>
-            <s.DetailText>자세히 보기</s.DetailText>
-          </s.PenaltyWrapper>
           <s.BtnsWrapper>
             <s.ChatBtn onClick={props.openCloseModal}>
               <s.ChatIcon src="/boardDetail/Chat.png" />

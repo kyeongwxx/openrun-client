@@ -56,6 +56,7 @@ export default function BoardListUI(props: any) {
                 <Tab label="TOY" value="6" />
               </TabList>
             </Box>
+            {/* ALL */}
             <TabPanel value="1">
               <s.InnerWrapper>
                 <s.FilterWrapper>
@@ -225,6 +226,8 @@ export default function BoardListUI(props: any) {
                 </s.FetchMoreBtnWrapper>
               </s.InnerWrapper>
             </TabPanel>
+
+            {/* FASHION */}
             <TabPanel value="2">
               <s.InnerWrapper>
                 <s.FilterWrapper>
@@ -291,7 +294,7 @@ export default function BoardListUI(props: any) {
                           />
                         </s.ImageWrapper>
                         <s.DateWrapper1>
-                          <s.Month>{el?.dueDate?.slice(6, 7)}</s.Month>
+                          <s.Month>{el?.dueDate?.slice(6, 7)}월</s.Month>
                           <s.Day>{el?.dueDate?.slice(8, 10)}</s.Day>
                         </s.DateWrapper1>
                         {props.interestedId?.fetchInterestBoardId?.includes(
@@ -401,6 +404,8 @@ export default function BoardListUI(props: any) {
                 </s.FetchMoreBtnWrapper>
               </s.InnerWrapper>
             </TabPanel>
+
+            {/* ACC */}
             <TabPanel value="3">
               <s.InnerWrapper>
                 <s.FilterWrapper>
@@ -467,7 +472,7 @@ export default function BoardListUI(props: any) {
                           />
                         </s.ImageWrapper>
                         <s.DateWrapper1>
-                          <s.Month>{el?.dueDate?.slice(6, 7)}</s.Month>
+                          <s.Month>{el?.dueDate?.slice(6, 7)}월</s.Month>
                           <s.Day>{el?.dueDate?.slice(8, 10)}</s.Day>
                         </s.DateWrapper1>
                         {props.interestedId?.fetchInterestBoardId?.includes(
@@ -577,6 +582,8 @@ export default function BoardListUI(props: any) {
                 </s.FetchMoreBtnWrapper>
               </s.InnerWrapper>
             </TabPanel>
+
+            {/* DIGITAL */}
             <TabPanel value="4">
               <s.InnerWrapper>
                 <s.FilterWrapper>
@@ -643,7 +650,7 @@ export default function BoardListUI(props: any) {
                           />
                         </s.ImageWrapper>
                         <s.DateWrapper1>
-                          <s.Month>{el?.dueDate?.slice(6, 7)}</s.Month>
+                          <s.Month>{el?.dueDate?.slice(6, 7)}월</s.Month>
                           <s.Day>{el?.dueDate?.slice(8, 10)}</s.Day>
                         </s.DateWrapper1>
                         {props.interestedId?.fetchInterestBoardId?.includes(
@@ -753,6 +760,8 @@ export default function BoardListUI(props: any) {
                 </s.FetchMoreBtnWrapper>
               </s.InnerWrapper>
             </TabPanel>
+
+            {/* FOOD */}
             <TabPanel value="5">
               <s.InnerWrapper>
                 <s.FilterWrapper>
@@ -819,7 +828,7 @@ export default function BoardListUI(props: any) {
                           />
                         </s.ImageWrapper>
                         <s.DateWrapper1>
-                          <s.Month>{el?.dueDate?.slice(6, 7)}</s.Month>
+                          <s.Month>{el?.dueDate?.slice(6, 7)}월</s.Month>
                           <s.Day>{el?.dueDate?.slice(8, 10)}</s.Day>
                         </s.DateWrapper1>
                         {props.interestedId?.fetchInterestBoardId?.includes(
@@ -929,6 +938,8 @@ export default function BoardListUI(props: any) {
                 </s.FetchMoreBtnWrapper>
               </s.InnerWrapper>
             </TabPanel>
+
+            {/* TOY */}
             <TabPanel value="6">
               <s.InnerWrapper>
                 <s.FilterWrapper>
@@ -995,7 +1006,7 @@ export default function BoardListUI(props: any) {
                           />
                         </s.ImageWrapper>
                         <s.DateWrapper1>
-                          <s.Month>{el?.dueDate?.slice(6, 7)}</s.Month>
+                          <s.Month>{el?.dueDate?.slice(6, 7)}월</s.Month>
                           <s.Day>{el?.dueDate?.slice(8, 10)}</s.Day>
                         </s.DateWrapper1>
                         {props.interestedId?.fetchInterestBoardId?.includes(
