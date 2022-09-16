@@ -1,11 +1,11 @@
-import * as s from "./boardList.styles";
-import * as React from "react";
-import { createTheme } from "@mui/material/styles";
-import CenteredTabs from "../../../../commons/tabs";
-import Selector from "../../../../commons/selector";
+import * as s from "../boardList.styles";
 import DOMPurify from "dompurify";
 import { AiOutlinePlus } from "react-icons/ai";
 import { v4 as uuidv4 } from "uuid";
+import * as React from "react";
+import { createTheme } from "@mui/material/styles";
+import Selector from "../../../../../commons/selector";
+import CenteredTabs from "../../../../../commons/tabs";
 
 const theme = createTheme({
   components: {
@@ -18,7 +18,7 @@ const theme = createTheme({
     },
   },
 });
-export default function BoardListUI(props: any) {
+export default function BoardListAllUI(props: any) {
   const [value, setValue] = React.useState("1");
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
