@@ -41,7 +41,7 @@ export default function LayoutMyPage() {
         <s.UserDetail>
           <s.userInfoNumbers>
             <s.Text size="1.5rem" color="#333" weight="700">
-              {data ? data?.fetchWriteBoards.length : 0}
+              {userInfo?.boardTotal}
             </s.Text>
             <s.Text size="0.7rem" color="#333" weight="400">
               작성한 게시글
@@ -70,13 +70,23 @@ export default function LayoutMyPage() {
 
       <s.MenuWrapper>
         <CenteredTabs
-          tabs={["MY", "내가 쓴 글", "포인트", "찜목록", "거래내역"]}
+          tabs={[
+            "MY",
+            "내가 쓴 글",
+            "거래 중 ",
+
+            "찜목록",
+            "포인트 정산 ",
+            "포인트 충전",
+          ]}
           address={[
             "/myPage",
             "/myPage/writtenBoards",
-            "/myPage/paymentPoint",
+            "/myPage/proceeding",
+
             "/myPage/favoriteList",
-            "/myPage/dealList",
+            "/myPage/settlementList",
+            "/myPage/paymentPoint",
           ]}
         />
       </s.MenuWrapper>

@@ -5,14 +5,12 @@ import { BOX_SHADOW, BOX_SHADOW_TOP } from "../../../../commons/boxshadow";
 
 export const Wrapper = styled.main`
   width: 100%;
-  margin: auto;
-
   ::-webkit-scrollbar {
     display: none;
   }
 `;
 
-export const Button = styled.div`
+export const ScrollButton = styled.div`
   width: 60px;
   height: 60px;
   background-color: #fff;
@@ -29,6 +27,15 @@ export const Button = styled.div`
   cursor: pointer;
 `;
 
+export const SelectorWrapper = styled.div`
+  width: 200px;
+  margin-bottom: 40px;
+  float: right;
+  @media (max-width: 767px) {
+    width: 30%;
+  }
+`;
+
 export const Text = styled.div<{ size: string; color: string; weight: string }>`
   font-size: ${(props) => props.size};
   color: ${(props) => props.color};
@@ -41,7 +48,7 @@ export const Text = styled.div<{ size: string; color: string; weight: string }>`
 
 export const DivideLine = styled.div`
   width: 1px;
-  height: 40%;
+  height: 60%;
   background-color: rgba(0, 0, 0, 0.2);
 `;
 export const DivideLineHorizontal = styled.div<{ color: string }>`
@@ -56,35 +63,26 @@ export const FavoriteListWrapper = styled(Container)`
   flex-direction: row;
   justify-content: space-between;
 
-  margin: auto;
   @media (max-width: 767px) {
     flex-direction: column;
+
+    /* justify-content: space-between; */
   }
 `;
+export const InfiniteScrollLimit = styled.div`
+  overflow: auto;
+  width: 80%;
+  /* background-color: aqua; */
 
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+`;
 export const FavoriteTitle = styled.div`
   cursor: pointer;
   margin-top: 5px;
   font-weight: 700;
   color: #333;
-`;
-
-export const NodataImg = styled.img`
-  width: 80%;
-  height: 100%;
-  object-fit: contain;
-  @media (max-width: 767px) {
-    width: 100%;
-  }
-`;
-
-export const InfiniteScrollLimit = styled.div`
-  overflow: auto;
-  width: 80%;
-
-  @media (max-width: 767px) {
-    width: 100%;
-  }
 `;
 
 export const FavoriteBoards = styled(InfiniteScroll)`
@@ -97,12 +95,25 @@ export const FavoriteBoards = styled(InfiniteScroll)`
 
   @media (max-width: 767px) {
     width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+`;
+
+export const NoDataImg = styled.img`
+  width: 80%;
+  height: 100%;
+  object-fit: contain;
+
+  @media (max-width: 767px) {
+    width: 100%;
   }
 `;
 
 export const FavoriteBoard = styled.div`
   width: 100%;
-  height: 100px;
+  height: 150px;
   margin: 1%;
   border-radius: 16px;
   display: flex;
@@ -110,10 +121,15 @@ export const FavoriteBoard = styled.div`
   justify-content: space-evenly;
   align-items: center;
   background-color: rgb(244, 244, 244);
-  /* box-shadow: ${BOX_SHADOW}; */
-
-  cursor: pointer;
+  box-shadow: ${BOX_SHADOW};
+  @media (max-width: 767px) {
+    width: 48%;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+  }
 `;
+
 export const Status = styled.div<{ color: string; border: string }>`
   width: 80px;
 
@@ -123,28 +139,38 @@ export const Status = styled.div<{ color: string; border: string }>`
   font-weight: 700;
 
   @media (max-width: 767px) {
-    width: 20%;
-    font-size: 4px;
-    margin: 0 10px;
+    font-size: 0.8rem;
   }
 `;
+export const BoardInfoWrapper = styled.div<{ width: string }>`
+  width: ${(props) => props.width};
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+`;
+
 export const BoardImg = styled.img`
   width: 90px;
   height: 90px;
-  border-radius: 20px;
-  object-fit: contain;
-`;
+  margin-left: 5px;
+  margin-right: 5px;
 
-export const BoardContentsWrapper = styled.div`
-  width: 70%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
+  border-radius: 20px;
+  background-color: aqua;
+  @media (max-width: 767px) {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+  }
 `;
 
 export const BoardContents = styled.div`
-  width: 80%;
+  width: 70%;
   height: 90px;
   display: flex;
   flex-direction: row;
@@ -152,10 +178,9 @@ export const BoardContents = styled.div`
   align-items: center;
 
   @media (max-width: 767px) {
-    width: 70%;
+    width: 60%;
 
-    flex-direction: column;
-    justify-content: center;
+    font-size: 0.5rem;
   }
 `;
 
@@ -163,21 +188,12 @@ export const BoardContent = styled.div<{
   weight: string;
   size: string;
   color: string;
-  align: string;
-  width: string;
 }>`
   color: ${(props) => props.color};
   font-weight: ${(props) => props.weight};
   font-size: ${(props) => props.size};
-  width: ${(props) => props.width};
-  text-align: ${(props) => props.align};
 
   @media (max-width: 767px) {
-    font-size: 0.5rem;
-    width: 100%;
-    margin-bottom: 2px;
-    margin-left: 10px;
-    text-align: left;
-    /* height: 100px; */
+    font-size: 0.4rem;
   }
 `;

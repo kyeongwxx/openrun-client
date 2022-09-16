@@ -1,15 +1,15 @@
-import * as s from "./dealList.styles";
+import * as s from "./proceeding.styles";
 import { v4 as uuidv4 } from "uuid";
 
 import { IDealListProps } from "../myPage.types";
 import { dateSplit } from "../../../../commons/function/dateSlice";
 
-export default function MypageDealUI(props: IDealListProps) {
+export default function MypageProceedinglUI(props: IDealListProps) {
   return (
     <s.Wrapper>
       <s.ScrollButton onClick={props.onClickTop}>Top</s.ScrollButton>
       <s.FavoriteListWrapper>
-        <s.FavoriteTitle>거래내역</s.FavoriteTitle>
+        <s.FavoriteTitle>거래 중</s.FavoriteTitle>
         {props.data?.length === 0 ? (
           <s.NoDataImg src="/img/nodata.png" />
         ) : (
@@ -23,8 +23,7 @@ export default function MypageDealUI(props: IDealListProps) {
             >
               {props.data ? (
                 props.data?.map((el) =>
-                  el.board?.status === "진행중" ||
-                  el.board?.status === "완료" ? (
+                  el.board?.status === "진행중" ? (
                     <s.FavoriteBoard key={uuidv4()}>
                       {console.log(el)}
                       <s.Status

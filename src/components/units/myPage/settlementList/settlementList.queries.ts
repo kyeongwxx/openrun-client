@@ -28,21 +28,19 @@ import { gql } from "@apollo/client";
 //   }
 // `;
 
-export const FETCH_USER_CHATROOM = gql`
+export const FETCH_BOARD_PROCESSING_BY_USER = gql`
   query {
-    fetchUserChatRoom {
-      room
-      seller {
+    fetchBoardProcessingByUser {
+      id
+      title
+
+      status
+      price
+      createdAt
+
+      dueDate
+      user {
         nickName
-      }
-      runner {
-        nickName
-      }
-      board {
-        id
-        title
-        price
-        status
       }
     }
   }

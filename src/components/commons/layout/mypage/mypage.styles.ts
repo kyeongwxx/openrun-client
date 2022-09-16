@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Container } from "@mui/system";
+import { BOX_SHADOW_TOP } from "../../../../commons/boxshadow";
 
 export const Wrapper = styled.main`
   width: 100%;
@@ -9,6 +10,7 @@ export const Wrapper = styled.main`
 export const ProfileWrapper = styled(Container)`
   height: 156px;
   background-color: #f2f2f2;
+  /* box-shadow: ${BOX_SHADOW_TOP}; */
 
   margin: auto;
   border-radius: 16px;
