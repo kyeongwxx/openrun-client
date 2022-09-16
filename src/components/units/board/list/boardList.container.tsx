@@ -65,6 +65,24 @@ export default function BoardList() {
     router.push(`/board/${event.currentTarget.id}`);
     console.log(event.currentTarget.id);
   };
+  const onClickMoveToAll = () => {
+    router.push("/board/all");
+  };
+  const onClickMoveToFashion = () => {
+    router.push("/board/fashion");
+  };
+  const onClickMoveToAcc = () => {
+    router.push("/board/acc");
+  };
+  const onClickMoveToDigital = () => {
+    router.push("/board/digital");
+  };
+  const onClickMoveToFood = () => {
+    router.push("/board/food");
+  };
+  const onClickMoveToToy = () => {
+    router.push("/board/toy");
+  };
 
   // 찜한 게시물 표시
   const { data: interestedId } = useQuery(FETCH_INTEREST_BOARD_ID);
@@ -81,6 +99,12 @@ export default function BoardList() {
       onClickMoveToProductDetail={onClickMoveToProductDetail}
       keyword={keyword}
       onChangeSearch={onChangeSearch}
+      onClickMoveToAll={onClickMoveToAll}
+      onClickMoveToFashion={onClickMoveToFashion}
+      onClickMoveToAcc={onClickMoveToAcc}
+      onClickMoveToDigital={onClickMoveToDigital}
+      onClickMoveToFood={onClickMoveToFood}
+      onClickMoveToToy={onClickMoveToToy}
     />
   );
 }

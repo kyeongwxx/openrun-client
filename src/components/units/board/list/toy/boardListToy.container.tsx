@@ -1,13 +1,14 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { ChangeEvent, useState } from "react";
-import { FETCH_BOARDS, FETCH_INTEREST_BOARD_ID } from "../boardList.queries";
+
 import _ from "lodash";
 import { useRecoilState } from "recoil";
 import BoardListToyUI from "./boardListToy.presenter";
 import MediaQueryMobile from "../../../../../commons/mediaQuery/mediaQueryStandardMobile";
 import MediaQueryPc from "../../../../../commons/mediaQuery/mediaQueryStandardPc";
 import { selectorValue } from "../../../../commons/store";
+import { FETCH_BOARDS, FETCH_INTEREST_BOARD_ID } from "./boardListToy.queries";
 
 export default function BoardListToy() {
   const router = useRouter();
@@ -19,7 +20,7 @@ export default function BoardListToy() {
   // 기본 게시물 정렬
   const [sortValue] = useRecoilState(selectorValue);
   const { data, refetch, fetchMore } = useQuery(FETCH_BOARDS, {
-    variables: { dateType: sortValue || "최신순", page: 1 },
+    variables: { dateType: sortValue || "최신순", page: 1, category: "TOY" },
   });
 
   // 더보기  함수
@@ -60,6 +61,24 @@ export default function BoardListToy() {
     router.push(`/board/${event.currentTarget.id}`);
     console.log(event.currentTarget.id);
   };
+  const onClickMoveToAll = () => {
+    router.push("/board/all");
+  };
+  const onClickMoveToFashion = () => {
+    router.push("/board/fashion");
+  };
+  const onClickMoveToAcc = () => {
+    router.push("/board/acc");
+  };
+  const onClickMoveToDigital = () => {
+    router.push("/board/digital");
+  };
+  const onClickMoveToFood = () => {
+    router.push("/board/food");
+  };
+  const onClickMoveToToy = () => {
+    router.push("/board/toy");
+  };
 
   // 찜한 게시물 표시
   const { data: interestedId } = useQuery(FETCH_INTEREST_BOARD_ID);
@@ -76,6 +95,12 @@ export default function BoardListToy() {
       onClickMoveToProductDetail={onClickMoveToProductDetail}
       keyword={keyword}
       onChangeSearch={onChangeSearch}
+      onClickMoveToAll={onClickMoveToAll}
+      onClickMoveToFashion={onClickMoveToFashion}
+      onClickMoveToAcc={onClickMoveToAcc}
+      onClickMoveToDigital={onClickMoveToDigital}
+      onClickMoveToFood={onClickMoveToFood}
+      onClickMoveToToy={onClickMoveToToy}
     />
   );
 }
