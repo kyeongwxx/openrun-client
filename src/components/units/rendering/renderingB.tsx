@@ -60,6 +60,15 @@ const Title = styled.div`
       font-size: 1rem;
     }
   }
+  @media (max-width: 375px) {
+    transform: translateY(-30%);
+    & > span:nth-of-type(1) {
+      font-size: 2.025rem;
+    }
+    & > p {
+      font-size: 1rem;
+    }
+  }
 `;
 const Info = styled.div`
   display: flex;
@@ -157,6 +166,9 @@ export default function B() {
           </Image>
         </Info>
       </Wrapper>
+      {/* <Arrow ref={ref} className={inView ? "isActive" : ""}>
+        <img src="img/down-arrow.png" alt="" />
+      </Arrow> */}
     </Container>
   );
 }

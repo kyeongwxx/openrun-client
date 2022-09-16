@@ -61,7 +61,7 @@ const Container = styled.div`
 
     button {
       margin-top: 3.125rem;
-      padding: 1.5rem 5.5rem;
+      padding: 1.5rem 5rem;
       font-size: 1.5rem;
       font-weight: 700;
       letter-spacing: -0.05em;
@@ -83,6 +83,14 @@ const Container = styled.div`
     @media (max-width: 767px) {
       & > span:nth-of-type(1) {
         font-size: 4rem;
+      }
+    }
+    @media (max-width: 375px) {
+      & > span:nth-of-type(1) {
+        font-size: 4rem;
+      }
+      button {
+        font-size: 1.2rem;
       }
     }
   }

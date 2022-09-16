@@ -14,6 +14,7 @@ const Wrapper = styled.div`
   align-items: center;
   width: 90%;
   max-width: 1440px;
+
   @media (max-width: 1250px) {
     justify-content: center;
   }
@@ -66,6 +67,17 @@ const Title = styled.div`
       margin-top: -3rem;
     }
   }
+  @media (max-width: 375px) {
+    transform: translate(0%, 15%);
+    & > span:nth-of-type(1) {
+      font-size: 2.025rem;
+      margin-top: -4rem;
+    }
+    & > p {
+      margin-top: -3rem;
+      transform: translate(0%, 20%);
+    }
+  }
 `;
 
 const Info = styled.div`
@@ -75,7 +87,7 @@ const Info = styled.div`
   padding-top: 4rem;
   transform: translateY(90%);
   filter: blur(100%);
-  transition: all 2s ease;
+  transition: all 1.5s ease;
 
   &.isActive {
     filter: blur(0px);
@@ -104,17 +116,47 @@ const Info = styled.div`
       transform: translate(-50%, 20%);
     }
   }
-  @media (max-width: 767px) {
-    transform: translate(-50%, -1%);
+  @media (max-width: 767px), (min-width: 376px) {
+    transform: translate(-50%, -2%);
     img {
-      width: 40vw;
+      width: 25vw;
       transform: translate(35%, 10%);
+    }
+    &.isActive {
+      transform: translate(-30%, -10%);
+    }
+  }
+  @media (max-width: 375px) {
+    transform: translate(-50%, -2%);
+    img {
+      width: 45vw;
+      transform: translate(45%, -10%);
     }
     &.isActive {
       transform: translate(-50%, -10%);
     }
   }
 `;
+// const Arrow = styled.div`
+//   transition: all 1.5s ease;
+
+//   img {
+//     width: 3rem;
+//     animation: ani 1s infinite alternate;
+//     opacity: 0.5;
+//   }
+//   &.isActive {
+//     transform: translate(0%, 0%);
+//   }
+//   @keyframes ani {
+//     0% {
+//       transform: translate(0, 0);
+//     }
+//     100% {
+//       transform: translate(0, 10px);
+//     }
+//   }
+// `;
 export default function C() {
   const [ref, inView] = useInView({
     threshold: 0,
@@ -138,6 +180,9 @@ export default function C() {
           <img src="/img/Group 25.png" alt="" />
         </Info>
       </Wrapper>
+      {/* <Arrow ref={ref} className={inView ? "isActive" : ""}>
+        <img src="img/down-arrow.png" alt="" />
+      </Arrow> */}
     </Container>
   );
 }
