@@ -6,12 +6,14 @@ export const FETCH_BOARDS = gql`
     $page: Int
     $search: String
     $category: String
+    $direcion: String
   ) {
     fetchBoards(
       dateType: $dateType
       page: $page
       search: $search
       category: $category
+      direcion: $direcion
     ) {
       id
       title

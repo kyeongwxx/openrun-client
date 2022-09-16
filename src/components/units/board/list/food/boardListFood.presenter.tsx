@@ -4,6 +4,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { v4 as uuidv4 } from "uuid";
 import * as React from "react";
 import Selector from "../../../../../commons/selector";
+import Selector2 from "../../../../../commons/selector2";
 
 export default function BoardListFoodUI(props: any) {
   return (
@@ -25,17 +26,23 @@ export default function BoardListFoodUI(props: any) {
         <s.FilterWrapper>
           <Selector title="전체" sortValue={["최신순", "마감 임박순"]} />
           <s.DivideDiv />
-          <Selector
+          <Selector2
             title="지역"
             sortValue={[
-              "서울특별시",
-              "경기도",
-              "충청남도",
-              "충청북도",
-              "경상북도",
-              "경상남도",
-              "전라북도",
-              "전라남도",
+              "서울",
+              "경기",
+              "충북",
+              "충남",
+              "경북",
+              "경남",
+              "전북",
+              "전남",
+              "인천",
+              "대전",
+              "대구",
+              "부산",
+              "울산",
+              "광주",
             ]}
           />
           {props.isPc && (

@@ -9,7 +9,7 @@ import _ from "lodash";
 import { useRecoilState } from "recoil";
 import MediaQueryMobile from "../../../../../commons/mediaQuery/mediaQueryStandardMobile";
 import MediaQueryPc from "../../../../../commons/mediaQuery/mediaQueryStandardPc";
-import { selectorValue } from "../../../../commons/store";
+import { selectorValue, selectorValue2 } from "../../../../commons/store";
 import BoardListFashionUI from "./boardListFashion.presenter";
 
 export default function BoardListFashion() {
@@ -21,11 +21,13 @@ export default function BoardListFashion() {
 
   // 기본 게시물 정렬
   const [sortValue] = useRecoilState(selectorValue);
+  const [sortValue2] = useRecoilState(selectorValue2);
   const { data, refetch, fetchMore } = useQuery(FETCH_BOARDS, {
     variables: {
       dateType: sortValue || "최신순",
-      page: 1,
+      direcion: sortValue2,
       category: "FASHION",
+      page: 1,
     },
   });
 
@@ -52,7 +54,13 @@ export default function BoardListFashion() {
   const [keyword, setKeyword] = useState("");
 
   const getDebounce = _.debounce((value) => {
-    refetch({ dateType: sortValue || "최신순", search: value, page: 1 });
+    refetch({
+      dateType: sortValue || "최신순",
+      direcion: sortValue2,
+      category: "FASHION",
+      search: value,
+      page: 1,
+    });
     setKeyword(value);
     console.log(value);
   }, 1000);

@@ -6,7 +6,7 @@ import _ from "lodash";
 import { useRecoilState } from "recoil";
 import MediaQueryMobile from "../../../../../commons/mediaQuery/mediaQueryStandardMobile";
 import MediaQueryPc from "../../../../../commons/mediaQuery/mediaQueryStandardPc";
-import { selectorValue } from "../../../../commons/store";
+import { selectorValue, selectorValue2 } from "../../../../commons/store";
 import BoardListAccUI from "./boardListAcc.presenter";
 
 export default function BoardListAcc() {
@@ -18,8 +18,14 @@ export default function BoardListAcc() {
 
   // 기본 게시물 정렬
   const [sortValue] = useRecoilState(selectorValue);
+  const [sortValue2] = useRecoilState(selectorValue2);
   const { data, refetch, fetchMore } = useQuery(FETCH_BOARDS, {
-    variables: { dateType: sortValue || "최신순", page: 1, category: "ACC" },
+    variables: {
+      dateType: sortValue || "최신순",
+      direcion: sortValue2,
+      category: "ACC",
+      page: 1,
+    },
   });
 
   // 더보기  함수
@@ -45,7 +51,13 @@ export default function BoardListAcc() {
   const [keyword, setKeyword] = useState("");
 
   const getDebounce = _.debounce((value) => {
-    refetch({ dateType: sortValue || "최신순", search: value, page: 1 });
+    refetch({
+      dateType: sortValue || "최신순",
+      direcion: sortValue2,
+      category: "ACC",
+      search: value,
+      page: 1,
+    });
     setKeyword(value);
     console.log(value);
   }, 1000);
