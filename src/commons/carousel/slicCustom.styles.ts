@@ -308,6 +308,9 @@ export const CustomSlider = styled(Slider)`
 
     border-radius: 4px;
     position: relative;
+    @media (max-width: 767px) {
+      width: 30px;
+    }
   }
 
   .slick-dots li {
@@ -316,11 +319,17 @@ export const CustomSlider = styled(Slider)`
 
     margin: 0 2px;
     transition: width 0.3s ease-in-out;
+    @media (max-width: 767px) {
+      width: 30px;
+    }
   }
 
   .slick-dots .slick-active {
     width: 100px;
     transition: width 0.3s ease-in-out;
+    @media (max-width: 767px) {
+      width: 30px;
+    }
   }
 
   .slick-dots .slick-active .ft-slick__dots--custom {
@@ -329,6 +338,9 @@ export const CustomSlider = styled(Slider)`
 
     top: 0px;
     overflow: hidden;
+    @media (max-width: 767px) {
+      width: 30px;
+    }
 
     .loading {
       height: 3px;

@@ -16,6 +16,15 @@ export const MenuWrapper = styled(Container)`
   align-items: center;
 `;
 
+export const ForMobileWrapper = styled.div`
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
 export const Hamburger = styled.div`
   /* width: 33.3%; */
   /* background-color: yellowgreen; */
@@ -28,13 +37,12 @@ export const Logo = styled.div`
 `;
 
 export const MenuList = styled.div`
-  width: 20%;
-
+  width: 10%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   @media (max-width: 767px) {
-    width: 30%;
+    width: 20%;
   }
 `;
 

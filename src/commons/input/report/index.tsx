@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
-import { ChangeEvent, useState } from "react";
+
+import { useRecoilState } from "recoil";
+import { modalInputState } from "../../../components/commons/store";
 
 const Input = styled.textarea`
   width: 100%;
@@ -21,15 +23,10 @@ const Input = styled.textarea`
   }
 `;
 
-// export default function ReportInput(props: IEditInputProps)
-// const { placeholder, color, width, name, type, defaultValue, register } =
-//     props;
-
-const ReportInput = ({ value = "", onChange }) => {
-  const [inputValue, setInputValue] = useState(value);
-  const onChangeInput = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setInputValue(event.target.value);
-    onChange(event);
+export default function ReportInput() {
+  const [inputValue, setInputValue] = useRecoilState(modalInputState);
+  const onChangeInput = (evet) => {
+    setInputValue(event?.target.value);
   };
 
   return (
@@ -37,6 +34,4 @@ const ReportInput = ({ value = "", onChange }) => {
       <Input placeholder="신고내용" onChange={onChangeInput} />
     </>
   );
-};
-
-export default ReportInput;
+}
