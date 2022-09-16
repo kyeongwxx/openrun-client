@@ -65,6 +65,15 @@ const Title = styled.div`
       margin-top: -2rem;
     }
   }
+  @media (max-width: 375px) {
+    transform: translate(0%, -70%);
+    & > span:nth-of-type(1) {
+      font-size: 1.862rem;
+    }
+    & > p {
+      margin-top: -2rem;
+    }
+  }
 `;
 
 const Info = styled.div`
@@ -223,8 +232,57 @@ const ReviewBox = styled.div`
       }
     }
   }
+  @media (max-width: 375px) {
+    img {
+      width: 50vw;
+    }
+    &:nth-of-type(1) {
+      &.isActive {
+        z-index: 2;
+        opacity: 1;
+        transform: translate(32%, 17%);
+        transition: all 1s ease;
+      }
+    }
+    //첫뻔째
+    &:nth-of-type(2) {
+      &.isActive {
+        z-index: 3;
+        opacity: 1;
+        transform: translate(5%, -45%);
+        transition: all 1s ease;
+      }
+    }
+    //가운데
+    &:nth-of-type(3) {
+      &.isActive {
+        z-index: 1;
+        opacity: 1;
+        transform: translate(5%, 80%);
+        transition: all 1s ease;
+      }
+    }
+  }
 `;
-
+// const Arrow = styled.div`
+//   transition: all 1.5s ease;
+//   img {
+//     width: 3rem;
+//     animation: ani 1s infinite alternate;
+//     opacity: 0.5;
+//   }
+//   &.isActive {
+//     transform: translate(0%, 0%);
+//   }
+//   @keyframes ani {
+//     0% {
+//       transform: translate(0, 0);
+//     }
+//     100% {
+//       transform: translate(0, 10px);
+//     }
+//   }
+// `;
 export default function D() {
   const [ref, inView] = useInView({
     threshold: 0,
@@ -244,16 +302,19 @@ export default function D() {
         </Title>
         <Info ref={ref}>
           <ReviewBox className={inView ? "isActive" : ""}>
-            <img src="/img/Group 98.png" />
+            <img src="/img/Review011.png" />
           </ReviewBox>
           <ReviewBox className={inView ? "isActive" : ""}>
-            <img src="/img/Group 99.png" />
+            <img src="/img/Review02.png" />
           </ReviewBox>
           <ReviewBox className={inView ? "isActive" : ""}>
-            <img src="/img/Group 100.png" />
+            <img src="/img/Review03.png" />
           </ReviewBox>
         </Info>
       </Wrapper>
+      {/* <Arrow ref={ref} className={inView ? "isActive" : ""}>
+        <img src="img/down-arrow.png" alt="" />
+      </Arrow> */}
     </Container>
   );
 }

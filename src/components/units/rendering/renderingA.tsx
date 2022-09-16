@@ -91,6 +91,19 @@ const Title = styled.div`
       margin-bottom: 2rem;
     }
   }
+  @media (max-width: 375px) {
+    transform: translateY(-40%);
+    & > span:nth-of-type(1) {
+      font-size: 2.025rem;
+    }
+    & > p {
+      font-size: 1.5rem;
+    }
+    & > button {
+      padding: 1.2rem 3rem;
+      margin-bottom: 2rem;
+    }
+  }
 `;
 
 const Info = styled.div`
@@ -122,24 +135,62 @@ const Info = styled.div`
     justify-content: center;
     align-items: center;
 
-    transform: translate(-50%, 90%);
     img {
       width: 55vw;
-      margin-top: 35vh;
+      margin-bottom: -15rem;
     }
     &.isActive {
       transform: translate(-36%, 1%);
     }
   }
   @media (max-width: 767px) {
-    transform: translate(-50%, 0%);
     img {
       width: 78vw;
-      margin-top: 32vh;
     }
     &.isActive {
-      transform: translate(-10%, 1%);
+      transform: translate(-10%, 0%);
     }
+  }
+  @media (max-width: 375px) {
+    img {
+      width: 79vw;
+      margin-bottom: -15rem;
+      margin-left: 1rem;
+    }
+    &.isActive {
+      transform: translate(-10%, -10%);
+    }
+  }
+`;
+
+const Arrow = styled.div`
+  transition: all 1.5s ease;
+  height: 100%;
+  position: absolute;
+  img {
+    animation: ani 1s infinite alternate;
+    opacity: 0.5;
+    width: 3rem;
+  }
+  &.isActive {
+    transform: translate(0%, 90%);
+  }
+  @keyframes ani {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(0, 10px);
+    }
+  }
+  @media (max-width: 375px) {
+    img {
+      width: 3rem;
+      transform: translate(0%, 0%);
+    }
+    /* &.isActive {
+      transform: translate(-10%, 90%);
+    } */
   }
 `;
 export default function A() {
@@ -160,9 +211,12 @@ export default function A() {
           <button onClick={onClickMoveToPage(`/main/`)}>시작하기</button>
         </Title>
         <Info ref={ref} className={inView ? "isActive" : ""}>
-          <img src="/img/queue.png" alt="" />
+          <img src="/img/5288.png" alt="" />
         </Info>
       </Wrapper>
+      <Arrow ref={ref} className={inView ? "isActive" : ""}>
+        <img src="img/down-arrow.png" alt="" />
+      </Arrow>
     </Container>
   );
 }
