@@ -43,6 +43,10 @@ export const userInfoValue = atom({
     loginType: "",
     createdAt: "",
     updatedAt: "",
+    countByDate: "",
+    paymentTotal: "",
+    boardTotal: "",
+    loginDate: "",
   },
 });
 

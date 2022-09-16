@@ -14,7 +14,7 @@ export const FETCH_LOGIN_USER = gql`
       nickName
       phone
       point
-      # rating
+      rating
       profileImg
       isAdmin
       # bankAccount
@@ -22,6 +22,10 @@ export const FETCH_LOGIN_USER = gql`
       loginType
       createdAt
       updatedAt
+      countByDate
+      paymentTotal
+      boardTotal
+      loginDate
     }
   }
 `;

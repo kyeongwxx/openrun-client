@@ -60,11 +60,11 @@ export default function MainUI() {
         </s.ProductWrapperText>
         <s.BestProductCategory>
           <s.Category>
-            <s.TEXT>Best Shoes</s.TEXT>
-            <s.TEXT>Best Bag</s.TEXT>
-            <s.TEXT>Best Acc</s.TEXT>
-            <s.TEXT>Best Digital</s.TEXT>
-            <s.TEXT>Best Food</s.TEXT>
+            <s.TEXT>BEST FASHION</s.TEXT>
+            <s.TEXT>BEST ACC</s.TEXT>
+            <s.TEXT>BEST DIGITAL</s.TEXT>
+            <s.TEXT>BEST FOOD</s.TEXT>
+            <s.TEXT>BEST TOY</s.TEXT>
           </s.Category>
           <s.CategoryImages>
             <s.CategoryImage src="/img/example1.png" />
@@ -83,7 +83,7 @@ export default function MainUI() {
           </s.TEXT>
         </s.BannerWrapperText>
       </s.BannerDiv>
-      <s.ProductWrapper>
+      {/* <s.ProductWrapper>
         <s.ProductWrapperText>
           <s.H1 color="#333">Openrun News</s.H1>
           <s.TEXT color="#333">오픈런이 전하는 다향한 소식</s.TEXT>
@@ -119,7 +119,7 @@ export default function MainUI() {
             </s.NewsImage>
           </s.NewsImages>
         </s.NewsCategory>
-      </s.ProductWrapper>
+      </s.ProductWrapper> */}
     </s.Wrapper>
   );
 }

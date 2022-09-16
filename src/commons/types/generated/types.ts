@@ -62,10 +62,10 @@ export type IChatMessage = {
 
 export type IChatRoom = {
   __typename?: 'ChatRoom';
-  board: IBoard;
+  board?: Maybe<IBoard>;
   room: Scalars['String'];
-  runner: IUser;
-  seller: IUser;
+  runner?: Maybe<IUser>;
+  seller?: Maybe<IUser>;
 };
 
 export type ICreateAdminInput = {
@@ -190,6 +190,7 @@ export type IMutation = {
   chargePayment: IPayment;
   checkTokenByPhone: Scalars['Boolean'];
   completeBusiness: IBoard;
+  completeReport: Scalars['Boolean'];
   createAdmin: IUser;
   createBoard: IBoard;
   createCategory: ICategory;
@@ -250,6 +251,11 @@ export type IMutationCheckTokenByPhoneArgs = {
 
 
 export type IMutationCompleteBusinessArgs = {
+  boardId: Scalars['String'];
+};
+
+
+export type IMutationCompleteReportArgs = {
   boardId: Scalars['String'];
 };
 
@@ -378,12 +384,12 @@ export type IPaymentByDate = {
 
 export type IPaymentHistory = {
   __typename?: 'PaymentHistory';
-  board: IBoard;
+  board?: Maybe<IBoard>;
   createdAt: Scalars['DateTime'];
   id: Scalars['String'];
-  price: Scalars['Int'];
-  status: Scalars['String'];
-  user: IUser;
+  price?: Maybe<Scalars['Int']>;
+  status?: Maybe<Scalars['String']>;
+  user?: Maybe<IUser>;
 };
 
 export type IQuery = {
@@ -391,6 +397,7 @@ export type IQuery = {
   fetchAdmin: Array<IUser>;
   fetchBestOfUser: Array<IUser>;
   fetchBoard: IBoard;
+  fetchBoardProcessingByUser: Array<IBoard>;
   fetchBoards: Array<IBoard>;
   fetchCategories: Array<ICategory>;
   fetchChatLogs: Array<IChatMessage>;
@@ -410,6 +417,7 @@ export type IQuery = {
   fetchReports: Array<IReport>;
   fetchRunner: IUser;
   fetchRunnerByBoard: Array<IRunner>;
+  fetchRuunerProcessingByUser: Array<IRunner>;
   fetchUserChatRoom: Array<IChatRoom>;
   fetchUsers: Array<IUser>;
   fetchUsersCount: Scalars['Int'];
@@ -424,6 +432,7 @@ export type IQueryFetchBoardArgs = {
 
 
 export type IQueryFetchBoardsArgs = {
+  category?: InputMaybe<Scalars['String']>;
   dateType: Scalars['String'];
   direcion?: InputMaybe<Scalars['String']>;
   page?: InputMaybe<Scalars['Int']>;
@@ -500,10 +509,10 @@ export type IReport = {
 
 export type IRunner = {
   __typename?: 'Runner';
-  board: IBoard;
+  board?: Maybe<IBoard>;
   id: Scalars['String'];
-  isChecked: Scalars['Boolean'];
-  user: IUser;
+  isChecked?: Maybe<Scalars['Boolean']>;
+  user?: Maybe<IUser>;
 };
 
 export enum IUser_Logintype_Enum {

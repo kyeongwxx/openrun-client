@@ -13,15 +13,14 @@ import ListIcon from "@mui/icons-material/List";
 import CreateIcon from "@mui/icons-material/Create";
 import LoginIcon from "@mui/icons-material/Login";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import LogoutIcon from "@mui/icons-material/Logout";
 import { useRouter } from "next/router";
 import { Fragment, KeyboardEvent, MouseEvent, useState } from "react";
-import { useRecoilState } from "recoil";
-import { userInfoValue } from "../../components/commons/store";
+import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt";
 
 type Anchor = "top" | "left" | "bottom" | "right";
 
 export default function TemporaryDrawer(props) {
-  console.log(props.userInfo);
   const router = useRouter();
   const [state, setState] = useState({
     top: false,
@@ -87,7 +86,11 @@ export default function TemporaryDrawer(props) {
                 }
               >
                 <ListItemIcon>
-                  {index % 2 === 0 ? <LoginIcon /> : <PersonAddIcon />}
+                  {index % 2 === 0 ? (
+                    <SentimentSatisfiedAltIcon />
+                  ) : (
+                    <LogoutIcon />
+                  )}
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItemButton>

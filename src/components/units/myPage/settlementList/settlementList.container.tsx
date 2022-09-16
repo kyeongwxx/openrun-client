@@ -6,20 +6,14 @@ import {
   IMutation,
   IMutationCreateRatingArgs,
   IQuery,
+  IQueryFetchPaymentHistoryArgs,
 } from "../../../../commons/types/generated/types";
+import MypageSettlementListUI from "./settlementList.presenter";
+import { FETCH_BOARD_PROCESSING_BY_USER } from "./settlementList.queries";
 
-import MypageDealUI from "./dealList.presenter";
-import {
-  // COMPLETE_BUSINESS,
-  // CREATE_RATING,
-  FETCH_PAYMENT_HISTORY,
-} from "./dealList.queries";
-
-export default function MypageDealList() {
+export default function MypageSettlementList() {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const { data, fetchMore } = useQuery<Pick<IQuery, "fetchPaymentHistory">>(
-    FETCH_PAYMENT_HISTORY
-  );
+  const { data, fetchMore } = useQuery(FETCH_BOARD_PROCESSING_BY_USER);
 
   const onClickTop = () => {
     scrollRef.current?.scrollTo({ left: 0, top: 0, behavior: "smooth" });
@@ -43,8 +37,8 @@ export default function MypageDealList() {
 
   console.log(data);
   return (
-    <MypageDealUI
-      data={data?.fetchPaymentHistory}
+    <MypageSettlementListUI
+      data={data?.fetchBoardProcessingByUser}
       onFetchMore={onFetchMore}
       onClickTop={onClickTop}
       scrollRef={scrollRef}

@@ -16,11 +16,13 @@ export default function Layout(props: ILayoutProps) {
 
   const SHOW_MYPAGE = [
     "/myPage/",
-    `/myPage/dealList/`,
-    `/myPage/favoriteList/`,
-    `/myPage/paymentPoint/`,
-    `/myPage/writtenBoards/`,
+    "/myPage/writtenBoards/",
+    "/myPage/proceeding/",
+    "/myPage/paymentPoint/",
+    "/myPage/favoriteList/",
+    "/myPage/settlementList/",
   ];
+
   const SHOW_BOARD = ["/board/"];
   const HIDDEN_MYPAGE = ["/"];
 
