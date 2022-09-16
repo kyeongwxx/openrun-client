@@ -1,20 +1,15 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { ChangeEvent, MouseEvent, useState } from "react";
-import BoardListUI from "./boardList.presenter";
-import {
-  FETCH_BOARDS,
-  FETCH_EVENTS,
-  FETCH_INTEREST_BOARDS,
-  FETCH_INTEREST_BOARD_ID,
-} from "./boardList.queries";
+import { ChangeEvent, useState } from "react";
+import { FETCH_BOARDS, FETCH_INTEREST_BOARD_ID } from "../boardList.queries";
 import _ from "lodash";
-import MediaQueryMobile from "../../../../commons/mediaQuery/mediaQueryStandardMobile";
-import MediaQueryPc from "../../../../commons/mediaQuery/mediaQueryStandardPc";
 import { useRecoilState } from "recoil";
-import { selectorValue } from "../../../commons/store";
+import BoardListToyUI from "./boardListToy.presenter";
+import MediaQueryMobile from "../../../../../commons/mediaQuery/mediaQueryStandardMobile";
+import MediaQueryPc from "../../../../../commons/mediaQuery/mediaQueryStandardPc";
+import { selectorValue } from "../../../../commons/store";
 
-export default function BoardList() {
+export default function BoardListToy() {
   const router = useRouter();
 
   // mediaQuery
@@ -70,7 +65,7 @@ export default function BoardList() {
   const { data: interestedId } = useQuery(FETCH_INTEREST_BOARD_ID);
 
   return (
-    <BoardListUI
+    <BoardListToyUI
       router={router}
       data={data}
       interestedId={interestedId}
