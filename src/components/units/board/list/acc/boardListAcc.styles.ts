@@ -38,7 +38,7 @@ export const CategoryItem = styled.div`
     font-weight: bold;
   }
 `;
-export const CategoryAll = styled.div`
+export const CategoryAcc = styled.div`
   width: 100%;
   text-align: center;
   font-size: 1.25rem;

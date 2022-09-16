@@ -1,43 +1,26 @@
 import * as s from "./boardList.styles";
 import * as React from "react";
-import { createTheme } from "@mui/material/styles";
-import CenteredTabs from "../../../../commons/tabs";
 import Selector from "../../../../commons/selector";
 import DOMPurify from "dompurify";
 import { AiOutlinePlus } from "react-icons/ai";
 import { v4 as uuidv4 } from "uuid";
 
-const theme = createTheme({
-  components: {
-    MuiTab: {
-      styleOverrides: {
-        textColorPrimary: {
-          color: "#555",
-        },
-      },
-    },
-  },
-});
 export default function BoardListUI(props: any) {
-  const [value, setValue] = React.useState("1");
-
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue);
-  };
-
   return (
     <s.Wrapper>
-      <CenteredTabs
-        tabs={["ALL", "FASHION", "ACC", "DIGITAL", "FOOD", "TOY"]}
-        address={[
-          "/board/all",
-          "/board/fashion",
-          "/board/acc",
-          "/board/digital",
-          "/board/food",
-          "/board/toy",
-        ]}
-      />
+      <s.CategoryWrapper>
+        <s.CategoryAll onClick={props.onClickMoveToAll}>All</s.CategoryAll>
+        <s.CategoryItem onClick={props.onClickMoveToFashion}>
+          Fashion
+        </s.CategoryItem>
+        <s.CategoryItem onClick={props.onClickMoveToAcc}>Acc</s.CategoryItem>
+        <s.CategoryItem onClick={props.onClickMoveToDigital}>
+          Digital
+        </s.CategoryItem>
+        <s.CategoryItem onClick={props.onClickMoveToFood}>Food</s.CategoryItem>
+        <s.CategoryItem onClick={props.onClickMoveToToy}>Toy</s.CategoryItem>
+      </s.CategoryWrapper>
+      <s.DivideLine1 />
       <s.InnerWrapper>
         <s.FilterWrapper>
           <Selector title="전체" sortValue={["최신순", "마감 임박순"]} />

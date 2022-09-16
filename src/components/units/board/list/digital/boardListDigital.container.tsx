@@ -1,7 +1,10 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { ChangeEvent, useState } from "react";
-import { FETCH_BOARDS, FETCH_INTEREST_BOARD_ID } from "../boardList.queries";
+import {
+  FETCH_BOARDS,
+  FETCH_INTEREST_BOARD_ID,
+} from "./boardListDigital.queries";
 import _ from "lodash";
 import { useRecoilState } from "recoil";
 import MediaQueryMobile from "../../../../../commons/mediaQuery/mediaQueryStandardMobile";
@@ -45,7 +48,12 @@ export default function BoardListDigital() {
   const [keyword, setKeyword] = useState("");
 
   const getDebounce = _.debounce((value) => {
-    refetch({ dateType: sortValue || "최신순", search: value, page: 1 });
+    refetch({
+      dateType: sortValue || "최신순",
+      search: value,
+      page: 1,
+      category: "DIGITAL",
+    });
     setKeyword(value);
     console.log(value);
   }, 1000);
@@ -59,6 +67,24 @@ export default function BoardListDigital() {
     if (!(event.target instanceof HTMLElement)) return;
     router.push(`/board/${event.currentTarget.id}`);
     console.log(event.currentTarget.id);
+  };
+  const onClickMoveToAll = () => {
+    router.push("/board/all");
+  };
+  const onClickMoveToFashion = () => {
+    router.push("/board/fashion");
+  };
+  const onClickMoveToAcc = () => {
+    router.push("/board/acc");
+  };
+  const onClickMoveToDigital = () => {
+    router.push("/board/digital");
+  };
+  const onClickMoveToFood = () => {
+    router.push("/board/food");
+  };
+  const onClickMoveToToy = () => {
+    router.push("/board/toy");
   };
 
   // 찜한 게시물 표시
@@ -76,6 +102,12 @@ export default function BoardListDigital() {
       onClickMoveToProductDetail={onClickMoveToProductDetail}
       keyword={keyword}
       onChangeSearch={onChangeSearch}
+      onClickMoveToAll={onClickMoveToAll}
+      onClickMoveToFashion={onClickMoveToFashion}
+      onClickMoveToAcc={onClickMoveToAcc}
+      onClickMoveToDigital={onClickMoveToDigital}
+      onClickMoveToFood={onClickMoveToFood}
+      onClickMoveToToy={onClickMoveToToy}
     />
   );
 }
