@@ -392,6 +392,7 @@ export const RunnerIcon = styled.img`
   }
 `;
 export const RunnerName = styled.div`
+  width: 200px;
   font-weight: 700;
   font-size: 1.125rem;
   color: rgba(0, 0, 0, 0.8);
