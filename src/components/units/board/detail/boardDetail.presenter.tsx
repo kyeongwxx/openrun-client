@@ -206,7 +206,9 @@ export default function BoardDetailUI(props: any) {
                         </s.Rating>
                         <s.CntWrapper>
                           {props.isPc && <s.RunCnt>줄서기 300건</s.RunCnt>}
-                          <s.SuccessRate>성공률 95%</s.SuccessRate>
+                          <s.SuccessRate>
+                            성공률 {el.user.successRate}%
+                          </s.SuccessRate>
                         </s.CntWrapper>
                       </s.ApplyItem>
                       {props.isPc && (
