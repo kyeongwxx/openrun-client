@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 export const Wrapper = styled.main`
   width: 1000px;
-  height: 400px;
+
   @media (max-width: 767px) {
     width: 500px;
     height: 400px;
@@ -33,9 +33,6 @@ export const ColumnBasic = styled.div`
   flex-direction: row;
   justify-content: center;
   text-align: center;
-  cursor: pointer;
-
-  //border: 1px solid red;
 `;
 
 export const Scroll = styled.div`

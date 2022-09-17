@@ -4,18 +4,8 @@ export const FETCH_REPORTS = gql`
   query fetchReports {
     fetchReports {
       id
-      contents
+
       createdAt
-      deletedAt
-      user {
-        id
-        email
-        nickName
-        rating
-        successRate
-        report
-        createdAt
-      }
       board
     }
   }
@@ -23,3 +13,5 @@ export const FETCH_REPORTS = gql`
 
 //신고를 한 유저 : user
 //id 리포트 아이디
+
+//백엔드 수정 기다리는중

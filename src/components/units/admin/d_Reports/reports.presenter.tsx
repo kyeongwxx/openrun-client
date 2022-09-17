@@ -4,7 +4,7 @@ import * as s from "./reports.styles";
 import InfiniteScroll from "react-infinite-scroller";
 
 export default function ReportsUI(props) {
-  //:IQueryFetchReports
+  console.log(props.data?.fetchReports);
   return (
     <s.Wrapper>
       <s.Row>
@@ -13,13 +13,17 @@ export default function ReportsUI(props) {
         {/* 신고게시글 누르면 상세내역 나오는걸로 (모여모여참고) */}
         <s.ColumnHeader>처리상태</s.ColumnHeader>
       </s.Row>
-      {props.data?.fetchReports.map((el: any) => (
-        <s.Row key={el.id}>
-          <s.ColumnBasic>{getDate(el.createdAt)}</s.ColumnBasic>
-          <s.ColumnBasic>{el.board}</s.ColumnBasic>
-          {/* <s.ColumnBtn>미처리/ 처리완료버튼</s.ColumnBtn> */}
-        </s.Row>
-      ))}
+      <s.Scroll>
+        {props.data?.fetchReports.map((el: any) => (
+          <s.Row key={el.id}>
+            <s.ColumnBasic>{getDate(el.createdAt)}</s.ColumnBasic>
+            <s.ColumnBasic>{el.id}</s.ColumnBasic>
+            <s.ColumnBasic>{el.board}</s.ColumnBasic>
+            <s.ColumnBasic>{el.contents}</s.ColumnBasic>
+            {/* <s.ColumnBtn>미처리/ 처리완료버튼</s.ColumnBtn> */}
+          </s.Row>
+        ))}
+      </s.Scroll>
     </s.Wrapper>
   );
 }

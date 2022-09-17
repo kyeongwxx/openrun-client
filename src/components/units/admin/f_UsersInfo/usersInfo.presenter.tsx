@@ -25,8 +25,6 @@ export default function UsersInfoUI(props: any) {
         <s.Scroll>
           {props.data?.fetchUsers.map((el: any) => (
             <s.Row key={el.id}>
-              {/* <s.ColumnBasic>{el.isAdmin}</s.ColumnBasic> */}
-              {/* {console.log(`test${JSON.stringify(el)}`)} */}
               <s.ColumnBasic>{el.nickName}</s.ColumnBasic>
               <s.ColumnBasic>{el.email}</s.ColumnBasic>
               <s.ColumnBasic>{getDate(el.createdAt)}</s.ColumnBasic>

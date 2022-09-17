@@ -33,7 +33,6 @@ export const ColumnBasic = styled.div`
   flex-direction: row;
   justify-content: center;
   text-align: center;
-  cursor: pointer;
 `;
 export const Scroll = styled.div`
   width: 100%;
