@@ -26,11 +26,22 @@ export default function BoardDetail() {
   const { data: runner } = useQuery(FETCH_RUNNER_BY_BOARD, {
     variables: { boardId: router.query.id },
   });
+
   // console.log(runner);
 
   // LiveChat 모달
   const [showChatModal, setShowChatModal] = useState(false);
   const chatOpenCloseModal = () => {
+    if (
+      login?.fetchLoginUser?.id !== data?.fetchBoard?.user.id &&
+      login?.fetchLoginUser?.id !== adoptedRunner[0]?.user.id
+    ) {
+      Modal.warning({
+        title: "Warning",
+        content: "작성자와 채택된 runner만이 채팅이 가능합니다.",
+      });
+      return;
+    }
     setShowChatModal((prev) => !prev);
   };
   // 게시물 수정, 삭제 모달
