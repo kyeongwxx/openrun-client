@@ -67,6 +67,7 @@ export const FETCH_RUNNER_BY_BOARD = gql`
         id
         nickName
         rating
+        successRate
       }
     }
   }
