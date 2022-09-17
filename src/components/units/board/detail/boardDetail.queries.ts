@@ -66,6 +66,7 @@ export const FETCH_RUNNER_BY_BOARD = gql`
       user {
         id
         nickName
+        rating
       }
     }
   }

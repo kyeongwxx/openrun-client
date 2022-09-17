@@ -6,7 +6,7 @@ export const schema = yup.object({
   price: yup
     .number()
     .required("대행 가격을 입력해주세요.")
-    .typeError("대행 가격(숫자)를 입력해주세요.")
+    .typeError("대행 가격(숫자)을 입력해주세요.")
     .positive("0이상의 숫자를 입력해주세요."),
   // address: yup.string().required("주소를 입력해주세요"),
   // addressDetail: yup.string().required("상세 주소를 입력해주세요."),

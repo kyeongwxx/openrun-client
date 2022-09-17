@@ -67,11 +67,16 @@ export default function BoardDetail() {
         });
         return;
       }
-      deleteBoard({
+      await deleteBoard({
         variables: {
           boardId: router.query.id,
         },
-        refetchQueries: [{ query: FETCH_BOARDS }],
+        refetchQueries: [
+          {
+            query: FETCH_BOARDS,
+            variables: { dateType: "최신순" },
+          },
+        ],
       });
       Modal.success({
         title: "Success",
@@ -87,6 +92,7 @@ export default function BoardDetail() {
   const appliedRunner = runner?.fetchRunnerByBoard.filter(
     (el: any) => el.user.id === login?.fetchLoginUser?.id
   );
+  console.log(runner);
 
   const [applyRunner] = useMutation(APPLY_RUNNER);
   const onClickApply = async () => {
@@ -126,7 +132,6 @@ export default function BoardDetail() {
       alert(error.message);
     }
   };
-
   // runner 채택
   const [adoptRunner] = useMutation(ADOPT_RUNNER);
   const onClickAdopt = (id: string) => async () => {
