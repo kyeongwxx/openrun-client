@@ -58,18 +58,30 @@ const Title = styled.div`
     }
   }
   @media (max-width: 767px) {
-    transform: translate(0%, 10%);
+    transform: translate(0%, -10%);
     & > span:nth-of-type(1) {
       font-size: 2.025rem;
       margin-top: -4rem;
     }
     & > p {
+    
+  }
+  @media (max-width: 412px) {
+    transform: translate(0%, 8%);
+    & > span:nth-of-type(1) {
+      font-size: 2.225rem;
+      margin-top: -4rem;
+    }
+    & > p {
+      font-size: 1.3rem;
       margin-top: -3rem;
+      transform: translate(0%, 20%);
     }
   }
   @media (max-width: 375px) {
     transform: translate(0%, 15%);
     & > span:nth-of-type(1) {
+      width: 15rem;
       font-size: 2.025rem;
       margin-top: -4rem;
     }
@@ -94,13 +106,24 @@ const Info = styled.div`
     transform: translateY(-12%);
   }
   img {
-    width: 25vw;
+    width: 24vw;
     transform: translate(70%, -30%);
+  }
+  @media (max-width: 2100px) {
+    transform: translate(100%, 20%);
+    img {
+      width: 24vw;
+      transform: translate(40%, -10%);
+    }
+    &.isActive {
+      transform: translate(0%, 1%);
+    }
   }
   @media (max-width: 1543px) {
     transform: translate(100%, 20%);
     img {
       width: 23vw;
+      transform: translate(10%, -30%);
     }
     &.isActive {
       transform: translate(0%, 1%);
@@ -116,21 +139,31 @@ const Info = styled.div`
       transform: translate(-50%, 20%);
     }
   }
-  @media (max-width: 767px), (min-width: 376px) {
+  @media (max-width: 767px) {
     transform: translate(-50%, -2%);
     img {
-      width: 25vw;
-      transform: translate(35%, 10%);
+      width: 48vw;
+      transform: translate(25%, 0%);
     }
     &.isActive {
       transform: translate(-30%, -10%);
     }
   }
+  @media (max-width: 412px) {
+    transform: translate(-50%, -2%);
+    img {
+      width: 58vw;
+      transform: translate(57%, -5%);
+    }
+    &.isActive {
+      transform: translate(-50%, -10%);
+    }
+  }
   @media (max-width: 375px) {
     transform: translate(-50%, -2%);
     img {
-      width: 45vw;
-      transform: translate(45%, -10%);
+      width: 48vw;
+      transform: translate(48%, 5%);
     }
     &.isActive {
       transform: translate(-50%, -10%);

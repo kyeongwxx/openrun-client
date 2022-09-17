@@ -5,7 +5,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #eef9ff;
+  /* background: #eef9ff; */
 `;
 
 const Wrapper = styled.div`
@@ -57,11 +57,22 @@ const Title = styled.div`
     }
   }
   @media (max-width: 767px) {
-    transform: translate(0%, -80%);
+    transform: translate(0%, -90%);
     & > span:nth-of-type(1) {
       font-size: 2.025rem;
     }
     & > p {
+      margin-top: -2rem;
+    }
+  }
+  @media (max-width: 412px) {
+    transform: translate(0%, -75%);
+    & > span:nth-of-type(1) {
+      font-size: 2.225rem;
+      width: 13rem;
+    }
+    & > p {
+      font-size: 1.3rem;
       margin-top: -2rem;
     }
   }
@@ -71,6 +82,7 @@ const Title = styled.div`
       font-size: 1.862rem;
     }
     & > p {
+      font-size: 1rem;
       margin-top: -2rem;
     }
   }
@@ -211,7 +223,7 @@ const ReviewBox = styled.div`
     &:nth-of-type(1) {
       &.isActive {
         opacity: 1;
-        transform: translate(77%, 30%);
+        transform: translate(77%, 10%);
         transition: all 1s ease;
       }
     }
@@ -219,7 +231,7 @@ const ReviewBox = styled.div`
     &:nth-of-type(2) {
       &.isActive {
         opacity: 1;
-        transform: translate(0%, -35%);
+        transform: translate(0%, -50%);
         transition: all 1s ease;
       }
     }
@@ -227,7 +239,38 @@ const ReviewBox = styled.div`
     &:nth-of-type(3) {
       &.isActive {
         opacity: 1;
-        transform: translate(0%, 90%);
+        transform: translate(0%, 80%);
+        transition: all 1s ease;
+      }
+    }
+  }
+  @media (max-width: 412px) {
+    img {
+      width: 60vw;
+    }
+    &:nth-of-type(1) {
+      &.isActive {
+        z-index: 2;
+        opacity: 1;
+        transform: translate(30%, 45%);
+        transition: all 1s ease;
+      }
+    }
+    //첫뻔째
+    &:nth-of-type(2) {
+      &.isActive {
+        z-index: 3;
+        opacity: 1;
+        transform: translate(10%, -40%);
+        transition: all 1s ease;
+      }
+    }
+    //가운데
+    &:nth-of-type(3) {
+      &.isActive {
+        z-index: 1;
+        opacity: 1;
+        transform: translate(10%, 130%);
         transition: all 1s ease;
       }
     }

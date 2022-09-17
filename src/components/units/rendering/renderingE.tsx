@@ -85,6 +85,14 @@ const Container = styled.div`
         font-size: 4rem;
       }
     }
+    @media (max-width: 412px) {
+      & > span:nth-of-type(1) {
+        font-size: 4rem;
+      }
+      button {
+        font-size: 1.16rem;
+      }
+    }
     @media (max-width: 375px) {
       & > span:nth-of-type(1) {
         font-size: 4rem;
