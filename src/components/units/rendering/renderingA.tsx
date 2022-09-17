@@ -91,6 +91,19 @@ const Title = styled.div`
       margin-bottom: 2rem;
     }
   }
+  @media (max-width: 412px) {
+    transform: translateY(-65%);
+    & > span:nth-of-type(1) {
+      font-size: 2.025rem;
+    }
+    & > p {
+      font-size: 1.5rem;
+    }
+    & > button {
+      padding: 1.2rem 3rem;
+      margin-bottom: 2rem;
+    }
+  }
   @media (max-width: 375px) {
     transform: translateY(-40%);
     & > span:nth-of-type(1) {
@@ -149,6 +162,16 @@ const Info = styled.div`
     }
     &.isActive {
       transform: translate(-10%, 0%);
+    }
+  }
+  @media (max-width: 412px) {
+    img {
+      width: 88vw;
+      margin-bottom: -15rem;
+      transform: translate(8%, 00%);
+    }
+    &.isActive {
+      transform: translate(-10%, -10%);
     }
   }
   @media (max-width: 375px) {
