@@ -503,3 +503,78 @@ export const Info = styled.img`
   }
 `;
 export const DefaultText = styled.div``;
+
+// 게시물 수정, 삭제 모달
+export const MBackground = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 3;
+`;
+export const MWrapper = styled.button`
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  width: 465px;
+  height: 260px;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+`;
+export const MButtonWrapper = styled.div`
+  width: 465px;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  margin-right: 50px;
+  padding-bottom: 15px;
+`;
+export const MCloseButton = styled.button`
+  cursor: pointer;
+  border: none;
+  background: none;
+  :hover {
+    font-weight: bold;
+  }
+`;
+export const MTitle = styled.div`
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #222;
+  padding-bottom: 20px;
+`;
+export const MContents = styled.div`
+  font-weight: 400;
+  font-size: 1rem;
+  color: #555;
+  padding-bottom: 20px;
+`;
+export const MUpdate = styled.button`
+  width: 15%;
+  font-weight: 400;
+  font-size: 1.15rem;
+  color: #fff;
+  background: #555;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 16px;
+  border: none;
+`;
+export const MDelete = styled.button`
+  width: 15%;
+  font-weight: 400;
+  font-size: 1.15rem;
+  background: #eec1ba;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 16px;
+  border: none;
+`;
