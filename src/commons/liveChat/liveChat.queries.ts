@@ -5,7 +5,7 @@ export const FETCH_CHAT_LOGS = gql`
     fetchChatLogs(room: $room) {
       message
       # room {
-      #   room
+      #   id
       #   seller {
       #     id
       #     nickName
@@ -28,7 +28,7 @@ export const FETCH_CHAT_LOGS = gql`
 export const FETCH_USER_CHAT_ROOM = gql`
   query fetchUserChatRoom {
     fetchUserChatRoom {
-      room
+      id
       seller {
         id
         nickName
@@ -59,6 +59,32 @@ export const FETCH_RUNNER_BY_BOARD = gql`
       user {
         id
         nickName
+      }
+    }
+  }
+`;
+export const FETCH_BOARD = gql`
+  query fetchBoard($boardId: String!) {
+    fetchBoard(boardId: $boardId) {
+      id
+      title
+      contents
+      price
+      dueDate
+      status
+      category {
+        name
+      }
+      location {
+        zipcode
+        address
+        addressDetail
+      }
+      image {
+        url
+      }
+      user {
+        id
       }
     }
   }

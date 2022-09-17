@@ -8,6 +8,7 @@ import { io } from "socket.io-client";
 import { accessTokenState } from "../../components/commons/store";
 import LiveChatUI from "./liveChat.presenter";
 import {
+  FETCH_BOARD,
   FETCH_CHAT_LOGS,
   FETCH_LOGIN_USER,
   FETCH_RUNNER_BY_BOARD,
@@ -33,6 +34,9 @@ export default function LiveChat() {
   console.log(chatRoom);
 
   const { data: login } = useQuery(FETCH_LOGIN_USER);
+  const { data: board } = useQuery(FETCH_BOARD, {
+    variables: { boardId: router.query.id },
+  });
 
   const socket = io("https://openrunbackend.shop/chat");
 
@@ -68,14 +72,25 @@ export default function LiveChat() {
   );
 
   const onClickCreate = async (data: any) => {
-    socket.emit("message", [
-      nickName,
-      adoptedRunner[0]?.user?.id,
-      router.query.id,
-    ]);
-    socket.on(`first${router.query.id}`, (data) => {
-      console.log(data);
-    });
+    if (adoptedRunner[0]?.user?.id === login.fetchLoginUser.id) {
+      socket.emit("message", [
+        nickName,
+        board?.fetchBoard?.user.id,
+        router.query.id,
+      ]);
+      socket.on(`first${router.query.id}`, (data) => {
+        console.log(data);
+      });
+    } else {
+      socket.emit("message", [
+        nickName,
+        adoptedRunner[0]?.user.id,
+        router.query.id,
+      ]);
+      socket.on(`first${router.query.id}`, (data) => {
+        console.log(data);
+      });
+    }
   };
 
   const onSendMessage = async (data: any) => {
