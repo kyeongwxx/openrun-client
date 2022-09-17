@@ -93,7 +93,7 @@ export default function BoardDetail() {
     if (data.fetchBoard.user.id === login.fetchLoginUser.id) {
       Modal.warning({
         title: "Warning",
-        content: "본인이 작성한 게시글에는 신청이 제한됩니다.",
+        content: "본인이 작성한 게시글에는 runner 신청이 제한됩니다.",
       });
       return;
     }
@@ -163,6 +163,14 @@ export default function BoardDetail() {
 
   const onClickAddInterestList = async () => {
     try {
+      if (data.fetchBoard.user.id === login.fetchLoginUser.id) {
+        Modal.warning({
+          title: "Warning",
+          content: "본인이 작성한 게시글에는 찜 기능이 제한됩니다.",
+        });
+        return;
+      }
+
       const result = await addInterestList({
         variables: { boardId: router.query.id },
         refetchQueries: [
