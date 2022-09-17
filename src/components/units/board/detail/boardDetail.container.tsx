@@ -133,12 +133,23 @@ export default function BoardDetail() {
     }
   };
   // runner 채택
+  const adoptedRunner = runner?.fetchRunnerByBoard?.filter(
+    (el: any) => el.isChecked === true
+  );
+
   const [adoptRunner] = useMutation(ADOPT_RUNNER);
   const onClickAdopt = (id: string) => async () => {
     if (data.fetchBoard.user.id !== login.fetchLoginUser.id) {
       Modal.warning({
         title: "Warning",
         content: "작성자 외에는 runner 채택이 제한됩니다.",
+      });
+      return;
+    }
+    if (adoptedRunner?.length === 1) {
+      Modal.warning({
+        title: "Warning",
+        content: "이미 채택된 runner가 존재합니다.",
       });
       return;
     }
