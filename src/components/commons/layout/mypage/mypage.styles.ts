@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Container } from "@mui/system";
-import { BOX_SHADOW_TOP } from "../../../../commons/boxshadow";
+import { BOX_SHADOW_TOP } from "../../../../commons/cssConst";
 
 export const Wrapper = styled.main`
   width: 100%;

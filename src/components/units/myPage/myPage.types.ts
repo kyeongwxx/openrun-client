@@ -9,6 +9,7 @@ import {
 import {
   IBoard,
   IPaymentHistory,
+  IRunner,
 } from "../../../commons/types/generated/types";
 
 export interface IEditAccountProps {
@@ -26,7 +27,7 @@ export interface IDealListProps {
 
   onClickTop: () => void;
   scrollRef: RefObject<HTMLDivElement>;
-  data?: IPaymentHistory[];
+  data?: IBoard[];
 }
 
 export interface IWrittenBoardsProps {
@@ -35,7 +36,15 @@ export interface IWrittenBoardsProps {
   onClickTop: () => void;
   scrollRef: RefObject<HTMLDivElement>;
   data?: IBoard[];
+  isModalOpen: boolean;
   onClickCompleteModal: (boardId: string) => () => void;
+  showModal: (boardId: string) => () => void;
+  onClickSubmitReport: () => void;
+}
 
-  onClickReportModal: (boardId: string) => () => void;
+export interface IMainProps {
+  sellerData?: IBoard[];
+  runnerData?: IRunner[];
+  onFetchMore: () => void;
+  onClickMoveToBoardDetail: (arg: string) => MouseEventHandler<HTMLDivElement>;
 }

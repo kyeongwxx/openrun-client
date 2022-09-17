@@ -1,33 +1,5 @@
 import { gql } from "@apollo/client";
 
-// export const FETCH_PAYMENT_HISTORY = gql`
-//   query fetchPaymentHistory($page: Int) {
-//     fetchPaymentHistory(page: $page) {
-//       id
-//       price
-//       status
-//       user {
-//         id
-//         nickName
-//       }
-
-//       board {
-//         id
-//         title
-//         dueDate
-//         status
-//         image {
-//           url
-//         }
-//         user {
-//           nickName
-//           id
-//         }
-//       }
-//     }
-//   }
-// `;
-
 export const FETCH_USER_CHATROOM = gql`
   query {
     fetchUserChatRoom {
@@ -43,6 +15,55 @@ export const FETCH_USER_CHATROOM = gql`
         title
         price
         status
+      }
+    }
+  }
+`;
+
+export const FETCH_BOARD_PROCESSING_BY_USER = gql`
+  query {
+    fetchBoardProcessingByUser {
+      id
+      title
+
+      status
+      price
+      createdAt
+
+      dueDate
+      image {
+        url
+      }
+      user {
+        nickName
+      }
+    }
+  }
+`;
+
+export const FETCH_RUNNER_PROCESSING_BY_USER = gql`
+  query {
+    fetchRuunerProcessingByUser {
+      id
+      isChecked
+      user {
+        nickName
+      }
+      board {
+        id
+        title
+        price
+        dueDate
+        image {
+          url
+        }
+        location {
+          address
+          addressDetail
+        }
+        user {
+          nickName
+        }
       }
     }
   }

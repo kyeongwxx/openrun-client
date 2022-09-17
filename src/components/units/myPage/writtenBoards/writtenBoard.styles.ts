@@ -3,6 +3,9 @@ import { CheckCircleOutline, ReportGmailerrorred } from "@mui/icons-material";
 import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
 import { Container } from "@mui/system";
 import InfiniteScroll from "react-infinite-scroller";
+import { BOX_BG_COLOR } from "../../../../commons/cssConst";
+import WallpaperIcon from "@mui/icons-material/Wallpaper";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
 export const Wrapper = styled.main`
   width: 100%;
@@ -84,6 +87,16 @@ export const ActiveTitle = styled.div`
   font-weight: 700;
   color: #333;
 `;
+
+export const InfiniteScrollLimit = styled.div`
+  overflow: auto;
+  width: 80%;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+`;
+
 export const NodataImg = styled.img`
   width: 80%;
   height: 100%;
@@ -93,13 +106,22 @@ export const NodataImg = styled.img`
     width: 100%;
   }
 `;
-export const InfiniteScrollLimit = styled.div`
-  overflow: auto;
-  width: 80%;
 
-  @media (max-width: 767px) {
-    width: 100%;
-  }
+export const NoData = styled.div`
+  width: 100%;
+  height: 400px;
+  background-color: ${BOX_BG_COLOR};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+export const ExclamationMark = styled(ErrorOutlineIcon)`
+  color: #333;
+`;
+
+export const NodataText = styled.div`
+  color: #333;
 `;
 
 export const ActiveBoards = styled(InfiniteScroll)`
@@ -125,7 +147,7 @@ export const ActiveBoard = styled.div`
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  background-color: rgb(244, 244, 244);
+  background-color: ${BOX_BG_COLOR};
 
   @media (max-width: 767px) {
     height: 100px;
@@ -239,4 +261,10 @@ export const Check = styled(CheckCircleOutline)`
 
 export const Runner = styled(DirectionsRunIcon)`
   color: #333;
+`;
+
+export const NoImg = styled(WallpaperIcon)`
+  color: #8b8c89;
+  width: 50%;
+  height: 40%;
 `;

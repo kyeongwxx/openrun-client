@@ -1,5 +1,8 @@
 import styled from "@emotion/styled";
 import { Container } from "@mui/system";
+import InfiniteScroll from "react-infinite-scroller";
+import { BOX_BG_COLOR, BOX_SHADOW_TOP } from "../../../../commons/cssConst";
+import WallpaperIcon from "@mui/icons-material/Wallpaper";
 
 export const Wrapper = styled.main`
   width: 100%;
@@ -15,7 +18,7 @@ export const Button = styled.div`
   z-index: 90;
   bottom: 100px;
   right: 25px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: ${BOX_SHADOW_TOP};
   text-align: center;
   line-height: 60px;
   font-weight: 700;
@@ -105,14 +108,22 @@ export const ActiveTitle = styled.div`
   color: #333;
 `;
 
-export const ActiveImages = styled.div`
+export const InfiniteScrollLimit = styled.div`
+  overflow-x: auto;
+  width: 100%;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+`;
+
+export const ActiveWrapper = styled(InfiniteScroll)`
   width: 80%;
-  height: 80%;
+  height: 100%;
 
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  overflow-y: scroll;
 
   ::-webkit-scrollbar {
     display: none;
@@ -122,14 +133,42 @@ export const ActiveImages = styled.div`
   }
 `;
 
-export const ActiveImage = styled.img<{ height: string }>`
-  width: 400px;
+export const ActiveContent = styled.div<{ height: string }>`
+  width: 100px;
   height: ${(props) => props.height};
   margin: 1%;
   border-radius: 24px;
-  background-color: orange;
+  background-color: ${BOX_BG_COLOR};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
   @media (max-width: 767px) {
     width: 190px;
     height: 170px;
   }
+`;
+
+export const ActiveImg = styled.img`
+  width: 60%;
+  height: 40%;
+  /* object-fit: cover;
+  background-color: aliceblue; */
+`;
+
+export const NoImg = styled(WallpaperIcon)`
+  color: #8b8c89;
+  width: 50%;
+  height: 40%;
+`;
+
+export const ActiveText = styled.div<{
+  color: string;
+  weight: string;
+  size: string;
+}>`
+  color: ${(props) => props.color};
+  font-weight: ${(props) => props.weight};
+  font-size: ${(props) => props.size};
 `;
