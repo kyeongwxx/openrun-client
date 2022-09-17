@@ -84,6 +84,10 @@ export default function BoardDetail() {
   };
 
   // runner 신청
+  const appliedRunner = runner?.fetchRunnerByBoard.filter(
+    (el: any) => el.user.id === login?.fetchLoginUser?.id
+  );
+
   const [applyRunner] = useMutation(APPLY_RUNNER);
   const onClickApply = async () => {
     if (data.fetchBoard.user.id === login.fetchLoginUser.id) {
@@ -93,13 +97,24 @@ export default function BoardDetail() {
       });
       return;
     }
-
+    if (appliedRunner.length === 1) {
+      Modal.warning({
+        title: "Warning",
+        content: "이미 신청한 게시물입니다.",
+      });
+      return;
+    }
     try {
       const result = await applyRunner({
         variables: { boardId: router.query.id },
         refetchQueries: [
           {
+            query: FETCH_BOARD,
+            variables: { boardId: router.query.id },
+          },
+          {
             query: FETCH_RUNNER_BY_BOARD,
+            variables: { boardId: router.query.id },
           },
         ],
       });
@@ -115,6 +130,14 @@ export default function BoardDetail() {
   // runner 채택
   const [adoptRunner] = useMutation(ADOPT_RUNNER);
   const onClickAdopt = (id: string) => async () => {
+    if (data.fetchBoard.user.id !== login.fetchLoginUser.id) {
+      Modal.warning({
+        title: "Warning",
+        content: "작성자 외에는 runner 채택이 제한됩니다.",
+      });
+      return;
+    }
+
     try {
       const result = await adoptRunner({
         variables: {
