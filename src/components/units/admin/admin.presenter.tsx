@@ -9,7 +9,7 @@ import UsersInfo from "./f_UsersInfo/usersInfo.container";
 export default function AdminUI(props) {
   return (
     <s.Wrapper>
-      <CenteredTabs
+      {/* <CenteredTabs
         tabs={[
           "가입자 현황",
           "일반회원 정보",
@@ -17,14 +17,21 @@ export default function AdminUI(props) {
           "신고 내역",
           "운영진 정보",
         ]}
-      />
-      <s.InnerWrapper>
+        address={[
+          "/admin/usersChart",
+          "/admin/f_UsersInfo",
+          "b_DailyPayments",
+          "d_Reports",
+          "e_AdminInfo",
+        ]}
+      /> */}
+      {/* <s.InnerWrapper>
         <s.Box>
           <s.Title>가입자 현황</s.Title>
           <UsersChart />
-        </s.Box>
+        </s.Box> */}
 
-        <s.Box>
+        {/* <s.Box>
           <s.Title>일반회원 정보</s.Title>
 
           <UsersInfo />
@@ -36,12 +43,6 @@ export default function AdminUI(props) {
           <DailyPayments />
         </s.Box>
 
-        {/* <s.Box>
-          <s.Title>1:1문의 내역</s.Title>
-
-          <s.Chart></s.Chart>
-        </s.Box> */}
-
         <s.Box>
           <s.Title>신고 내역</s.Title>
 
@@ -52,7 +53,7 @@ export default function AdminUI(props) {
           <s.Title>운영진 정보</s.Title>
 
           <AdminInfoUI />
-        </s.Box>
+        </s.Box> */}
       </s.InnerWrapper>
     </s.Wrapper>
   );

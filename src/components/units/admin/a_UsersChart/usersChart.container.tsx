@@ -27,7 +27,6 @@ import moment from "moment";
 
 export const options = {
   responsive: true,
-
   plugins: {
     legend: {
       position: "top" as const,
@@ -38,37 +37,39 @@ export const options = {
   },
 };
 
-const labels = Array(14)
-  .fill(0)
-  .map((e, i) => moment().subtract(i, "d").format("YYYY/MM/DD"))
-  .reverse();
-
-console.log("dates", labels);
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: "신규 유저 가입 수",
-      data: [10, 60, 30, 40, 28, 5, 70, 80, 15, 2, 50, 40, 25, 42],
-      // data: labels.map(() =>
-      //   data?.fetchUsersCountByDate.number({ min: 0, max: 100 })
-      // ),
-      borderColor: "rgb(255, 99, 132)",
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
-    },
-  ],
-};
-
 export default function UsersChart() {
-  // const number = useQuery<Pick<IQuery, "fetchUsersCountByDate">>(
-  //   FETCH_USERS_COUNT_BY_DATE
-  // );
+  const { data: countData } = useQuery<Pick<IQuery, "fetchUsersCountByDate">>(
+    FETCH_USERS_COUNT_BY_DATE
+  );
+  console.log("userChart", countData);
+
+  const labels = Array(countData?.fetchUsersCountByDate.length)
+    .fill(0)
+    .map((e, i) => moment().subtract(i, "d").format("YYYY/MM/DD"))
+    .reverse();
+
+  const datas = {
+    labels,
+    datasets: [
+      {
+        label: "신규 유저 가입 수",
+
+        data: labels.map(
+          (_, i) => countData?.fetchUsersCountByDate.at(i)?.countByDate
+        ),
+        borderColor: "rgb(255, 99, 132)",
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+      },
+    ],
+  };
+
+  console.log("userChart - datas", datas);
 
   return (
     <Line
       options={options}
-      data={data}
+      data={datas}
+      // chart={chart}
       // number={number}
     />
   );

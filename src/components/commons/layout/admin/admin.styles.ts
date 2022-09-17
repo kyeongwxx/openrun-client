@@ -35,7 +35,7 @@ export const Box = styled.div`
   width: 1000px;
   height: 400px;
 
-  margin-bottom: 5rem;
+  margin-bottom: 15rem;
 
   @media (max-width: 767px) {
     width: 500px;
@@ -51,7 +51,7 @@ export const Box = styled.div`
 export const Title = styled.div`
   color: #555;
   font-size: 20px;
-  margin-bottom: 3rem;
+  margin-bottom: 10px;
   @media (max-width: 767px) {
     font-size: 25px;
   }
