@@ -210,11 +210,8 @@ export default function BoardDetailUI(props: any) {
                         </s.SelectBtn>
                       )}
                       {props.isMobile && (
-                        <s.SelectBtn>
-                          <AiOutlineCheckCircle
-                            size={30}
-                            onClick={props.onClickAdopt}
-                          />
+                        <s.SelectBtn onClick={props.onClickAdopt(el?.user?.id)}>
+                          <AiOutlineCheckCircle size={30} />
                         </s.SelectBtn>
                       )}
                     </s.ApplyList>
