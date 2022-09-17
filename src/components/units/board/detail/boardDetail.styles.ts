@@ -13,6 +13,7 @@ export const ProductWrapper = styled.div`
   flex-direction: row;
   padding-bottom: 5rem;
   @media (max-width: 767px) {
+    width: 100%;
     flex-direction: column;
     align-items: center;
   }
@@ -23,6 +24,10 @@ export const ImgWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding-right: 6.438rem;
+  @media (max-width: 767px) {
+    padding-right: 0;
+    align-items: center;
+  }
 `;
 export const ImageWrapper = styled.div`
   width: 100%;
@@ -30,7 +35,7 @@ export const ImageWrapper = styled.div`
   margin: 0 auto;
   overflow: hidden;
   @media (max-width: 767px) {
-    width: 50%;
+    width: 70%;
     height: 200px;
     padding: 0;
     margin-bottom: 1rem;
@@ -42,7 +47,16 @@ export const Image = styled.img`
   height: 100%;
   object-fit: cover;
 `;
-export const TimerWrapper = styled.div``;
+export const TimerWrapper = styled.div`
+  @media (max-width: 767px) {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+  }
+  @media (max-width: 412px) {
+    display: none;
+  }
+`;
 export const Triangle = styled.div`
   width: 0px;
   height: 0px;
@@ -64,6 +78,16 @@ export const InfoText = styled.div`
   background: #555;
   color: #fff;
   font-size: 1.25rem;
+  @media (max-width: 767px) {
+    width: 75%;
+    height: 40px;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+  }
+  @media (max-width: 412px) {
+    height: 30px;
+    font-size: 0.75rem;
+  }
 `;
 export const Text = styled.div`
   padding-left: 0.5rem;
@@ -132,6 +156,9 @@ export const Title = styled.div`
   color: #555;
   padding-bottom: 2.188rem;
   text-decoration: underline;
+  @media (max-width: 412px) {
+    font-size: 1rem;
+  }
 `;
 export const CategoryWrapper = styled.div`
   display: flex;
@@ -144,6 +171,9 @@ export const Category = styled.div`
   font-weight: 700;
   font-size: 1.375rem;
   color: #555;
+  @media (max-width: 412px) {
+    font-size: 1rem;
+  }
 `;
 export const DateWrapper = styled.div`
   display: flex;
@@ -158,9 +188,15 @@ export const Date = styled.div`
   color: #555;
   display: flex;
   flex-direction: row;
+  @media (max-width: 412px) {
+    font-size: 1rem;
+  }
 `;
 export const eventDay = styled.div`
   margin-right: 1rem;
+  @media (max-width: 412px) {
+    margin-right: 0.5rem;
+  }
 `;
 export const eventTime = styled.div``;
 export const LocationWrapper = styled.div`
@@ -174,6 +210,9 @@ export const Location = styled.div`
   font-weight: 700;
   font-size: 1.125rem;
   color: rgba(0, 0, 0, 0.3);
+  @media (max-width: 412px) {
+    font-size: 1rem;
+  }
 `;
 export const AddressWrapper = styled.div`
   display: flex;
@@ -184,11 +223,18 @@ export const Address = styled.div`
   font-size: 1.375rem;
   color: #555;
   margin-right: 1rem;
+  @media (max-width: 412px) {
+    font-size: 1rem;
+    margin-right: 0.3rem;
+  }
 `;
 export const AddressDetail = styled.div`
   font-weight: 700;
   font-size: 1.375rem;
   color: #555;
+  @media (max-width: 412px) {
+    font-size: 1rem;
+  }
 `;
 export const PriceWrapper = styled.div`
   display: flex;
@@ -202,38 +248,13 @@ export const Price = styled.div`
   font-weight: 700;
   font-size: 1.375rem;
   color: #555;
+  @media (max-width: 412px) {
+    font-size: 1rem;
+  }
 `;
 export const DivideLine = styled.div`
   width: 100%;
   border-bottom: 1px solid #d9d9d9;
-`;
-export const PenaltyWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-top: 2.188rem;
-  padding-bottom: 2.063rem;
-`;
-export const BtnWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-export const PenaltyBtn = styled.div`
-  width: 18px;
-  height: 18px;
-  border-radius: 9px;
-  border: 1px solid #393939;
-  background: white;
-  margin-right: 0.5rem;
-`;
-export const PenaltyText = styled.div`
-  font-size: 0.813rem;
-  color: #555;
-`;
-export const DetailText = styled.div`
-  font-weight: 400;
-  font-size: 0.75rem;
-  color: #808080;
 `;
 export const BtnsWrapper = styled.div`
   display: flex;
@@ -251,6 +272,9 @@ export const ChatBtn = styled.button`
   cursor: pointer;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   color: #222222;
+  @media (max-width: 412px) {
+    height: 45px;
+  }
 `;
 export const ChatIcon = styled.img`
   width: 50%;
@@ -273,6 +297,10 @@ export const PickBtn = styled.button`
   border-radius: 16px;
   cursor: pointer;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  @media (max-width: 412px) {
+    font-size: 1rem;
+    height: 45px;
+  }
 `;
 export const PickText = styled.div`
   display: flex;
@@ -291,6 +319,10 @@ export const ApplyBtn = styled.button`
   border: none;
   border-radius: 16px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  @media (max-width: 412px) {
+    font-size: 1rem;
+    height: 45px;
+  }
 `;
 export const RequestWrapper = styled.div`
   width: 100%;
@@ -303,6 +335,11 @@ export const RequestWrapper = styled.div`
   padding: 2rem;
   margin-top: 3rem;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  @media (max-width: 412px) {
+    font-size: 1rem;
+    height: 163px;
+    margin-top: 1rem;
+  }
 `;
 
 export const ApplyWrapper = styled.div`
@@ -311,6 +348,9 @@ export const ApplyWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 3rem;
+  @media (max-width: 412px) {
+    padding-top: 1rem;
+  }
 `;
 
 export const ApplyList = styled.div`
@@ -319,6 +359,9 @@ export const ApplyList = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding-bottom: 1.313rem;
+  @media (max-width: 412px) {
+    align-items: center;
+  }
 `;
 export const ApplyItem = styled.div`
   width: 77%;
@@ -333,11 +376,19 @@ export const ApplyItem = styled.div`
   @media (max-width: 767px) {
     width: 82%;
   }
+  @media (max-width: 412px) {
+    flex-direction: column;
+    height: 80px;
+    justify-content: center;
+  }
 `;
 export const RunnerIcon = styled.img`
   padding-left: 2.688rem;
   @media (max-width: 767px) {
     padding-left: 1rem;
+  }
+  @media (max-width: 412px) {
+    padding-left: 0;
   }
 `;
 export const RunnerName = styled.div`
@@ -347,19 +398,34 @@ export const RunnerName = styled.div`
   padding-left: 1.063rem;
   padding-right: 3rem;
   @media (max-width: 767px) {
-    padding-right: 0.5rem;
+    width: 200px;
+    font-size: 1rem;
+    margin-right: 1rem;
+    padding-right: 0px;
+  }
+  @media (max-width: 412px) {
+    width: 168px;
+    text-align: center;
+    font-size: 0.8rem;
   }
 `;
 export const Rating = styled.div`
   display: flex;
   flex-direction: row;
 `;
-export const Star = styled.img``;
+export const Star = styled.img`
+  @media (max-width: 412px) {
+    display: none;
+  }
+`;
 export const CntWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  @media (max-width: 412px) {
+    justify-content: center;
+  }
 `;
 export const RunCnt = styled.div`
   font-weight: 700;
@@ -374,6 +440,10 @@ export const SuccessRate = styled.div`
   padding-right: 2.5rem;
   @media (max-width: 767px) {
     padding-right: 1rem;
+  }
+  @media (max-width: 412px) {
+    font-size: 0.5rem;
+    padding-right: 0;
   }
 `;
 export const SelectBtn = styled.div`
@@ -395,6 +465,15 @@ export const SelectBtn = styled.div`
     align-items: center;
     justify-content: center;
   }
+  @media (max-width: 412px) {
+    width: 40px;
+    height: 35px;
+    margin-left: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+  }
 `;
 export const DefaultApplyList = styled.div`
   width: 100%;
@@ -411,6 +490,11 @@ export const DefaultApplyList = styled.div`
   justify-content: center;
   align-items: center;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  @media (max-width: 412px) {
+    font-size: 1rem;
+    height: 163px;
+    margin-top: 1rem;
+  }
 `;
 export const Info = styled.img`
   width: 10%;
