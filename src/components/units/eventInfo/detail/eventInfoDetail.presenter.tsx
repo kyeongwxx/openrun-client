@@ -19,11 +19,8 @@ export default function EventInfoDetailUI(props: IEventInfoDetailUI) {
             <s.PlaceTitle>장소</s.PlaceTitle>
             {/* <s.Store>{props.location}홍대 나이키</s.Store> */}
             <s.StoreDetail>
-              {props.data?.fetchEvent?.location}서울시 마포구 홍익로 23
+              {props.data?.fetchEvent?.location}서울시 마포구 홍익로
             </s.StoreDetail>
-            <s.PriceBox>
-              <s.Price>169,000원</s.Price>
-            </s.PriceBox>
           </s.ItemInfoBox>
         </s.ItemWrapper>
         <s.DivideLine />
@@ -71,8 +68,10 @@ export default function EventInfoDetailUI(props: IEventInfoDetailUI) {
             <s.InfoImg4 src="/img/Rectangle 137.png" />
           </s.ImgBox>
           <s.InfoImg5 src="/img/Rectangle 135.png" />
-          <s.MoveToSiteBtn href={`${props.el?.urlRedirect}`}>
-            사이트로 이동하기
+          <s.MoveToSiteBtn>
+            <s.MoveLink href={`${props.el?.urlRedirect}`}>
+              사이트로 이동하기
+            </s.MoveLink>
           </s.MoveToSiteBtn>
         </s.InfoWrapper>
         <s.WithItemWrapper>
@@ -87,10 +86,10 @@ export default function EventInfoDetailUI(props: IEventInfoDetailUI) {
         >
           <s.WithItemBox>
             <s.WithItemImg src="/img/Rectangle 38.png" />
-            <s.WithItemImg />
-            <s.WithItemImg />
-            <s.WithItemImg />
-            <s.WithItemImg />
+            <s.WithItemImg src="/img/Rectangle 38.png" />
+            <s.WithItemImg src="/img/Rectangle 38.png" />
+            <s.WithItemImg src="/img/Rectangle 38.png" />
+            <s.WithItemImg src="/img/Rectangle 38.png" />
             {/* <s.NewImg src="/img/Group 1.png" /> */}
           </s.WithItemBox>
         </InfiniteScroll>

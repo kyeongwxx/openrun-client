@@ -8,53 +8,54 @@ import UsersInfo from "./f_UsersInfo/usersInfo.container";
 
 export default function AdminUI(props) {
   return (
-    <s.Wrapper>
-      {/* <CenteredTabs
-        tabs={[
-          "가입자 현황",
-          "일반회원 정보",
-          "일자별 매출",
-          "신고 내역",
-          "운영진 정보",
-        ]}
-        address={[
-          "/admin/usersChart",
-          "/admin/f_UsersInfo",
-          "b_DailyPayments",
-          "d_Reports",
-          "e_AdminInfo",
-        ]}
-      /> */}
-      {/* <s.InnerWrapper>
-        <s.Box>
-          <s.Title>가입자 현황</s.Title>
-          <UsersChart />
-        </s.Box> */}
+    <></>
+    // <s.Wrapper>
+    //   <CenteredTabs
+    //     tabs={[
+    //       "가입자 현황",
+    //       "일반회원 정보",
+    //       "일자별 매출",
+    //       "신고 내역",
+    //       "운영진 정보",
+    //     ]}
+    //     address={[
+    //       "/admin/usersChart",
+    //       "/admin/f_UsersInfo",
+    //       "b_DailyPayments",
+    //       "d_Reports",
+    //       "e_AdminInfo",
+    //     ]}
+    //   />
+    //   <s.InnerWrapper>
+    //     <s.Box>
+    //       <s.Title>가입자 현황</s.Title>
+    //       <UsersChart />
+    //     </s.Box>
 
-        {/* <s.Box>
-          <s.Title>일반회원 정보</s.Title>
+    //     <s.Box>
+    //       <s.Title>일반회원 정보</s.Title>
 
-          <UsersInfo />
-        </s.Box>
+    //       <UsersInfo />
+    //     </s.Box>
 
-        <s.Box>
-          <s.Title>일자별 매출</s.Title>
+    //     <s.Box>
+    //       <s.Title>일자별 매출</s.Title>
 
-          <DailyPayments />
-        </s.Box>
+    //       <DailyPayments />
+    //     </s.Box>
 
-        <s.Box>
-          <s.Title>신고 내역</s.Title>
+    //     <s.Box>
+    //       <s.Title>신고 내역</s.Title>
 
-          <Reports />
-        </s.Box>
+    //       <Reports />
+    //     </s.Box>
 
-        <s.Box>
-          <s.Title>운영진 정보</s.Title>
+    //     <s.Box>
+    //       <s.Title>운영진 정보</s.Title>
 
-          <AdminInfoUI />
-        </s.Box> */}
-      </s.InnerWrapper>
-    </s.Wrapper>
+    //       <AdminInfoUI />
+    //     </s.Box>
+    //   </s.InnerWrapper>
+    // </s.Wrapper>
   );
 }

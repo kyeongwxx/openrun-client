@@ -6,7 +6,7 @@ import { IQuery } from "../../../../commons/types/generated/types";
 
 export default function DailyPayments() {
   const { data } = useQuery<Pick<IQuery, "fetchPayments">>(FETCH_PAYMENTS);
-
+  console.log("payments", data);
   return (
     <s.Wrapper>
       <s.InnerWrapper>

@@ -20,6 +20,7 @@ export default function LayoutAdmin() {
           "/admin/adminInfo",
         ]}
       />
+
       <s.InnerWrapper>
         <s.Box>
           <s.Title>가입자 현황</s.Title>
