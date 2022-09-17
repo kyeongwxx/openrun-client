@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Rate } from "antd";
 
 export const Wrapper = styled.div`
   width: 95%;
@@ -385,10 +386,7 @@ export const ApplyItem = styled.div`
 export const RunnerIcon = styled.img`
   padding-left: 2.688rem;
   @media (max-width: 767px) {
-    padding-left: 1rem;
-  }
-  @media (max-width: 412px) {
-    padding-left: 0;
+    display: none;
   }
 `;
 export const RunnerName = styled.div`
@@ -399,13 +397,13 @@ export const RunnerName = styled.div`
   padding-left: 1.063rem;
   padding-right: 3rem;
   @media (max-width: 767px) {
-    width: 200px;
+    width: 100px;
     font-size: 1rem;
     margin-right: 1rem;
     padding-right: 0px;
   }
   @media (max-width: 412px) {
-    width: 168px;
+    width: 100px;
     text-align: center;
     font-size: 0.8rem;
   }
@@ -413,14 +411,24 @@ export const RunnerName = styled.div`
 export const Rating = styled.div`
   display: flex;
   flex-direction: row;
-`;
-export const Star = styled.img`
+  align-items: center;
+  @media (max-width: 767px) {
+    width: 200px;
+  }
   @media (max-width: 412px) {
-    display: none;
+    width: 160px;
   }
 `;
+export const Star = styled(Rate)``;
+export const RatingText = styled.div`
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.5);
+  padding-left: 0.5rem;
+  line-height: 30px;
+`;
 export const CntWrapper = styled.div`
-  width: 100%;
+  width: 35%;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -556,21 +564,26 @@ export const MContents = styled.div`
   font-weight: 400;
   font-size: 1rem;
   color: #555;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
+`;
+export const MMutationBtn = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 export const MUpdate = styled.button`
-  width: 15%;
+  width: 100px;
   font-weight: 400;
   font-size: 1.15rem;
   color: #fff;
   background: #555;
-  margin-bottom: 10px;
+  margin-right: 20px;
   cursor: pointer;
   border-radius: 16px;
   border: none;
 `;
 export const MDelete = styled.button`
-  width: 15%;
+  width: 100px;
   font-weight: 400;
   font-size: 1.15rem;
   background: #eec1ba;

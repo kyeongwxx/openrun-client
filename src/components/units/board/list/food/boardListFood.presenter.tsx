@@ -24,11 +24,15 @@ export default function BoardListFoodUI(props: any) {
       <s.DivideLine1 />
       <s.InnerWrapper>
         <s.FilterWrapper>
-          <Selector title="전체" sortValue={["최신순", "마감 임박순"]} />
+          <Selector
+            title="시간순"
+            sortValue={["전체", "최신순", "마감 임박순"]}
+          />
           <s.DivideDiv />
           <Selector2
-            title="지역"
+            title="지역순"
             sortValue={[
+              "전체",
               "서울",
               "경기",
               "충북",

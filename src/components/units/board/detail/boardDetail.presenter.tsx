@@ -87,15 +87,17 @@ export default function BoardDetailUI(props: any) {
                     <s.MContents>
                       작성자가 아닌 경우 게시물 수정과 삭제가 제한됩니다.
                     </s.MContents>
-                    <s.MUpdate onClick={props.onClickMoveToProductEdit}>
-                      수정
-                    </s.MUpdate>
-                    <s.MDelete
-                      onClick={props.onClickDelete}
-                      id={props.router.query?.id}
-                    >
-                      삭제
-                    </s.MDelete>
+                    <s.MMutationBtn>
+                      <s.MUpdate onClick={props.onClickMoveToProductEdit}>
+                        수정
+                      </s.MUpdate>
+                      <s.MDelete
+                        onClick={props.onClickDelete}
+                        id={props.router.query?.id}
+                      >
+                        삭제
+                      </s.MDelete>
+                    </s.MMutationBtn>
                   </s.MWrapper>
                 </s.MBackground>
               ) : null}
@@ -197,7 +199,10 @@ export default function BoardDetailUI(props: any) {
                         <s.RunnerIcon src="/boardDetail/RunnerIcon.png" />
                         <s.RunnerName>{el?.user?.nickName}</s.RunnerName>
                         <s.Rating>
-                          <s.Star src="/boardDetail/Star.png" />
+                          <s.Star value={el.user.rating || 0.0} disabled />
+                          <s.RatingText>
+                            {Number(el.user.rating).toFixed(1) || 0.0}
+                          </s.RatingText>
                         </s.Rating>
                         <s.CntWrapper>
                           {props.isPc && <s.RunCnt>줄서기 300건</s.RunCnt>}
