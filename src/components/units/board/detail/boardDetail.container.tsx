@@ -29,9 +29,14 @@ export default function BoardDetail() {
   // console.log(runner);
 
   // LiveChat 모달
-  const [showModal, setShowModal] = useState(false);
-  const openCloseModal = () => {
-    setShowModal((prev) => !prev);
+  const [showChatModal, setShowChatModal] = useState(false);
+  const chatOpenCloseModal = () => {
+    setShowChatModal((prev) => !prev);
+  };
+  // 게시물 수정, 삭제 모달
+  const [showBoardModal, setShowBoardModal] = useState(false);
+  const boardOpenCloseModal = () => {
+    setShowBoardModal((prev) => !prev);
   };
 
   // mediaQuery
@@ -166,10 +171,13 @@ export default function BoardDetail() {
   return (
     <BoardDetailUI
       data={data}
+      login={login}
       runner={runner}
       router={router}
-      showModal={showModal}
-      openCloseModal={openCloseModal}
+      showChatModal={showChatModal}
+      showBoardModal={showBoardModal}
+      chatOpenCloseModal={chatOpenCloseModal}
+      boardOpenCloseModal={boardOpenCloseModal}
       isMobile={isMobile}
       isPc={isPc}
       onClickMoveToProductEdit={onClickMoveToProductEdit}

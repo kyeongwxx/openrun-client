@@ -11,7 +11,7 @@ import Dompurify from "dompurify";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import LiveChat from "../../../../commons/liveChat/liveChat.container";
 import Timer from "../../../../commons/timer";
-import { AiOutlineClockCircle } from "react-icons/ai";
+import { AiOutlineClockCircle, AiOutlineEllipsis } from "react-icons/ai";
 
 const theme = createTheme({
   components: {
@@ -70,15 +70,35 @@ export default function BoardDetailUI(props: any) {
               <s.Status3>{props.data?.fetchBoard?.status}</s.Status3>
             )}
             <s.MutationBtns>
-              <s.UpdateBtn
-                src="/boardDetail/Update.png"
-                onClick={props.onClickMoveToProductEdit}
+              <AiOutlineEllipsis
+                size={30}
+                onClick={props.boardOpenCloseModal}
+                style={{ cursor: "pointer" }}
               />
-              <s.DeleteBtn
-                src="/boardDetail/Delete.png"
-                onClick={props.onClickDelete}
-                id={props.router.query?.id}
-              />
+              {props.showBoardModal ? (
+                <s.MBackground>
+                  <s.MWrapper>
+                    <s.MButtonWrapper>
+                      <s.MCloseButton onClick={props.boardOpenCloseModal}>
+                        X
+                      </s.MCloseButton>
+                    </s.MButtonWrapper>
+                    <s.MTitle>게시물 수정 / 삭제</s.MTitle>
+                    <s.MContents>
+                      작성자가 아닌 경우 게시물 수정과 삭제가 제한됩니다.
+                    </s.MContents>
+                    <s.MUpdate onClick={props.onClickMoveToProductEdit}>
+                      수정
+                    </s.MUpdate>
+                    <s.MDelete
+                      onClick={props.onClickDelete}
+                      id={props.router.query?.id}
+                    >
+                      삭제
+                    </s.MDelete>
+                  </s.MWrapper>
+                </s.MBackground>
+              ) : null}
             </s.MutationBtns>
           </s.StatusWrapper>
           <s.Title>{props.data?.fetchBoard?.title}</s.Title>
@@ -115,11 +135,11 @@ export default function BoardDetailUI(props: any) {
           </s.PriceWrapper>
           <s.DivideLine />
           <s.BtnsWrapper>
-            <s.ChatBtn onClick={props.openCloseModal}>
+            <s.ChatBtn onClick={props.chatOpenCloseModal}>
               <s.ChatIcon src="/boardDetail/Chat.png" />
               {props.isPc && <s.ChatText>채팅하기</s.ChatText>}
             </s.ChatBtn>
-            {props.showModal ? <LiveChat /> : null}
+            {props.showChatModal ? <LiveChat /> : null}
             {props.interestedBoard?.length ? (
               <s.PickBtn onClick={props.onClickAddInterestList}>
                 <s.PickText>
