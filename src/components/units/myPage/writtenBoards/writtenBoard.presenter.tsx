@@ -15,7 +15,10 @@ export default function MypageWrittenBoardsUI(props: IWrittenBoardsProps) {
       <s.ActiveListWrapper>
         <s.ActiveTitle>내가 쓴 글</s.ActiveTitle>
         {props.data?.length === 0 ? (
-          <s.NodataImg src="/img/nodata.png" />
+          <s.NoData>
+            <s.ExclamationMark />
+            <s.NodataText>작성한 글이 없습니다.</s.NodataText>
+          </s.NoData>
         ) : (
           <s.InfiniteScrollLimit id="scroll" ref={props.scrollRef}>
             <s.ActiveBoards
@@ -57,14 +60,15 @@ export default function MypageWrittenBoardsUI(props: IWrittenBoardsProps) {
                     >
                       {el.status}
                     </s.Status>
-                    <s.BoardImg
-                      src={
-                        el.image
-                          ? `https://storage.googleapis.com/openrun-storage/${el.image.url}`
-                          : "/img/noimage.png"
-                      }
-                      onClick={props.onClickMoveToDetail(el.id)}
-                    />
+                    {console.log(el.image?.url)}
+                    {el.image?.url === "default.img" ? (
+                      <s.NoImg />
+                    ) : (
+                      <s.BoardImg
+                        src={`https://storage.googleapis.com/openrun-storage/${el.image?.url}`}
+                        onClick={props.onClickMoveToDetail(el.id)}
+                      />
+                    )}
 
                     <s.BoardContents onClick={props.onClickMoveToDetail(el.id)}>
                       <s.BoardContent weight="700" size="1.2rem" color="#333">

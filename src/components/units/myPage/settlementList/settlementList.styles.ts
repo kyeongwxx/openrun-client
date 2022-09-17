@@ -1,7 +1,11 @@
 import styled from "@emotion/styled";
 import { Container } from "@mui/system";
 import InfiniteScroll from "react-infinite-scroller";
-import { BOX_SHADOW, BOX_SHADOW_TOP } from "../../../../commons/boxshadow";
+import {
+  BOX_BG_COLOR,
+  BOX_SHADOW,
+  BOX_SHADOW_TOP,
+} from "../../../../commons/cssConst";
 
 export const Wrapper = styled.main`
   width: 100%;
@@ -120,8 +124,8 @@ export const FavoriteBoard = styled.div`
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  background-color: rgb(244, 244, 244);
-  box-shadow: ${BOX_SHADOW};
+  background-color: ${BOX_BG_COLOR};
+
   @media (max-width: 767px) {
     width: 48%;
     height: 150px;

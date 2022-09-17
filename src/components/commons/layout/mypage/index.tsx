@@ -70,20 +70,10 @@ export default function LayoutMyPage() {
 
       <s.MenuWrapper>
         <CenteredTabs
-          tabs={[
-            "MY",
-            "내가 쓴 글",
-            "거래 중 ",
-
-            "찜목록",
-            "포인트 정산 ",
-            "포인트 충전",
-          ]}
+          tabs={["MY", "내가 쓴 글", "찜목록", "포인트 정산 ", "포인트 충전"]}
           address={[
             "/myPage",
             "/myPage/writtenBoards",
-            "/myPage/proceeding",
-
             "/myPage/favoriteList",
             "/myPage/settlementList",
             "/myPage/paymentPoint",

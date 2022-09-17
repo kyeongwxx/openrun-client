@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { ChangeEvent, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Modal, Rate } from "antd";
 import { GraphQLClient } from "graphql-request";
 
@@ -8,7 +8,6 @@ import {
   IMutation,
   IMutationCreateRatingArgs,
   IQuery,
-  IQueryFetchRunnerArgs,
   IQueryFetchWriteBoardsArgs,
 } from "../../../../commons/types/generated/types";
 
@@ -22,7 +21,6 @@ import {
 } from "./writtenBoard.queries";
 import { useRecoilState } from "recoil";
 import { accessTokenState, modalInputState } from "../../../commons/store";
-import ReportInput from "../../../../commons/input/report";
 
 export default function MypageWrittenBoards() {
   const router = useRouter();
@@ -132,6 +130,8 @@ export default function MypageWrittenBoards() {
       console.log(error);
     }
   };
+
+  console.log(data);
 
   return (
     <MypageWrittenBoardsUI
