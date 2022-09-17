@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import BoardWriteUI from "./boardWrite.presenter";
 import { useMutation, useQuery } from "@apollo/client";
 import { CREATE_BOARD, UPDATE_BOARD } from "./boardWrite.queries";
@@ -81,8 +81,8 @@ export default function BoardWrite(props: any) {
   };
 
   useEffect(() => {
-    if (props.data?.fetchBoard.images?.length) {
-      setFileUrls([...props.data?.fetchBoard.images]);
+    if (props.data?.fetchBoard.image) {
+      setFileUrls([props.data?.fetchBoard.image.url]);
     }
   }, [props.data]);
 
