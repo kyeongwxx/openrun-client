@@ -23,7 +23,7 @@ export const ItemWrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: row;
-  padding-top: 1rem;
+  padding-top: 1.5rem;
   padding-bottom: 2rem;
 
   ::-webkit-scrollbar {
@@ -38,79 +38,122 @@ export const ItemWrapper = styled.div`
     justify-content: center;
     align-items: center;
   }
-  // border: 1px solid red;
+  @media (max-width: 412px) {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 export const ItemImg = styled.img`
-  width: 330px;
-  height: 100%;
+  width: 25rem;
+
   border-radius: 24px;
   @media (max-width: 767px) {
     width: 310px;
   }
+  @media (max-width: 412px) {
+    width: 22rem;
+  }
 `;
 export const ItemInfoBox = styled.div`
-  margin-left: 10%;
-  margin-top: 1.5rem;
+  padding-top: 1rem;
+  margin-left: 4rem;
   width: 100%;
-
+  margin-bottom: 1rem;
   @media (max-width: 767px) {
-    margin-left: -15px;
     width: 280px;
-    height: 300px;
+    padding-top: 3rem;
+    margin-left: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
   }
-  // border: 1px solid red;
+  @media (max-width: 412px) {
+    padding-top: 3rem;
+    margin-left: 2rem;
+    width: 21rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
 `;
 export const PlanTitle = styled.div`
-  font-size: 0.85rem;
+  font-size: 1.15rem;
   font-weight: 800;
   padding-bottom: 1rem;
   color: #9b9b9b;
 
   @media (max-width: 767px) {
-    font-size: 1rem;
+    font-size: 1.3rem;
+    font-weight: 800;
+  }
+  @media (max-width: 412px) {
+    font-size: 1.4rem;
+    font-weight: 800;
   }
 `;
 export const Brand = styled.div`
-  font-size: 0.9rem;
+  font-size: 1.3em;
   font-weight: 500;
-  padding-bottom: 0.7rem;
+  padding-bottom: 0.5rem;
 
   @media (max-width: 767px) {
-    font-size: 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  @media (max-width: 412px) {
+    font-size: 1.5rem;
+    font-weight: 700;
   }
 `;
 export const ItemEventImg = styled.div``;
 export const Event = styled.div`
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: 650;
   padding-bottom: 1rem;
 
   @media (max-width: 767px) {
-    font-size: 1rem;
+    font-size: 1.4rem;
+  }
+  @media (max-width: 412px) {
+    font-size: 1.5rem;
+    font-weight: 700;
   }
 `;
 export const Time = styled.div`
-  font-size: 0.95rem;
+  font-size: 1.3rem;
   font-weight: 350;
   padding-bottom: 1.9rem;
   color: #555;
 
   @media (max-width: 767px) {
-    font-size: 1rem;
+    font-size: 1.4rem;
+  }
+  @media (max-width: 412px) {
+    font-size: 1.5rem;
+    font-weight: 700;
   }
 `;
 export const PlaceTitle = styled.div`
-  font-size: 0.85rem;
+  font-size: 1.15rem;
   font-weight: 800;
+  padding-top: 1rem;
   padding-bottom: 1rem;
   color: #9b9b9b;
 
   @media (max-width: 767px) {
-    font-size: 1rem;
+    font-size: 1.3rem;
+    font-weight: 800;
+  }
+  @media (max-width: 412px) {
+    font-size: 1.4rem;
+    font-weight: 800;
   }
 `;
 
@@ -125,28 +168,17 @@ export const PlaceTitle = styled.div`
 //   }
 // `;
 export const StoreDetail = styled.div`
-  font-size: 0.9rem;
-  font-weight: 400;
-  padding-bottom: 0.8rem;
-  color: #808080;
-
-  @media (max-width: 767px) {
-    font-size: 1rem;
-  }
-`;
-export const PriceBox = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: end;
-  align-items: flex-end;
-`;
-export const Price = styled.div`
   font-size: 1.3rem;
-  font-weight: 400;
+  font-weight: 600;
+  padding-bottom: 0.8rem;
+  //color: #808080;
 
   @media (max-width: 767px) {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
+  }
+  @media (max-width: 412px) {
+    font-size: 1.5rem;
+    font-weight: 700;
   }
 `;
 
@@ -163,14 +195,14 @@ export const InfoWrapper = styled.div`
   align-items: center;
 `;
 export const InfoTitle = styled.div`
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
 
   margin-bottom: 3rem;
 `;
 export const Information = styled.div`
   margin-bottom: 6rem;
-  font-size: 0.8rem;
+  font-size: 1rem;
   text-align: center;
 `;
 export const InfoImg1 = styled.img`
@@ -208,35 +240,57 @@ export const InfoImg4 = styled.img`
 export const InfoImg5 = styled.img`
   width: 45%;
 `;
-export const MoveToSiteBtn = styled.a`
-  width: 35%;
-  height: 55px;
-  font-size: 0.95rem;
+export const MoveLink = styled.a`
+  color: #fff;
+  text-decoration-line: none;
+`;
+export const MoveToSiteBtn = styled.button`
+  width: 38%;
+  height: 5rem;
+  font-size: 1.2rem;
   font-weight: 500;
   border-radius: 15px;
   background: #2e2e2e;
   border: none;
 
-  margin-top: 5rem;
-  margin-bottom: 6rem;
+  margin-top: 10rem;
+  margin-bottom: 10rem;
   color: white;
   cursor: pointer;
 
   @media (max-width: 767px) {
-    font-size: 0.8rem;
+    font-size: 1.3rem;
+    width: 60%;
+    height: 5rem;
+  }
+  @media (max-width: 412px) {
+    font-size: 1.4rem;
+
+    height: 5rem;
   }
 `;
 export const WithItemWrapper = styled.div`
   text-align: center;
+  width: 100%;
+  @media (max-width: 767px) {
+    margin-bottom: 5rem;
+  }
+  @media (max-width: 412px) {
+    margin-bottom: 5rem;
+  }
 `;
 export const WithItemTitle = styled.div`
-  font-size: 1.6rem;
+  font-size: 2.5rem;
   font-weight: 600;
 
   margin-bottom: 1rem;
 
   @media (max-width: 767px) {
-    font-size: 1rem;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  @media (max-width: 412px) {
+    font-size: 2rem;
   }
 `;
 export const WithItemSubTitle = styled.div`
@@ -247,15 +301,18 @@ export const WithItemSubTitle = styled.div`
   margin-bottom: 3rem;
 
   @media (max-width: 767px) {
-    font-size: 2em;
+    font-size: 4em;
     margin-bottom: -1rem;
+  }
+  @media (max-width: 412px) {
+    font-size: 1.5rem;
   }
 `;
 
 // 가로 스크롤
 export const WithItemBox = styled.div`
-  width: 100%;
-  height: 300px;
+  width: 75rem;
+  height: 25rem;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -268,17 +325,29 @@ export const WithItemBox = styled.div`
     display: none;
   }
   margin-bottom: 6rem;
+  @media (max-width: 767px) {
+    width: 350px;
+    height: 350px;
+  }
+  @media (max-width: 412px) {
+    width: 350px;
+    height: 350px;
+  }
 `;
 
 export const WithItemImg = styled.img`
-  width: 300px;
-  height: 300px;
+  width: 23rem;
+  height: 23rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   border-radius: 24px;
   cursor: pointer;
   @media (max-width: 767px) {
-    width: 200px;
-    height: 200px;
+    width: 20rem;
+    height: 20rem;
+  }
+  @media (max-width: 412px) {
+    width: 18rem;
+    height: 18rem;
   }
 `;

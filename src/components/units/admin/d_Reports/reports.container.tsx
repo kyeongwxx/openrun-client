@@ -6,7 +6,7 @@ import { IQuery } from "../../../../commons/types/generated/types";
 
 export default function Reports() {
   const { data } = useQuery<Pick<IQuery, "fetchReports">>(FETCH_REPORTS);
-
+  console.log("reports", data);
   return (
     <s.Wrapper>
       <s.InnerWrapper>

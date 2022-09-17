@@ -4,9 +4,12 @@ export const FETCH_REPORTS = gql`
   query fetchReports {
     fetchReports {
       id
-
+      contents
       createdAt
-      board
+      board {
+        contents
+        createdAt
+      }
     }
   }
 `;

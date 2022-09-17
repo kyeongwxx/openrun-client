@@ -41,7 +41,7 @@ export default function UsersChart() {
   const { data: countData } = useQuery<Pick<IQuery, "fetchUsersCountByDate">>(
     FETCH_USERS_COUNT_BY_DATE
   );
-  console.log("userChart", countData);
+  console.log("userChart - countData", countData);
 
   const labels = Array(countData?.fetchUsersCountByDate.length)
     .fill(0)
@@ -55,7 +55,7 @@ export default function UsersChart() {
         label: "신규 유저 가입 수",
 
         data: labels.map(
-          (_, i) => countData?.fetchUsersCountByDate.at(i)?.countByDate
+          (_, i) => countData?.fetchUsersCountByDate?.[i]?.countByDate
         ),
         borderColor: "rgb(255, 99, 132)",
         backgroundColor: "rgba(255, 99, 132, 0.5)",

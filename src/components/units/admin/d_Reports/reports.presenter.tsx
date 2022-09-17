@@ -1,10 +1,9 @@
 import { v4 as uuidv4 } from "uuid";
 import { getDate } from "../../../../commons/getDate/utils";
 import * as s from "./reports.styles";
-import InfiniteScroll from "react-infinite-scroller";
+import { IReportsUIProps } from "./reports.types";
 
-export default function ReportsUI(props) {
-  console.log(props.data?.fetchReports);
+export default function ReportsUI(props: IReportsUIProps) {
   return (
     <s.Wrapper>
       <s.Row>
@@ -16,8 +15,7 @@ export default function ReportsUI(props) {
       <s.Scroll>
         {props.data?.fetchReports.map((el: any) => (
           <s.Row key={el.id}>
-            <s.ColumnBasic>{getDate(el.createdAt)}</s.ColumnBasic>
-            <s.ColumnBasic>{el.id}</s.ColumnBasic>
+            <s.ColumnBasic>{getDate(el.createdAt)}</s.ColumnBasic>\{" "}
             <s.ColumnBasic>{el.board}</s.ColumnBasic>
             <s.ColumnBasic>{el.contents}</s.ColumnBasic>
             {/* <s.ColumnBtn>미처리/ 처리완료버튼</s.ColumnBtn> */}
