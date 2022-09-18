@@ -8,9 +8,8 @@ export default function ReportsUI(props: IReportsUIProps) {
     <s.Wrapper>
       <s.Row>
         <s.ColumnHeader>신고 일자</s.ColumnHeader>
-        <s.ColumnHeader>신고게시글</s.ColumnHeader>
-        {/* 신고게시글 누르면 상세내역 나오는걸로 (모여모여참고) */}
-        <s.ColumnHeader>처리상태</s.ColumnHeader>
+        <s.ColumnHeader>신고 게시글</s.ColumnHeader>
+        <s.ColumnHeader>신고 내용</s.ColumnHeader>
       </s.Row>
       <s.Scroll>
         {props.data?.fetchReports.map((el: any) => (
@@ -18,7 +17,6 @@ export default function ReportsUI(props: IReportsUIProps) {
             <s.ColumnBasic>{getDate(el.createdAt)}</s.ColumnBasic>\{" "}
             <s.ColumnBasic>{el.board}</s.ColumnBasic>
             <s.ColumnBasic>{el.contents}</s.ColumnBasic>
-            {/* <s.ColumnBtn>미처리/ 처리완료버튼</s.ColumnBtn> */}
           </s.Row>
         ))}
       </s.Scroll>

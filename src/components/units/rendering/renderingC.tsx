@@ -64,30 +64,30 @@ const Title = styled.div`
       margin-top: -4rem;
     }
     & > p {
-    
-  }
-  @media (max-width: 412px) {
-    transform: translate(0%, 8%);
-    & > span:nth-of-type(1) {
-      font-size: 2.225rem;
-      margin-top: -4rem;
     }
-    & > p {
-      font-size: 1.3rem;
-      margin-top: -3rem;
-      transform: translate(0%, 20%);
+    @media (max-width: 412px) {
+      transform: translate(0%, 8%);
+      & > span:nth-of-type(1) {
+        font-size: 2.225rem;
+        margin-top: -4rem;
+      }
+      & > p {
+        font-size: 1.3rem;
+        margin-top: -3rem;
+        transform: translate(0%, 20%);
+      }
     }
-  }
-  @media (max-width: 375px) {
-    transform: translate(0%, 15%);
-    & > span:nth-of-type(1) {
-      width: 15rem;
-      font-size: 2.025rem;
-      margin-top: -4rem;
-    }
-    & > p {
-      margin-top: -3rem;
-      transform: translate(0%, 20%);
+    @media (max-width: 375px) {
+      transform: translate(0%, 15%);
+      & > span:nth-of-type(1) {
+        width: 15rem;
+        font-size: 2.025rem;
+        margin-top: -4rem;
+      }
+      & > p {
+        margin-top: -3rem;
+        transform: translate(0%, 20%);
+      }
     }
   }
 `;
@@ -123,14 +123,14 @@ const Info = styled.div`
     transform: translate(100%, 20%);
     img {
       width: 23vw;
-      transform: translate(10%, -30%);
+      transform: translate(55%, -30%);
     }
     &.isActive {
       transform: translate(0%, 1%);
     }
   }
 
-  @media (max-width: 1450px) {
+  @media (max-width: 1440px) {
     transform: translate(-40%, 90%);
     img {
       width: 25vw;

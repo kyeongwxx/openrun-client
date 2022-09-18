@@ -15,7 +15,6 @@ export default function UsersInfoUI(props: any) {
         <s.ColumnHeader>가입일</s.ColumnHeader>
         <s.ColumnHeader>게시글 수</s.ColumnHeader>
         <s.ColumnHeader>포인트 충전 횟수</s.ColumnHeader>
-        <s.ColumnHeader>문의글</s.ColumnHeader>
       </s.Row>
       <InfiniteScroll
         pageStart={0}
@@ -30,7 +29,6 @@ export default function UsersInfoUI(props: any) {
               <s.ColumnBasic>{getDate(el.createdAt)}</s.ColumnBasic>
               <s.ColumnBasic>{el.boardTotal}</s.ColumnBasic>
               <s.ColumnBasic>{el.paymentTotal}</s.ColumnBasic>
-              <s.ColumnBasic>{el.inquiryTotal}</s.ColumnBasic>
             </s.Row>
           ))}{" "}
         </s.Scroll>
