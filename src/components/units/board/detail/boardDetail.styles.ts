@@ -1,5 +1,15 @@
+import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Rate } from "antd";
+
+const ZoominOut = keyframes`
+  from{
+		transform: scale(1);
+	}
+	to{
+		transform: scale(1.05);
+	}
+`;
 
 export const Wrapper = styled.div`
   width: 95%;
@@ -263,6 +273,32 @@ export const BtnsWrapper = styled.div`
   justify-content: space-between;
   position: relative;
   padding-top: 3rem;
+`;
+export const ActivatedChatBtn = styled.button`
+  width: 15%;
+  height: 63px;
+  background: linear-gradient(93.72deg, #5920d3 0%, #2f88e5 99.32%);
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  transition: all 0.3s ease;
+  animation: ${ZoominOut} 1s 1s infinite ease-in-out alternate;
+  @media (max-width: 412px) {
+    height: 45px;
+  }
+`;
+export const ActivatedChatIcon = styled.img`
+  width: 50%;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+`;
+export const ActivatedChatText = styled.div`
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: #fff;
 `;
 export const ChatBtn = styled.button`
   width: 15%;
