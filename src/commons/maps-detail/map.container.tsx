@@ -1,8 +1,15 @@
 import { useEffect } from "react";
+import styled from "@emotion/styled";
 
 declare const window: typeof globalThis & {
   kakao: any;
 };
+
+const Wrapper = styled.div`
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+`;
 
 export default function Map(props: any) {
   useEffect(() => {
@@ -53,7 +60,7 @@ export default function Map(props: any) {
 
   return (
     <>
-      <div id="map" style={{ width: "100%", height: "252px" }}></div>
+      <Wrapper id="map" style={{ width: "100%", height: "252px" }}></Wrapper>
     </>
   );
 }
