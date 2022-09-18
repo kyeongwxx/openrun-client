@@ -9,6 +9,7 @@ export const CustomSlider = styled(Slider)`
   margin: auto;
 
   border: none;
+
   @media (min-width: 1200px) {
     width: 1165px;
   }

@@ -55,6 +55,24 @@ export const logoutState = atom({
   default: false,
 });
 
+export const notificationValue = atom({
+  key: "notificationValue",
+  default: {
+    id: "",
+    contents: "",
+    isNew: false,
+    board: {
+      id: "",
+      title: "",
+    },
+  },
+});
+
+export const onClickState = atom({
+  key: "onClickState",
+  default: false,
+});
+
 export const modalInputState = atom({
   key: "modalInputState",
   default: "",

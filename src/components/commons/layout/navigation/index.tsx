@@ -1,37 +1,27 @@
 import { gql, useApolloClient, useMutation, useQuery } from "@apollo/client";
+
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { getUserInfo } from "../../../../commons/function/getUserInfo";
 import { IMutation } from "../../../../commons/types/generated/types";
 
-import { accessTokenState, logoutState, userInfoValue } from "../../store";
+import { accessTokenState, logoutState } from "../../store";
 import { LOGOUT } from "../layout.queries";
-import * as s from "./navigation.styles";
+import {
+  FETCH_NOTIFICATIONS,
+  UPDATE_NOTIFICATIONS,
+} from "./navigation.queries";
 
-export const FETCH_LOGIN_USER = gql`
-  query fetchLoginUser {
-    fetchLoginUser {
-      id
-      email
-      nickName
-      phone
-      point
-      # rating
-      # profileImg
-      isAdmin
-      # bankAccount
-      report
-      loginType
-      createdAt
-      updatedAt
-    }
-  }
-`;
+import { useEffect, useState } from "react";
+import NavigationUI from "./navigation.presenter";
 
 export default function LayoutNavigation() {
-  const [userInfo, setUserInfo] = useRecoilState(userInfoValue);
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
   const [isLogout, setIsLogout] = useRecoilState(logoutState);
+
+  const [notificationState, setNotificationState] = useState(false);
+
+  const [popover, setPopover] = useState(false);
 
   const router = useRouter();
 
@@ -40,6 +30,14 @@ export default function LayoutNavigation() {
   const onClickMoveToPage = (event: string) => () => {
     router.push(event);
   };
+
+  const { data: notification } = useQuery(FETCH_NOTIFICATIONS);
+  useEffect(() => {
+    if (notification?.fetchNotifications.length === 0) return;
+    setNotificationState(notification?.fetchNotifications[0].isNew);
+  });
+
+  const [updateNotifications] = useMutation(UPDATE_NOTIFICATIONS);
 
   const onClickLogout = async () => {
     try {
@@ -54,33 +52,20 @@ export default function LayoutNavigation() {
       console.log(error);
     }
   };
+  const onClickBadge = async () => {
+    setPopover(!popover);
+    const result = await updateNotifications();
+    console.log(result);
+  };
+
   return (
-    <>
-      <s.Wrapper>
-        <s.MenuWrapper>
-          {!userInfo ? (
-            <s.MenuList>
-              <s.Menu onClick={onClickMoveToPage(`/signIn`)}>로그인</s.Menu>
-              <s.Menu onClick={onClickMoveToPage(`/signUp`)}>회원가입</s.Menu>
-
-              <s.Menu>고객센터</s.Menu>
-            </s.MenuList>
-          ) : (
-            <s.MenuList>
-              <s.Menu onClick={onClickMoveToPage(`/myPage`)}>
-                {userInfo?.nickName}
-              </s.Menu>
-              <s.Menu onClick={onClickLogout}>로그아웃</s.Menu>
-
-              <s.Menu onClick={onClickMoveToPage(`/myPage/favoriteList`)}>
-                찜
-              </s.Menu>
-              {/* <s.Menu>관심글</s.Menu> */}
-              <s.Menu>고객센터</s.Menu>
-            </s.MenuList>
-          )}
-        </s.MenuWrapper>
-      </s.Wrapper>
-    </>
+    <NavigationUI
+      onClickBadge={onClickBadge}
+      onClickLogout={onClickLogout}
+      onClickMoveToPage={onClickMoveToPage}
+      notification={notification?.fetchNotifications}
+      popover={popover}
+      notificationState={notificationState}
+    />
   );
 }

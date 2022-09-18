@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { Container } from "@mui/system";
+import { BG_GRADATION } from "../cssConst";
 
 export const Wrapper = styled.main``;
 
@@ -64,8 +65,10 @@ export const ButtonMobile = styled.div`
   cursor: pointer;
 `;
 
-export const TextDay = styled.div`
-  color: #333;
+export const TextDay = styled.div<{ color: string; bg: string }>`
+  background: ${(props) => props.bg};
+  color: ${(props) => props.color};
+  -webkit-background-clip: text;
   font-weight: 400;
   font-size: 1rem;
   @media (max-width: 767px) {
@@ -73,8 +76,10 @@ export const TextDay = styled.div`
   }
 `;
 
-export const TextDate = styled.div`
-  color: #333;
+export const TextDate = styled.div<{ color: string; bg: string }>`
+  background: ${(props) => props.bg};
+  color: ${(props) => props.color};
+  -webkit-background-clip: text;
   font-weight: 700;
   font-size: 2rem;
   @media (max-width: 767px) {

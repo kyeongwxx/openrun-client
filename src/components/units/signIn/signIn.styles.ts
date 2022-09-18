@@ -93,6 +93,7 @@ export const Text = styled.div`
 `;
 export const DivideLine = styled.div`
   width: 100%;
+  margin-top: 50px;
   border-bottom: 1px solid rgba(101, 101, 101, 0.5);
   @media (max-width: 767px) {
     width: 100%;

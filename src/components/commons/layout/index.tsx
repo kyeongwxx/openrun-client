@@ -29,10 +29,10 @@ export default function Layout(props: ILayoutProps) {
 
   const SHOW_ADMIN = [
     "/admin/",
-    "/admin/usersInfo",
-    "/admin/dailyPayments",
-    "/admin/reports",
-    "/admin/adminInfo",
+    "/admin/usersInfo/",
+    "/admin/dailyPayments/",
+    "/admin/reports/",
+    "/admin/adminInfo/",
   ];
 
   const isShowMyPage = SHOW_MYPAGE.includes(router.asPath);

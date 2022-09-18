@@ -63,7 +63,7 @@ export type IChatMessage = {
 export type IChatRoom = {
   __typename?: 'ChatRoom';
   board?: Maybe<IBoard>;
-  room: Scalars['String'];
+  id: Scalars['String'];
   runner?: Maybe<IUser>;
   seller?: Maybe<IUser>;
 };
@@ -389,6 +389,7 @@ export type IPaymentHistory = {
   id: Scalars['String'];
   price?: Maybe<Scalars['Int']>;
   status?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
   user?: Maybe<IUser>;
 };
 
@@ -563,6 +564,7 @@ export type IUser = {
   profileImg?: Maybe<Scalars['String']>;
   rating?: Maybe<Scalars['Float']>;
   report?: Maybe<Scalars['Int']>;
+  runnerCount?: Maybe<Scalars['Int']>;
   successRate?: Maybe<Scalars['Int']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };

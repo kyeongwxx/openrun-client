@@ -108,13 +108,16 @@ export const NodataImg = styled.img`
 `;
 
 export const NoData = styled.div`
-  width: 100%;
+  width: 80%;
   height: 400px;
   background-color: ${BOX_BG_COLOR};
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 export const ExclamationMark = styled(ErrorOutlineIcon)`
   color: #333;
@@ -265,6 +268,12 @@ export const Runner = styled(DirectionsRunIcon)`
 
 export const NoImg = styled(WallpaperIcon)`
   color: #8b8c89;
-  width: 50%;
+  width: 10%;
   height: 40%;
+  /* background-color: yellow; */
+  @media (max-width: 767px) {
+    font-size: 0.8rem;
+    width: 20%;
+    height: 100%;
+  }
 `;

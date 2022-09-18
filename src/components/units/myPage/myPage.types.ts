@@ -27,7 +27,7 @@ export interface IDealListProps {
 
   onClickTop: () => void;
   scrollRef: RefObject<HTMLDivElement>;
-  data?: IBoard[];
+  data?: IPaymentHistory[];
 }
 
 export interface IWrittenBoardsProps {
