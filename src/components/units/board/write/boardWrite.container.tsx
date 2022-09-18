@@ -43,8 +43,11 @@ export default function BoardWrite(props: any) {
   const [address, setAddress] = useState("");
   const [zipcode, setZipcode] = useState("");
   const [addressDetail, setAddressDetail] = useState("");
+
   const onChangeAddressDetail = (event) => {
     setAddressDetail(event.target.value);
+    setValue("addressDetail", event.target.value);
+    trigger("addressDetail");
   };
 
   // 주소 modal
@@ -52,6 +55,8 @@ export default function BoardWrite(props: any) {
   const onCompleteAddressSearch = (data: any) => {
     setAddress(data.address);
     setZipcode(data.zonecode);
+    setValue("address", data.address);
+    trigger("address");
     setIsModalOpen(false);
   };
   const onClickAddressSearch = () => {
@@ -76,6 +81,8 @@ export default function BoardWrite(props: any) {
   const onChangeFileUrls = (fileUrl: string, index: number) => {
     const newFileUrls = [...fileUrls];
     newFileUrls[index] = fileUrl;
+    setValue("image", newFileUrls);
+    trigger("image");
     setFileUrls(newFileUrls);
     console.log(fileUrls);
   };

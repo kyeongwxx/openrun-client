@@ -2,10 +2,10 @@ import * as s from "./boardWrite.styles";
 import Map from "../../../../commons/maps/map.container";
 import Calendar from "../../../../commons/calendar";
 import MaterialUIPickers from "../../../../commons/timePicker";
-import Selector from "../../../../commons/selector";
 import Upload from "../../../../commons/uploads/Uploads.container";
 import { v4 as uuidv4 } from "uuid";
 import YupWarningMsg from "../../../../commons/div/yupWarningMsg";
+import RequiredSelector from "../../../../commons/requiredSelector";
 
 export default function BoardWriteUI(props: any) {
   return (
@@ -29,11 +29,12 @@ export default function BoardWriteUI(props: any) {
         <s.ProductInfoWrapper>
           <s.ProductInfoText>오픈런 정보</s.ProductInfoText>
           <s.SelectWrapper>
-            <Selector
+            <RequiredSelector
               title="제품 카테고리"
               sortValue={["FASHION", "ACC", "DIGITAL", "FOOD", "TOY"]}
             />
           </s.SelectWrapper>
+          <YupWarningMsg errormsg={props.formState.errors.category?.message} />
           <s.TitleInput
             {...props.register("title")}
             type="text"
@@ -108,12 +109,19 @@ export default function BoardWriteUI(props: any) {
                 }
                 onChange={props.onChangeAddress}
               />
+              <YupWarningMsg
+                errormsg={props.formState.errors.address?.message}
+              />
+
               <s.AddressDetailInput
                 onChange={props.onChangeAddressDetail}
                 type="text"
                 defaultValue={
                   props.data?.fetchBoard.location?.addressDetail || ""
                 }
+              />
+              <YupWarningMsg
+                errormsg={props.formState.errors.addressDetail?.message}
               />
             </s.AddressWrapper>
           </s.MapWrapper>
@@ -140,6 +148,7 @@ export default function BoardWriteUI(props: any) {
                 />
               ))}
           </s.Images>
+          <YupWarningMsg errormsg={props.formState.errors.image?.message} />
         </s.ImageUploadWrapper>
         <s.BtnWrapper>
           <s.CreateBtn type="submit">
