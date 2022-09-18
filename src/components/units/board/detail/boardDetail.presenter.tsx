@@ -12,6 +12,7 @@ import { AiOutlineCheckCircle } from "react-icons/ai";
 import LiveChat from "../../../../commons/liveChat/liveChat.container";
 import Timer from "../../../../commons/timer";
 import { AiOutlineClockCircle, AiOutlineEllipsis } from "react-icons/ai";
+import { BsChatFill, BsChat } from "react-icons/bs";
 
 const theme = createTheme({
   components: {
@@ -137,10 +138,24 @@ export default function BoardDetailUI(props: any) {
           </s.PriceWrapper>
           <s.DivideLine />
           <s.BtnsWrapper>
-            <s.ChatBtn onClick={props.chatOpenCloseModal}>
-              <s.ChatIcon src="/boardDetail/Chat.png" />
-              {props.isPc && <s.ChatText>채팅하기</s.ChatText>}
-            </s.ChatBtn>
+            {(props.adoptedRunner?.length === 1 &&
+              props?.login?.fetchLoginUser?.id ===
+                props?.data?.fetchBoard?.user?.id) ||
+            (props.adoptedRunner?.length === 1 &&
+              props?.login?.fetchLoginUser?.id ===
+                props?.adoptedRunner[0]?.user?.id) ? (
+              <s.ActivatedChatBtn onClick={props.chatOpenCloseModal}>
+                <BsChatFill size={25} />
+                {props.isPc && (
+                  <s.ActivatedChatText>채팅하기</s.ActivatedChatText>
+                )}
+              </s.ActivatedChatBtn>
+            ) : (
+              <s.ChatBtn onClick={props.chatOpenCloseModal}>
+                <BsChatFill size={25} />
+                {props.isPc && <s.ChatText>채팅하기</s.ChatText>}
+              </s.ChatBtn>
+            )}
             {props.showChatModal ? <LiveChat /> : null}
             {props.interestedBoard?.length ? (
               <s.PickBtn onClick={props.onClickAddInterestList}>

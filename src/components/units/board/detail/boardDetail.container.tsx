@@ -44,6 +44,7 @@ export default function BoardDetail() {
     }
     setShowChatModal((prev) => !prev);
   };
+
   // 게시물 수정, 삭제 모달
   const [showBoardModal, setShowBoardModal] = useState(false);
   const boardOpenCloseModal = () => {
@@ -231,6 +232,7 @@ export default function BoardDetail() {
       data={data}
       login={login}
       runner={runner}
+      adoptedRunner={adoptedRunner}
       router={router}
       showChatModal={showChatModal}
       showBoardModal={showBoardModal}
