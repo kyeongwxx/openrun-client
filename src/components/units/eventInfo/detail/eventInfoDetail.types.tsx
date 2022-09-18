@@ -13,4 +13,5 @@ export interface IEventInfoDetailUI {
   el: any;
   onClickMoveToPage?: (path: any) => MouseEventHandler<HTMLDivElement>;
   ToloadFunc?: () => void;
+  onClickBoardDetail?: () => void;
 }

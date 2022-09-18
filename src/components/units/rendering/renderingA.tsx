@@ -24,8 +24,7 @@ const Wrapper = styled.div`
 const Title = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: center;
-  align-items: center; */
+
   right: 10;
   & > span:nth-of-type(1) {
     font-size: 3.125rem;
@@ -61,11 +60,12 @@ const Title = styled.div`
   }
   @media (max-width: 1250px) {
     transform: translateY(-80%);
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    margin-top: -20rem; // 버튼 삭제 후 추가 마진
     & > span:nth-of-type(1) {
       margin-bottom: -2rem;
       font-size: 2.725rem;
@@ -230,8 +230,8 @@ export default function A() {
           <span>
             <strong>이제 오픈런과 함께 하세요</strong>
           </span>
-
-          <button onClick={onClickMoveToPage(`/main/`)}>시작하기</button>
+          {/* 
+          <button onClick={onClickMoveToPage(`/main/`)}>시작하기</button> */}
         </Title>
         <Info ref={ref} className={inView ? "isActive" : ""}>
           <img src="/img/5288.png" alt="" />

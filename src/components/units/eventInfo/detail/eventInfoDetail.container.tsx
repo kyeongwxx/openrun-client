@@ -1,46 +1,57 @@
 import EventInfoDetailUI from "./eventInfoDetail.presenter";
 import { useRouter } from "next/router";
 import { useQuery } from "@apollo/client";
-import { FETCH_EVENT } from "./eventInfoDetail.queries";
+import {
+  FETCH_BOARD,
+  FETCH_EVENT,
+  FETCH_EVENT_BY_DATE,
+} from "./eventInfoDetail.queries";
 import { useMoveToPage } from "../../../commons/hooks/useMoveToPage";
-import { FETCH_BOARDS } from "../../board/list/boardList.queries";
 
 export default function EventInfoDetail() {
   const router = useRouter();
   const PAGE_SIZE = 10;
 
-  const fetchEvent = useQuery(FETCH_EVENT, {
+  const fetchEventByDate = useQuery(FETCH_EVENT_BY_DATE, {
+    variables: { eventByDateId: router.query.id },
+  });
+  const fetchBoard = useQuery(FETCH_EVENT, {
     variables: { eventId: router.query.id },
   });
-  const { data, fetchMore } = useQuery(FETCH_BOARDS, {
+  const { data, fetchMore } = useQuery(FETCH_BOARD, {
     variables: { pageSize: PAGE_SIZE, page: 1 },
   });
+
   const ToloadFunc = () => {
     if (!data) return;
 
     fetchMore({
       variables: {
-        page: Math.ceil(data.fetchPosts.length / 10) + 1,
+        page: Math.ceil(data.fetchBoard.length / 10) + 1,
         pageSize: PAGE_SIZE,
       },
       updateQuery: (prev, { fetchMoreResult }) => {
-        if (!fetchMoreResult?.fetchBoards)
+        if (!fetchMoreResult?.fetchBoard.category)
           return {
-            fetchBoards: [...prev.fetchBoards],
+            fetchBoard: [...prev.fetchBoard.category],
           };
         return {
-          fetchBoards: [...prev.fetchBoards, ...fetchMoreResult.fetchBoards],
+          fetchBoard: [...prev.fetchBoard, ...fetchMoreResult.fetchBoard],
         };
       },
     });
   };
-  const { onClickMoveToPage } = useMoveToPage();
+  const onClickBoardDetail = (event) => {
+    router.push(`/board/${event.currentTarget.id}`);
+  };
 
   return (
     <EventInfoDetailUI
-      fetchEvent={fetchEvent}
+      fetchBoard={fetchBoard}
       data={data}
       ToloadFunc={ToloadFunc}
+      onClickBoardDetail={onClickBoardDetail}
+      fetchEventByDate={fetchEventByDate}
     />
   );
 }

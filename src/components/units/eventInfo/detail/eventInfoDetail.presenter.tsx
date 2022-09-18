@@ -8,18 +8,19 @@ export default function EventInfoDetailUI(props: IEventInfoDetailUI) {
       <s.Wrapper>
         <s.ItemWrapper>
           <s.ItemImg src="/img/Rectangle 114.png" />
-          {/* {props.image}  */}
+          {props.data?.fetchEventByDate?.image}
           <s.ItemInfoBox>
             <s.PlanTitle>오픈런 일정</s.PlanTitle>
-            <s.Brand>{props.data?.fetchEvent?.id}NIKE</s.Brand>
+            <s.Brand>{props.data?.fetchEventByDate?.id}NIKE</s.Brand>
             <s.Event>
-              {props.data?.fetchEvent?.title}나이키 DD1391-100 선출시
+              {props.data?.fetchEventByDate?.title}나이키 DD1391-100 선출시
             </s.Event>
-            <s.Time>{props.data?.fetchEvent?.period}2022.09.16 am10:00</s.Time>
+            <s.Time>
+              {props.data?.fetchEventByDate?.period}2022.09.16 am10:00
+            </s.Time>
             <s.PlaceTitle>장소</s.PlaceTitle>
-            {/* <s.Store>{props.location}홍대 나이키</s.Store> */}
             <s.StoreDetail>
-              {props.data?.fetchEvent?.location}서울시 마포구 홍익로
+              {props.data?.fetchEventByDate?.location}서울시 마포구 홍익로
             </s.StoreDetail>
           </s.ItemInfoBox>
         </s.ItemWrapper>
@@ -27,7 +28,7 @@ export default function EventInfoDetailUI(props: IEventInfoDetailUI) {
         <s.InfoWrapper>
           <s.InfoTitle>행사정보</s.InfoTitle>
           <s.Information>
-            {props.data?.fetchEvent?.contents}
+            {props.data?.fetchEventByDate?.contents}
             2 0 2 2 . 0 9 . 16
             <br />
             1 1 : 0 0 A M <br />
@@ -85,12 +86,16 @@ export default function EventInfoDetailUI(props: IEventInfoDetailUI) {
           useWindow={true}
         >
           <s.WithItemBox>
+            {props.data?.fetchBoard.map((el: any) => (
+              <s.WithItemImg onClick={props.onClickBoardDetail(el)}>
+                {el.image}
+              </s.WithItemImg>
+            ))}
             <s.WithItemImg src="/img/Rectangle 38.png" />
             <s.WithItemImg src="/img/Rectangle 38.png" />
             <s.WithItemImg src="/img/Rectangle 38.png" />
             <s.WithItemImg src="/img/Rectangle 38.png" />
             <s.WithItemImg src="/img/Rectangle 38.png" />
-            {/* <s.NewImg src="/img/Group 1.png" /> */}
           </s.WithItemBox>
         </InfiniteScroll>
       </s.Wrapper>

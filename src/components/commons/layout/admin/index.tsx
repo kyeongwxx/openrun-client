@@ -14,10 +14,10 @@ export default function LayoutAdmin() {
         ]}
         address={[
           "/admin/",
-          "/admin/usersInfo",
-          "/admin/dailyPayments",
-          "/admin/reports",
-          "/admin/adminInfo",
+          "/admin/usersInfo/",
+          "/admin/dailyPayments/",
+          "/admin/reports/",
+          "/admin/adminInfo/",
         ]}
       />
 
