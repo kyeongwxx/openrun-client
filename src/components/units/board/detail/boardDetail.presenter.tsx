@@ -220,7 +220,9 @@ export default function BoardDetailUI(props: any) {
                           </s.RatingText>
                         </s.Rating>
                         <s.CntWrapper>
-                          {props.isPc && <s.RunCnt>줄서기 300건</s.RunCnt>}
+                          {props.isPc && (
+                            <s.RunCnt>줄서기 {el.user.runnerCount}건</s.RunCnt>
+                          )}
                           <s.SuccessRate>
                             성공률 {el.user.successRate}%
                           </s.SuccessRate>
