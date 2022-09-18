@@ -7,8 +7,16 @@ import MediaQueryPc from "../mediaQuery/mediaQueryStandardPc";
 import MediaQueryMobile from "../mediaQuery/mediaQueryStandardMobile";
 
 import { useState } from "react";
+import { useRecoilState } from "recoil";
+import { onClickState } from "../../components/commons/store";
+import { BG_GRADATION } from "../cssConst";
 
-export default function DatePicker() {
+export default function DatePicker(props) {
+  const isPc = MediaQueryPc();
+  const isMobile = MediaQueryMobile();
+
+  const red = "red";
+
   const [pageState, setPageState] = useState(0);
 
   const oneWeek = currentDate(pageState);
@@ -16,8 +24,7 @@ export default function DatePicker() {
   const date = [...oneWeek[0]];
   const day = [...oneWeek[1]];
 
-  const isPc = MediaQueryPc();
-  const isMobile = MediaQueryMobile();
+  console.log(date);
 
   const onClickNextPage = () => {
     setPageState(pageState + 1);
@@ -36,26 +43,38 @@ export default function DatePicker() {
             {pageState !== 0 ? (
               <s.ArrowLeft onClick={onClickPrevPage} />
             ) : (
-              <s.NoneArrowBtn></s.NoneArrowBtn>
+              <s.NoneArrowBtn />
             )}
 
             {date.map((el, index) => (
-              <s.Button key={uuidv4()}>
-                <s.TextDay>{day[index]}</s.TextDay>
-                <s.TextDate>{el}</s.TextDate>
+              <s.Button key={uuidv4()} onClick={props.onClickDate(el, index)}>
+                <s.TextDay
+                  color={props.color[index] ? "transparent" : "#333"}
+                  bg={props.color[index] ? BG_GRADATION : "none"}
+                >
+                  {day[index]}
+                </s.TextDay>
+                <s.TextDate
+                  color={props.color[index] ? "transparent" : "#333"}
+                  bg={props.color[index] ? BG_GRADATION : "none"}
+                >
+                  {el}
+                </s.TextDate>
               </s.Button>
             ))}
-            {pageState < 3 ? (
+            {pageState < 2 ? (
               <s.ArrowRight onClick={onClickNextPage} />
             ) : (
-              <s.NoneArrowBtn></s.NoneArrowBtn>
+              <s.NoneArrowBtn />
             )}
           </s.ButtonWrapper>
         </s.Carousel>
       )}
       {isMobile && (
         <s.ButtonMobile>
-          <s.TextDate>Today</s.TextDate>
+          <s.TextDate color="#333" bg="none">
+            Today
+          </s.TextDate>
         </s.ButtonMobile>
       )}
     </s.Wrapper>

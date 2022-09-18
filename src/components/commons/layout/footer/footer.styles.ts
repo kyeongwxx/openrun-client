@@ -7,8 +7,9 @@ export const Wrapper = styled.footer`
   margin-top: 20px;
 
   background-color: #f7f7f7;
+
   @media (max-width: 767px) {
-    height: 70px;
+    height: 150px;
   }
 `;
 
@@ -31,8 +32,8 @@ export const Menu = styled.section`
   color: #333;
 
   @media (max-width: 767px) {
-    height: 60px;
     margin: 1%;
+    width: 40%;
   }
 `;
 
@@ -42,6 +43,10 @@ export const InfoWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   color: #909090;
+
+  @media (max-width: 767px) {
+    margin: 1%;
+  }
 `;
 
 export const Text = styled.p<{ weight: string; color: string }>`
@@ -49,6 +54,7 @@ export const Text = styled.p<{ weight: string; color: string }>`
   font-weight: ${(props) => props.weight};
   color: ${(props) => props.color};
   font-size: 1rem;
+
   @media (max-width: 767px) {
     font-size: 0.5rem;
   }

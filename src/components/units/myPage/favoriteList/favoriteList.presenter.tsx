@@ -11,7 +11,10 @@ export default function MypageFavoriteListUI(props) {
       <s.FavoriteListWrapper>
         <s.FavoriteTitle>찜목록</s.FavoriteTitle>
         {props.data?.length === 0 ? (
-          <s.NodataImg src="/img/nodata.png" />
+          <s.NoData>
+            <s.ExclamationMark />
+            <s.NodataText>찜한 게시글이 없습니다.</s.NodataText>
+          </s.NoData>
         ) : (
           <s.InfiniteScrollLimit id="scroll" ref={props.scrollRef}>
             <s.FavoriteBoards

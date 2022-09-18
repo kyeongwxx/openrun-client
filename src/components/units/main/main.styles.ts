@@ -38,10 +38,19 @@ export const ProductImg = styled.img`
   border-radius: 24px;
   background-color: lightgray;
 `;
-export const ProductText = styled.div`
+export const ProductTexts = styled.div`
   width: 100%;
-  height: 25%;
+  height: 40%;
   padding: 5%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+`;
+
+export const ProductText = styled.div<{ weight: string; size: string }>`
+  font-weight: ${(props) => props.weight};
+  font-size: ${(props) => props.size};
 `;
 
 export const H1 = styled.p`
@@ -53,24 +62,25 @@ export const H1 = styled.p`
   }
 `;
 
-export const H3 = styled.h3`
-  color: #333;
-`;
-export const H2 = styled.h2`
-  color: #333;
-`;
-
-export const H5 = styled.h5`
-  color: #333;
-`;
-
 export const TEXT = styled.div`
   color: ${(props) => props.color};
   font-weight: 400;
   font-size: 1rem;
+
   @media (max-width: 767px) {
     width: 100%;
     font-size: 0.5rem;
+  }
+`;
+
+export const BannerText = styled.div`
+  width: 60%;
+  color: #4e6781;
+  font-size: 1rem;
+
+  text-align: center;
+  @media (max-width: 767px) {
+    font-size: 0.4rem;
   }
 `;
 
@@ -118,8 +128,9 @@ export const BestRunners = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+
   @media (max-width: 767px) {
-    height: 100px;
+    height: 200px;
     flex-direction: row;
     flex-wrap: wrap;
     overflow-y: scroll;
@@ -130,15 +141,82 @@ export const BestRunners = styled.div`
   }
 `;
 
+export const RunnerInfo = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  margin-top: 12px;
+
+  height: 100px;
+  align-items: center;
+  width: 75%;
+
+  justify-content: space-around;
+  /* background-color: yellow; */
+
+  @media (max-width: 767px) {
+    height: 75%;
+    width: 75%;
+  }
+`;
+export const TextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+
+  width: 150px;
+`;
+
+export const Ranking = styled.div`
+  margin-left: 10px;
+  width: 30px;
+  height: 30px;
+
+  background-size: contain;
+  background-image: url("/img/ranking.png");
+  background-repeat: no-repeat;
+`;
+export const RankingText = styled.div`
+  padding-left: 7px;
+  color: #fff;
+  font-weight: 700;
+`;
+
+export const RunnerText = styled.div<{
+  weight: string;
+  size: string;
+  color: string;
+}>`
+  font-weight: ${(prev) => prev.weight};
+  font-size: ${(prev) => prev.size};
+  color: ${(prev) => prev.color};
+`;
+
+export const RunnerImg = styled.img`
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 50%;
+
+  @media (max-width: 767px) {
+    width: 50px;
+    height: 50px;
+  }
+`;
+
 export const BestRunner = styled.div`
   width: 49%;
   height: 45%;
   border-radius: 20px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
   background-color: #fff;
+
   @media (max-width: 767px) {
     width: 80%;
-    height: 50px;
+    height: 100px;
     border-radius: 10px;
     margin-bottom: 10px;
   }
@@ -170,13 +248,12 @@ export const BestProductCategory = styled.div`
 export const Category = styled.div`
   width: 30%;
   height: 50%;
-
   margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   font-weight: 700;
+  cursor: pointer;
 `;
 
 export const CategoryImages = styled.div`

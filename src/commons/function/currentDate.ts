@@ -5,6 +5,7 @@ export const currentDate = (pageState: number) => {
   const dayOfWeek: string[] = [];
   if (pageState > 0) {
     const now = new Date();
+
     date = new Date(
       now.setDate(now.getDate() + 7 * pageState)
     ).toLocaleDateString();

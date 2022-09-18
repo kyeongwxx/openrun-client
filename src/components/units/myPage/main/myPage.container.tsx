@@ -15,6 +15,8 @@ import {
 export default function MyPage() {
   const router = useRouter();
   const { data } = useQuery(FETCH_USER_CHATROOM);
+
+  console.log(data);
   const { data: processingSeller, fetchMore } = useQuery<
     Pick<IQuery, "fetchBoardProcessingByUser">
   >(FETCH_BOARD_PROCESSING_BY_USER);
@@ -25,6 +27,7 @@ export default function MyPage() {
   >(FETCH_RUNNER_PROCESSING_BY_USER);
 
   const onClickMoveToBoardDetail = (boardId: string) => () => {
+    console.log(boardId);
     router.push(`/board/${boardId}`);
   };
 

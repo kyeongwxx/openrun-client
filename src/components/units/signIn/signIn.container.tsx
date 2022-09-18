@@ -12,6 +12,9 @@ import { schema } from "../../../commons/yup/signIn";
 import { useRecoilState } from "recoil";
 import { userInfoValue } from "../../commons/store";
 import { useRouter } from "next/router";
+// import NaverLogin from 'react-naver-login';
+import KakaoLogin from "react-kakao-login";
+import GoogleLogin from "react-google-login";
 
 export default function SignIn() {
   const client = useApolloClient();
@@ -63,12 +66,27 @@ export default function SignIn() {
     }
   };
 
+  const onClickNaver = () => {
+    router.push("https://openrunbackend.shop/login/naver");
+  };
+
+  const onClickGoolge = () => {
+    router.push("https://openrunbackend.shop/login/google");
+  };
+
+  const onClickKakao = () => {
+    router.push("https://openrunbackend.shop/login/kakao");
+  };
+
   return (
     <SignInUI
       register={register}
       handleSubmit={handleSubmit}
       formState={formState}
       onClickSignIn={onClickSignIn}
+      onClickGoolge={onClickGoolge}
+      onClickNaver={onClickNaver}
+      onClickKakao={onClickKakao}
     />
   );
 }

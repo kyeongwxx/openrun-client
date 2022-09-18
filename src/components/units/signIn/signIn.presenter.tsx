@@ -39,10 +39,10 @@ export default function SignInUI(props: ISignInProps) {
           />
           <YupWarningMsg errormsg={props.formState.errors.password?.message} />
 
-          <s.IdSaveWrapper>
+          {/* <s.IdSaveWrapper>
             <s.IdSaveBtn></s.IdSaveBtn>
             <s.IdSaveText>아이디 저장</s.IdSaveText>
-          </s.IdSaveWrapper>
+          </s.IdSaveWrapper> */}
 
           <BlackButton
             onClick={props.onClickSignIn}
@@ -52,23 +52,17 @@ export default function SignInUI(props: ISignInProps) {
             title="로그인"
           />
         </form>
-        <s.SearchWrapper>
-          <s.Text>회원가입</s.Text>
-          <VerticalDivideLine />
-          <s.Text>아이디 찾기</s.Text>
-          <VerticalDivideLine />
-          <s.Text>비밀번호 찾기</s.Text>
-        </s.SearchWrapper>
+
         <s.DivideLine />
         <s.SocialTitle>SNS 계정 로그인</s.SocialTitle>
         <s.SocialBtns>
-          <s.NaverLogin>
+          <s.NaverLogin onClick={props.onClickNaver}>
             <Naver />
           </s.NaverLogin>
-          <s.GoogleLogin>
+          <s.GoogleLogin onClick={props.onClickGoolge}>
             <Google />
           </s.GoogleLogin>
-          <s.KakaoLogin>
+          <s.KakaoLogin onClick={props.onClickKakao}>
             <Kakao />
           </s.KakaoLogin>
         </s.SocialBtns>

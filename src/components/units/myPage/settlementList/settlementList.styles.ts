@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { Container } from "@mui/system";
 import InfiniteScroll from "react-infinite-scroller";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import {
   BOX_BG_COLOR,
   BOX_SHADOW,
@@ -59,6 +60,36 @@ export const DivideLineHorizontal = styled.div<{ color: string }>`
   width: 100%;
   height: 1px;
   background-color: ${(props) => props.color};
+`;
+
+export const NodataImg = styled.img`
+  width: 80%;
+  height: 100%;
+
+  object-fit: contain;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+`;
+
+export const NoData = styled.div`
+  width: 80%;
+  height: 400px;
+  background-color: ${BOX_BG_COLOR};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+`;
+export const ExclamationMark = styled(ErrorOutlineIcon)`
+  color: #333;
+`;
+
+export const NodataText = styled.div`
+  color: #333;
 `;
 
 export const FavoriteListWrapper = styled(Container)`

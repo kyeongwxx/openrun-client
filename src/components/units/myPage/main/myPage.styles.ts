@@ -3,6 +3,7 @@ import { Container } from "@mui/system";
 import InfiniteScroll from "react-infinite-scroller";
 import { BOX_BG_COLOR, BOX_SHADOW_TOP } from "../../../../commons/cssConst";
 import WallpaperIcon from "@mui/icons-material/Wallpaper";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
 export const Wrapper = styled.main`
   width: 100%;
@@ -59,6 +60,37 @@ export const DivideLineHorizontal = styled.div<{ color: string }>`
   width: 100%;
   height: 1px;
   background-color: ${(props) => props.color};
+  margin-bottom: 20px;
+`;
+
+export const NodataImg = styled.img`
+  width: 80%;
+  height: 100%;
+
+  object-fit: contain;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+`;
+
+export const NoData = styled.div`
+  width: 80%;
+  height: 400px;
+  background-color: ${BOX_BG_COLOR};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+`;
+export const ExclamationMark = styled(ErrorOutlineIcon)`
+  color: #333;
+`;
+
+export const NodataText = styled.div`
+  color: #333;
 `;
 
 export const MenuWrapper = styled.section`
@@ -94,6 +126,7 @@ export const ActiveListWrapper = styled(Container)`
   flex-direction: row;
   justify-content: space-between;
   margin: auto;
+  margin-bottom: 20px;
 
   @media (max-width: 767px) {
     flex-direction: column;
@@ -106,11 +139,16 @@ export const ActiveTitle = styled.div`
   margin-top: 5px;
   font-weight: 700;
   color: #333;
+
+  width: 20%;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 
 export const InfiniteScrollLimit = styled.div`
   overflow-x: auto;
-  width: 100%;
+  width: 80%;
 
   @media (max-width: 767px) {
     width: 100%;
@@ -118,11 +156,12 @@ export const InfiniteScrollLimit = styled.div`
 `;
 
 export const ActiveWrapper = styled(InfiniteScroll)`
-  width: 80%;
+  width: 90%;
   height: 100%;
 
   display: flex;
   flex-direction: column;
+
   flex-wrap: wrap;
 
   ::-webkit-scrollbar {
@@ -134,7 +173,7 @@ export const ActiveWrapper = styled(InfiniteScroll)`
 `;
 
 export const ActiveContent = styled.div<{ height: string }>`
-  width: 100px;
+  width: 190px;
   height: ${(props) => props.height};
   margin: 1%;
   border-radius: 24px;

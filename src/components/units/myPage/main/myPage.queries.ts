@@ -3,18 +3,21 @@ import { gql } from "@apollo/client";
 export const FETCH_USER_CHATROOM = gql`
   query {
     fetchUserChatRoom {
-      room
+      id
       seller {
         nickName
+        id
       }
       runner {
         nickName
+        id
       }
       board {
         id
         title
-        price
         status
+        price
+        dueDate
       }
     }
   }

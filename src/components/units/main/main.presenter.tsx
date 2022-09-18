@@ -1,7 +1,8 @@
 import MainSlider from "../../../commons/carousel";
 import DatePicker from "../../../commons/datePicker";
 import * as s from "./main.styles";
-export default function MainUI() {
+import { v4 as uuidv4 } from "uuid";
+export default function MainUI(props) {
   return (
     <s.Wrapper>
       <MainSlider
@@ -13,32 +14,24 @@ export default function MainUI() {
           "/img/carousel/main11.jpeg",
         ]}
       />
-      <DatePicker />
+      <DatePicker onClickDate={props.onClickDate} color={props.color} />
       <s.EventProductWrapper>
         <s.EventProduct>
           <s.ProductImg />
-          <s.ProductText>
-            <s.H3>Nike</s.H3>
-            <s.H2>오픈런 한정판 나이키</s.H2>
-            <s.H5>2022.xx.xx</s.H5>
-            <s.H2>10,000원</s.H2>
-          </s.ProductText>
-        </s.EventProduct>
-        <s.EventProduct>
-          <s.ProductImg />
-          <s.ProductText></s.ProductText>
-        </s.EventProduct>
-        <s.EventProduct>
-          <s.ProductImg />
-          <s.ProductText></s.ProductText>
-        </s.EventProduct>
-        <s.EventProduct>
-          <s.ProductImg />
-          <s.ProductText></s.ProductText>
-        </s.EventProduct>
-        <s.EventProduct>
-          <s.ProductImg />
-          <s.ProductText></s.ProductText>
+          <s.ProductTexts>
+            <s.ProductText weight="400" size="0.8rem">
+              Nike
+            </s.ProductText>
+            <s.ProductText weight="700" size="1rem">
+              오픈런 한정판 나이키
+            </s.ProductText>
+            <s.ProductText weight="400" size="0.6rem">
+              2022.xx.xx
+            </s.ProductText>
+            <s.ProductText weight="400" size="1rem">
+              10,000원
+            </s.ProductText>
+          </s.ProductTexts>
         </s.EventProduct>
       </s.EventProductWrapper>
       <s.BannerImg height="690px" url="/img/rectangle2.png">
@@ -47,10 +40,30 @@ export default function MainUI() {
           <s.TEXT color="#333">우리가 사랑하는 베스트 러너 순위</s.TEXT>
         </s.ProductWrapperText>
         <s.BestRunners>
-          <s.BestRunner>1</s.BestRunner>
-          <s.BestRunner>2</s.BestRunner>
-          <s.BestRunner>3</s.BestRunner>
-          <s.BestRunner>4</s.BestRunner>
+          {props.data?.map((el, index) => (
+            <s.BestRunner>
+              <s.Ranking>
+                <s.RankingText>{index + 1}</s.RankingText>
+              </s.Ranking>
+              <s.RunnerInfo>
+                <s.RunnerImg
+                  src={
+                    !el.profileImg
+                      ? "/img/profile.png"
+                      : `https://storage.googleapis.com/openrun-storage/${el.profileImg}`
+                  }
+                />
+                <s.TextWrapper>
+                  <s.RunnerText weight="700" size="1rem" color="#333">
+                    {el?.nickName}
+                  </s.RunnerText>
+                  <s.RunnerText weight="400" size="0.8rem" color="#1F8716">
+                    성공률 {el?.successRate}%
+                  </s.RunnerText>
+                </s.TextWrapper>
+              </s.RunnerInfo>
+            </s.BestRunner>
+          ))}
         </s.BestRunners>
       </s.BannerImg>
       <s.ProductWrapper>
@@ -60,11 +73,11 @@ export default function MainUI() {
         </s.ProductWrapperText>
         <s.BestProductCategory>
           <s.Category>
-            <s.TEXT>BEST FASHION</s.TEXT>
-            <s.TEXT>BEST ACC</s.TEXT>
-            <s.TEXT>BEST DIGITAL</s.TEXT>
-            <s.TEXT>BEST FOOD</s.TEXT>
-            <s.TEXT>BEST TOY</s.TEXT>
+            {props.category.map((el, index) => (
+              <s.TEXT key={uuidv4()} onClick={props.onClickCategory(el, index)}>
+                {el}
+              </s.TEXT>
+            ))}
           </s.Category>
           <s.CategoryImages>
             <s.CategoryImage src="/img/example1.png" />
@@ -76,50 +89,11 @@ export default function MainUI() {
         </s.BestProductCategory>
       </s.ProductWrapper>
       <s.BannerDiv>
-        <s.BannerWrapperText>
-          <s.H1 color="#4E6781">러너 1:1 매칭 </s.H1>
-          <s.TEXT color="#4E6781">
-            어려웠던 줄서기 오픈런과 함께하면 쉬어집니다.
-          </s.TEXT>
-        </s.BannerWrapperText>
+        <s.H1 color="#4E6781">러너 1:1 매칭 </s.H1>
+        <s.BannerText>
+          어려웠던 줄서기 오픈런과 함께하면 쉬어집니다.
+        </s.BannerText>
       </s.BannerDiv>
-      {/* <s.ProductWrapper>
-        <s.ProductWrapperText>
-          <s.H1 color="#333">Openrun News</s.H1>
-          <s.TEXT color="#333">오픈런이 전하는 다향한 소식</s.TEXT>
-        </s.ProductWrapperText>
-        <s.NewsCategory>
-          <s.NewsImages justify="flex-start">
-            <s.NewsImage>
-              <s.ProductWrapperText>
-                <s.TEXT color="#333">오픈런이 전하는 다향한 소식</s.TEXT>
-                <s.TEXT color="#333">오픈런이 전하는 다향한 소식</s.TEXT>
-              </s.ProductWrapperText>
-            </s.NewsImage>
-
-            <s.NewsImage>
-              <s.ProductWrapperText>
-                <s.TEXT color="#333">오픈런이 전하는 다향한 소식</s.TEXT>
-                <s.TEXT color="#333">오픈런이 전하는 다향한 소식</s.TEXT>
-              </s.ProductWrapperText>
-            </s.NewsImage>
-          </s.NewsImages>
-          <s.NewsImages justify="flex-end">
-            <s.NewsImage>
-              <s.ProductWrapperText>
-                <s.TEXT color="#333">오픈런이 전하는 다향한 소식</s.TEXT>
-                <s.TEXT color="#333">오픈런이 전하는 다향한 소식</s.TEXT>
-              </s.ProductWrapperText>
-            </s.NewsImage>
-            <s.NewsImage>
-              <s.ProductWrapperText>
-                <s.TEXT color="#333">오픈런이 전하는 다향한 소식</s.TEXT>
-                <s.TEXT color="#333">오픈런이 전하는 다향한 소식</s.TEXT>
-              </s.ProductWrapperText>
-            </s.NewsImage>
-          </s.NewsImages>
-        </s.NewsCategory>
-      </s.ProductWrapper> */}
     </s.Wrapper>
   );
 }
