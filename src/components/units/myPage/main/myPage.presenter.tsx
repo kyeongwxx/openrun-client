@@ -1,7 +1,10 @@
+import { useRecoilState } from "recoil";
 import { dateSplit } from "../../../../commons/function/dateSlice";
+import { userInfoValue } from "../../../commons/store";
 import { IMainProps } from "../myPage.types";
 import * as s from "./myPage.styles";
 export default function MyPageUI(props: IMainProps) {
+  const [userInfo, setUserInfo] = useRecoilState(userInfoValue);
   return (
     <s.Wrapper>
       <s.ActiveListWrapper>
@@ -22,7 +25,7 @@ export default function MyPageUI(props: IMainProps) {
               {props.sellerData?.map((el) => (
                 <s.ActiveContent
                   height="300px"
-                  onClick={props.onClickMoveToBoardDetail(el.board?.id || "")}
+                  onClick={props.onClickMoveToBoardDetail(el.id || "")}
                 >
                   {el.image?.url === "default.img" ? (
                     <s.NoImg />
@@ -59,7 +62,7 @@ export default function MyPageUI(props: IMainProps) {
           <s.InfiniteScrollLimit>
             <s.ActiveWrapper
               pageStart={0}
-              loadMore={props.onFetchMore}
+              loadMore={props.onFetchMoreRunner}
               hasMore={true}
               useWindow={false}
             >
@@ -71,7 +74,9 @@ export default function MyPageUI(props: IMainProps) {
                   {el.board?.image?.url === "default.img" ? (
                     <s.NoImg />
                   ) : (
-                    <s.ActiveImg src={el.board?.image?.url || ""} />
+                    <s.ActiveImg
+                      src={`https://storage.googleapis.com/openrun-storage/${el.board?.image?.url}`}
+                    />
                   )}
 
                   <s.ActiveText color="#333" weight="700" size="0.8rem">
@@ -96,16 +101,43 @@ export default function MyPageUI(props: IMainProps) {
       <s.DivideLineHorizontal color="#F2F2F2" />
       <s.ActiveListWrapper>
         <s.ActiveTitle>채팅중인 대화</s.ActiveTitle>
-        <s.InfiniteScrollLimit>
-          <s.ActiveWrapper
-            pageStart={0}
-            loadMore={props.onFetchMore}
-            hasMore={true}
-            useWindow={false}
-          >
-            <s.ActiveContent height="300px" />
-          </s.ActiveWrapper>
-        </s.InfiniteScrollLimit>
+
+        <s.ChatWrapper>
+          {props.chatRoom?.length === 0 ? (
+            <s.NoData>
+              <s.ExclamationMark />
+              <s.NodataText>치탱중이 아닙니다.</s.NodataText>
+            </s.NoData>
+          ) : (
+            props.chatRoom?.map((el) =>
+              el?.runner.id === userInfo?.id ? (
+                <s.ChatContents height="200px">
+                  <s.ChatContent>{el?.board?.title}</s.ChatContent>
+                  <s.ChatProfileImg
+                    src={
+                      el.seller.profileImg
+                        ? `https://storage.googleapis.com/openrun-storage/${el.seller.profileImg}`
+                        : "/img/profile.png"
+                    }
+                  />
+                  <s.ChatContent>{el?.seller.nickName}</s.ChatContent>
+                </s.ChatContents>
+              ) : (
+                <s.ChatContents height="200px">
+                  <s.ChatContent>{el?.board?.title}</s.ChatContent>
+                  <s.ChatProfileImg
+                    src={
+                      el.runner.profileImg
+                        ? `https://storage.googleapis.com/openrun-storage/${el.runner.profileImg}`
+                        : "/img/profile.png"
+                    }
+                  />
+                  <s.ChatContent>{el?.runner.nickName}</s.ChatContent>
+                </s.ChatContents>
+              )
+            )
+          )}
+        </s.ChatWrapper>
       </s.ActiveListWrapper>
     </s.Wrapper>
   );

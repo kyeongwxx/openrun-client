@@ -46,5 +46,6 @@ export interface IMainProps {
   sellerData?: IBoard[];
   runnerData?: IRunner[];
   onFetchMore: () => void;
+  onFetchMoreRunner: () => void;
   onClickMoveToBoardDetail: (arg: string) => MouseEventHandler<HTMLDivElement>;
 }

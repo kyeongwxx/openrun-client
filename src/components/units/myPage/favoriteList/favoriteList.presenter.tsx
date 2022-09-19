@@ -58,7 +58,7 @@ export default function MypageFavoriteListUI(props) {
                     <s.BoardContents>
                       <s.BoardContent
                         weight="700"
-                        size="1.2rem"
+                        size="1rem"
                         color="# 333"
                         align="left"
                         width="60%"
@@ -67,7 +67,7 @@ export default function MypageFavoriteListUI(props) {
                       </s.BoardContent>
                       <s.BoardContent
                         weight="400"
-                        size="0.8rem"
+                        size="0.7rem"
                         color="#5e5e5e"
                         align="left"
                         width="15%"
@@ -76,7 +76,7 @@ export default function MypageFavoriteListUI(props) {
                       </s.BoardContent>
                       <s.BoardContent
                         weight="400"
-                        size="0.8rem"
+                        size="0.7rem"
                         color="#5e5e5e"
                         align="right"
                         width="25%"
@@ -84,7 +84,7 @@ export default function MypageFavoriteListUI(props) {
                         {dateSplit(el.board?.dueDate)}
                       </s.BoardContent>
                     </s.BoardContents>
-                    <s.Text weight="400" size="0.8rem" color="#5e5e5e">
+                    <s.Text weight="400" size="0.7rem" color="#5e5e5e">
                       {el.board?.user?.nickName}
                     </s.Text>
                   </s.BoardContentsWrapper>

@@ -71,7 +71,7 @@ export default function MypageWrittenBoardsUI(props: IWrittenBoardsProps) {
                     )}
 
                     <s.BoardContents onClick={props.onClickMoveToDetail(el.id)}>
-                      <s.BoardContent weight="700" size="1.2rem" color="#333">
+                      <s.BoardContent weight="700" size="1rem" color="#333">
                         {el.title}
                       </s.BoardContent>
 
@@ -82,7 +82,7 @@ export default function MypageWrittenBoardsUI(props: IWrittenBoardsProps) {
                       >
                         {el.price}원
                       </s.BoardContent>
-                      <s.BoardContent weight="400" size="0.8rem" color="#333">
+                      <s.BoardContent weight="400" size="0.7rem" color="#333">
                         {dateSplit(el.dueDate)}
                       </s.BoardContent>
                     </s.BoardContents>
