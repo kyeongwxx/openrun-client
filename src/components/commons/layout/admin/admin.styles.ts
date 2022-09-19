@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   @media (max-width: 767px) {
     width: auto;
@@ -25,6 +26,7 @@ export const InnerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: flex-start;
 
   @media (max-width: 767px) {
     flex-direction: column;
@@ -32,10 +34,9 @@ export const InnerWrapper = styled.div`
   }
 `;
 export const Box = styled.div`
-  width: 1000px;
-  height: 400px;
+  width: 62rem;
 
-  margin-bottom: 15rem;
+  margin-bottom: 5rem;
 
   @media (max-width: 767px) {
     width: 500px;
@@ -43,15 +44,16 @@ export const Box = styled.div`
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
+  border: 1px solid green;
 `;
 
 export const Title = styled.div`
   color: #555;
   font-size: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 3rem;
   @media (max-width: 767px) {
     font-size: 25px;
   }

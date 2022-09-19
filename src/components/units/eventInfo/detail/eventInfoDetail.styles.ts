@@ -206,7 +206,6 @@ export const Information = styled.div`
   text-align: center;
   width: 60rem;
   height: 100%;
-  border: 1px solid red;
 
   @media (max-width: 767px) {
     width: 33rem;
@@ -287,7 +286,7 @@ export const MoveToSiteBtn = styled.button`
 export const WithItemWrapper = styled.div`
   text-align: center;
   width: 100%;
-  margin-top: 10rem;
+  margin-top: 6rem;
   @media (max-width: 767px) {
     margin-bottom: 5rem;
   }
@@ -328,7 +327,7 @@ export const WithItemSubTitle = styled.div`
 // 가로 스크롤
 export const WithItemBox = styled.div`
   width: 75rem;
-  height: 25rem;
+  height: 18rem;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -342,28 +341,56 @@ export const WithItemBox = styled.div`
   }
   margin-bottom: 6rem;
   @media (max-width: 767px) {
-    width: 350px;
-    height: 350px;
+    width: 40rem;
+    height: 16rem;
   }
   @media (max-width: 412px) {
     width: 350px;
-    height: 350px;
+    height: 13rem;
   }
+  // border: 1px solid blue;
+`;
+export const WithImageWrapper = styled.div`
+  width: 23rem;
+  height: 23rem;
+  margin-right: -3rem;
+
+  @media (max-width: 767px) {
+    margin-right: -5rem;
+  }
+  @media (max-width: 412px) {
+    margin-right: -8rem;
+  }
+`;
+export const WithImageIdWrapper = styled.div`
+  width: 18rem;
+  height: 18rem;
+
+  @media (max-width: 767px) {
+    width: 16rem;
+    height: 16rem;
+  }
+  @media (max-width: 412px) {
+    width: 13rem;
+    height: 13rem;
+  }
+  //  border: 1px solid green;
 `;
 
 export const WithItemImg = styled.img`
-  width: 23rem;
-  height: 23rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  width: 18rem;
+  height: 18rem;
+
   border-radius: 24px;
   cursor: pointer;
+
   @media (max-width: 767px) {
-    width: 20rem;
-    height: 20rem;
+    width: 16rem;
+    height: 16rem;
   }
   @media (max-width: 412px) {
-    width: 18rem;
-    height: 18rem;
+    width: 13rem;
+    height: 13rem;
   }
+  // border: 1px solid red;
 `;
