@@ -1,4 +1,4 @@
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import SignInUI from "./signIn.presenter";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useApolloClient, useMutation, useQuery } from "@apollo/client";
@@ -12,9 +12,7 @@ import { schema } from "../../../commons/yup/signIn";
 import { useRecoilState } from "recoil";
 import { userInfoValue } from "../../commons/store";
 import { useRouter } from "next/router";
-// import NaverLogin from 'react-naver-login';
-import KakaoLogin from "react-kakao-login";
-import GoogleLogin from "react-google-login";
+import { Modal } from "antd";
 
 export default function SignIn() {
   const client = useApolloClient();
@@ -56,13 +54,12 @@ export default function SignIn() {
 
       setUserInfo(userInfo);
       if (userInfo) {
-        // reload();
         location.replace(`/main`);
       } else {
         alert("로그인실패");
       }
     } catch (error) {
-      console.log(error);
+      if (error instanceof Error) Modal.error({ content: error.message });
     }
   };
 

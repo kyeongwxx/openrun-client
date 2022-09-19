@@ -1,8 +1,8 @@
 import { useQuery } from "@apollo/client";
-import te from "date-fns/esm/locale/te/index.js";
+
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { useRecoilState } from "recoil";
+
 import { currentDate } from "../../../commons/function/currentDate";
 
 import {
@@ -10,7 +10,6 @@ import {
   IQueryFetchBestOfBoardsArgs,
   IQueryFetchEventsByDateArgs,
 } from "../../../commons/types/generated/types";
-import { onClickState } from "../../commons/store";
 
 import MainUI from "./main.presenter";
 import {
@@ -42,7 +41,7 @@ export default function Main() {
     },
   });
 
-  const { data: eventIfo } = useQuery<
+  const { data: eventInfo } = useQuery<
     Pick<IQuery, "fetchEventsByDate">,
     IQueryFetchEventsByDateArgs
   >(FETCH_EVENTS_BY_DATE, {
@@ -98,7 +97,7 @@ export default function Main() {
       onMouseTrue={onMouseTrue}
       MouseLeaveDate={MouseLeaveDate}
       onClickMoveToDetail={onClickMoveToDetail}
-      eventIfo={eventIfo?.fetchEventsByDate}
+      eventInfo={eventInfo?.fetchEventsByDate}
     />
   );
 }

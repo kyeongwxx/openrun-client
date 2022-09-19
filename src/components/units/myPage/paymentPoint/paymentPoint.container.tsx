@@ -4,7 +4,7 @@ import { selectorValue, userInfoValue } from "../../../commons/store";
 import MypagePaymentPointUI from "./paymentPoint.presenter";
 import { v4 as uuidv4 } from "uuid";
 import Head from "next/head";
-import { useApolloClient, useMutation, useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import {
   CANCEL_PAYMENT,
   CHARGE_PAYMENT,
@@ -15,8 +15,9 @@ import {
   IMutationCancelPaymentArgs,
   IMutationChargePaymentArgs,
   IQuery,
+  IQueryFetchPointChargeHistoryArgs,
 } from "../../../../commons/types/generated/types";
-import { string } from "yup";
+
 declare const window: typeof globalThis & {
   IMP: any;
 };
@@ -26,7 +27,7 @@ export default function MypagePaymentPoint() {
   const [userInfo] = useRecoilState(userInfoValue);
   const [isRefund, setIsRefund] = useState("");
   const [chargeBtnState, setChargeBtnState] = useState(false);
-  const [refundState, setRefundState] = useState("");
+  const [refundState, setRefundState] = useState(true);
 
   const [chargePayment] = useMutation<
     Pick<IMutation, "chargePayment">,
@@ -36,7 +37,10 @@ export default function MypagePaymentPoint() {
     Pick<IMutation, "cancelPayment">,
     IMutationCancelPaymentArgs
   >(CANCEL_PAYMENT);
-  const { data, fetchMore } = useQuery(FETCH_POINT_CHARGE_HISTORY);
+  const { data, fetchMore } = useQuery<
+    Pick<IQuery, "fetchPointChargeHistory">,
+    IQueryFetchPointChargeHistoryArgs
+  >(FETCH_POINT_CHARGE_HISTORY);
 
   // 포인트 충전 div 열고 닫기
   const onClickChargePoint = () => {
@@ -72,7 +76,6 @@ export default function MypagePaymentPoint() {
             },
             refetchQueries: [{ query: FETCH_POINT_CHARGE_HISTORY }],
           });
-          console.log(result);
         } else {
           // 결제 실패 시 로직,
           alert("결제를 취소했습니다.");
@@ -114,8 +117,6 @@ export default function MypagePaymentPoint() {
       console.log(error);
     }
   };
-
-  console.log(isRefund);
 
   return (
     <>

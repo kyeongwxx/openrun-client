@@ -99,7 +99,6 @@ export default function SignUpUI(props: ISignUpProps) {
         ) : (
           <></>
         )}
-        {console.log(props.checkCertifyResult)}
 
         <BlackButton
           onClick={props.onClickSignUp}
@@ -110,19 +109,6 @@ export default function SignUpUI(props: ISignUpProps) {
           disabled={props.checkCertifyResult ? false : true}
         />
       </form>
-
-      {open ? (
-        <BasicModal
-          title="본인 인증"
-          description={
-            props.phoneCertifyFail
-              ? "본인 인증에 실패했습니다."
-              : "본인 인증에 성공했습니다."
-          }
-        />
-      ) : (
-        <></>
-      )}
     </s.Wrapper>
   );
 }
