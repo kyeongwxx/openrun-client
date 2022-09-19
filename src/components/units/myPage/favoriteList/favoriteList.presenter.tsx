@@ -3,8 +3,9 @@ import InfiniteScroll from "react-infinite-scroller";
 import { v4 as uuidv4 } from "uuid";
 import { el } from "date-fns/locale";
 import { dateSplit } from "../../../../commons/function/dateSlice";
+import { IFavoriteProps } from "../myPage.types";
 
-export default function MypageFavoriteListUI(props) {
+export default function MypageFavoriteListUI(props: IFavoriteProps) {
   return (
     <s.Wrapper>
       <s.Button onClick={props.onClickTop}>Top</s.Button>
@@ -32,14 +33,14 @@ export default function MypageFavoriteListUI(props) {
                     color={
                       el.board?.status === "모집중"
                         ? "#7DD03C"
-                        : el.status === "진행중"
+                        : el?.status === "진행중"
                         ? "#ff9100"
                         : "#D03C3C"
                     }
                     border={
                       el.board?.status === "모집중"
                         ? "#7DD03C"
-                        : el.status === "진행중"
+                        : el?.status === "진행중"
                         ? "#ff9100"
                         : "#D03C3C"
                     }

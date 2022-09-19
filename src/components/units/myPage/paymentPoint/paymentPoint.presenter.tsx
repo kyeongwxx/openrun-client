@@ -4,7 +4,9 @@ import Selector from "../../../../commons/selector";
 import { useRecoilState } from "recoil";
 import { userInfoValue } from "../../../commons/store";
 import { v4 as uuidv4 } from "uuid";
-export default function MypagePaymentPointUI(props) {
+import { IPaymentProps } from "../myPage.types";
+import { dateSplit } from "../../../../commons/function/dateSlice";
+export default function MypagePaymentPointUI(props: IPaymentProps) {
   const [userInfo] = useRecoilState(userInfoValue);
   return (
     <s.Wrapper>
@@ -72,15 +74,15 @@ export default function MypagePaymentPointUI(props) {
                   </s.Text>
                 </s.AvailablePoint>
                 <s.Text size="1rem" color="#656565" weight="400">
-                  {el.createdAt}
+                  {dateSplit(el?.createdAt)}
                 </s.Text>
-                {console.log(props.isRefund)}
+
                 {props.isRefund ? (
                   <s.None />
-                ) : el.status === "PAYMENT" ? (
+                ) : el?.status === "PAYMENT" ? (
                   <>
                     <s.RefundPoint
-                      onClick={props.onClickRefund(el.impUid, el.amount)}
+                      onClick={props.onClickRefund(el?.impUid, el?.amount || 0)}
                     >
                       <s.Text size="1rem" color="#656565" weight="400">
                         포인트 환불

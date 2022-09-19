@@ -8,6 +8,9 @@ import {
 } from "react-hook-form";
 import {
   IBoard,
+  IChatRoom,
+  IInterest,
+  IPayment,
   IPaymentHistory,
   IRunner,
 } from "../../../commons/types/generated/types";
@@ -19,7 +22,7 @@ export interface IEditAccountProps {
   onClickEdit: SubmitHandler<FieldValues>;
   onClickCancel: () => void;
   fileUrls: string[];
-  onChangeFileUrls: (arg0: string) => void;
+  onChangeFileUrls: (arg0: string, arg1: number) => void;
 }
 
 export interface IDealListProps {
@@ -45,7 +48,29 @@ export interface IWrittenBoardsProps {
 export interface IMainProps {
   sellerData?: IBoard[];
   runnerData?: IRunner[];
+  chatRoom?: IChatRoom[];
+
   onFetchMore: () => void;
   onFetchMoreRunner: () => void;
   onClickMoveToBoardDetail: (arg: string) => MouseEventHandler<HTMLDivElement>;
+}
+
+export interface IFavoriteProps {
+  data?: IInterest[];
+  onClickMoveToBoardDetail: (arg: string) => () => void;
+  onFetchMore: () => void;
+  onClickTop: () => void;
+  scrollRef: RefObject<HTMLDivElement>;
+}
+
+export interface IPaymentProps {
+  onFetchMore: () => void;
+  onClickChargePoint: () => void;
+  onClickRefund: (impUid: string, amount: number) => () => Promise<void>;
+  onClickPayment: () => Promise<void>;
+  onClickOpenRefund: () => void;
+  chargeBtnState: boolean;
+  data?: IPayment[];
+  isRefund: string;
+  refundState: boolean;
 }

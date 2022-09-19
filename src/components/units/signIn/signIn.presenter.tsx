@@ -2,7 +2,6 @@ import * as s from "./signIn.styles";
 import Naver from "../../../../public/Naver.svg";
 import Google from "../../../../public/Google.svg";
 import Kakao from "../../../../public/Kakao.svg";
-import VerticalDivideLine from "../../../../public/VerticalDivideLine.svg";
 import SignInput from "../../../commons/input/sign";
 import { ISignInProps } from "./signIn.types";
 

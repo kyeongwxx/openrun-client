@@ -15,7 +15,8 @@ import {
 
 export default function MyPage() {
   const router = useRouter();
-  const { data } = useQuery(FETCH_USER_CHATROOM);
+  const { data } =
+    useQuery<Pick<IQuery, "fetchUserChatRoom">>(FETCH_USER_CHATROOM);
 
   console.log(data);
 

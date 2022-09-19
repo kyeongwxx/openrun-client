@@ -1,26 +1,16 @@
-import { IBoard, IUser } from "../../../commons/types/generated/types";
+import { IBoard, IEvent, IUser } from "../../../commons/types/generated/types";
 
 export interface IMainProps {
   color: boolean[];
   category: string[];
-  onClickCategory: (arg: string) => void;
+  onClickCategory: (arg: string) => () => void;
   onMouse: (arg: number) => void;
   isHover: string[];
   onMouseTrue: (arg: number) => void;
   MouseLeaveDate: () => void;
-  onClickMoveToDetail: (arg: string) => void;
+  onClickMoveToDetail: (arg: string) => () => void;
   onClickDate: (arg: string, arg2: number) => void;
-  eventIfo: any;
+  eventInfo?: IEvent[];
   data?: IUser[];
-  bestBoards: IBoard[];
+  bestBoards?: IBoard[];
 }
-
-//   onClickDate={onClickDate}
-//
-//
-//
-//       data={data?.fetchBestOfUser}
-//       bestBoards={bestBoards?.fetchBestOfBoards}
-//
-//
-//       eventIfo={eventIfo?.fetchEventsByDate}
