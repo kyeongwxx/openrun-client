@@ -2,6 +2,8 @@ import MainSlider from "../../../commons/carousel";
 import DatePicker from "../../../commons/datePicker";
 import * as s from "./main.styles";
 import { v4 as uuidv4 } from "uuid";
+import { dateSplit } from "../../../commons/function/dateSlice";
+
 export default function MainUI(props) {
   return (
     <s.Wrapper>
@@ -14,25 +16,44 @@ export default function MainUI(props) {
           "/img/carousel/main11.jpeg",
         ]}
       />
-      <DatePicker onClickDate={props.onClickDate} color={props.color} />
+      <DatePicker
+        onClickDate={props.onClickDate}
+        color={props.color}
+        MouseLeaveDate={props.MouseLeaveDate}
+      />
       <s.EventProductWrapper>
-        <s.EventProduct>
-          <s.ProductImg />
-          <s.ProductTexts>
-            <s.ProductText weight="400" size="0.8rem">
-              Nike
-            </s.ProductText>
-            <s.ProductText weight="700" size="1rem">
-              오픈런 한정판 나이키
-            </s.ProductText>
-            <s.ProductText weight="400" size="0.6rem">
-              2022.xx.xx
-            </s.ProductText>
-            <s.ProductText weight="400" size="1rem">
-              10,000원
-            </s.ProductText>
-          </s.ProductTexts>
-        </s.EventProduct>
+        {props.eventIfo?.length === 0 ? (
+          <s.NoData>
+            <s.ExclamationMark />
+            <s.NodataText>행사 정보가 없습니다.</s.NodataText>
+          </s.NoData>
+        ) : (
+          props.eventIfo?.map((el) => (
+            <s.EventProduct key={uuidv4()}>
+              <s.ProductImg
+                src={`https://storage.googleapis.com/openrun-storage/${el.image}`}
+                onClick={props.onClickMoveToDetail(`/eventInfo/${el.id}`)}
+              />
+              <s.ProductTexts
+                onClick={props.onClickMoveToDetail(`/eventInfo/${el.id}`)}
+              >
+                <s.ProductText weight="400" size="0.8rem">
+                  브랜드
+                  {el.brand}
+                </s.ProductText>
+                <s.ProductText weight="700" size="1rem">
+                  {el.title}
+                </s.ProductText>
+                <s.ProductText weight="400" size="0.6rem">
+                  {el.location}
+                </s.ProductText>
+                <s.ProductText weight="400" size="1rem">
+                  {dateSplit(el.period)}
+                </s.ProductText>
+              </s.ProductTexts>
+            </s.EventProduct>
+          ))
+        )}
       </s.EventProductWrapper>
       <s.BannerImg height="690px" url="/img/rectangle2.png">
         <s.ProductWrapperText>
@@ -41,7 +62,7 @@ export default function MainUI(props) {
         </s.ProductWrapperText>
         <s.BestRunners>
           {props.data?.map((el, index) => (
-            <s.BestRunner>
+            <s.BestRunner key={uuidv4()}>
               <s.Ranking>
                 <s.RankingText>{index + 1}</s.RankingText>
               </s.Ranking>
@@ -80,11 +101,54 @@ export default function MainUI(props) {
             ))}
           </s.Category>
           <s.CategoryImages>
-            <s.CategoryImage src="/img/example1.png" />
-            <s.CategoryImage />
-            <s.CategoryImage />
-            <s.CategoryImage />
-            <s.CategoryImage />
+            {props.bestBoards?.length === 0 ? (
+              <s.NoData>
+                <s.ExclamationMark />
+                <s.NodataText>베스트 상품이 없습니다.</s.NodataText>
+              </s.NoData>
+            ) : (
+              props.bestBoards?.map((el, index) => (
+                <s.CategoryImage
+                  key={uuidv4()}
+                  onMouseEnter={() => props.onMouse(index)}
+                  onMouseLeave={() => props.onMouse(index)}
+                  image={
+                    el.image.url
+                      ? `https://storage.googleapis.com/openrun-storage/${el.image.url}`
+                      : "/img/profile.png"
+                  }
+                >
+                  {props.isHover[index] ? (
+                    <s.CategoryInfo
+                      onClick={props.onClickMoveToDetail(`/board/${el.id}`)}
+                    >
+                      <s.CategoryWrapper>
+                        <s.CategoryText weight="700" size="0.8rem">
+                          {el.title}
+                        </s.CategoryText>
+
+                        <s.CategoryText weight="700" size="0.8rem">
+                          <s.Runner /> 0
+                        </s.CategoryText>
+                      </s.CategoryWrapper>
+
+                      <s.CategoryText weight="400" size="0.7rem">
+                        {dateSplit(el.dueDate)}
+                      </s.CategoryText>
+                      <s.CategoryText weight="400" size="0.7rem">
+                        장소
+                        {el.location?.address}
+                      </s.CategoryText>
+                      <s.CategoryText weight="400" size="0.7rem">
+                        {el.prices}
+                      </s.CategoryText>
+                    </s.CategoryInfo>
+                  ) : (
+                    <></>
+                  )}
+                </s.CategoryImage>
+              ))
+            )}
           </s.CategoryImages>
         </s.BestProductCategory>
       </s.ProductWrapper>

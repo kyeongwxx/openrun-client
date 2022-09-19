@@ -15,16 +15,13 @@ export default function DatePicker(props) {
   const isPc = MediaQueryPc();
   const isMobile = MediaQueryMobile();
 
-  const red = "red";
-
   const [pageState, setPageState] = useState(0);
 
   const oneWeek = currentDate(pageState);
 
   const date = [...oneWeek[0]];
   const day = [...oneWeek[1]];
-
-  console.log(date);
+  const dateTotal = [...oneWeek[2]];
 
   const onClickNextPage = () => {
     setPageState(pageState + 1);
@@ -47,7 +44,10 @@ export default function DatePicker(props) {
             )}
 
             {date.map((el, index) => (
-              <s.Button key={uuidv4()} onClick={props.onClickDate(el, index)}>
+              <s.Button
+                key={uuidv4()}
+                onClick={() => props.onClickDate(dateTotal[index], index)}
+              >
                 <s.TextDay
                   color={props.color[index] ? "transparent" : "#333"}
                   bg={props.color[index] ? BG_GRADATION : "none"}

@@ -1,50 +1,88 @@
 import { useQuery } from "@apollo/client";
+import te from "date-fns/esm/locale/te/index.js";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
+import { currentDate } from "../../../commons/function/currentDate";
 
-import { IQuery } from "../../../commons/types/generated/types";
+import {
+  IQuery,
+  IQueryFetchBestOfBoardsArgs,
+  IQueryFetchEventsByDateArgs,
+} from "../../../commons/types/generated/types";
 import { onClickState } from "../../commons/store";
 
 import MainUI from "./main.presenter";
-import { FETCH_BEST_OF_USER } from "./main.queries";
+import {
+  FETCH_BEST_OF_BOARDS,
+  FETCH_BEST_OF_USER,
+  FETCH_EVENTS_BY_DATE,
+} from "./main.queries";
 
 export default function Main() {
-  const [color, setColor] = useState([
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ]);
+  const oneWeek = currentDate(0);
+  const router = useRouter();
+  const [color, setColor] = useState(Array(7).fill(false));
 
-  const category = [
-    "BEST FASHION",
-    "BEST ACC",
-    "BEST DIGITAL",
-    "BEST FOOD",
-    "BEST TOY",
-  ];
+  const [categoryValue, setCategoryValue] = useState("FASHION");
+  const [isHover, setIsHover] = useState(Array(5).fill(false));
+  const [date, setDate] = useState(oneWeek[2][0]);
 
-  const { data } = useQuery(FETCH_BEST_OF_USER);
-  console.log(data);
+  const category = ["FASHION", "ACC", "DIGITAL", "FOOD", "TOY"];
 
-  const allFalse = () => {
-    setColor([false, false, false, false, false, false, false]);
+  const { data } =
+    useQuery<Pick<IQuery, "fetchBestOfUser">>(FETCH_BEST_OF_USER);
+
+  const { data: bestBoards } = useQuery<
+    Pick<IQuery, "fetchBestOfBoards">,
+    IQueryFetchBestOfBoardsArgs
+  >(FETCH_BEST_OF_BOARDS, {
+    variables: {
+      category: categoryValue,
+    },
+  });
+
+  const { data: eventIfo } = useQuery<
+    Pick<IQuery, "fetchEventsByDate">,
+    IQueryFetchEventsByDateArgs
+  >(FETCH_EVENTS_BY_DATE, {
+    variables: {
+      date,
+    },
+  });
+
+  const onMouse = (index: number) => {
+    const temp = [...isHover];
+    temp[index] = !isHover[index];
+    setIsHover(temp);
+    console.log(temp[index]);
+    console.log(temp);
+  };
+  const onMouseTrue = (index: number) => {
+    const temp = [...isHover];
+    temp[index] = true;
+    setIsHover(temp);
   };
 
-  const onClickCategory = (category: string, index: number) => () => {
-    console.log(category);
-    console.log(index);
+  const onClickCategory = (category: string) => () => {
+    setCategoryValue(category);
   };
 
-  const onClickDate = (date: string, index: number) => () => {
-    allFalse();
+  const onClickDate = (date: string, index: number) => {
+    setColor(Array(7).fill(false));
     const temp = [...color];
-    temp[index] = !temp[index];
+    temp[index] = true;
+
+    setDate(date);
 
     setColor(temp);
+  };
+  const MouseLeaveDate = () => {
+    setColor(Array(7).fill(false));
+  };
+
+  const onClickMoveToDetail = (id: string) => () => {
+    router.push(`${id}`);
   };
 
   return (
@@ -54,6 +92,13 @@ export default function Main() {
       category={category}
       onClickCategory={onClickCategory}
       data={data?.fetchBestOfUser}
+      bestBoards={bestBoards?.fetchBestOfBoards}
+      onMouse={onMouse}
+      isHover={isHover}
+      onMouseTrue={onMouseTrue}
+      MouseLeaveDate={MouseLeaveDate}
+      onClickMoveToDetail={onClickMoveToDetail}
+      eventIfo={eventIfo?.fetchEventsByDate}
     />
   );
 }

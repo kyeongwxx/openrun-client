@@ -1,5 +1,8 @@
 import styled from "@emotion/styled";
 import { Container } from "@mui/system";
+import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
+import { BOX_BG_COLOR } from "../../../commons/cssConst";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
 export const Wrapper = styled.main`
   width: 100%;
@@ -37,6 +40,8 @@ export const ProductImg = styled.img`
   height: 60%;
   border-radius: 24px;
   background-color: lightgray;
+  object-fit: fill;
+  cursor: pointer;
 `;
 export const ProductTexts = styled.div`
   width: 100%;
@@ -46,6 +51,7 @@ export const ProductTexts = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  cursor: pointer;
 `;
 
 export const ProductText = styled.div<{ weight: string; size: string }>`
@@ -264,24 +270,52 @@ export const CategoryImages = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   overflow-y: scroll;
-  justify-content: center;
-  background-color: unset;
+  justify-content: flex-end;
+
   ::-webkit-scrollbar {
     display: none;
   }
 `;
+export const CategoryWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+`;
 
-export const CategoryImage = styled.img`
-  width: 400px;
+export const CategoryImage = styled.div<{ image: string }>`
+  width: 200px;
   height: 300px;
   margin: 1%;
   border-radius: 24px;
 
-  background-color: orange;
+  background-color: #fff;
+  background-image: url(${(props) => props.image});
+  position: relative;
+  background-repeat: no-repeat;
+
   @media (max-width: 767px) {
     width: 190px;
     height: 170px;
   }
+`;
+export const CategoryInfo = styled.div`
+  width: 100%;
+  height: 80px;
+  background-color: #f5f5f5;
+  opacity: 0.8;
+  position: absolute;
+  border-radius: 10px;
+  margin-top: 50%;
+  z-index: 30;
+  padding-top: 10px;
+  cursor: pointer;
+`;
+
+export const CategoryText = styled.div<{ weight: string; size: string }>`
+  font-weight: ${(props) => props.weight};
+  font-size: ${(props) => props.size};
+  margin-left: 10px;
 `;
 
 export const NewProductCategory = styled.div`
@@ -347,4 +381,27 @@ export const NewsImage = styled.div`
   flex-direction: column;
   justify-content: center;
   background-color: skyblue;
+`;
+
+export const Runner = styled(DirectionsRunIcon)`
+  font-size: 0.9rem;
+`;
+export const NoData = styled.div`
+  width: 100%;
+  height: 400px;
+  background-color: ${BOX_BG_COLOR};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+`;
+export const ExclamationMark = styled(ErrorOutlineIcon)`
+  color: #333;
+`;
+
+export const NodataText = styled.div`
+  color: #333;
 `;
