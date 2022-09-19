@@ -8,13 +8,15 @@ import MediaQueryMobile from "../../../../../commons/mediaQuery/mediaQueryStanda
 import MediaQueryPc from "../../../../../commons/mediaQuery/mediaQueryStandardPc";
 import { selectorValue, selectorValue2 } from "../../../../commons/store";
 import BoardListAccUI from "./boardListAcc.presenter";
+import MediaQueryUltra from "../../../../../commons/mediaQuery/mediaQueryStandardUltra";
 
 export default function BoardListAcc() {
   const router = useRouter();
 
   // mediaQuery
-  const isMobile = MediaQueryMobile();
   const isPc = MediaQueryPc();
+  const isMobile = MediaQueryMobile();
+  const isUltra = MediaQueryUltra();
 
   // 기본 게시물 정렬
   const [sortValue] = useRecoilState(selectorValue);
@@ -100,6 +102,7 @@ export default function BoardListAcc() {
       data={data}
       interestedId={interestedId}
       isMobile={isMobile}
+      isUltra={isUltra}
       isPc={isPc}
       refetch={refetch}
       onFetchMore={onFetchMore}

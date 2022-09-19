@@ -16,6 +16,7 @@ import MediaQueryMobile from "../../../../commons/mediaQuery/mediaQueryStandardM
 import MediaQueryPc from "../../../../commons/mediaQuery/mediaQueryStandardPc";
 import { schema } from "../../../../commons/yup/boardWrite";
 import { Modal } from "antd";
+import MediaQueryUltra from "../../../../commons/mediaQuery/mediaQueryStandardUltra";
 
 export default function BoardWrite(props: any) {
   const router = useRouter();
@@ -42,6 +43,7 @@ export default function BoardWrite(props: any) {
   // mediaQuery
   const isMobile = MediaQueryMobile();
   const isPc = MediaQueryPc();
+  const isUltra = MediaQueryUltra();
 
   // selector, calendar, timePicker 라이브러리 global state
   const [sortValue] = useRecoilState(selectorValue);
@@ -188,6 +190,7 @@ export default function BoardWrite(props: any) {
     <BoardWriteUI
       isMobile={isMobile}
       isPc={isPc}
+      isUltra={isUltra}
       register={register}
       handleSubmit={handleSubmit}
       formState={formState}

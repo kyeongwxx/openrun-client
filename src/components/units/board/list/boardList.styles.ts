@@ -16,11 +16,34 @@ export const InnerWrapper = styled.main`
 `;
 
 export const CategoryWrapper = styled.div`
-  width: 50%;
+  width: 78%;
   display: flex;
   flex-direction: row;
   padding-top: 5rem;
   padding-bottom: 2rem;
+  border-bottom: 2px solid rgba(101, 101, 101, 0.5);
+  @media (max-width: 767px) {
+    width: 80%;
+    flex-direction: column;
+  }
+`;
+export const ResponsiveCategory1 = styled.div`
+  @media (max-width: 767px) {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 1rem;
+  }
+`;
+export const ResponsiveCategory2 = styled.div`
+  @media (max-width: 767px) {
+    display: flex;
+    flex-direction: row;
+  }
+  @media (max-width: 412px) {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 1rem;
+  }
 `;
 export const CategoryItem = styled.div`
   width: 100%;
@@ -52,7 +75,7 @@ export const CategoryAll = styled.div`
 `;
 export const DivideLine1 = styled.div`
   width: 78%;
-  border-bottom: 2px solid rgba(101, 101, 101, 0.5); ;
+  border-bottom: 2px solid rgba(101, 101, 101, 0.5);
 `;
 export const FilterWrapper = styled.div`
   width: 78%;
@@ -124,6 +147,10 @@ export const ImageWrapper = styled.div`
   margin: 0 auto;
   overflow: hidden;
   cursor: pointer;
+  @media (max-width: 412px) {
+    height: 150px;
+    padding-bottom: 1rem;
+  }
 `;
 export const ProductImage = styled.img`
   border-radius: 24px;
@@ -174,6 +201,10 @@ export const Category = styled.div`
   font-size: 1rem;
   color: rgba(0, 0, 0, 0.7);
   padding: 0 20px;
+  @media (max-width: 412px) {
+    font-size: 0.7rem;
+    padding: 0 10px;
+  }
 `;
 export const Region = styled.div`
   width: 25%;
@@ -186,6 +217,9 @@ export const Region = styled.div`
   font-size: 0.875rem;
   color: #ffffff;
   margin: 0 10px;
+  @media (max-width: 412px) {
+    font-size: 0.7rem;
+  }
 `;
 export const Region1 = styled.div`
   width: 25%;
@@ -198,6 +232,9 @@ export const Region1 = styled.div`
   font-size: 0.875rem;
   color: #ffffff;
   margin: 0 10px;
+  @media (max-width: 412px) {
+    font-size: 0.7rem;
+  }
 `;
 export const Region2 = styled.div`
   width: 25%;
@@ -210,6 +247,9 @@ export const Region2 = styled.div`
   font-size: 0.875rem;
   color: #ffffff;
   margin: 0 10px;
+  @media (max-width: 412px) {
+    font-size: 0.7rem;
+  }
 `;
 export const Region3 = styled.div`
   width: 25%;
@@ -222,6 +262,9 @@ export const Region3 = styled.div`
   font-size: 0.875rem;
   color: #ffffff;
   margin: 0 10px;
+  @media (max-width: 412px) {
+    font-size: 0.7rem;
+  }
 `;
 export const Region4 = styled.div`
   width: 25%;
@@ -246,6 +289,9 @@ export const Region5 = styled.div`
   font-size: 0.875rem;
   color: #ffffff;
   margin: 0 10px;
+  @media (max-width: 412px) {
+    font-size: 0.7rem;
+  }
 `;
 export const Region6 = styled.div`
   width: 25%;
@@ -258,6 +304,9 @@ export const Region6 = styled.div`
   font-size: 0.875rem;
   color: #ffffff;
   margin: 0 10px;
+  @media (max-width: 412px) {
+    font-size: 0.7rem;
+  }
 `;
 export const Region7 = styled.div`
   width: 25%;
@@ -270,6 +319,9 @@ export const Region7 = styled.div`
   font-size: 0.875rem;
   color: #ffffff;
   margin: 0 10px;
+  @media (max-width: 412px) {
+    font-size: 0.7rem;
+  }
 `;
 export const Title = styled.div`
   font-weight: 700;
@@ -282,6 +334,10 @@ export const Title = styled.div`
     text-decoration: underline;
     font-weight: bold;
   }
+  @media (max-width: 412px) {
+    font-size: 0.8rem;
+    padding: 0 10px;
+  }
 `;
 export const TitleSpan = styled.span`
   color: ${(props) => (props.isMatched ? "#bfae90" : "black")};
@@ -292,14 +348,21 @@ export const Contents = styled.div`
   color: #656565;
   padding: 0 20px;
   padding-bottom: 0.688rem;
+  @media (max-width: 412px) {
+    font-size: 0.8rem;
+    padding: 0 10px;
+  }
 `;
 export const Writer = styled.div`
   font-weight: 700;
   font-size: 0.875rem;
   color: #a3a3a3;
   padding: 0 20px;
-
   padding-bottom: 0.688rem;
+  @media (max-width: 412px) {
+    font-size: 0.8rem;
+    padding: 0 10px;
+  }
 `;
 export const StatusPriceWrapper = styled.div`
   display: flex;
@@ -308,6 +371,11 @@ export const StatusPriceWrapper = styled.div`
   align-items: center;
   padding: 0 20px;
   padding-bottom: 10px;
+  @media (max-width: 412px) {
+    font-size: 0.8rem;
+    padding: 0 10px;
+    padding-bottom: 5px;
+  }
 `;
 export const Status1 = styled.div`
   width: 47px;
@@ -318,6 +386,12 @@ export const Status1 = styled.div`
   font-size: 0.75rem;
   color: #7dd03c;
   border: 1px solid #7dd03c;
+  @media (max-width: 412px) {
+    font-size: 0.65rem;
+    width: 40px;
+    height: 20px;
+    line-height: 20px;
+  }
 `;
 export const Status2 = styled.div`
   width: 47px;
@@ -328,6 +402,12 @@ export const Status2 = styled.div`
   font-size: 0.75rem;
   color: #ff9100;
   border: 1px solid #ff9100;
+  @media (max-width: 412px) {
+    font-size: 0.65rem;
+    width: 40px;
+    height: 20px;
+    line-height: 20px;
+  }
 `;
 export const Status3 = styled.div`
   width: 47px;
@@ -338,11 +418,20 @@ export const Status3 = styled.div`
   font-size: 0.75rem;
   color: #d03c3c;
   border: 1px solid #d03c3c;
+  @media (max-width: 412px) {
+    font-size: 0.65rem;
+    width: 40px;
+    height: 20px;
+    line-height: 20px;
+  }
 `;
 export const Price = styled.div`
   font-weight: 700;
   font-size: 1.5rem;
   color: #000000;
+  @media (max-width: 412px) {
+    font-size: 1rem;
+  }
 `;
 export const FetchMoreBtnWrapper = styled.div`
   width: 15%;

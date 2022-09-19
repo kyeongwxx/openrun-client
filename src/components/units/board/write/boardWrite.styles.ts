@@ -28,6 +28,12 @@ export const ProductInfoText = styled.div`
 `;
 export const SelectWrapper = styled.div`
   width: 25%;
+  @media (max-width: 767px) {
+    width: 50%;
+  }
+  @media (max-width: 412px) {
+    width: 100%;
+  }
 `;
 export const TitleInput = styled.input`
   height: 56px;
@@ -78,6 +84,9 @@ export const TimePickerWrapper = styled.div`
 `;
 export const DateGuide = styled.div`
   margin-top: 1rem;
+  @media (max-width: 767px) {
+    font-size: 0.8rem;
+  }
 `;
 export const ProductDateWrapper = styled.div`
   margin-top: 3.75rem;
@@ -132,6 +141,9 @@ export const Zipcode = styled.input`
   font-weight: 400;
   font-size: 1.125rem;
   margin-right: 1rem;
+  @media (max-width: 412px) {
+    font-size: 0.8rem;
+  }
 `;
 export const AddressButton = styled.button`
   width: 30%;
@@ -143,6 +155,9 @@ export const AddressButton = styled.button`
   font-weight: 400;
   font-size: 1.125rem;
   cursor: pointer;
+  @media (max-width: 412px) {
+    font-size: 0.8rem;
+  }
 `;
 export const AddressInput = styled.input`
   height: 56px;
