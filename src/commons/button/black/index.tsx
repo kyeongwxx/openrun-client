@@ -16,7 +16,7 @@ export const Button = styled.button<{ width: string; fontWeight: string }>`
   cursor: pointer;
   margin-top: 20px;
 `;
-export default function BlackButton(props) {
+export default function BlackButton(props: any) {
   const { onClick, type, title, width, fontWeight, disabled } = props;
 
   return (

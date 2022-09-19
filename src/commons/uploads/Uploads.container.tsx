@@ -5,7 +5,7 @@ import { UPLOAD_FILE } from "./Uploads.queries";
 import { checkValidationImages } from "./Uploads.validation";
 
 export default function Upload(props: any) {
-  const fileRef = useRef(null);
+  const fileRef = useRef<null | HTMLDivElement>(null);
   const [uploadFile] = useMutation(UPLOAD_FILE);
 
   const onClickUpload = () => {

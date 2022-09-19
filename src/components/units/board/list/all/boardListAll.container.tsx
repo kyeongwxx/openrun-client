@@ -25,6 +25,7 @@ export default function BoardListAll() {
     variables: {
       dateType: sortValue || "최신순",
       direcion: sortValue2,
+      search: "",
       page: 1,
     },
   });

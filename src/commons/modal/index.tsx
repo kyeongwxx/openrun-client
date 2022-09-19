@@ -9,7 +9,7 @@ import { createTheme } from "@mui/material/styles";
 
 import * as s from "./style";
 
-export default function BasicModal(props) {
+export default function BasicModal(props: any) {
   //const [open, setOpen] = useState(false);
   const [open, setOpen] = useRecoilState(openValue);
   const handleOpen = () => setOpen(true);

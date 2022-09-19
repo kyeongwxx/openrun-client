@@ -22,7 +22,7 @@ export interface IEditAccountProps {
   onClickEdit: SubmitHandler<FieldValues>;
   onClickCancel: () => void;
   fileUrls: string[];
-  onChangeFileUrls: (arg0: string, arg1: number) => void;
+  onChangeFileUrls: (fileUrl: string, index: number) => void;
 }
 
 export interface IDealListProps {
@@ -46,6 +46,7 @@ export interface IWrittenBoardsProps {
 }
 
 export interface IMainProps {
+  chatRoom?: any;
   sellerData?: IBoard[];
   runnerData?: IRunner[];
   chatRoom?: IChatRoom[];

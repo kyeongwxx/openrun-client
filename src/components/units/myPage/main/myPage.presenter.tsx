@@ -120,7 +120,7 @@ export default function MyPageUI(props: IMainProps) {
               <s.NodataText>치탱중이 아닙니다.</s.NodataText>
             </s.NoData>
           ) : (
-            props?.chatRoom?.map((el) =>
+            props?.chatRoom?.map((el: any) =>
               el?.runner?.id === userInfo?.id ? (
                 <s.ChatContents height="200px" key={uuidv4()}>
                   <s.ChatContent>{el?.board?.title}</s.ChatContent>

@@ -29,6 +29,7 @@ export default function BoardListDigital() {
       dateType: sortValue || "최신순",
       direcion: sortValue2,
       category: "DIGITAL",
+      search: "",
       page: 1,
     },
   });

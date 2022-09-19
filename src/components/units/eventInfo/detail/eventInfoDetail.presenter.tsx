@@ -98,7 +98,7 @@ export default function EventInfoDetailUI(props: IEventInfoDetailUI) {
           <s.WithItemTitle>With Item</s.WithItemTitle>
           <s.WithItemSubTitle>함께 보면 좋은 상품</s.WithItemSubTitle>
         </s.WithItemWrapper>
-        <InfiniteScroll
+        {/* <InfiniteScroll
           pageStart={0}
           loadMore={props.ToloadFunc}
           hasMore={true}
@@ -116,7 +116,7 @@ export default function EventInfoDetailUI(props: IEventInfoDetailUI) {
             <s.WithItemImg src="/img/Rectangle 38.png" />
             <s.WithItemImg src="/img/Rectangle 38.png" />
           </s.WithItemBox>
-        </InfiniteScroll>
+        </InfiniteScroll> */}
       </s.Wrapper>
     </>
   );

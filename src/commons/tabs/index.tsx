@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import * as s from "./tabs.styles";
 import { v4 as uuidv4 } from "uuid";
 
-export default function CenteredTabs(props) {
+export default function CenteredTabs(props: any) {
   const [value, setValue] = useState(0);
   const router = useRouter();
 
@@ -28,7 +28,7 @@ export default function CenteredTabs(props) {
           onChange={handleChange}
           scrollButtons={false}
         >
-          {props.tabs.map((el, index) =>
+          {props.tabs.map((el: any, index: any) =>
             props.address ? (
               <s.TabCustom
                 key={uuidv4()}

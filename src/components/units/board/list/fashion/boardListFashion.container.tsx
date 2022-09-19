@@ -29,6 +29,7 @@ export default function BoardListFashion() {
       dateType: sortValue || "최신순",
       direcion: sortValue2,
       category: "FASHION",
+      search: "",
       page: 1,
     },
   });

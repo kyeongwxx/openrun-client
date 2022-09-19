@@ -1,6 +1,6 @@
 import { UploadButton, UploadFileHidden, UploadImage } from "./Uploads.styles";
 
-export default function UploadUI(props) {
+export default function UploadUI(props: any) {
   return (
     <div>
       {props.fileUrl ? (

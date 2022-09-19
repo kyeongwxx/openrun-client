@@ -12,5 +12,5 @@ export interface IMainProps {
   onClickDate: (arg: string, arg2: number) => void;
   eventInfo?: IEvent[];
   data?: IUser[];
-  bestBoards?: IBoard[];
+  bestBoards?: IBoard[] | undefined;
 }

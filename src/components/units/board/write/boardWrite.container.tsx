@@ -48,7 +48,7 @@ export default function BoardWrite(props: any) {
   // selector, calendar, timePicker 라이브러리 global state
   const [sortValue] = useRecoilState(selectorValue);
   const [dayValue] = useRecoilState(dayState);
-  const [timeValue] = useRecoilState(timeState);
+  const [timeValue] = useRecoilState<any>(timeState);
 
   // console.log(`sortValue : ${sortValue}`);
   // console.log(`dayValue : ${String(dayValue).slice(0, 15)}`);
@@ -59,7 +59,7 @@ export default function BoardWrite(props: any) {
   const [zipcode, setZipcode] = useState("");
   const [addressDetail, setAddressDetail] = useState("");
 
-  const onChangeAddressDetail = (event) => {
+  const onChangeAddressDetail = (event: any) => {
     setAddressDetail(event.target.value);
     setValue("addressDetail", event.target.value);
     trigger("addressDetail");

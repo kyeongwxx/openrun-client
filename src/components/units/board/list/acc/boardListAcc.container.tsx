@@ -26,6 +26,7 @@ export default function BoardListAcc() {
       dateType: sortValue || "최신순",
       direcion: sortValue2,
       category: "ACC",
+      search: "",
       page: 1,
     },
   });
@@ -52,7 +53,7 @@ export default function BoardListAcc() {
   // search 함수
   const [keyword, setKeyword] = useState("");
 
-  const getDebounce = _.debounce((value) => {
+  const getDebounce = _.debounce((value: any) => {
     refetch({
       dateType: sortValue || "최신순",
       direcion: sortValue2,

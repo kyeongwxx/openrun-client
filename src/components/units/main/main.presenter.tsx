@@ -29,7 +29,7 @@ export default function MainUI(props: IMainProps) {
             <s.NodataText>행사 정보가 없습니다.</s.NodataText>
           </s.NoData>
         ) : (
-          props.eventInfo?.map((el) => (
+          props.eventIfo?.map((el: any) => (
             <s.EventProduct key={uuidv4()}>
               <s.ProductImg
                 src={`https://storage.googleapis.com/openrun-storage/${el.image}`}
@@ -156,7 +156,7 @@ export default function MainUI(props: IMainProps) {
       <s.BannerDiv>
         <s.H1 color="#4E6781">러너 1:1 매칭 </s.H1>
         <s.BannerText>
-          어려웠던 줄서기 오픈런과 함께하면 쉬어집니다.
+          어려웠던 줄서기 오픈런과 함께하면 쉬워집니다.
         </s.BannerText>
       </s.BannerDiv>
     </s.Wrapper>

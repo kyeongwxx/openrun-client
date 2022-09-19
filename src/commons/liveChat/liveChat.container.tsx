@@ -24,7 +24,7 @@ export default function LiveChat() {
   const [room, setRoom] = useState("");
   const [resultMsg, setResultMsg] = useState<string[]>([]);
 
-  const messagesEndRef = useRef(null);
+  const messagesEndRef = useRef<null | HTMLDivElement>(null);
 
   const { data, refetch } = useQuery(FETCH_CHAT_LOGS, {
     variables: { room: `first${router.query.id}` },

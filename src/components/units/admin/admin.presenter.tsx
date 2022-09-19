@@ -1,3 +1,3 @@
-export default function AdminUI(props) {
+export default function AdminUI(props: any) {
   return <></>;
 }

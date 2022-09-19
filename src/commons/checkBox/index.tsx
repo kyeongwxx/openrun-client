@@ -4,7 +4,7 @@ import type { CheckboxValueType } from "antd/es/checkbox/Group";
 import { useState } from "react";
 import * as s from "./checkbox.styles";
 
-export default function CheckBox(props) {
+export default function CheckBox(props: any) {
   const defaultCheckedList = [""];
   const plainOptions = [props.essential, props.choice];
 

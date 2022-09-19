@@ -6,7 +6,7 @@ import { userInfoValue } from "../../../commons/store";
 import { v4 as uuidv4 } from "uuid";
 import { IPaymentProps } from "../myPage.types";
 import { dateSplit } from "../../../../commons/function/dateSlice";
-export default function MypagePaymentPointUI(props: IPaymentProps) {
+export default function MypagePaymentPointUI(props: any) {
   const [userInfo] = useRecoilState(userInfoValue);
   return (
     <s.Wrapper>
@@ -63,7 +63,7 @@ export default function MypagePaymentPointUI(props: IPaymentProps) {
           {!props.data ? (
             <s.PointInfo />
           ) : (
-            props.data.map((el) => (
+            props.data.map((el: any) => (
               <s.PointInfo key={uuidv4()}>
                 <s.AvailablePoint>
                   <s.Text size="1rem" color="#656565" weight="400">

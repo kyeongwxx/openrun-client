@@ -11,7 +11,7 @@ import { useRecoilState } from "recoil";
 import { onClickState } from "../../components/commons/store";
 import { BG_GRADATION } from "../cssConst";
 
-export default function DatePicker(props) {
+export default function DatePicker(props: any) {
   const isPc = MediaQueryPc();
   const isMobile = MediaQueryMobile();
 
