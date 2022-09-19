@@ -57,7 +57,7 @@ export default function SignIn() {
       setUserInfo(userInfo);
       if (userInfo) {
         // reload();
-        location.replace(`/myPage`);
+        location.replace(`/main`);
       } else {
         alert("로그인실패");
       }

@@ -3,8 +3,9 @@ import DatePicker from "../../../commons/datePicker";
 import * as s from "./main.styles";
 import { v4 as uuidv4 } from "uuid";
 import { dateSplit } from "../../../commons/function/dateSlice";
+import { IMainProps } from "./main.types";
 
-export default function MainUI(props) {
+export default function MainUI(props: IMainProps) {
   return (
     <s.Wrapper>
       <MainSlider

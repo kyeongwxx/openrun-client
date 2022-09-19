@@ -147,8 +147,9 @@ export const ActiveTitle = styled.div`
 `;
 
 export const InfiniteScrollLimit = styled.div`
-  overflow-x: auto;
   width: 80%;
+  height: 400px;
+  overflow: auto;
 
   @media (max-width: 767px) {
     width: 100%;
@@ -157,12 +158,9 @@ export const InfiniteScrollLimit = styled.div`
 
 export const ActiveWrapper = styled(InfiniteScroll)`
   width: 100%;
-  height: 100%;
-  overflow-y: auto;
 
   display: flex;
-  flex-direction: column;
-
+  flex-direction: row;
   flex-wrap: wrap;
 
   ::-webkit-scrollbar {
@@ -170,11 +168,15 @@ export const ActiveWrapper = styled(InfiniteScroll)`
   }
   @media (max-width: 767px) {
     width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 `;
 
 export const ChatWrapper = styled.div`
-  width: 100%;
+  width: 80%;
   height: 100%;
   overflow-y: auto;
 
@@ -188,11 +190,12 @@ export const ChatWrapper = styled.div`
   }
   @media (max-width: 767px) {
     width: 100%;
+    flex-direction: row;
   }
 `;
 
 export const ActiveContent = styled.div<{ height: string }>`
-  width: 190px;
+  width: 180px;
   height: ${(props) => props.height};
   margin: 1%;
   border-radius: 24px;
@@ -200,11 +203,14 @@ export const ActiveContent = styled.div<{ height: string }>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   cursor: pointer;
   @media (max-width: 767px) {
-    width: 190px;
-    height: 170px;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 16px;
   }
 `;
 
@@ -213,6 +219,10 @@ export const ActiveImg = styled.img`
   height: 40%;
   /* object-fit: cover;
   background-color: aliceblue; */
+  @media (max-width: 767px) {
+    width: 80px;
+    height: 60px;
+  }
 `;
 
 export const NoImg = styled(WallpaperIcon)`
@@ -231,10 +241,21 @@ export const ActiveText = styled.div<{
   font-size: ${(props) => props.size};
 `;
 
+export const ActiveTextWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  @media (max-width: 767px) {
+    width: 60%;
+    align-items: flex-start;
+  }
+`;
 export const ChatDiv = styled.div``;
 
 export const ChatContents = styled.div<{ height: string }>`
-  width: 190px;
+  width: 180px;
   height: ${(props) => props.height};
   margin: 1%;
   border-radius: 24px;
@@ -246,7 +267,7 @@ export const ChatContents = styled.div<{ height: string }>`
   cursor: pointer;
 
   @media (max-width: 767px) {
-    width: 190px;
+    width: 180px;
     height: 170px;
   }
 `;

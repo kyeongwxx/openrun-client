@@ -82,8 +82,6 @@ export default function MyPage() {
     });
   };
 
-  console.log(processingSeller);
-  console.log(processingRunner);
   return (
     <MyPageUI
       sellerData={processingSeller?.fetchBoardProcessingByUser}
