@@ -37,10 +37,7 @@ export default function MypagePaymentPoint() {
     Pick<IMutation, "cancelPayment">,
     IMutationCancelPaymentArgs
   >(CANCEL_PAYMENT);
-  const { data, fetchMore } = useQuery<
-    Pick<IQuery, "fetchPointChargeHistory">,
-    IQueryFetchPointChargeHistoryArgs
-  >(FETCH_POINT_CHARGE_HISTORY);
+  const { data, fetchMore } = useQuery(FETCH_POINT_CHARGE_HISTORY);
 
   // 포인트 충전 div 열고 닫기
   const onClickChargePoint = () => {

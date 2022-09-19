@@ -46,7 +46,6 @@ export interface IWrittenBoardsProps {
 }
 
 export interface IMainProps {
-  chatRoom?: any;
   sellerData?: IBoard[];
   runnerData?: IRunner[];
   chatRoom?: IChatRoom[];
