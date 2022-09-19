@@ -29,7 +29,7 @@ export default function MainUI(props: IMainProps) {
             <s.NodataText>행사 정보가 없습니다.</s.NodataText>
           </s.NoData>
         ) : (
-          props.eventIfo?.map((el: any) => (
+          props.eventInfo?.map((el: any) => (
             <s.EventProduct key={uuidv4()}>
               <s.ProductImg
                 src={`https://storage.googleapis.com/openrun-storage/${el.image}`}
