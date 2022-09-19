@@ -1,3 +1,6 @@
+import { dateForEvent } from "./dateForEvent";
+import { dateSplit } from "./dateSlice";
+
 export const currentDate = (pageState: number) => {
   let date = "";
   let today = 0;
@@ -10,19 +13,18 @@ export const currentDate = (pageState: number) => {
       now.setDate(now.getDate() + 7 * pageState)
     ).toLocaleDateString();
 
-    today = Date.parse(date);
+    today = Date.parse(date) - 9 * 60 * 60 * 1000;
   } else {
     date = new Date().toLocaleDateString();
-    today = Date.parse(date);
+    today = Date.parse(date) - 9 * 60 * 60 * 1000;
   }
 
-  weekly.push(date);
-
-  for (var i = 0; i < 6; i++) {
+  for (var i = 0; i < 7; i++) {
     today += 86400000; // 1일 ms로 변환 (1000*60*60*24)
 
-    weekly.push(new Date(today).toLocaleDateString());
+    weekly.push(new Date(today).toISOString());
   }
+
   weekly.forEach((el, i) => {
     const date = new Date(el);
 
@@ -37,15 +39,23 @@ export const currentDate = (pageState: number) => {
     if (day === 6) changeDay = "Sat";
     dayOfWeek.push(changeDay);
   });
+  const realDate: string[] = [];
   const changeDate: string[] = [];
 
   weekly.forEach((el, i) => {
-    const daySplit = el.split(" ")[2];
-    const remoteDot = daySplit.substring(0, daySplit.length - 1);
-    changeDate.push(remoteDot);
+    const daySplit = dateSplit(el);
+    const day = daySplit.slice(6, 8);
+
+    changeDate.push(day);
   });
 
-  const oneWeek = [[...changeDate], [...dayOfWeek]];
+  weekly.forEach((el, i) => {
+    const daySplit = dateForEvent(el);
+
+    realDate.push(daySplit);
+  });
+
+  const oneWeek = [[...changeDate], [...dayOfWeek], [...realDate]];
 
   return oneWeek;
 };

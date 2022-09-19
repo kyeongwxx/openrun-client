@@ -37,6 +37,7 @@ export type IBoard = {
   dueDate?: Maybe<Scalars['DateTime']>;
   id: Scalars['String'];
   image?: Maybe<IImage>;
+  interestCount?: Maybe<Scalars['Int']>;
   location?: Maybe<ILocation>;
   price?: Maybe<Scalars['Int']>;
   runnerTotal?: Maybe<Scalars['Int']>;
@@ -92,12 +93,13 @@ export type ICreateBoardInput = {
 };
 
 export type ICreateEventInput = {
-  contents?: InputMaybe<Scalars['String']>;
+  brand?: InputMaybe<Scalars['String']>;
+  contentsImage?: InputMaybe<Array<Scalars['String']>>;
   fakeData?: InputMaybe<Scalars['String']>;
   image?: InputMaybe<Scalars['String']>;
   location?: InputMaybe<Scalars['String']>;
   period?: InputMaybe<Scalars['DateTime']>;
-  title: Scalars['String'];
+  title?: InputMaybe<Scalars['String']>;
 };
 
 export type ICreateInquiryInput = {
@@ -121,13 +123,21 @@ export type ICreateUserInput = {
 
 export type IEvent = {
   __typename?: 'Event';
-  contents: Scalars['String'];
-  createdAt: Scalars['DateTime'];
+  brand?: Maybe<Scalars['String']>;
+  contentsImage?: Maybe<Array<IEventImage>>;
+  createdAt?: Maybe<Scalars['DateTime']>;
   id: Scalars['String'];
-  image: Scalars['String'];
-  location: Scalars['String'];
-  period: Scalars['DateTime'];
-  title: Scalars['String'];
+  image?: Maybe<Scalars['String']>;
+  location?: Maybe<Scalars['String']>;
+  period?: Maybe<Scalars['DateTime']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type IEventImage = {
+  __typename?: 'EventImage';
+  event: IEvent;
+  id: Scalars['String'];
+  url?: Maybe<Scalars['String']>;
 };
 
 export type IImage = {
@@ -396,6 +406,7 @@ export type IPaymentHistory = {
 export type IQuery = {
   __typename?: 'Query';
   fetchAdmin: Array<IUser>;
+  fetchBestOfBoards: Array<IBoard>;
   fetchBestOfUser: Array<IUser>;
   fetchBoard: IBoard;
   fetchBoardProcessingByUser: Array<IBoard>;
@@ -427,6 +438,12 @@ export type IQuery = {
 };
 
 
+export type IQueryFetchBestOfBoardsArgs = {
+  category?: InputMaybe<Scalars['String']>;
+  page?: InputMaybe<Scalars['Int']>;
+};
+
+
 export type IQueryFetchBoardArgs = {
   boardId: Scalars['String'];
 };
@@ -452,7 +469,7 @@ export type IQueryFetchEventArgs = {
 
 
 export type IQueryFetchEventsByDateArgs = {
-  date: Scalars['DateTime'];
+  date?: InputMaybe<Scalars['DateTime']>;
 };
 
 
@@ -499,13 +516,13 @@ export enum IReport_Type_Enum {
 
 export type IReport = {
   __typename?: 'Report';
-  board: IBoard;
-  contents: Scalars['String'];
-  createdAt: Scalars['DateTime'];
-  deletedAt: Scalars['DateTime'];
+  board?: Maybe<IBoard>;
+  contents?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  deletedAt?: Maybe<Scalars['DateTime']>;
   id: Scalars['String'];
-  type: IReport_Type_Enum;
-  user: IUser;
+  type?: Maybe<IReport_Type_Enum>;
+  user?: Maybe<IUser>;
 };
 
 export type IRunner = {
