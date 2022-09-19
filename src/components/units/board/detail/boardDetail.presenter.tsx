@@ -209,7 +209,7 @@ export default function BoardDetailUI(props: any) {
               {props.runner?.fetchRunnerByBoard?.length !== 0 ? (
                 <s.ApplyWrapper>
                   {props.runner?.fetchRunnerByBoard?.map((el: any) => (
-                    <s.ApplyList>
+                    <s.ApplyList key={el.id}>
                       <s.ApplyItem>
                         <s.RunnerIcon src="/boardDetail/RunnerIcon.png" />
                         <s.RunnerName>{el?.user?.nickName}</s.RunnerName>

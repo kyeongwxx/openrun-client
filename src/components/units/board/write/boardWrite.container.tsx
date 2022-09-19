@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import BoardWriteUI from "./boardWrite.presenter";
 import { useMutation, useQuery } from "@apollo/client";
 import { CREATE_BOARD, UPDATE_BOARD } from "./boardWrite.queries";
@@ -21,10 +21,23 @@ export default function BoardWrite(props: any) {
   const router = useRouter();
   const [accessToken] = useRecoilState(accessTokenState);
 
-  const { register, handleSubmit, formState, setValue, trigger } = useForm({
-    resolver: yupResolver(schema),
-    mode: "onChange",
-  });
+  const { register, handleSubmit, formState, setValue, trigger, reset } =
+    useForm({
+      resolver: yupResolver(schema),
+      mode: "onChange",
+    });
+
+  useEffect(() => {
+    if (props.data !== undefined) {
+      reset({
+        contents: props.data.fetchBoard.contents,
+        address: props.data.fetchBoard.location.address,
+        addressDetail: props.data.fetchBoard.location.addressDetail,
+        image: [props.data.fetchBoard.image.url],
+      });
+    }
+    // setIsEdit(true);
+  }, [props.data]);
 
   // mediaQuery
   const isMobile = MediaQueryMobile();
@@ -35,9 +48,9 @@ export default function BoardWrite(props: any) {
   const [dayValue] = useRecoilState(dayState);
   const [timeValue] = useRecoilState(timeState);
 
-  console.log(`sortValue : ${sortValue}`);
-  console.log(`dayValue : ${String(dayValue).slice(0, 15)}`);
-  console.log(`timeValue : ${timeValue.$d}`);
+  // console.log(`sortValue : ${sortValue}`);
+  // console.log(`dayValue : ${String(dayValue).slice(0, 15)}`);
+  // console.log(`timeValue : ${timeValue.$d}`);
 
   // 주소 state
   const [address, setAddress] = useState("");
