@@ -131,7 +131,7 @@ export default function BoardWriteUI(props: any) {
           <s.RequestInput
             onChange={props.onChangeContents}
             placeholder="요청사항을 기입해주세요."
-            defaultValue={props.data?.fetchBoard.contents}
+            defaultValue={props.data?.fetchBoard.contents || ""}
           />
           <YupWarningMsg errormsg={props.formState.errors.contents?.message} />
         </s.RequestWrapper>
