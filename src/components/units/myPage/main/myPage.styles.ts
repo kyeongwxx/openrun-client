@@ -156,8 +156,27 @@ export const InfiniteScrollLimit = styled.div`
 `;
 
 export const ActiveWrapper = styled(InfiniteScroll)`
-  width: 90%;
+  width: 100%;
   height: 100%;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+
+  flex-wrap: wrap;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+`;
+
+export const ChatWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
 
   display: flex;
   flex-direction: column;
@@ -210,4 +229,38 @@ export const ActiveText = styled.div<{
   color: ${(props) => props.color};
   font-weight: ${(props) => props.weight};
   font-size: ${(props) => props.size};
+`;
+
+export const ChatDiv = styled.div``;
+
+export const ChatContents = styled.div<{ height: string }>`
+  width: 190px;
+  height: ${(props) => props.height};
+  margin: 1%;
+  border-radius: 24px;
+  background-color: ${BOX_BG_COLOR};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  cursor: pointer;
+
+  @media (max-width: 767px) {
+    width: 190px;
+    height: 170px;
+  }
+`;
+
+export const ChatContent = styled.div`
+  @media (max-width: 767px) {
+  }
+`;
+
+export const ChatProfileImg = styled.img`
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+
+  @media (max-width: 767px) {
+  }
 `;

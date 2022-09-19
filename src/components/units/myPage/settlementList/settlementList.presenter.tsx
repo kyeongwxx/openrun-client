@@ -77,7 +77,7 @@ export default function MypageSettlementListUI(props: IDealListProps) {
                             size="1rem"
                             color="#5e5e5e"
                           >
-                            {/* {el.board?.title} */}
+                            {el.title}
                           </s.BoardContent>
 
                           <s.Text size="0.6rem" color="#5e5e5e" weight="400">

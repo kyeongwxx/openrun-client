@@ -7,10 +7,12 @@ export const FETCH_USER_CHATROOM = gql`
       seller {
         nickName
         id
+        profileImg
       }
       runner {
         nickName
         id
+        profileImg
       }
       board {
         id
@@ -24,8 +26,8 @@ export const FETCH_USER_CHATROOM = gql`
 `;
 
 export const FETCH_BOARD_PROCESSING_BY_USER = gql`
-  query {
-    fetchBoardProcessingByUser {
+  query fetchBoardProcessingByUser($page: Int) {
+    fetchBoardProcessingByUser(page: $page) {
       id
       title
 

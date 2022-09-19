@@ -440,12 +440,16 @@ export type IQuery = {
 
 export type IQueryFetchBestOfBoardsArgs = {
   category?: InputMaybe<Scalars['String']>;
-  page?: InputMaybe<Scalars['Int']>;
 };
 
 
 export type IQueryFetchBoardArgs = {
   boardId: Scalars['String'];
+};
+
+
+export type IQueryFetchBoardProcessingByUserArgs = {
+  page?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -500,6 +504,11 @@ export type IQueryFetchRunnerArgs = {
 
 export type IQueryFetchRunnerByBoardArgs = {
   boardId: Scalars['String'];
+};
+
+
+export type IQueryFetchRuunerProcessingByUserArgs = {
+  page?: InputMaybe<Scalars['Int']>;
 };
 
 
