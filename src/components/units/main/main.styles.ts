@@ -270,7 +270,7 @@ export const CategoryImages = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   overflow-y: scroll;
-  justify-content: flex-end;
+  justify-content: center;
 
   ::-webkit-scrollbar {
     display: none;
@@ -285,7 +285,7 @@ export const CategoryWrapper = styled.div`
 
 export const CategoryImage = styled.div<{ image: string }>`
   width: 200px;
-  height: 300px;
+  height: 200px;
   margin: 1%;
   border-radius: 24px;
 

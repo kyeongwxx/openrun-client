@@ -47,8 +47,8 @@ export const FETCH_BOARD_PROCESSING_BY_USER = gql`
 `;
 
 export const FETCH_RUNNER_PROCESSING_BY_USER = gql`
-  query {
-    fetchRuunerProcessingByUser {
+  query fetchRuunerProcessingByUser($page: Int) {
+    fetchRuunerProcessingByUser(page: $page) {
       id
       isChecked
       user {
