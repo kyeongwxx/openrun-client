@@ -54,8 +54,16 @@ export default function BoardWriteUI(props: any) {
           <s.ProductDateText>오픈런 일정</s.ProductDateText>
           <s.CalenderWrapper>
             <Calendar />
+            <YupWarningMsg
+              errormsg={props.formState.errors.eventDay?.message}
+            />
+
             <s.TimePickerWrapper>
               <MaterialUIPickers />
+              <YupWarningMsg
+                errormsg={props.formState.errors.eventTime?.message}
+              />
+
               <s.DateGuide>
                 입력 가이드: 줄서기 희망 시간을 선택합니다.
               </s.DateGuide>

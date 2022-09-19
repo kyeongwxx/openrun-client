@@ -10,11 +10,16 @@ export const TalkWrapper = styled.form`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 16px;
   background: #ffffff;
-  right: 33.5rem;
-  bottom: 0;
+  top: 8rem;
+  z-index: 1;
   @media (max-width: 767px) {
-    right: 0;
-    top: 5rem;
+    top: 8rem;
+    z-index: 1;
+  }
+  @media (max-width: 412px) {
+    width: 270px;
+    height: 350px;
+    top: 7rem;
     z-index: 1;
   }
 `;
@@ -86,6 +91,9 @@ export const TalkWrite = styled.input`
   :focus {
     outline: none;
   }
+  @media (max-width: 412px) {
+    width: 80%;
+  }
 `;
 export const SendBtn = styled.button`
   width: 10%;
@@ -95,4 +103,7 @@ export const SendBtn = styled.button`
   border: none;
   color: #fff;
   cursor: pointer;
+  @media (max-width: 412px) {
+    width: 15%;
+  }
 `;

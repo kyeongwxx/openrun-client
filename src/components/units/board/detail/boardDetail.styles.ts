@@ -49,7 +49,7 @@ export const ImageWrapper = styled.div`
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
   @media (max-width: 767px) {
     width: 70%;
-    height: 200px;
+    height: 400px;
     padding: 0;
     margin-bottom: 1rem;
   }
@@ -68,7 +68,7 @@ export const TimerWrapper = styled.div`
     flex-direction: column;
   }
   @media (max-width: 412px) {
-    display: none;
+    /* display: none; */
   }
 `;
 export const Triangle = styled.div`

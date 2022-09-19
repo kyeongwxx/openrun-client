@@ -94,7 +94,7 @@ export const dayState = atom({
 
 export const timeState = atom({
   key: `timeState/${v1()}`,
-  default: dayjs("2014-08-18T00:00:00"),
+  default: dayjs("2014-08-18T12:00:00"),
 });
 export const openValue = atom({
   key: `openState/${v1()}`,
