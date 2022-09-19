@@ -33,7 +33,7 @@ export default function MainSlider(props: ICarouselProps) {
     autoplaySpeed: 2500,
     cssEase: "cubic-bezier(0.535, 0.600, 0.340, 0.785)",
     appendDots: (dots: any) => <ul> {dots} </ul>,
-    customPaging: (i) => (
+    customPaging: (i: any) => (
       <div className="ft-slick__dots--custom">
         <div className="loading" />
       </div>

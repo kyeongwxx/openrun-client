@@ -51,7 +51,7 @@ export default function LayoutNavigation() {
 
   const content = (
     <div>
-      {notification?.fetchNotifications.map((el) => (
+      {notification?.fetchNotifications.map((el: any) => (
         <p key={uuidv4()}>
           <span style={{ fontWeight: "700" }}> {el?.board.title}</span>
           <span> {el?.contents}</span>

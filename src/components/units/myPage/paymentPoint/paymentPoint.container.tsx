@@ -26,7 +26,7 @@ export default function MypagePaymentPoint() {
   const [userInfo] = useRecoilState(userInfoValue);
   const [isRefund, setIsRefund] = useState("");
   const [chargeBtnState, setChargeBtnState] = useState(false);
-  const [refundState, setRefundState] = useState("");
+  const [refundState, setRefundState] = useState<any>("");
 
   const [chargePayment] = useMutation<
     Pick<IMutation, "chargePayment">,

@@ -27,6 +27,7 @@ export default function BoardListToy() {
       dateType: sortValue || "최신순",
       direcion: sortValue2,
       category: "TOY",
+      search: "",
       page: 1,
     },
   });

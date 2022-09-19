@@ -111,7 +111,7 @@ export default function BoardListToyUI(props: any) {
                 placeholder="제목을 검색해주세요"
                 type="text"
                 onChange={props.onChangeSearch}
-                refetch={props.refetch}
+                // refetch={props.refetch}
               />
             </s.SearchBarWrapper>
           )}
@@ -123,7 +123,7 @@ export default function BoardListToyUI(props: any) {
               placeholder="제목을 검색해주세요"
               type="text"
               onChange={props.onChangeSearch}
-              refetch={props.refetch}
+              // refetch={props.refetch}
             />
           </s.SearchBarWrapper>
         )}
@@ -134,7 +134,7 @@ export default function BoardListToyUI(props: any) {
               placeholder="제목을 검색해주세요"
               type="text"
               onChange={props.onChangeSearch}
-              refetch={props.refetch}
+              // refetch={props.refetch}
             />
           </s.SearchBarWrapper>
         )}

@@ -8,11 +8,10 @@ import { useRecoilState } from "recoil";
 import { timeState } from "../../components/commons/store";
 
 export default function MaterialUIPickers() {
-  const [timeValue, setTimeValue] = useRecoilState<Dayjs | null>(timeState);
+  const [timeValue, setTimeValue] = useRecoilState<any>(timeState);
 
   const handleChange = (newValue: Dayjs | null) => {
     setTimeValue(newValue);
-    console.log(timeValue?.$d);
   };
 
   return (

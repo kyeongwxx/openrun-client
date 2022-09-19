@@ -14,6 +14,9 @@ export interface ISignInProps {
   handleSubmit: UseFormHandleSubmit<FieldValues>;
   formState: FormState<FieldValues>;
   onClickSignIn: SubmitHandler<FieldValues>;
+  onClickGoolge: () => void;
+  onClickNaver: () => void;
+  onClickKakao: () => void;
 }
 
 // export interface ISignInProps {

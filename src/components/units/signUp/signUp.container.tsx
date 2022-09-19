@@ -46,7 +46,7 @@ export default function SignUp() {
     mode: "onChange",
   });
 
-  const onClickSignUp = async (data) => {
+  const onClickSignUp = async (data: any) => {
     if (!data.email || !data.password || !data.nickname || !data.phone) return;
 
     try {

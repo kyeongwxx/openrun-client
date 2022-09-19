@@ -1,7 +1,7 @@
 import EventInfoDetailUI from "./eventInfoDetail.presenter";
 import { useRouter } from "next/router";
 import { useMutation, useQuery } from "@apollo/client";
-import { FETCH_BOARD, FETCH_EVENT } from "./eventInfoDetail.queries";
+import { FETCH_EVENT } from "./eventInfoDetail.queries";
 import { useMoveToPage } from "../../../commons/hooks/useMoveToPage";
 import {
   IQuery,
@@ -61,7 +61,7 @@ export default function EventInfoDetail() {
   //   });
   // };
 
-  const onClickBoardDetail = (event) => {
+  const onClickBoardDetail = (event: any) => {
     router.push(`/board/${event.currentTarget.id}`);
   };
 

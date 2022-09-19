@@ -25,7 +25,7 @@ const Input = styled.textarea`
 
 export default function ReportInput() {
   const [inputValue, setInputValue] = useRecoilState(modalInputState);
-  const onChangeInput = (evet) => {
+  const onChangeInput = (event: any) => {
     setInputValue(event?.target.value);
   };
 

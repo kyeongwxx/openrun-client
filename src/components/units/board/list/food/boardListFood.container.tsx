@@ -26,6 +26,7 @@ export default function BoardListFood() {
       dateType: sortValue || "최신순",
       direcion: sortValue2,
       category: "FOOD",
+      search: "",
       page: 1,
     },
   });

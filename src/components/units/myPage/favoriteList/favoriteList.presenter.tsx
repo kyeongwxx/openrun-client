@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import { el } from "date-fns/locale";
 import { dateSplit } from "../../../../commons/function/dateSlice";
 
-export default function MypageFavoriteListUI(props) {
+export default function MypageFavoriteListUI(props: any) {
   return (
     <s.Wrapper>
       <s.Button onClick={props.onClickTop}>Top</s.Button>
@@ -23,7 +23,7 @@ export default function MypageFavoriteListUI(props) {
               hasMore={true}
               useWindow={false}
             >
-              {props.data?.map((el) => (
+              {props.data?.map((el: any) => (
                 <s.FavoriteBoard
                   onClick={props.onClickMoveToBoardDetail(el.board?.id)}
                   key={uuidv4()}

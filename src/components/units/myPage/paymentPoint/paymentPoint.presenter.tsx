@@ -4,7 +4,7 @@ import Selector from "../../../../commons/selector";
 import { useRecoilState } from "recoil";
 import { userInfoValue } from "../../../commons/store";
 import { v4 as uuidv4 } from "uuid";
-export default function MypagePaymentPointUI(props) {
+export default function MypagePaymentPointUI(props: any) {
   const [userInfo] = useRecoilState(userInfoValue);
   return (
     <s.Wrapper>
@@ -61,7 +61,7 @@ export default function MypagePaymentPointUI(props) {
           {!props.data ? (
             <s.PointInfo />
           ) : (
-            props.data.map((el) => (
+            props.data.map((el: any) => (
               <s.PointInfo key={uuidv4()}>
                 <s.AvailablePoint>
                   <s.Text size="1rem" color="#656565" weight="400">

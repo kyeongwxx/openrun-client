@@ -1,5 +1,9 @@
 import styled from "@emotion/styled";
 
+interface IDigitalUi {
+  isMatched: any;
+}
+
 export const Wrapper = styled.main`
   width: 95%;
   margin: auto;
@@ -340,7 +344,7 @@ export const Title = styled.div`
   }
 `;
 export const TitleSpan = styled.span`
-  color: ${(props) => (props.isMatched ? "#bfae90" : "black")};
+  color: ${(props: IDigitalUi) => (props.isMatched ? "#bfae90" : "black")};
 `;
 export const Contents = styled.div`
   font-weight: 400;

@@ -20,7 +20,7 @@ import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt
 
 type Anchor = "top" | "left" | "bottom" | "right";
 
-export default function TemporaryDrawer(props) {
+export default function TemporaryDrawer(props: any) {
   const router = useRouter();
   const [state, setState] = useState({
     top: false,
