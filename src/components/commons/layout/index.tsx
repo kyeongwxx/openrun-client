@@ -29,6 +29,7 @@ export default function Layout(props: ILayoutProps) {
 
   const SHOW_ADMIN = [
     "/admin/",
+    "/admin/usersChart/",
     "/admin/usersInfo/",
     "/admin/dailyPayments/",
     "/admin/reports/",
@@ -39,6 +40,7 @@ export default function Layout(props: ILayoutProps) {
   const IsHidden = HIDDEN_MYPAGE.includes(router.asPath);
   const isShowBoard = SHOW_BOARD.includes(router.asPath);
   const isShowAdmin = SHOW_ADMIN.includes(router.asPath);
+
   return (
     <s.Wrapper>
       {!IsHidden && <LayoutNavigation />}

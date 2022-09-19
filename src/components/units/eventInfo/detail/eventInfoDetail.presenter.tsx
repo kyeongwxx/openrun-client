@@ -3,33 +3,52 @@ import * as s from "./eventInfoDetail.styles";
 import { IEventInfoDetailUI } from "./eventInfoDetail.types";
 
 export default function EventInfoDetailUI(props: IEventInfoDetailUI) {
+  // console.log(props.data?.fetchEvent);
+  console.log(props.data?.fetchEvent.image);
+  // console.log(props.data);
+
+  // Date.prototype.YYYYMMDDHHMMSS = function () {
+  //   var yyyy = this.getFullYear().toString();
+  //   var MM = pad(this.getMonth() + 1, 2);
+  //   var dd = pad(this.getDate(), 2);
+  //   var hh = pad(this.getHours(), 2);
+  //   var mm = pad(this.getMinutes(), 2);
+  //   var ss = pad(this.getSeconds(), 2);
+
+  //   return yyyy + MM + dd + hh + mm + ss;
+  // };
+
+  // function pad(number, length) {
+  //   var str = "" + number;
+  //   while (str.length < length) {
+  //     str = "0" + str;
+  //   }
+  //   return str;
+  //}
   return (
     <>
       <s.Wrapper>
         <s.ItemWrapper>
-          <s.ItemImg src="/img/Rectangle 114.png" />
-          {props.data?.fetchEventByDate?.image}
+          <s.ItemImg
+            src={`https://storage.googleapis.com/${props.data?.fetchEvent.image}`}
+          />
           <s.ItemInfoBox>
             <s.PlanTitle>오픈런 일정</s.PlanTitle>
-            <s.Brand>{props.data?.fetchEventByDate?.id}NIKE</s.Brand>
-            <s.Event>
-              {props.data?.fetchEventByDate?.title}나이키 DD1391-100 선출시
-            </s.Event>
-            <s.Time>
-              {props.data?.fetchEventByDate?.period}2022.09.16 am10:00
-            </s.Time>
+            <s.Brand>{props.data?.fetchEvent?.brand}</s.Brand>
+            <s.Event>{props.data?.fetchEvent?.title}</s.Event>
+            <s.Time>{props.data?.fetchEvent?.period}</s.Time>
             <s.PlaceTitle>장소</s.PlaceTitle>
-            <s.StoreDetail>
-              {props.data?.fetchEventByDate?.location}서울시 마포구 홍익로
-            </s.StoreDetail>
+            <s.StoreDetail>{props.data?.fetchEvent?.location}</s.StoreDetail>
           </s.ItemInfoBox>
         </s.ItemWrapper>
         <s.DivideLine />
         <s.InfoWrapper>
           <s.InfoTitle>행사정보</s.InfoTitle>
           <s.Information>
-            {props.data?.fetchEventByDate?.contents}
-            2 0 2 2 . 0 9 . 16
+            <s.EventImg
+              src={`https://storage.googleapis.com/${props.data?.fetchEvent?.contentsImage.url?.[0]}`}
+            />
+            {/* 2 0 2 2 . 0 9 . 16
             <br />
             1 1 : 0 0 A M <br />
             <br />
@@ -60,20 +79,20 @@ export default function EventInfoDetailUI(props: IEventInfoDetailUI) {
             롯데잠실, 부산대(대), 부평중앙, 성남신흥 <br />
             스타필드하남, 신세계대전, 신세계센텀 <br />
             안산중앙, 전주, 제주, 청주 <br />
-            춘천, 충장로, 현대서울, 현대중동
+            춘천, 충장로, 현대서울, 현대중동 */}
           </s.Information>
-          <s.InfoImg1 src="/img/Rectangle 131.png" />
+          {/* <s.InfoImg1 src="/img/Rectangle 131.png" />
           <s.InfoImg2 src="/img/Rectangle 138.png" />
           <s.ImgBox>
             <s.InfoImg3 src="/img/Rectangle 133.png" />
             <s.InfoImg4 src="/img/Rectangle 137.png" />
           </s.ImgBox>
-          <s.InfoImg5 src="/img/Rectangle 135.png" />
-          <s.MoveToSiteBtn>
+          <s.InfoImg5 src="/img/Rectangle 135.png" /> */}
+          {/* <s.MoveToSiteBtn>
             <s.MoveLink href={`${props.el?.urlRedirect}`}>
               사이트로 이동하기
             </s.MoveLink>
-          </s.MoveToSiteBtn>
+          </s.MoveToSiteBtn> */}
         </s.InfoWrapper>
         <s.WithItemWrapper>
           <s.WithItemTitle>With Item</s.WithItemTitle>
@@ -86,7 +105,7 @@ export default function EventInfoDetailUI(props: IEventInfoDetailUI) {
           useWindow={true}
         >
           <s.WithItemBox>
-            {props.data?.fetchBoard.map((el: any) => (
+            {props.data?.fetchBoard?.map((el: any) => (
               <s.WithItemImg onClick={props.onClickBoardDetail(el)}>
                 {el.image}
               </s.WithItemImg>

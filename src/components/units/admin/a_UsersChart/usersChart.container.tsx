@@ -24,6 +24,7 @@ import { FETCH_USERS_COUNT_BY_DATE } from "./usersChart.queries";
 import { useQuery } from "@apollo/client";
 import { IQuery } from "../../../../commons/types/generated/types";
 import moment from "moment";
+import * as s from "../../../units/admin/admin.styles";
 
 export const options = {
   responsive: true,
@@ -66,11 +67,13 @@ export default function UsersChart() {
   console.log("userChart - datas", datas);
 
   return (
-    <Line
-      options={options}
-      data={datas}
-      // chart={chart}
-      // number={number}
-    />
+    <s.Wrapper>
+      <s.InnerWrapper>
+        <s.Box>
+          <s.Title>일자별 매출</s.Title>
+          <Line options={options} data={datas} />
+        </s.Box>
+      </s.InnerWrapper>
+    </s.Wrapper>
   );
 }

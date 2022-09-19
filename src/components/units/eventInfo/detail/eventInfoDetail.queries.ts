@@ -5,33 +5,23 @@ export const FETCH_EVENT = gql`
     fetchEvent(eventId: $eventId) {
       id
       title
-      contents
+      contentsImage {
+        url
+      }
       period
       location
       image
       createdAt
+      brand
     }
   }
 `;
 
-export const FETCH_EVENT_BY_DATE = gql`
-  query fetchEventByEvent($date: DateTime!) {
-    fetchEventByEvent(date: $date) {
-      id
-      title
-      contents
-      period
-      location
-      image
-      createdAt
-    }
-  }
-`;
-export const FETCH_BOARD = gql`
-  query fetchBoard($boardId: String!) {
-    fetchBoard(boardId: $boardId) {
-      id
-      image
-    }
-  }
-`;
+// export const FETCH_BOARD = gql`
+//   query fetchBoard($boardId: String!) {
+//     fetchBoard(boardId: $boardId) {
+//       id
+//       image
+//     }
+//   }
+// `;

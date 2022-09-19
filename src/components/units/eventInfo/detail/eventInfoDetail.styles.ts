@@ -74,7 +74,7 @@ export const ItemInfoBox = styled.div`
   }
   @media (max-width: 412px) {
     padding-top: 3rem;
-    margin-left: 2rem;
+    margin-left: 1.5rem;
     width: 21rem;
 
     display: flex;
@@ -100,7 +100,7 @@ export const PlanTitle = styled.div`
 `;
 export const Brand = styled.div`
   font-size: 1.3em;
-  font-weight: 500;
+  font-weight: 700;
   padding-bottom: 0.5rem;
 
   @media (max-width: 767px) {
@@ -204,7 +204,22 @@ export const Information = styled.div`
   margin-bottom: 6rem;
   font-size: 1rem;
   text-align: center;
+  width: 60rem;
+  height: 100%;
+  border: 1px solid red;
+
+  @media (max-width: 767px) {
+    width: 33rem;
+  }
+  @media (max-width: 412px) {
+    width: 22rem;
+  }
 `;
+export const EventImg = styled.img`
+  width: 100%;
+  height: 100%;
+`;
+
 export const InfoImg1 = styled.img`
   width: 70%;
   margin-bottom: 2rem;
@@ -272,11 +287,12 @@ export const MoveToSiteBtn = styled.button`
 export const WithItemWrapper = styled.div`
   text-align: center;
   width: 100%;
+  margin-top: 10rem;
   @media (max-width: 767px) {
     margin-bottom: 5rem;
   }
   @media (max-width: 412px) {
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
   }
 `;
 export const WithItemTitle = styled.div`
@@ -301,7 +317,7 @@ export const WithItemSubTitle = styled.div`
   margin-bottom: 3rem;
 
   @media (max-width: 767px) {
-    font-size: 4em;
+    font-size: 1.6em;
     margin-bottom: -1rem;
   }
   @media (max-width: 412px) {
