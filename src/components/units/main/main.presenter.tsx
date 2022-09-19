@@ -23,7 +23,7 @@ export default function MainUI(props: IMainProps) {
         MouseLeaveDate={props.MouseLeaveDate}
       />
       <s.EventProductWrapper>
-        {props.eventIfo?.length === 0 ? (
+        {props.eventInfo?.length === 0 ? (
           <s.NoData>
             <s.ExclamationMark />
             <s.NodataText>행사 정보가 없습니다.</s.NodataText>
@@ -141,7 +141,7 @@ export default function MainUI(props: IMainProps) {
                         {el.location?.address}
                       </s.CategoryText>
                       <s.CategoryText weight="400" size="0.7rem">
-                        {el.price}
+                        {el?.price}
                       </s.CategoryText>
                     </s.CategoryInfo>
                   ) : (

@@ -36,7 +36,6 @@ export default function MypageSettlementList() {
     });
   };
 
-  console.log(data);
   return (
     <MypageSettlementListUI
       data={data?.fetchPaymentHistory}

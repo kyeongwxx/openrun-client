@@ -19,6 +19,7 @@ import {
   CREATE_USER,
   SEND_TOKEN_TO_PHONE,
 } from "./signUp.queries";
+import { Modal } from "antd";
 
 export default function SignUp() {
   const [isOpen, setIsOpen] = useState(false);
@@ -60,9 +61,14 @@ export default function SignUp() {
           },
         },
       });
-      alert("가입완료");
+      Modal.success({
+        content: "가입이 완료되었습니다.",
+        onOk: () => {
+          location.replace(`/signIn`);
+        },
+      });
     } catch (error) {
-      console.log(error);
+      if (error instanceof Error) Modal.error({ content: error.message });
     }
   };
   const onClickPhoneCertify = async () => {
@@ -73,10 +79,12 @@ export default function SignUp() {
         },
       });
       setIsOpen(true);
+      Modal.success({ content: "인증번호가 전송되었습니다." });
     } catch (error) {
-      console.log(error);
+      if (error instanceof Error) Modal.error({ content: error.message });
     }
   };
+
   const onClickCheckCertify = async () => {
     setPhoneCertifyFail(false);
     setCheckCertifyResult(false);
@@ -95,10 +103,9 @@ export default function SignUp() {
 
       setOpen(true);
       setCheckCertifyResult(true);
-
-      console.log(result);
+      Modal.success({ content: "본인인증 되었습니다." });
     } catch (error) {
-      console.log(error);
+      if (error instanceof Error) Modal.error({ content: error.message });
     }
   };
   return (

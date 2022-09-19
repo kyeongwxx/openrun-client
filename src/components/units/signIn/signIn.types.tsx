@@ -2,8 +2,6 @@ import {
   DeepPartial,
   FieldValues,
   FormState,
-  Mode,
-  Resolver,
   SubmitHandler,
   UseFormHandleSubmit,
   UseFormRegister,
@@ -18,10 +16,3 @@ export interface ISignInProps {
   onClickNaver: () => void;
   onClickKakao: () => void;
 }
-
-// export interface ISignInProps {
-//   register?: string;
-//   handleSubmit?: string;
-//   formState: string;
-//   onClickSignIn?: () => void;
-// }

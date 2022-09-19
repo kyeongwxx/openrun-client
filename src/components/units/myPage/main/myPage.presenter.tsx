@@ -126,12 +126,12 @@ export default function MyPageUI(props: IMainProps) {
                   <s.ChatContent>{el?.board?.title}</s.ChatContent>
                   <s.ChatProfileImg
                     src={
-                      el.seller.profileImg
+                      el?.seller?.profileImg
                         ? `https://storage.googleapis.com/openrun-storage/${el.seller.profileImg}`
                         : "/img/profile.png"
                     }
                   />
-                  <s.ChatContent>{el?.seller.nickName}</s.ChatContent>
+                  <s.ChatContent>{el?.seller?.nickName}</s.ChatContent>
                 </s.ChatContents>
               ) : (
                 <s.ChatContents height="200px" key={uuidv4()}>
@@ -143,7 +143,7 @@ export default function MyPageUI(props: IMainProps) {
                         : "/img/profile.png"
                     }
                   />
-                  <s.ChatContent>{el?.runner.nickName}</s.ChatContent>
+                  <s.ChatContent>{el?.runner?.nickName}</s.ChatContent>
                 </s.ChatContents>
               )
             )

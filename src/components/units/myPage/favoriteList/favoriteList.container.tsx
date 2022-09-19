@@ -1,14 +1,20 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useRef } from "react";
-import { IQuery } from "../../../../commons/types/generated/types";
+import {
+  IQuery,
+  IQueryFetchInterestBoardsArgs,
+} from "../../../../commons/types/generated/types";
 import MypageFavoriteListUI from "./favoriteList.presenter";
 import { FETCH_INTEREST_BOARDS } from "./favoriteList.queries";
 
 export default function MypageFavoriteList() {
   const router = useRouter();
   const scrollRef = useRef<HTMLDivElement>(null);
-  const { data, fetchMore } = useQuery(FETCH_INTEREST_BOARDS);
+  const { data, fetchMore } = useQuery<
+    Pick<IQuery, "fetchInterestBoards">,
+    IQueryFetchInterestBoardsArgs
+  >(FETCH_INTEREST_BOARDS);
   const onFetchMore = () => {
     if (!data) return;
     fetchMore({
@@ -32,7 +38,6 @@ export default function MypageFavoriteList() {
     scrollRef.current?.scrollTo({ left: 0, top: 0, behavior: "smooth" });
   };
 
-  console.log(data);
   return (
     <MypageFavoriteListUI
       data={data?.fetchInterestBoards}
