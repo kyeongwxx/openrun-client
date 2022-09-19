@@ -1,5 +1,4 @@
 import CenteredTabs from "../../../../commons/tabs";
-import UsersChart from "../../../units/admin/a_UsersChart/usersChart.container";
 import * as s from "./admin.styles";
 export default function LayoutAdmin() {
   return (
@@ -13,20 +12,13 @@ export default function LayoutAdmin() {
           "운영진 정보",
         ]}
         address={[
-          "/admin/",
+          "/admin/usersChart/",
           "/admin/usersInfo/",
           "/admin/dailyPayments/",
           "/admin/reports/",
           "/admin/adminInfo/",
         ]}
       />
-
-      <s.InnerWrapper>
-        <s.Box>
-          <s.Title>가입자 현황</s.Title>
-          <UsersChart />
-        </s.Box>
-      </s.InnerWrapper>
     </s.Wrapper>
   );
 }
