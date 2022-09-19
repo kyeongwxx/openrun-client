@@ -11,6 +11,12 @@ export const DateCalendar = styled(Calendar)`
     font-size: 16px;
     margin-top: 8px;
   }
+  .react-calendar__navigation__label__labelText,
+  .react-calendar__navigation__label__labelText--from {
+    @media (max-width: 412px) {
+      font-size: 0.8rem;
+    }
+  }
   .react-calendar__navigation button:enabled:hover,
   .react-calendar__navigation button:enabled:focus {
     background-color: #f8f8fa;

@@ -6,6 +6,9 @@ import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { FETCH_BOARD } from "./queries";
 // import "./styles.css";
 import styled from "@emotion/styled";
+import MediaQueryUltra from "../mediaQuery/mediaQueryStandardUltra";
+import MediaQueryPc from "../mediaQuery/mediaQueryStandardPc";
+import MediaQueryMobile from "../mediaQuery/mediaQueryStandardMobile";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -42,6 +45,11 @@ const getTimeHours = (time: any) =>
 const getTimeDays = (time: any) => (time / daySeconds) | 0;
 
 export default function Timer() {
+  // mediaQuery
+  const isPc = MediaQueryPc();
+  const isMobile = MediaQueryMobile();
+  const isUltra = MediaQueryUltra();
+
   const router = useRouter();
   const { data } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.id },
@@ -58,66 +66,221 @@ export default function Timer() {
     <div className="App">
       {data?.fetchBoard?.dueDate && (
         <Wrapper>
-          <CountdownCircleTimer
-            {...timerProps}
-            colors="#7E2E84"
-            duration={daysDuration}
-            initialRemainingTime={remainingTime}
-          >
-            {({ elapsedTime, color }) => (
-              <span style={{ color }}>
-                {renderTime("days", getTimeDays(daysDuration - elapsedTime))}
-              </span>
-            )}
-          </CountdownCircleTimer>
-          <CountdownCircleTimer
-            {...timerProps}
-            colors="#D14081"
-            duration={daySeconds}
-            initialRemainingTime={remainingTime % daySeconds}
-            onComplete={(totalElapsedTime) => ({
-              shouldRepeat: remainingTime - totalElapsedTime > hourSeconds,
-            })}
-          >
-            {({ elapsedTime, color }) => (
-              <span style={{ color }}>
-                {renderTime("hours", getTimeHours(daySeconds - elapsedTime))}
-              </span>
-            )}
-          </CountdownCircleTimer>
-          <CountdownCircleTimer
-            {...timerProps}
-            colors="#EF798A"
-            duration={hourSeconds}
-            initialRemainingTime={remainingTime % hourSeconds}
-            onComplete={(totalElapsedTime) => ({
-              shouldRepeat: remainingTime - totalElapsedTime > minuteSeconds,
-            })}
-          >
-            {({ elapsedTime, color }) => (
-              <span style={{ color }}>
-                {renderTime(
-                  "minutes",
-                  getTimeMinutes(hourSeconds - elapsedTime)
-                )}
-              </span>
-            )}
-          </CountdownCircleTimer>
-          <CountdownCircleTimer
-            {...timerProps}
-            colors="#218380"
-            duration={minuteSeconds}
-            initialRemainingTime={remainingTime % minuteSeconds}
-            onComplete={(totalElapsedTime) => ({
-              shouldRepeat: remainingTime - totalElapsedTime > 0,
-            })}
-          >
-            {({ elapsedTime, color }) => (
-              <span style={{ color }}>
-                {renderTime("seconds", getTimeSeconds(elapsedTime))}
-              </span>
-            )}
-          </CountdownCircleTimer>
+          {/* days */}
+          {isPc && (
+            <CountdownCircleTimer
+              {...timerProps}
+              colors="#7E2E84"
+              duration={daysDuration}
+              initialRemainingTime={remainingTime}
+            >
+              {({ elapsedTime, color }) => (
+                <span style={{ color }}>
+                  {renderTime("days", getTimeDays(daysDuration - elapsedTime))}
+                </span>
+              )}
+            </CountdownCircleTimer>
+          )}
+          {isMobile && (
+            <CountdownCircleTimer
+              {...timerProps}
+              colors="#7E2E84"
+              duration={daysDuration}
+              initialRemainingTime={remainingTime}
+            >
+              {({ elapsedTime, color }) => (
+                <span style={{ color }}>
+                  {renderTime("days", getTimeDays(daysDuration - elapsedTime))}
+                </span>
+              )}
+            </CountdownCircleTimer>
+          )}
+          {isUltra && (
+            <CountdownCircleTimer
+              size={65}
+              strokeWidth={4}
+              colors="#7E2E84"
+              duration={daysDuration}
+              initialRemainingTime={remainingTime}
+            >
+              {({ elapsedTime, color }) => (
+                <span style={{ color }}>
+                  {renderTime("days", getTimeDays(daysDuration - elapsedTime))}
+                </span>
+              )}
+            </CountdownCircleTimer>
+          )}
+
+          {/* hours */}
+          {isPc && (
+            <CountdownCircleTimer
+              {...timerProps}
+              colors="#D14081"
+              duration={daySeconds}
+              initialRemainingTime={remainingTime % daySeconds}
+              onComplete={(totalElapsedTime) => ({
+                shouldRepeat: remainingTime - totalElapsedTime > hourSeconds,
+              })}
+            >
+              {({ elapsedTime, color }) => (
+                <span style={{ color }}>
+                  {renderTime("hours", getTimeHours(daySeconds - elapsedTime))}
+                </span>
+              )}
+            </CountdownCircleTimer>
+          )}
+          {isMobile && (
+            <CountdownCircleTimer
+              {...timerProps}
+              colors="#D14081"
+              duration={daySeconds}
+              initialRemainingTime={remainingTime % daySeconds}
+              onComplete={(totalElapsedTime) => ({
+                shouldRepeat: remainingTime - totalElapsedTime > hourSeconds,
+              })}
+            >
+              {({ elapsedTime, color }) => (
+                <span style={{ color }}>
+                  {renderTime("hours", getTimeHours(daySeconds - elapsedTime))}
+                </span>
+              )}
+            </CountdownCircleTimer>
+          )}
+          {isUltra && (
+            <CountdownCircleTimer
+              size={65}
+              strokeWidth={4}
+              colors="#D14081"
+              duration={daySeconds}
+              initialRemainingTime={remainingTime % daySeconds}
+              onComplete={(totalElapsedTime) => ({
+                shouldRepeat: remainingTime - totalElapsedTime > hourSeconds,
+              })}
+            >
+              {({ elapsedTime, color }) => (
+                <span style={{ color }}>
+                  {renderTime("hours", getTimeHours(daySeconds - elapsedTime))}
+                </span>
+              )}
+            </CountdownCircleTimer>
+          )}
+
+          {/* minutes */}
+          {isPc && (
+            <CountdownCircleTimer
+              {...timerProps}
+              colors="#EF798A"
+              duration={hourSeconds}
+              initialRemainingTime={remainingTime % hourSeconds}
+              onComplete={(totalElapsedTime) => ({
+                shouldRepeat: remainingTime - totalElapsedTime > minuteSeconds,
+              })}
+            >
+              {({ elapsedTime, color }) => (
+                <span style={{ color }}>
+                  {renderTime(
+                    "minutes",
+                    getTimeMinutes(hourSeconds - elapsedTime)
+                  )}
+                </span>
+              )}
+            </CountdownCircleTimer>
+          )}
+          {isMobile && (
+            <CountdownCircleTimer
+              {...timerProps}
+              colors="#EF798A"
+              duration={hourSeconds}
+              initialRemainingTime={remainingTime % hourSeconds}
+              onComplete={(totalElapsedTime) => ({
+                shouldRepeat: remainingTime - totalElapsedTime > minuteSeconds,
+              })}
+            >
+              {({ elapsedTime, color }) => (
+                <span style={{ color }}>
+                  {renderTime(
+                    "minutes",
+                    getTimeMinutes(hourSeconds - elapsedTime)
+                  )}
+                </span>
+              )}
+            </CountdownCircleTimer>
+          )}
+          {isUltra && (
+            <CountdownCircleTimer
+              size={65}
+              strokeWidth={4}
+              colors="#EF798A"
+              duration={hourSeconds}
+              initialRemainingTime={remainingTime % hourSeconds}
+              onComplete={(totalElapsedTime) => ({
+                shouldRepeat: remainingTime - totalElapsedTime > minuteSeconds,
+              })}
+            >
+              {({ elapsedTime, color }) => (
+                <span style={{ color }}>
+                  {renderTime(
+                    "minutes",
+                    getTimeMinutes(hourSeconds - elapsedTime)
+                  )}
+                </span>
+              )}
+            </CountdownCircleTimer>
+          )}
+
+          {/* seconds */}
+          {isPc && (
+            <CountdownCircleTimer
+              {...timerProps}
+              colors="#218380"
+              duration={minuteSeconds}
+              initialRemainingTime={remainingTime % minuteSeconds}
+              onComplete={(totalElapsedTime) => ({
+                shouldRepeat: remainingTime - totalElapsedTime > 0,
+              })}
+            >
+              {({ elapsedTime, color }) => (
+                <span style={{ color }}>
+                  {renderTime("seconds", getTimeSeconds(elapsedTime))}
+                </span>
+              )}
+            </CountdownCircleTimer>
+          )}
+          {isMobile && (
+            <CountdownCircleTimer
+              {...timerProps}
+              colors="#218380"
+              duration={minuteSeconds}
+              initialRemainingTime={remainingTime % minuteSeconds}
+              onComplete={(totalElapsedTime) => ({
+                shouldRepeat: remainingTime - totalElapsedTime > 0,
+              })}
+            >
+              {({ elapsedTime, color }) => (
+                <span style={{ color }}>
+                  {renderTime("seconds", getTimeSeconds(elapsedTime))}
+                </span>
+              )}
+            </CountdownCircleTimer>
+          )}
+          {isUltra && (
+            <CountdownCircleTimer
+              size={70}
+              strokeWidth={4}
+              colors="#218380"
+              duration={minuteSeconds}
+              initialRemainingTime={remainingTime % minuteSeconds}
+              onComplete={(totalElapsedTime) => ({
+                shouldRepeat: remainingTime - totalElapsedTime > 0,
+              })}
+            >
+              {({ elapsedTime, color }) => (
+                <span style={{ color }}>
+                  {renderTime("seconds", getTimeSeconds(elapsedTime))}
+                </span>
+              )}
+            </CountdownCircleTimer>
+          )}
         </Wrapper>
       )}
     </div>

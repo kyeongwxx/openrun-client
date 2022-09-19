@@ -53,6 +53,10 @@ export const ImageWrapper = styled.div`
     padding: 0;
     margin-bottom: 1rem;
   }
+  @media (max-width: 412px) {
+    width: 70%;
+    height: 200px;
+  }
 `;
 export const Image = styled.img`
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);

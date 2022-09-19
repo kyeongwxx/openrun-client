@@ -107,6 +107,14 @@ export default function BoardWriteUI(props: any) {
                     우편번호
                   </s.AddressButton>
                 )}
+                {props.isUltra && (
+                  <s.AddressButton
+                    type="button"
+                    onClick={props.onClickAddressSearch}
+                  >
+                    우편번호
+                  </s.AddressButton>
+                )}
               </s.ZipcodeWrapper>
               <s.AddressInput
                 readOnly

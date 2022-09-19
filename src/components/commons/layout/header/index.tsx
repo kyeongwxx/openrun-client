@@ -48,7 +48,7 @@ export default function LayoutHeader() {
             </s.Logo>
 
             <s.MenuList>
-              <s.Menu onClick={onClickMoveToPage("/board")}>LIST</s.Menu>
+              <s.Menu onClick={onClickMoveToPage("/board/")}>LIST</s.Menu>
               <s.Menu onClick={onClickMoveToPage("/board/new/")}>POST</s.Menu>
             </s.MenuList>
           </>

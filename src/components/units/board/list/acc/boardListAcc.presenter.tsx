@@ -9,19 +9,73 @@ import Selector2 from "../../../../../commons/selector2";
 export default function BoardListAccUI(props: any) {
   return (
     <s.Wrapper>
-      <s.CategoryWrapper>
-        <s.CategoryItem onClick={props.onClickMoveToAll}>All</s.CategoryItem>
-        <s.CategoryItem onClick={props.onClickMoveToFashion}>
-          Fashion
-        </s.CategoryItem>
-        <s.CategoryAcc onClick={props.onClickMoveToAcc}>Acc</s.CategoryAcc>
-        <s.CategoryItem onClick={props.onClickMoveToDigital}>
-          Digital
-        </s.CategoryItem>
-        <s.CategoryItem onClick={props.onClickMoveToFood}>Food</s.CategoryItem>
-        <s.CategoryItem onClick={props.onClickMoveToToy}>Toy</s.CategoryItem>
-      </s.CategoryWrapper>
-      <s.DivideLine1 />
+      {props.isPc && (
+        <s.CategoryWrapper>
+          <s.CategoryItem onClick={props.onClickMoveToAll}>All</s.CategoryItem>
+          <s.CategoryItem onClick={props.onClickMoveToFashion}>
+            Fashion
+          </s.CategoryItem>
+          <s.CategoryAcc onClick={props.onClickMoveToAcc}>Acc</s.CategoryAcc>
+          <s.CategoryItem onClick={props.onClickMoveToDigital}>
+            Digital
+          </s.CategoryItem>
+          <s.CategoryItem onClick={props.onClickMoveToFood}>
+            Food
+          </s.CategoryItem>
+          <s.CategoryItem onClick={props.onClickMoveToToy}>Toy</s.CategoryItem>
+        </s.CategoryWrapper>
+      )}
+
+      {props.isMobile && (
+        <s.CategoryWrapper>
+          <s.ResponsiveCategory1>
+            <s.CategoryItem onClick={props.onClickMoveToAll}>
+              All
+            </s.CategoryItem>
+            <s.CategoryItem onClick={props.onClickMoveToFashion}>
+              Fashion
+            </s.CategoryItem>
+            <s.CategoryAcc onClick={props.onClickMoveToAcc}>Acc</s.CategoryAcc>
+          </s.ResponsiveCategory1>
+          <s.ResponsiveCategory2>
+            <s.CategoryItem onClick={props.onClickMoveToDigital}>
+              Digital
+            </s.CategoryItem>
+            <s.CategoryItem onClick={props.onClickMoveToFood}>
+              Food
+            </s.CategoryItem>
+            <s.CategoryItem onClick={props.onClickMoveToToy}>
+              Toy
+            </s.CategoryItem>
+          </s.ResponsiveCategory2>
+        </s.CategoryWrapper>
+      )}
+
+      {props.isUltra && (
+        <s.CategoryWrapper>
+          <s.ResponsiveCategory1>
+            <s.CategoryItem onClick={props.onClickMoveToAll}>
+              All
+            </s.CategoryItem>
+            <s.CategoryItem onClick={props.onClickMoveToFashion}>
+              Fashion
+            </s.CategoryItem>
+            <s.CategoryAcc onClick={props.onClickMoveToAcc}>Acc</s.CategoryAcc>
+          </s.ResponsiveCategory1>
+          <s.ResponsiveCategory2>
+            <s.CategoryItem onClick={props.onClickMoveToDigital}>
+              Digital
+            </s.CategoryItem>
+            <s.CategoryItem onClick={props.onClickMoveToFood}>
+              Food
+            </s.CategoryItem>
+            <s.CategoryItem onClick={props.onClickMoveToToy}>
+              Toy
+            </s.CategoryItem>
+          </s.ResponsiveCategory2>
+        </s.CategoryWrapper>
+      )}
+      {/* <s.DivideLine1 /> */}
       <s.InnerWrapper>
         <s.FilterWrapper>
           <Selector
@@ -62,6 +116,17 @@ export default function BoardListAccUI(props: any) {
           )}
         </s.FilterWrapper>
         {props.isMobile && (
+          <s.SearchBarWrapper>
+            <s.SearchIcon src="/boardList/Search.png" />
+            <s.SearchInput
+              placeholder="제목을 검색해주세요"
+              type="text"
+              onChange={props.onChangeSearch}
+              refetch={props.refetch}
+            />
+          </s.SearchBarWrapper>
+        )}
+        {props.isUltra && (
           <s.SearchBarWrapper>
             <s.SearchIcon src="/boardList/Search.png" />
             <s.SearchInput
