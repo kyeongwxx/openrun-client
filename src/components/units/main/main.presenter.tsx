@@ -5,8 +5,8 @@ import { v4 as uuidv4 } from "uuid";
 import { dateSplit } from "../../../commons/function/dateSlice";
 import { IMainProps } from "./main.types";
 import { BG_GRADATION } from "../../../commons/cssConst";
-import mediaQueryStandardForMain from "../../../commons/mediaQuery/mediaQueryStandardforMain";
 import MediaQueryPc from "../../../commons/mediaQuery/mediaQueryStandardPc";
+import mediaQueryStandardForMain from "../../../commons/mediaQuery/mediaQueryStandardForMain";
 
 export default function MainUI(props: IMainProps) {
   const isPc = MediaQueryPc();
