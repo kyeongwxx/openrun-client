@@ -7,7 +7,6 @@ import { IMainProps } from "./main.types";
 import { BG_GRADATION } from "../../../commons/cssConst";
 import MediaQueryPc from "../../../commons/mediaQuery/mediaQueryStandardPc";
 
-import Carousel from "react-material-ui-carousel";
 import { Paper, Button } from "@mui/material";
 import mediaQueryStandardForMain from "../../../commons/mediaQuery/mediaQueryStandardForMain";
 
