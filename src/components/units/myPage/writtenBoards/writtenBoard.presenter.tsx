@@ -32,6 +32,7 @@ export default function MypageWrittenBoardsUI(props: IWrittenBoardsProps) {
                 open={props.isModalOpen}
                 closable={false}
                 onOk={props.onClickSubmitReport}
+                onCancel={props.onClickCancel}
               >
                 <ReportInput />
               </Modal>
@@ -60,7 +61,7 @@ export default function MypageWrittenBoardsUI(props: IWrittenBoardsProps) {
                     >
                       {el.status}
                     </s.Status>
-                    {console.log(el.image?.url)}
+
                     {el.image?.url === "default.img" ? (
                       <s.NoImg />
                     ) : (

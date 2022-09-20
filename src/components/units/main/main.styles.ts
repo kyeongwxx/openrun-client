@@ -79,6 +79,23 @@ export const TEXT = styled.div`
   }
 `;
 
+export const CategoryTextChange = styled.div<{
+  color: string;
+  bg: string;
+  weight: string;
+}>`
+  background: ${(props) => props.bg};
+  color: ${(props) => props.color};
+  -webkit-background-clip: text;
+  font-weight: ${(props) => props.weight};
+  font-size: 1rem;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    font-size: 0.5rem;
+  }
+`;
+
 export const BannerText = styled.div`
   width: 60%;
   color: #4e6781;
@@ -158,7 +175,6 @@ export const RunnerInfo = styled.div`
   width: 75%;
 
   justify-content: space-around;
-  /* background-color: yellow; */
 
   @media (max-width: 767px) {
     height: 75%;
@@ -264,13 +280,14 @@ export const Category = styled.div`
 
 export const CategoryImages = styled.div`
   width: 70%;
-  height: 80%;
+  height: 70%;
   margin: auto;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   overflow-y: scroll;
   justify-content: center;
+  position: relative;
 
   ::-webkit-scrollbar {
     display: none;
@@ -283,39 +300,52 @@ export const CategoryWrapper = styled.div`
   align-items: flex-end;
 `;
 
-export const CategoryImage = styled.div<{ image: string }>`
+export const CategoryImg = styled.div<{ top: string }>`
+  position: absolute;
+  left: ${(props) => props.top};
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const CategoryImage = styled.img`
   width: 200px;
   height: 200px;
-  margin: 1%;
   border-radius: 24px;
-
-  background-color: #fff;
-  background-image: url(${(props) => props.image});
-  position: relative;
-  background-repeat: no-repeat;
+  border: 1px solid #333;
+  position: absolute;
 
   @media (max-width: 767px) {
-    width: 190px;
-    height: 170px;
+    width: 140px;
+    height: 140px;
   }
 `;
 export const CategoryInfo = styled.div`
-  width: 100%;
-  height: 80px;
+  width: 200px;
+  height: 90px;
   background-color: #f5f5f5;
   opacity: 0.8;
   position: absolute;
-  border-radius: 10px;
-  margin-top: 50%;
+  margin-top: 110px;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+
   z-index: 30;
-  padding-top: 10px;
   cursor: pointer;
+  @media (max-width: 767px) {
+    width: 140px;
+    height: 80px;
+    margin-top: 60px;
+  }
 `;
 
 export const CategoryText = styled.div<{ weight: string; size: string }>`
   font-weight: ${(props) => props.weight};
   font-size: ${(props) => props.size};
   margin-left: 10px;
+  @media (max-width: 767px) {
+    font-size: 3px;
+  }
 `;
 
 export const NewProductCategory = styled.div`

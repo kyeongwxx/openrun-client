@@ -40,14 +40,26 @@ export const PointInfo = styled.div`
     width: 100%;
   }
 `;
-
-export const AvailablePoint = styled.div`
-  width: 200px;
+export const AvailablePointWrapper = styled.div`
+  width: 50%;
   height: 40px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
+`;
+
+export const AvailablePoint = styled.div`
+  width: 21%;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+
+  @media (max-width: 767px) {
+    width: 29%;
+  }
 `;
 export const ChargePoint = styled.button`
   width: 171px;
@@ -59,6 +71,7 @@ export const ChargePoint = styled.button`
   cursor: pointer;
   @media (max-width: 767px) {
     width: 100px;
+    height: 20px;
   }
 `;
 
@@ -67,6 +80,15 @@ export const Text = styled.div<{ size: string; color: string; weight: string }>`
   color: ${(props) => props.color};
   font-weight: ${(props) => props.weight};
 
+  @media (max-width: 767px) {
+    font-size: 0.5rem;
+  }
+`;
+
+export const DateText = styled.div`
+  font-size: 1rem;
+  color: #656565;
+  text-align: center;
   @media (max-width: 767px) {
     font-size: 0.5rem;
   }
@@ -116,6 +138,7 @@ export const RefundPoint = styled.button`
   cursor: pointer;
   @media (max-width: 767px) {
     width: 100px;
+    height: 20px;
   }
 `;
 export const None = styled.div`

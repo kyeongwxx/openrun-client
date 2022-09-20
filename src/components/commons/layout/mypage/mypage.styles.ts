@@ -109,7 +109,7 @@ export const UserDetail = styled.div`
 `;
 
 export const userInfoNumbers = styled.div`
-  width: 20%;
+  width: 40%;
   height: 90%;
   display: flex;
   flex-direction: column;
@@ -141,18 +141,30 @@ export const MenuWrapper = styled(Container)`
 `;
 
 export const Menus = styled.div`
-  width: 50%;
+  width: 70%;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  margin-bottom: 15px;
 
   @media (max-width: 767px) {
     width: 100%;
   }
 `;
 
-export const Menu = styled.div`
+export const Menu = styled.div<{ color: string; bg: string; weight: string }>`
   cursor: pointer;
+  width: 20%;
+
+  text-align: center;
+  margin: 0 10px;
+  font-size: 0.8rem;
+  background: ${(props) => props.bg};
+  color: ${(props) => props.color};
+  -webkit-background-clip: text;
+  font-weight: ${(props) => props.weight};
+  @media (max-width: 767px) {
+    width: 100%;
+    font-size: 0.6rem;
+  }
 `;

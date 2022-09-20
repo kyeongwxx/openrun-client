@@ -22,10 +22,14 @@ export default function Main() {
   const oneWeek = currentDate(0);
   const router = useRouter();
   const [color, setColor] = useState(Array(7).fill(false));
+  const [colorBestPick, setColorBestPick] = useState(Array(5).fill(false));
 
   const [categoryValue, setCategoryValue] = useState("FASHION");
   const [isHover, setIsHover] = useState(Array(5).fill(false));
   const [date, setDate] = useState(oneWeek[2][0]);
+
+  const [dateIsClick, setDateISClick] = useState(false);
+  const [categoryIsClick, setCategoryIsClick] = useState(false);
 
   const category = ["FASHION", "ACC", "DIGITAL", "FOOD", "TOY"];
 
@@ -52,10 +56,13 @@ export default function Main() {
 
   const onMouse = (index: number) => {
     const temp = [...isHover];
-    temp[index] = !isHover[index];
+    temp[index] = true;
     setIsHover(temp);
-    console.log(temp[index]);
-    console.log(temp);
+  };
+
+  const onMoueLeave = () => {
+    const allFalse = Array(5).fill(false);
+    setIsHover(allFalse);
   };
   const onMouseTrue = (index: number) => {
     const temp = [...isHover];
@@ -63,18 +70,23 @@ export default function Main() {
     setIsHover(temp);
   };
 
-  const onClickCategory = (category: string) => () => {
+  const onClickCategory = (category: string, index: number) => () => {
+    const allFalse = Array(5).fill(false);
+    setColorBestPick(allFalse);
+    allFalse[index] = true;
+
+    setColorBestPick(allFalse);
     setCategoryValue(category);
+    setCategoryIsClick(true);
   };
 
   const onClickDate = (date: string, index: number) => {
-    setColor(Array(7).fill(false));
-    const temp = [...color];
-    temp[index] = true;
-
+    setDateISClick(true);
+    const allFalse = Array(7).fill(false);
+    setColor(allFalse);
+    allFalse[index] = true;
     setDate(date);
-
-    setColor(temp);
+    setColor(allFalse);
   };
   const MouseLeaveDate = () => {
     setColor(Array(7).fill(false));
@@ -98,6 +110,12 @@ export default function Main() {
       MouseLeaveDate={MouseLeaveDate}
       onClickMoveToDetail={onClickMoveToDetail}
       eventInfo={eventInfo?.fetchEventsByDate}
+      colorBestPick={colorBestPick}
+      onMoueLeave={onMoueLeave}
+      dateIsClick={dateIsClick}
+      setDateISClick={setDateISClick}
+      setColor={setColor}
+      categoryIsClick={categoryIsClick}
     />
   );
 }

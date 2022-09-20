@@ -11,6 +11,7 @@ import { accessTokenState, logoutState, userInfoValue } from "../../store";
 import { useMutation } from "@apollo/client";
 import { IMutation } from "../../../../commons/types/generated/types";
 import { LOGOUT } from "../layout.queries";
+import mediaQueryStandardForMain from "../../../../commons/mediaQuery/mediaQueryStandardforMain";
 
 export default function LayoutHeader() {
   const [userInfo, setUserInfo] = useRecoilState(userInfoValue);
@@ -20,6 +21,7 @@ export default function LayoutHeader() {
   const [logout] = useMutation<Pick<IMutation, "logout">>(LOGOUT);
   const isPc = MediaQueryPc();
   const isMobile = MediaQueryMobile();
+  const isMobileForMain = mediaQueryStandardForMain();
   const router = useRouter();
   const onClickMoveToPage = (pageName: string) => () => {
     location.replace(pageName);
@@ -53,7 +55,7 @@ export default function LayoutHeader() {
             </s.MenuList>
           </>
         )}
-        {isMobile && (
+        {isMobileForMain && (
           <s.ForMobileWrapper>
             <TemporaryDrawer
               userInfo={userInfo}

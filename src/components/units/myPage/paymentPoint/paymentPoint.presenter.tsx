@@ -13,14 +13,14 @@ export default function MypagePaymentPointUI(props: any) {
       <s.PointWrapper>
         <s.PointTitle>포인트</s.PointTitle>
         <s.PointInfo>
-          <s.AvailablePoint>
+          <s.AvailablePointWrapper>
             <s.Text size="1rem" color="#656565" weight="400">
               사용가능한 포인트
             </s.Text>
             <s.Text size="1.5rem" color="#333" weight="700">
               {userInfo?.point}
             </s.Text>
-          </s.AvailablePoint>
+          </s.AvailablePointWrapper>
           <s.ChargePoint onClick={props.onClickChargePoint}>
             <s.Text size="1rem" color="#656565" weight="400">
               포인트 충전
@@ -59,7 +59,6 @@ export default function MypagePaymentPointUI(props: any) {
           hasMore={true}
           useWindow={false}
         >
-          {console.log(props.data)}
           {!props.data ? (
             <s.PointInfo />
           ) : (
@@ -69,13 +68,11 @@ export default function MypagePaymentPointUI(props: any) {
                   <s.Text size="1rem" color="#656565" weight="400">
                     {el.status === "PAYMENT" ? "충전포인트" : "환불포인트"}
                   </s.Text>
-                  <s.Text size="1rem" color="#333" weight="700">
-                    {el.amount}P
-                  </s.Text>
                 </s.AvailablePoint>
-                <s.Text size="1rem" color="#656565" weight="400">
-                  {dateSplit(el?.createdAt)}
+                <s.Text size="1rem" color="#333" weight="700">
+                  {el.amount}P
                 </s.Text>
+                <s.DateText>{dateSplit(el?.createdAt)}</s.DateText>
 
                 {props.isRefund ? (
                   <s.None />

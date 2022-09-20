@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { Container } from "@mui/system";
-import { BG_GRADATION } from "../cssConst";
+import { BG_GRADATION, BOX_BG_COLOR, BOX_SHADOW_TOP } from "../cssConst";
 
 export const Wrapper = styled.main``;
 
@@ -34,21 +34,27 @@ export const ArrowRight = styled(ArrowRightIcon)`
   cursor: pointer;
 `;
 
-export const Button = styled.div`
+export const Button = styled.div<{
+  shadow: string;
+  border: string;
+  color: string;
+}>`
   width: 90px;
   height: 143px;
   margin: auto;
-  border: 1px solid #333;
+
+  border: ${(props) => props.border} solid;
   border-radius: 45px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   cursor: pointer;
+  box-shadow: ${(props) => props.shadow};
+  border-color: ${(props) => props.color};
 `;
 export const NoneArrowBtn = styled.div`
   width: 40px;
-  background-color: aliceblue;
 `;
 
 export const ButtonMobile = styled.div`
