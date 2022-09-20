@@ -6,9 +6,12 @@ import { dateSplit } from "../../../commons/function/dateSlice";
 import { IMainProps } from "./main.types";
 import { BG_GRADATION } from "../../../commons/cssConst";
 import MediaQueryPc from "../../../commons/mediaQuery/mediaQueryStandardPc";
+
+import Carousel from "react-material-ui-carousel";
+import { Paper, Button } from "@mui/material";
 import mediaQueryStandardForMain from "../../../commons/mediaQuery/mediaQueryStandardForMain";
 
-export default function MainUI(props: IMainProps) {
+export default function MainUI(props: any) {
   const isPc = MediaQueryPc();
   const isMobileForMain = mediaQueryStandardForMain();
   return (
@@ -22,6 +25,7 @@ export default function MainUI(props: IMainProps) {
           "/img/carousel/main11.jpeg",
         ]}
       />
+
       <DatePicker
         onClickDate={props.onClickDate}
         color={props.color}
@@ -70,7 +74,7 @@ export default function MainUI(props: IMainProps) {
           <s.TEXT color="#333">우리가 사랑하는 베스트 러너 순위</s.TEXT>
         </s.ProductWrapperText>
         <s.BestRunners>
-          {props.data?.map((el, index) => (
+          {props.data?.map((el: any, index: any) => (
             <s.BestRunner key={uuidv4()}>
               <s.Ranking>
                 <s.RankingText>{index + 1}</s.RankingText>
@@ -103,7 +107,7 @@ export default function MainUI(props: IMainProps) {
         </s.ProductWrapperText>
         <s.BestProductCategory>
           <s.Category>
-            {props.category.map((el, index) =>
+            {props.category.map((el: any, index: any) =>
               !props.categoryIsClick && index === 0 ? (
                 <s.CategoryTextChange
                   key={uuidv4()}
@@ -134,7 +138,7 @@ export default function MainUI(props: IMainProps) {
                 <s.NodataText>베스트 상품이 없습니다.</s.NodataText>
               </s.NoData>
             ) : (
-              props.bestBoards?.map((el, index) => (
+              props.bestBoards?.map((el: any, index: any) => (
                 <s.CategoryImg
                   top={
                     isMobileForMain ? `${index * 150}px` : `${index * 250}px`
