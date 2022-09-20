@@ -6,7 +6,9 @@ export const FETCH_REPORTS = gql`
       id
       contents
       createdAt
-      board
+      board {
+        id
+      }
     }
   }
 `;
