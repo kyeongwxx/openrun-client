@@ -11,7 +11,7 @@ import { accessTokenState, logoutState, userInfoValue } from "../../store";
 import { useMutation } from "@apollo/client";
 import { IMutation } from "../../../../commons/types/generated/types";
 import { LOGOUT } from "../layout.queries";
-import mediaQueryStandardForMain from "../../../../commons/mediaQuery/mediaQueryStandardforMain";
+import mediaQueryStandardForMain from "../../../../commons/mediaQuery/mediaQueryStandardForMain";
 
 export default function LayoutHeader() {
   const [userInfo, setUserInfo] = useRecoilState(userInfoValue);
