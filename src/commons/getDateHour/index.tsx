@@ -1,4 +1,4 @@
-export const getDateHour = (value) => {
+export const getDateHour = (value: any) => {
   const date = new Date(value);
   const yyyy = date.getFullYear();
   const MM = String(date.getMonth() + 1).padStart(2, "0");
