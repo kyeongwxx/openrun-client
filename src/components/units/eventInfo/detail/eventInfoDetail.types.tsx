@@ -18,6 +18,5 @@ export interface IEventInfoDetailData {
   title?: string;
   __typename?: string;
 
-  //TODO : ANY 없애기
   boardsData?: any;
 }
