@@ -9,7 +9,7 @@ import MediaQueryMobile from "../mediaQuery/mediaQueryStandardMobile";
 import { useState } from "react";
 
 import { BG_GRADATION, BOX_SHADOW_TOP } from "../cssConst";
-import mediaQueryStandardForMain from "../mediaQuery/mediaQueryStandardforMain";
+import mediaQueryStandardForMain from "../mediaQuery/mediaQueryStandardForMain";
 
 export default function DatePicker(props: any) {
   const isPc = MediaQueryPc();
