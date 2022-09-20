@@ -55,6 +55,7 @@ export default function LiveChat() {
     socket.on(room, (data) => {
       setResultMsg((prev: string[]) => [...prev, data]);
     });
+    refetch();
   }, [room]);
 
   useEffect(() => {
