@@ -1,20 +1,36 @@
-import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useRecoilState } from "recoil";
-import CenteredTabs from "../../../../commons/tabs";
-import { FETCH_WRITE_BOARDS } from "../../../units/myPage/writtenBoards/writtenBoard.queries";
+import { BG_GRADATION } from "../../../../commons/cssConst";
 import { userInfoValue } from "../../store";
 import * as s from "./mypage.styles";
-
 export default function LayoutMyPage() {
+  const tabs = ["MY", "내가 쓴 글", "찜목록", "포인트 정산 ", "포인트 충전"];
+  const address = [
+    "/myPage/",
+    "/myPage/writtenBoards/",
+    "/myPage/favoriteList/",
+    "/myPage/settlementList/",
+    "/myPage/paymentPoint/",
+  ];
   const router = useRouter();
   const [userInfo] = useRecoilState(userInfoValue);
+  const [color, setColor] = useState(Array(tabs.length).fill(false));
+  const [isClick, setIsClick] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const onClickMoveToPageWithColor = (event: string, index: number) => () => {
+    setIsClick(true);
+    router.push(event);
+    const allFalse = Array(7).fill(false);
+    setColor(allFalse);
+    allFalse[index] = true;
+    setColor(allFalse);
+  };
 
   const onClickMoveToPage = (event: string) => () => {
     router.push(event);
   };
-  const { data } = useQuery(FETCH_WRITE_BOARDS);
 
   return (
     <s.Wrapper>
@@ -30,7 +46,7 @@ export default function LayoutMyPage() {
 
           <s.ProfileDetail width="70%">
             <s.Text size="1.5rem" color="#333" weight="400">
-              {userInfo?.nickName}님, 오늘의 일정이 1건 있습니다.
+              안녕하세요 {userInfo?.nickName}님
             </s.Text>
             <s.UserInfoEdit onClick={onClickMoveToPage(`/myPage/editAccount`)}>
               내정보 수정
@@ -48,14 +64,7 @@ export default function LayoutMyPage() {
             </s.Text>
           </s.userInfoNumbers>
           <s.DivideLine />
-          <s.userInfoNumbers>
-            <s.Text size="1.5rem" color="#333" weight="700">
-              10
-            </s.Text>
-            <s.Text size="0.7rem" color="#333" weight="400">
-              거래내역
-            </s.Text>
-          </s.userInfoNumbers>
+
           <s.DivideLine />
           <s.userInfoNumbers>
             <s.Text size="1.5rem" color="#333" weight="700">
@@ -69,16 +78,31 @@ export default function LayoutMyPage() {
       </s.ProfileWrapper>
 
       <s.MenuWrapper>
-        <CenteredTabs
-          tabs={["MY", "내가 쓴 글", "찜목록", "포인트 정산 ", "포인트 충전"]}
-          address={[
-            "/myPage",
-            "/myPage/writtenBoards",
-            "/myPage/favoriteList",
-            "/myPage/settlementList",
-            "/myPage/paymentPoint",
-          ]}
-        />
+        <s.Menus>
+          {isClick
+            ? tabs.map((el, index) => (
+                <s.Menu
+                  onClick={onClickMoveToPageWithColor(address[index], index)}
+                  color={color[index] ? "transparent" : "#333"}
+                  bg={color[index] ? BG_GRADATION : "none"}
+                  weight={color[index] ? "700" : "400"}
+                >
+                  {el}
+                </s.Menu>
+              ))
+            : tabs.map((el, index) => (
+                <s.Menu
+                  onClick={onClickMoveToPageWithColor(address[index], index)}
+                  color={
+                    router.asPath === address[index] ? "transparent" : "#333"
+                  }
+                  bg={router.asPath === address[index] ? BG_GRADATION : "none"}
+                  weight={router.asPath === address[index] ? "700" : "400"}
+                >
+                  {el}
+                </s.Menu>
+              ))}
+        </s.Menus>
       </s.MenuWrapper>
       <s.DivideLineHorizontal color="#656565" />
     </s.Wrapper>

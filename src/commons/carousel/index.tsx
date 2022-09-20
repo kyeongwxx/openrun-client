@@ -23,6 +23,10 @@ export default function MainSlider(props: ICarouselProps) {
     router.push("/Main");
   };
 
+  const onClickGoToList = (url: string) => {
+    router.push(url);
+  };
+
   const settings = {
     dots: true,
     infinite: true,
@@ -42,11 +46,31 @@ export default function MainSlider(props: ICarouselProps) {
   //
   return (
     <CustomSlider {...settings}>
-      <s.AdCarousel src={props.Src[0]} color="#5358D6" />
-      <s.AdCarousel src={props.Src[1]} color="#fff" />
-      <s.AdCarousel src={props.Src[2]} color="#111" />
-      <s.AdCarousel src={props.Src[3]} color="#fff" />
-      <s.AdCarousel src={props.Src[4]} color="#fff" />
+      <s.AdCarousel
+        src={props.Src[0]}
+        color="#5358D6"
+        onClick={() => onClickGoToList("/board/fashion/")}
+      />
+      <s.AdCarousel
+        src={props.Src[1]}
+        color="#fff"
+        onClick={() => onClickGoToList("/board/toy/")}
+      />
+      <s.AdCarousel
+        src={props.Src[2]}
+        color="#111"
+        onClick={() => onClickGoToList("/board/digital/")}
+      />
+      <s.AdCarousel
+        src={props.Src[3]}
+        color="#fff"
+        onClick={() => onClickGoToList("/board/acc/")}
+      />
+      <s.AdCarousel
+        src={props.Src[4]}
+        color="#fff"
+        onClick={() => onClickGoToList("/board/food/")}
+      />
     </CustomSlider>
   );
 }

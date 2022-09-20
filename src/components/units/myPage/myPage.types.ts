@@ -43,6 +43,7 @@ export interface IWrittenBoardsProps {
   onClickCompleteModal: (boardId: string) => () => void;
   showModal: (boardId: string) => () => void;
   onClickSubmitReport: () => void;
+  onClickCancel: () => void;
 }
 
 export interface IMainProps {

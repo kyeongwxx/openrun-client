@@ -18,8 +18,6 @@ export default function MyPage() {
   const { data } =
     useQuery<Pick<IQuery, "fetchUserChatRoom">>(FETCH_USER_CHATROOM);
 
-  console.log(data);
-
   // 내가 셀러
   const { data: processingSeller, fetchMore } = useQuery<
     Pick<IQuery, "fetchBoardProcessingByUser">,
@@ -33,7 +31,6 @@ export default function MyPage() {
   >(FETCH_RUNNER_PROCESSING_BY_USER);
 
   const onClickMoveToBoardDetail = (boardId: string) => () => {
-    console.log(boardId);
     router.push(`/board/${boardId}`);
   };
 

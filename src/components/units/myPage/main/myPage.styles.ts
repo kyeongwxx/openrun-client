@@ -273,6 +273,7 @@ export const ChatContents = styled.div<{ height: string }>`
 `;
 
 export const ChatContent = styled.div`
+  font-weight: 700;
   @media (max-width: 767px) {
   }
 `;

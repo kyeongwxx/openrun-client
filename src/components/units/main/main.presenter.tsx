@@ -4,8 +4,13 @@ import * as s from "./main.styles";
 import { v4 as uuidv4 } from "uuid";
 import { dateSplit } from "../../../commons/function/dateSlice";
 import { IMainProps } from "./main.types";
+import { BG_GRADATION } from "../../../commons/cssConst";
+import mediaQueryStandardForMain from "../../../commons/mediaQuery/mediaQueryStandardforMain";
+import MediaQueryPc from "../../../commons/mediaQuery/mediaQueryStandardPc";
 
 export default function MainUI(props: IMainProps) {
+  const isPc = MediaQueryPc();
+  const isMobileForMain = mediaQueryStandardForMain();
   return (
     <s.Wrapper>
       <MainSlider
@@ -21,6 +26,9 @@ export default function MainUI(props: IMainProps) {
         onClickDate={props.onClickDate}
         color={props.color}
         MouseLeaveDate={props.MouseLeaveDate}
+        dateIsClick={props.dateIsClick}
+        setDateISClick={props.setDateISClick}
+        setColor={props.setColor}
       />
       <s.EventProductWrapper>
         {props.eventInfo?.length === 0 ? (
@@ -95,11 +103,29 @@ export default function MainUI(props: IMainProps) {
         </s.ProductWrapperText>
         <s.BestProductCategory>
           <s.Category>
-            {props.category.map((el, index) => (
-              <s.TEXT key={uuidv4()} onClick={props.onClickCategory(el)}>
-                {el}
-              </s.TEXT>
-            ))}
+            {props.category.map((el, index) =>
+              !props.categoryIsClick && index === 0 ? (
+                <s.CategoryTextChange
+                  key={uuidv4()}
+                  onClick={props.onClickCategory(el, index)}
+                  color="transparent"
+                  bg={BG_GRADATION}
+                  weight="700"
+                >
+                  {el}
+                </s.CategoryTextChange>
+              ) : (
+                <s.CategoryTextChange
+                  key={uuidv4()}
+                  onClick={props.onClickCategory(el, index)}
+                  color={props.colorBestPick[index] ? "transparent" : "#333"}
+                  bg={props.colorBestPick[index] ? BG_GRADATION : "none"}
+                  weight={props.colorBestPick[index] ? "700" : "400"}
+                >
+                  {el}
+                </s.CategoryTextChange>
+              )
+            )}
           </s.Category>
           <s.CategoryImages>
             {props.bestBoards?.length === 0 ? (
@@ -109,18 +135,24 @@ export default function MainUI(props: IMainProps) {
               </s.NoData>
             ) : (
               props.bestBoards?.map((el, index) => (
-                <s.CategoryImage
-                  key={uuidv4()}
-                  onMouseEnter={() => props.onMouse(index)}
-                  onMouseLeave={() => props.onMouse(index)}
-                  image={
-                    el?.image?.url
-                      ? `https://storage.googleapis.com/openrun-storage/${el.image.url}`
-                      : "/img/profile.png"
+                <s.CategoryImg
+                  top={
+                    isMobileForMain ? `${index * 150}px` : `${index * 250}px`
                   }
                 >
+                  <s.CategoryImage
+                    key={uuidv4()}
+                    onMouseEnter={() => props.onMouse(index)}
+                    src={
+                      el?.image?.url
+                        ? `https://storage.googleapis.com/openrun-storage/${el.image?.url}`
+                        : "/img/profile.png"
+                    }
+                  />
+
                   {props.isHover[index] ? (
                     <s.CategoryInfo
+                      onMouseLeave={props.onMoueLeave}
                       onClick={props.onClickMoveToDetail(`/board/${el.id}`)}
                     >
                       <s.CategoryWrapper>
@@ -133,21 +165,20 @@ export default function MainUI(props: IMainProps) {
                         </s.CategoryText>
                       </s.CategoryWrapper>
 
-                      <s.CategoryText weight="400" size="0.7rem">
+                      <s.CategoryText weight="400" size="0.6rem">
                         {dateSplit(el.dueDate)}
                       </s.CategoryText>
-                      <s.CategoryText weight="400" size="0.7rem">
-                        장소
+                      <s.CategoryText weight="400" size="0.6rem">
                         {el.location?.address}
                       </s.CategoryText>
-                      <s.CategoryText weight="400" size="0.7rem">
-                        {el?.price}
+                      <s.CategoryText weight="400" size="0.6rem">
+                        {el?.price} 원
                       </s.CategoryText>
                     </s.CategoryInfo>
                   ) : (
                     <></>
                   )}
-                </s.CategoryImage>
+                </s.CategoryImg>
               ))
             )}
           </s.CategoryImages>

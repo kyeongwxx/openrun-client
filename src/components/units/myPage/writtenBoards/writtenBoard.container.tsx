@@ -123,15 +123,22 @@ export default function MypageWrittenBoards() {
             contents: inputValue,
           },
         },
+        refetchQueries: [
+          {
+            query: FETCH_WRITE_BOARDS,
+          },
+        ],
       });
-      console.log(result);
+
       setIsModalOpen(false);
     } catch (error) {
       console.log(error);
     }
   };
 
-  console.log(data);
+  const onClickCancel = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <MypageWrittenBoardsUI
@@ -144,6 +151,7 @@ export default function MypageWrittenBoards() {
       showModal={showModal}
       isModalOpen={isModalOpen}
       onClickSubmitReport={onClickSubmitReport}
+      onClickCancel={onClickCancel}
     />
   );
 }

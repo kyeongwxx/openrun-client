@@ -7,13 +7,14 @@ import MediaQueryPc from "../mediaQuery/mediaQueryStandardPc";
 import MediaQueryMobile from "../mediaQuery/mediaQueryStandardMobile";
 
 import { useState } from "react";
-import { useRecoilState } from "recoil";
-import { onClickState } from "../../components/commons/store";
-import { BG_GRADATION } from "../cssConst";
+
+import { BG_GRADATION, BOX_SHADOW_TOP } from "../cssConst";
+import mediaQueryStandardForMain from "../mediaQuery/mediaQueryStandardforMain";
 
 export default function DatePicker(props: any) {
   const isPc = MediaQueryPc();
-  const isMobile = MediaQueryMobile();
+  // const isMobile = MediaQueryMobile();
+  const isMobileForMain = mediaQueryStandardForMain();
 
   const [pageState, setPageState] = useState(0);
 
@@ -24,11 +25,16 @@ export default function DatePicker(props: any) {
   const dateTotal = [...oneWeek[2]];
 
   const onClickNextPage = () => {
+    props.setColor(Array(7).fill(false));
     setPageState(pageState + 1);
+    props.setDateISClick(false);
   };
 
   const onClickPrevPage = () => {
     if (pageState === 0) return;
+    props.setColor(Array(7).fill(false));
+    props.setDateISClick(false);
+
     setPageState(pageState - 1);
   };
 
@@ -43,25 +49,45 @@ export default function DatePicker(props: any) {
               <s.NoneArrowBtn />
             )}
 
-            {date.map((el, index) => (
-              <s.Button
-                key={uuidv4()}
-                onClick={() => props.onClickDate(dateTotal[index], index)}
-              >
-                <s.TextDay
-                  color={props.color[index] ? "transparent" : "#333"}
-                  bg={props.color[index] ? BG_GRADATION : "none"}
+            {date.map((el, index) =>
+              !props.dateIsClick && index === 0 ? (
+                <s.Button
+                  key={uuidv4()}
+                  onClick={() => props.onClickDate(dateTotal[index], index)}
+                  shadow={BOX_SHADOW_TOP}
+                  border={"2px"}
+                  color={"#5920d3"}
                 >
-                  {day[index]}
-                </s.TextDay>
-                <s.TextDate
-                  color={props.color[index] ? "transparent" : "#333"}
-                  bg={props.color[index] ? BG_GRADATION : "none"}
+                  <s.TextDay color="transparent" bg={BG_GRADATION}>
+                    {day[index]}
+                  </s.TextDay>
+                  <s.TextDate color={"transparent"} bg={BG_GRADATION}>
+                    {el}
+                  </s.TextDate>
+                </s.Button>
+              ) : (
+                <s.Button
+                  key={uuidv4()}
+                  onClick={() => props.onClickDate(dateTotal[index], index)}
+                  shadow={props.color[index] ? BOX_SHADOW_TOP : "none"}
+                  border={props.color[index] ? "2px" : "1px"}
+                  color={props.color[index] ? "#5920d3" : "#656565"}
                 >
-                  {el}
-                </s.TextDate>
-              </s.Button>
-            ))}
+                  <s.TextDay
+                    color={props.color[index] ? "transparent" : "#333"}
+                    bg={props.color[index] ? BG_GRADATION : "none"}
+                  >
+                    {day[index]}
+                  </s.TextDay>
+                  <s.TextDate
+                    color={props.color[index] ? "transparent" : "#333"}
+                    bg={props.color[index] ? BG_GRADATION : "none"}
+                  >
+                    {el}
+                  </s.TextDate>
+                </s.Button>
+              )
+            )}
             {pageState < 2 ? (
               <s.ArrowRight onClick={onClickNextPage} />
             ) : (
@@ -70,7 +96,7 @@ export default function DatePicker(props: any) {
           </s.ButtonWrapper>
         </s.Carousel>
       )}
-      {isMobile && (
+      {isMobileForMain && (
         <s.ButtonMobile>
           <s.TextDate color="#333" bg="none">
             Today

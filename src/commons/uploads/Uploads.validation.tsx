@@ -11,7 +11,7 @@ export function checkValidationImages(file: File | undefined) {
   }
   if (!file.type.includes("png") && !file.type.includes("jpeg")) {
     Modal.error({
-      content: "파일 확장자가 올바르지 않습니다.(png, jpeg만 가능",
+      content: "파일 확장자가 올바르지 않습니다.(png, jpeg만 가능)",
     });
     return false;
   }

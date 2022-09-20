@@ -122,8 +122,13 @@ export default function MyPageUI(props: IMainProps) {
           ) : (
             props?.chatRoom?.map((el: any) =>
               el?.runner?.id === userInfo?.id ? (
-                <s.ChatContents height="200px" key={uuidv4()}>
+                <s.ChatContents
+                  height="200px"
+                  key={uuidv4()}
+                  onClick={props.onClickMoveToBoardDetail(el.board?.id)}
+                >
                   <s.ChatContent>{el?.board?.title}</s.ChatContent>
+
                   <s.ChatProfileImg
                     src={
                       el?.seller?.profileImg
@@ -134,7 +139,11 @@ export default function MyPageUI(props: IMainProps) {
                   <s.ChatContent>{el?.seller?.nickName}</s.ChatContent>
                 </s.ChatContents>
               ) : (
-                <s.ChatContents height="200px" key={uuidv4()}>
+                <s.ChatContents
+                  height="200px"
+                  key={uuidv4()}
+                  onClick={props.onClickMoveToBoardDetail(el.board?.id)}
+                >
                   <s.ChatContent>{el?.board?.title}</s.ChatContent>
                   <s.ChatProfileImg
                     src={
