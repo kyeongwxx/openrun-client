@@ -66,7 +66,6 @@ export default function LiveChat() {
   const { data: runner } = useQuery(FETCH_RUNNER_BY_BOARD, {
     variables: { boardId: router.query.id },
   });
-
   const adoptedRunner = runner?.fetchRunnerByBoard.filter(
     (el: any) => el.isChecked === true
   );
