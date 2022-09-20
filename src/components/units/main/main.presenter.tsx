@@ -159,22 +159,22 @@ export default function MainUI(props: any) {
                       onClick={props.onClickMoveToDetail(`/board/${el.id}`)}
                     >
                       <s.CategoryWrapper>
-                        <s.CategoryText weight="700" size="0.8rem">
+                        <s.CategoryText weight="700" size="1rem">
                           {el.title}
                         </s.CategoryText>
 
-                        <s.CategoryText weight="700" size="0.8rem">
+                        <s.CategoryText weight="700" size="1rem">
                           <s.Runner /> 0
                         </s.CategoryText>
                       </s.CategoryWrapper>
 
-                      <s.CategoryText weight="400" size="0.6rem">
+                      <s.CategoryText weight="400" size="0.8rem">
                         {dateSplit(el.dueDate)}
                       </s.CategoryText>
-                      <s.CategoryText weight="400" size="0.6rem">
+                      <s.CategoryText weight="400" size="0.8rem">
                         {el.location?.address}
                       </s.CategoryText>
-                      <s.CategoryText weight="400" size="0.6rem">
+                      <s.CategoryText weight="400" size="0.8rem">
                         {el?.price} 원
                       </s.CategoryText>
                     </s.CategoryInfo>

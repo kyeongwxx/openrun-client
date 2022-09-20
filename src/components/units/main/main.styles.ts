@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { Container } from "@mui/system";
 import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
-import { BOX_BG_COLOR } from "../../../commons/cssConst";
+import { BOX_BG_COLOR, BOX_SHADOW_TOP } from "../../../commons/cssConst";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
 export const Wrapper = styled.main`
@@ -312,7 +312,7 @@ export const CategoryImage = styled.img`
   width: 200px;
   height: 200px;
   border-radius: 24px;
-  border: 1px solid #333;
+  box-shadow: ${BOX_SHADOW_TOP};
   position: absolute;
 
   @media (max-width: 767px) {
@@ -343,6 +343,7 @@ export const CategoryText = styled.div<{ weight: string; size: string }>`
   font-weight: ${(props) => props.weight};
   font-size: ${(props) => props.size};
   margin-left: 10px;
+
   @media (max-width: 767px) {
     font-size: 3px;
   }
