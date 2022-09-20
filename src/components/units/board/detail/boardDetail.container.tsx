@@ -32,6 +32,13 @@ export default function BoardDetail() {
   // LiveChat 모달
   const [showChatModal, setShowChatModal] = useState(false);
   const chatOpenCloseModal = () => {
+    if (runner?.fetchRunnerByBoard?.length === 0) {
+      Modal.warning({
+        title: "Warning",
+        content: "아직 runner 신청 내역이 없습니다.",
+      });
+      return;
+    }
     if (
       login?.fetchLoginUser?.id !== data?.fetchBoard?.user.id &&
       login?.fetchLoginUser?.id !== adoptedRunner[0]?.user.id
