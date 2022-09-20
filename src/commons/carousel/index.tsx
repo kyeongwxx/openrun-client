@@ -8,7 +8,8 @@ import { ICarouselProps } from "./carousel.types";
 import { CustomSlider } from "./slicCustom.styles";
 import { useRouter } from "next/router";
 
-export default function MainSlider(props: ICarouselProps) {
+// ICarouselProps
+export default function MainSlider(props: any) {
   const [isHover, setIsHover] = useState(false);
   const router = useRouter();
 
