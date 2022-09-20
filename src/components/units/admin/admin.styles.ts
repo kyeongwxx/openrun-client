@@ -1,11 +1,13 @@
 import styled from "@emotion/styled";
 
+// 래아아웃
 export const Wrapper = styled.div`
   width: 90%;
   margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   @media (max-width: 767px) {
     width: auto;
@@ -25,6 +27,7 @@ export const InnerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: flex-start;
 
   @media (max-width: 767px) {
     flex-direction: column;
@@ -32,8 +35,7 @@ export const InnerWrapper = styled.div`
   }
 `;
 export const Box = styled.div`
-  width: 1000px;
-  height: 400px;
+  width: 62rem;
 
   margin-bottom: 5rem;
 
@@ -45,6 +47,7 @@ export const Box = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-left: -3rem;
   }
 `;
 
@@ -53,6 +56,6 @@ export const Title = styled.div`
   font-size: 20px;
   margin-bottom: 3rem;
   @media (max-width: 767px) {
-    font-size: 25px;
+    font-size: 24px;
   }
 `;

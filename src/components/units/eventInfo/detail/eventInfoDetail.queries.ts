@@ -17,11 +17,23 @@ export const FETCH_EVENT = gql`
   }
 `;
 
-// export const FETCH_BOARD = gql`
-//   query fetchBoard($boardId: String!) {
-//     fetchBoard(boardId: $boardId) {
-//       id
-//       image
-//     }
-//   }
-// `;
+export const FETCH_BOARDS = gql`
+  query fetchBoards(
+    $dateType: String!
+    $page: Int
+    $search: String
+    $direcion: String
+  ) {
+    fetchBoards(
+      dateType: $dateType
+      page: $page
+      search: $search
+      direcion: $direcion
+    ) {
+      id
+      image {
+        url
+      }
+    }
+  }
+`;

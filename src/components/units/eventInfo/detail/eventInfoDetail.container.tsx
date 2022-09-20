@@ -1,19 +1,15 @@
 import EventInfoDetailUI from "./eventInfoDetail.presenter";
 import { useRouter } from "next/router";
-import { useMutation, useQuery } from "@apollo/client";
-import { FETCH_EVENT } from "./eventInfoDetail.queries";
-import { useMoveToPage } from "../../../commons/hooks/useMoveToPage";
+import { useQuery } from "@apollo/client";
+import { FETCH_BOARDS, FETCH_EVENT } from "./eventInfoDetail.queries";
 import {
   IQuery,
+  IQueryFetchBoardsArgs,
   IQueryFetchEventArgs,
 } from "../../../../commons/types/generated/types";
-import { UPLOAD_FILE } from "../../../../commons/uploads/Uploads.queries";
-import { modalGlobalConfig } from "antd/lib/modal/confirm";
-import modal from "antd/lib/modal";
 
 export default function EventInfoDetail() {
   const router = useRouter();
-  const PAGE_SIZE = 10;
 
   const { data } = useQuery<Pick<IQuery, "fetchEvent">, IQueryFetchEventArgs>(
     FETCH_EVENT,
@@ -22,54 +18,25 @@ export default function EventInfoDetail() {
     }
   );
 
-  // const ImageUpload=()=>{
-  //   const [uploadFile]=useMutation(UPLOAD_FILE)
-  //   const onchangeFile=async(e:ChangeEvent<HTMLInputElement>)=>{
-  //     const ImageFile=e.target,files?.[0]
-  //     try{
-  //       await uploadFile({variables:{file:ImageFile}})
-  //       console.log(result.data?.uploadFile.url)
-  //     }catch(error.message){
-  //     Modal.error({content:"파일이 "})
-  //     }
-  //   }
-  //   return <input type="file" onChange={onChangeFile} />
-  // }
+  const { data: boardsData } = useQuery<
+    Pick<IQuery, "fetchBoards">,
+    IQueryFetchBoardsArgs
+  >(FETCH_BOARDS, {
+    variables: {
+      dateType: "최신순",
+    },
+  });
+  console.log(boardsData);
 
-  // )
-  // const { data, fetchMore } = useQuery(FETCH_BOARD, {
-  //   variables: { pageSize: PAGE_SIZE, page: 1 },
-  // });
-
-  // const ToloadFunc = () => {
-  //   if (!data) return;
-
-  //   fetchMore({
-  //     variables: {
-  //       page: Math.ceil(data.fetchBoard.length / 10) + 1,
-  //       pageSize: PAGE_SIZE,
-  //     },
-  //     updateQuery: (prev, { fetchMoreResult }) => {
-  //       if (!fetchMoreResult?.fetchBoard.category)
-  //         return {
-  //           fetchBoard: [...prev.fetchBoard.category],
-  //         };
-  //       return {
-  //         fetchBoard: [...prev.fetchBoard, ...fetchMoreResult.fetchBoard],
-  //       };
-  //     },
-  //   });
-  // };
-
-  const onClickBoardDetail = (event: any) => {
-    router.push(`/board/${event.currentTarget.id}`);
+  const onClickMoveToBoardDetail = (event: any) => {
+    router.push(`/board/${event}`);
   };
 
   return (
     <EventInfoDetailUI
       data={data}
-      // ToloadFunc={ToloadFunc}
-      onClickBoardDetail={onClickBoardDetail}
+      boardsData={boardsData}
+      onClickMoveToBoardDetail={onClickMoveToBoardDetail}
     />
   );
 }
