@@ -70,7 +70,7 @@ export default function UsersChart() {
     <s.Wrapper>
       <s.InnerWrapper>
         <s.Box>
-          <s.Title>일자별 매출</s.Title>
+          <s.Title>가입자 현황</s.Title>
           <Line options={options} data={datas} />
         </s.Box>
       </s.InnerWrapper>

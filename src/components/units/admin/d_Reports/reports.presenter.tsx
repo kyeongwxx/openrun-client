@@ -8,14 +8,14 @@ export default function ReportsUI(props: IReportsUIProps) {
     <s.Wrapper>
       <s.Row>
         <s.ColumnHeader>신고 일자</s.ColumnHeader>
-        <s.ColumnHeader>신고 게시글</s.ColumnHeader>
+        <s.ColumnHeader>신고 게시글 키</s.ColumnHeader>
         <s.ColumnHeader>신고 내용</s.ColumnHeader>
       </s.Row>
       <s.Scroll>
         {props.data?.fetchReports.map((el: any) => (
           <s.Row key={el.id}>
-            <s.ColumnBasic>{getDate(el.createdAt)}</s.ColumnBasic>\{" "}
-            <s.ColumnBasic>{el.board}</s.ColumnBasic>
+            <s.ColumnBasic>{getDate(el.createdAt)}</s.ColumnBasic>
+            <s.ColumnBasic>{el.board.id}</s.ColumnBasic>
             <s.ColumnBasic>{el.contents}</s.ColumnBasic>
           </s.Row>
         ))}
