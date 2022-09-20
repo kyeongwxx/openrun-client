@@ -59,7 +59,7 @@ export default function LiveChat() {
 
   useEffect(() => {
     setId(login?.fetchLoginUser.id);
-    setRoom(String(router.query.id));
+    setRoom("first" + String(router.query.id));
     setNickName(login?.fetchLoginUser.nickName);
   }, [login]);
 
@@ -96,8 +96,8 @@ export default function LiveChat() {
     const message = await data.message;
     socket.emit("send", `first${router.query.id}`, nickName, message);
     resetField("message");
-    await delay(100);
-    refetch();
+    // await delay(100);
+    // refetch();
 
     return messagesEndRef?.current?.scrollIntoView({
       behavior: "smooth",
@@ -123,6 +123,7 @@ export default function LiveChat() {
       data={data}
       messagesEndRef={messagesEndRef}
       onKeyDown={onKeyDown}
+      login={login}
     />
   );
 }

@@ -24,7 +24,7 @@ export default function LiveChatUI(props: any) {
         ))}
         {props.resultMsg.map((el: any) => (
           <div key={uuidv4()}>
-            {el[2] === props.id ? (
+            {el[0] === props.login.fetchLoginUser.nickName ? (
               <S.Right>
                 <S.Text ref={props.messagesEndRef}>{el[1]}</S.Text>
               </S.Right>
