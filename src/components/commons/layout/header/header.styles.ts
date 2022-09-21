@@ -25,12 +25,6 @@ export const ForMobileWrapper = styled.div`
   align-items: center;
 `;
 
-export const Hamburger = styled.div`
-  /* width: 33.3%; */
-  /* background-color: yellowgreen; */
-  cursor: pointer;
-`;
-
 export const Logo = styled.div`
   text-align: center;
   cursor: pointer;
@@ -51,7 +45,7 @@ export const MenuIcon = styled.div`
   cursor: pointer;
 `;
 export const Menu = styled.div`
-  /* margin-right: 10%; */
+  font-weight: 700;
   color: #333;
 
   cursor: pointer;

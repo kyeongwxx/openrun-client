@@ -45,6 +45,8 @@ export const Text = styled.div<{ size: string; color: string; weight: string }>`
   font-size: ${(props) => props.size};
   color: ${(props) => props.color};
   font-weight: ${(props) => props.weight};
+  width: 100px;
+  text-align: center;
 
   @media (max-width: 767px) {
     font-size: 0.3rem;
@@ -184,6 +186,7 @@ export const BoardInfoWrapper = styled.div<{ width: string }>`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+
   @media (max-width: 767px) {
     width: 100%;
   }
@@ -205,7 +208,7 @@ export const BoardImg = styled.img`
 `;
 
 export const BoardContents = styled.div`
-  width: 70%;
+  width: 100%;
   height: 90px;
   display: flex;
   flex-direction: row;
@@ -214,8 +217,10 @@ export const BoardContents = styled.div`
 
   @media (max-width: 767px) {
     width: 60%;
-
     font-size: 0.5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 `;
 

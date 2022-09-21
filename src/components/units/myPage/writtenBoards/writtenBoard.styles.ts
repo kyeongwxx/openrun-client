@@ -162,14 +162,13 @@ export const BoardImg = styled.img`
   width: 90px;
   height: 90px;
   margin-left: 5px;
-
-  border-radius: 20px;
-  object-fit: contain;
+  border-radius: 16px;
+  object-fit: cover;
   cursor: pointer;
   @media (max-width: 767px) {
-    /* width: 60px;
-    height: 90px;
-    border-radius: 10px; */
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
   }
 `;
 
