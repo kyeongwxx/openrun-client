@@ -16,8 +16,8 @@ export default function MainUI(props: IMainProps) {
   const isMobileForMain = mediaQueryStandardForMain();
   return (
     <s.Wrapper>
-      {/* <SwiperCustom /> */}
-      <MainSlider
+      <SwiperCustom />
+      {/* <MainSlider
         Src={[
           "carousel/2022-09-21/0c21fc21-cbc2-4aaf-8c90-46ffd398100c/origin/mainCarousel1.jpeg",
           "carousel/2022-09-21/40e3bd42-b562-4d4c-b1a8-578e9b8d305e/origin/mainCarousel2.jpeg",
@@ -25,7 +25,7 @@ export default function MainUI(props: IMainProps) {
           "carousel/2022-09-21/f3c112f3-138f-4a09-a340-03d4b4c97851/origin/mainCarousel4.jpeg",
           "carousel/2022-09-21/8854f09f-60e8-4748-bbdc-c668973c3905/origin/mainCarousel5.jpeg",
         ]}
-      />
+      /> */}
 
       <DatePicker
         onClickDate={props.onClickDate}
