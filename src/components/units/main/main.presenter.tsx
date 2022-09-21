@@ -101,6 +101,24 @@ export default function MainUI(props: IMainProps) {
           ))}
         </s.BestRunners>
       </s.BannerImg>
+
+      <s.BannerDiv>
+        <s.TEXT
+          color="#333"
+          size={isMobileForMain ? "15px" : "30px"}
+          weight="700"
+        >
+          러너 1:1 매칭
+        </s.TEXT>
+        <s.TEXT
+          color="#333"
+          size={isMobileForMain ? "6px" : "16px"}
+          weight="400"
+        >
+          어려웠던 줄서기 오픈런과 함께하면 쉬워집니다.
+        </s.TEXT>
+      </s.BannerDiv>
+
       <s.ProductWrapper>
         <s.ProductWrapperText>
           <s.TEXT
@@ -201,22 +219,6 @@ export default function MainUI(props: IMainProps) {
           </s.CategoryImages>
         </s.BestProductCategory>
       </s.ProductWrapper>
-      <s.BannerDiv>
-        <s.TEXT
-          color="#333"
-          size={isMobileForMain ? "15px" : "30px"}
-          weight="700"
-        >
-          러너 1:1 매칭
-        </s.TEXT>
-        <s.TEXT
-          color="#333"
-          size={isMobileForMain ? "6px" : "16px"}
-          weight="400"
-        >
-          어려웠던 줄서기 오픈런과 함께하면 쉬워집니다.
-        </s.TEXT>
-      </s.BannerDiv>
     </s.Wrapper>
   );
 }
