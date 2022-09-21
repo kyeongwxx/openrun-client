@@ -140,7 +140,6 @@ export const BannerImg = styled(Container)<{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: aliceblue;
 
   @media (max-width: 767px) {
     background-size: contain;
@@ -255,19 +254,21 @@ export const BannerDiv = styled(Container)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #d2e0ec;
-  /* margin: auto;
-  margin-bottom: 100px; */
+
+  background-image: url("/img/banner.png");
+  margin-top: 100px;
 
   @media (max-width: 767px) {
     height: 100px;
-    margin-bottom: 30px;
+
+    background-size: cover;
+    margin-top: 50px;
   }
 `;
 
 export const BestProductCategory = styled.div`
   width: 100%;
-  height: 70%;
+  height: 50%;
   display: flex;
   flex-direction: row;
 `;

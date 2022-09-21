@@ -41,60 +41,62 @@ export default function DatePicker(props: any) {
   return (
     <s.Wrapper>
       {isPc && (
-        <s.Carousel>
-          <s.ButtonWrapper>
-            {pageState !== 0 ? (
-              <s.ArrowLeft onClick={onClickPrevPage} />
-            ) : (
-              <s.NoneArrowBtn />
-            )}
+        <>
+          {pageState !== 0 ? (
+            <s.ArrowLeft onClick={onClickPrevPage} />
+          ) : (
+            <s.NoneArrowBtn />
+          )}
 
-            {date.map((el, index) =>
-              !props.dateIsClick && index === 0 ? (
-                <s.Button
-                  key={uuidv4()}
-                  onClick={() => props.onClickDate(dateTotal[index], index)}
-                  shadow={BOX_SHADOW_TOP}
-                  border={"2px"}
-                  color={"#5920d3"}
-                >
-                  <s.TextDay color="transparent" bg={BG_GRADATION}>
-                    {day[index]}
-                  </s.TextDay>
-                  <s.TextDate color={"transparent"} bg={BG_GRADATION}>
-                    {el}
-                  </s.TextDate>
-                </s.Button>
-              ) : (
-                <s.Button
-                  key={uuidv4()}
-                  onClick={() => props.onClickDate(dateTotal[index], index)}
-                  shadow={props.color[index] ? BOX_SHADOW_TOP : "none"}
-                  border={props.color[index] ? "2px" : "1px"}
-                  color={props.color[index] ? "#5920d3" : "#656565"}
-                >
-                  <s.TextDay
-                    color={props.color[index] ? "transparent" : "#333"}
-                    bg={props.color[index] ? BG_GRADATION : "none"}
+          <s.Carousel>
+            <s.ButtonWrapper>
+              {date.map((el, index) =>
+                !props.dateIsClick && index === 0 ? (
+                  <s.Button
+                    key={uuidv4()}
+                    onClick={() => props.onClickDate(dateTotal[index], index)}
+                    shadow={BOX_SHADOW_TOP}
+                    border={"2px"}
+                    color={"#5920d3"}
                   >
-                    {day[index]}
-                  </s.TextDay>
-                  <s.TextDate
-                    color={props.color[index] ? "transparent" : "#333"}
-                    bg={props.color[index] ? BG_GRADATION : "none"}
+                    <s.TextDay color="transparent" bg={BG_GRADATION}>
+                      {day[index]}
+                    </s.TextDay>
+                    <s.TextDate color={"transparent"} bg={BG_GRADATION}>
+                      {el}
+                    </s.TextDate>
+                  </s.Button>
+                ) : (
+                  <s.Button
+                    key={uuidv4()}
+                    onClick={() => props.onClickDate(dateTotal[index], index)}
+                    shadow={props.color[index] ? BOX_SHADOW_TOP : "none"}
+                    border={props.color[index] ? "2px" : "1px"}
+                    color={props.color[index] ? "#5920d3" : "#656565"}
                   >
-                    {el}
-                  </s.TextDate>
-                </s.Button>
-              )
-            )}
-            {pageState < 2 ? (
-              <s.ArrowRight onClick={onClickNextPage} />
-            ) : (
-              <s.NoneArrowBtn />
-            )}
-          </s.ButtonWrapper>
-        </s.Carousel>
+                    <s.TextDay
+                      color={props.color[index] ? "transparent" : "#333"}
+                      bg={props.color[index] ? BG_GRADATION : "none"}
+                    >
+                      {day[index]}
+                    </s.TextDay>
+                    <s.TextDate
+                      color={props.color[index] ? "transparent" : "#333"}
+                      bg={props.color[index] ? BG_GRADATION : "none"}
+                    >
+                      {el}
+                    </s.TextDate>
+                  </s.Button>
+                )
+              )}
+            </s.ButtonWrapper>
+          </s.Carousel>
+          {pageState < 2 ? (
+            <s.ArrowRight onClick={onClickNextPage} />
+          ) : (
+            <s.NoneArrowBtn />
+          )}
+        </>
       )}
       {isMobileForMain && (
         <s.ButtonMobile>

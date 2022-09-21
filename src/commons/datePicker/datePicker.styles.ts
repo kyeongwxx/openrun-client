@@ -4,7 +4,12 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { Container } from "@mui/system";
 import { BG_GRADATION, BOX_BG_COLOR, BOX_SHADOW_TOP } from "../cssConst";
 
-export const Wrapper = styled.main``;
+export const Wrapper = styled.main`
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+`;
 
 export const Carousel = styled(Container)`
   width: 100%;
@@ -20,12 +25,13 @@ export const ButtonWrapper = styled.div`
   margin: auto;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 `;
 
 export const ArrowLeft = styled(ArrowLeftIcon)`
   font-size: 40px;
+
   cursor: pointer;
 `;
 
@@ -41,7 +47,7 @@ export const Button = styled.div<{
 }>`
   width: 90px;
   height: 143px;
-  margin: auto;
+  /* margin: auto; */
 
   border: ${(props) => props.border} solid;
   border-radius: 45px;
