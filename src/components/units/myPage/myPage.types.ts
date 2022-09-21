@@ -20,6 +20,7 @@ export interface IEditAccountProps {
   handleSubmit: UseFormHandleSubmit<FieldValues>;
   formState: FormState<FieldValues>;
   onClickEdit: SubmitHandler<FieldValues>;
+  onClickEditForSocial: SubmitHandler<FieldValues>;
   onClickCancel: () => void;
   fileUrls: string[];
   onChangeFileUrls: (fileUrl: string, index: number) => void;

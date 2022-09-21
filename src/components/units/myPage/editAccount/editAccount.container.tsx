@@ -10,6 +10,7 @@ import {
   IMutationUpdateLoginUserArgs,
 } from "../../../../commons/types/generated/types";
 import { schema } from "../../../../commons/yup/updateUserAccount";
+import { schemaSocial } from "../../../../commons/yup/updateUserAccountForSocial";
 import { userInfoValue } from "../../../commons/store";
 
 import EditAccountUI from "./editAccount.presenter";
@@ -24,7 +25,9 @@ export default function EditAccount() {
     IMutationUpdateLoginUserArgs
   >(UPDATE_LOGIN_USER);
   const { register, handleSubmit, getValues, formState } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(
+      userInfo?.loginType === "BASIC" ? schema : schemaSocial
+    ),
     mode: "onChange",
   });
 
@@ -65,6 +68,28 @@ export default function EditAccount() {
   const onClickCancel = () => {
     location.replace(`/myPage/`);
   };
+
+  const onClickEditForSocial = async () => {
+    try {
+      const result = await updateLoginUser({
+        variables: {
+          updateUserInput: {
+            email: getValues("email"),
+            nickName: getValues("nickname"),
+            phone: getValues("phone"),
+            profileImg: fileUrls[0],
+          },
+        },
+      });
+      if (result) {
+        // console.log(result);
+        location.replace(`/myPage/`);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <EditAccountUI
       register={register}
@@ -73,6 +98,7 @@ export default function EditAccount() {
       onClickEdit={onClickEdit}
       onClickCancel={onClickCancel}
       onChangeFileUrls={onChangeFileUrls}
+      onClickEditForSocial={onClickEditForSocial}
       fileUrls={fileUrls}
     />
   );
