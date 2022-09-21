@@ -9,19 +9,21 @@ import MediaQueryPc from "../../../commons/mediaQuery/mediaQueryStandardPc";
 
 import { Paper, Button } from "@mui/material";
 import mediaQueryStandardForMain from "../../../commons/mediaQuery/mediaQueryStandardForMain";
+import SwiperCustom from "../../../commons/swiper";
 
-export default function MainUI(props: any) {
+export default function MainUI(props: IMainProps) {
   const isPc = MediaQueryPc();
   const isMobileForMain = mediaQueryStandardForMain();
   return (
     <s.Wrapper>
+      {/* <SwiperCustom /> */}
       <MainSlider
         Src={[
-          "/img/carousel/main6.jpeg",
-          "/img/carousel/main2.jpeg",
-          "/img/carousel/main9.jpeg",
-          "/img/carousel/main10.jpeg",
-          "/img/carousel/main11.jpeg",
+          "carousel/2022-09-21/0c21fc21-cbc2-4aaf-8c90-46ffd398100c/origin/mainCarousel1.jpeg",
+          "carousel/2022-09-21/40e3bd42-b562-4d4c-b1a8-578e9b8d305e/origin/mainCarousel2.jpeg",
+          "carousel/2022-09-21/6d0a31eb-e418-44a7-8828-89f100b9c151/origin/mainCarousel3.jpeg",
+          "carousel/2022-09-21/f3c112f3-138f-4a09-a340-03d4b4c97851/origin/mainCarousel4.jpeg",
+          "carousel/2022-09-21/8854f09f-60e8-4748-bbdc-c668973c3905/origin/mainCarousel5.jpeg",
         ]}
       />
 
@@ -40,7 +42,7 @@ export default function MainUI(props: any) {
             <s.NodataText>행사 정보가 없습니다.</s.NodataText>
           </s.NoData>
         ) : (
-          props.eventInfo?.map((el: any) => (
+          props.eventInfo?.map((el) => (
             <s.EventProduct key={uuidv4()}>
               <s.ProductImg
                 src={`https://storage.googleapis.com/openrun-storage/${el.image}`}
@@ -50,7 +52,6 @@ export default function MainUI(props: any) {
                 onClick={props.onClickMoveToDetail(`/eventInfo/${el.id}`)}
               >
                 <s.ProductText weight="400" size="0.8rem">
-                  브랜드
                   {el.brand}
                 </s.ProductText>
                 <s.ProductText weight="700" size="1rem">
@@ -106,7 +107,7 @@ export default function MainUI(props: any) {
         </s.ProductWrapperText>
         <s.BestProductCategory>
           <s.Category>
-            {props.category.map((el: any, index: any) =>
+            {props.category.map((el, index) =>
               !props.categoryIsClick && index === 0 ? (
                 <s.CategoryTextChange
                   key={uuidv4()}

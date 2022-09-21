@@ -2,7 +2,11 @@ import * as s from "./footer.styles";
 export default function LayoutFooter() {
   return (
     <s.Wrapper>
-      <s.MenuWrapper>
+      <s.MenuWrappers>
+        <s.MenuWrapper src="/img/footer.png" />
+      </s.MenuWrappers>
+
+      {/* <s.MenuWrapper>
         <s.Menu>
           <s.Text weight="700" color="#333">
             1600-0000
@@ -29,7 +33,7 @@ export default function LayoutFooter() {
             </s.Text>
           </s.InfoWrapper>
         </s.Menu>
-      </s.MenuWrapper>
+      </s.MenuWrapper> */}
     </s.Wrapper>
   );
 }

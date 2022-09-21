@@ -8,8 +8,7 @@ import { ICarouselProps } from "./carousel.types";
 import { CustomSlider } from "./slicCustom.styles";
 import { useRouter } from "next/router";
 
-// ICarouselProps
-export default function MainSlider(props: any) {
+export default function MainSlider(props: ICarouselProps) {
   const [isHover, setIsHover] = useState(false);
   const router = useRouter();
 
@@ -48,27 +47,27 @@ export default function MainSlider(props: any) {
   return (
     <CustomSlider {...settings}>
       <s.AdCarousel
-        src={props.Src[0]}
+        src={`https://storage.googleapis.com/openrun-storage/${props.Src[0]}`}
         color="#5358D6"
         onClick={() => onClickGoToList("/board/fashion/")}
       />
       <s.AdCarousel
-        src={props.Src[1]}
+        src={`https://storage.googleapis.com/openrun-storage/${props.Src[1]}`}
         color="#fff"
         onClick={() => onClickGoToList("/board/toy/")}
       />
       <s.AdCarousel
-        src={props.Src[2]}
+        src={`https://storage.googleapis.com/openrun-storage/${props.Src[2]}`}
         color="#111"
         onClick={() => onClickGoToList("/board/digital/")}
       />
       <s.AdCarousel
-        src={props.Src[3]}
+        src={`https://storage.googleapis.com/openrun-storage/${props.Src[3]}`}
         color="#fff"
         onClick={() => onClickGoToList("/board/acc/")}
       />
       <s.AdCarousel
-        src={props.Src[4]}
+        src={`https://storage.googleapis.com/openrun-storage/${props.Src[4]}`}
         color="#fff"
         onClick={() => onClickGoToList("/board/food/")}
       />
