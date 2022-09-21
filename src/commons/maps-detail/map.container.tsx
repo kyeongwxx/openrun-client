@@ -15,7 +15,7 @@ export default function Map(props: any) {
   useEffect(() => {
     const script = document.createElement("script"); // <script></script>
     script.src =
-      "//dapi.kakao.com/v2/maps/sdk.js?appkey=0a52caedc58ffbb58170054eedc1f287&autoload=false&libraries=services";
+      "//dapi.kakao.com/v2/maps/sdk.js?appkey=0c784202955170ce9660de667cc69c1e&autoload=false&libraries=services";
     document.head.appendChild(script);
 
     script.onload = () => {
