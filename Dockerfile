@@ -1,7 +1,7 @@
 FROM node:14
 
-COPY . /F8B4-TEAM03-CLIENT/
-WORKDIR /F8B4-TEAM03-CLIENT/
+COPY . /
+WORKDIR /
 
 RUN yarn install
 RUN yarn build:ssr
