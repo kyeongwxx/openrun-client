@@ -47,7 +47,7 @@ export default function SwiperCustom() {
           <s.CustomSwiperSlideImg
             src={`https://storage.googleapis.com/openrun-storage/2022-09-21/fc148b67-3fc7-489c-acc0-684024638318/origin/mainCarousel1.jpeg`}
             onClick={() => onClickGoToList("/board/fashion/")}
-            color="#5358D6"
+            color="#fff"
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -61,7 +61,7 @@ export default function SwiperCustom() {
           <s.CustomSwiperSlideImg
             src={`https://storage.googleapis.com/openrun-storage/2022-09-21/700058a2-bc97-40a6-af9b-b03be5301ffc/origin/mainCarousel3.jpeg`}
             onClick={() => onClickGoToList("/board/digital/")}
-            color="#111"
+            color="#fff"
           />
         </SwiperSlide>
         <SwiperSlide>
