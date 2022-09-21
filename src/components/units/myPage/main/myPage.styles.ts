@@ -217,8 +217,9 @@ export const ActiveContent = styled.div<{ height: string }>`
 export const ActiveImg = styled.img`
   width: 60%;
   height: 40%;
-  /* object-fit: cover;
-  background-color: aliceblue; */
+  border-radius: 16px;
+  object-fit: cover;
+
   @media (max-width: 767px) {
     width: 80px;
     height: 60px;

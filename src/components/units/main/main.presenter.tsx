@@ -1,4 +1,3 @@
-import MainSlider from "../../../commons/carousel";
 import DatePicker from "../../../commons/datePicker";
 import * as s from "./main.styles";
 import { v4 as uuidv4 } from "uuid";
@@ -7,7 +6,6 @@ import { IMainProps } from "./main.types";
 import { BG_GRADATION } from "../../../commons/cssConst";
 import MediaQueryPc from "../../../commons/mediaQuery/mediaQueryStandardPc";
 
-import { Paper, Button } from "@mui/material";
 import mediaQueryStandardForMain from "../../../commons/mediaQuery/mediaQueryStandardForMain";
 import SwiperCustom from "../../../commons/swiper";
 
@@ -17,15 +15,6 @@ export default function MainUI(props: IMainProps) {
   return (
     <s.Wrapper>
       <SwiperCustom />
-      {/* <MainSlider
-        Src={[
-          "carousel/2022-09-21/0c21fc21-cbc2-4aaf-8c90-46ffd398100c/origin/mainCarousel1.jpeg",
-          "carousel/2022-09-21/40e3bd42-b562-4d4c-b1a8-578e9b8d305e/origin/mainCarousel2.jpeg",
-          "carousel/2022-09-21/6d0a31eb-e418-44a7-8828-89f100b9c151/origin/mainCarousel3.jpeg",
-          "carousel/2022-09-21/f3c112f3-138f-4a09-a340-03d4b4c97851/origin/mainCarousel4.jpeg",
-          "carousel/2022-09-21/8854f09f-60e8-4748-bbdc-c668973c3905/origin/mainCarousel5.jpeg",
-        ]}
-      /> */}
 
       <DatePicker
         onClickDate={props.onClickDate}
@@ -70,8 +59,20 @@ export default function MainUI(props: IMainProps) {
       </s.EventProductWrapper>
       <s.BannerImg height="690px" url="/img/rectangle2.png">
         <s.ProductWrapperText>
-          <s.H1 color="#333">Best Runner Ranking</s.H1>
-          <s.TEXT color="#333">우리가 사랑하는 베스트 러너 순위</s.TEXT>
+          <s.TEXT
+            color="#333"
+            size={isMobileForMain ? "15px" : "30px"}
+            weight="700"
+          >
+            Best Runner Ranking
+          </s.TEXT>
+          <s.TEXT
+            color="#333"
+            size={isMobileForMain ? "6px" : "16px"}
+            weight="400"
+          >
+            우리가 사랑하는 베스트 러너 순위
+          </s.TEXT>
         </s.ProductWrapperText>
         <s.BestRunners>
           {props.data?.map((el: any, index: any) => (
@@ -102,8 +103,20 @@ export default function MainUI(props: IMainProps) {
       </s.BannerImg>
       <s.ProductWrapper>
         <s.ProductWrapperText>
-          <s.H1 color="#333">Best Pick</s.H1>
-          <s.TEXT color="#333">찜 많이 받은 글</s.TEXT>
+          <s.TEXT
+            color="#333"
+            size={isMobileForMain ? "15px" : "30px"}
+            weight="700"
+          >
+            Best Pick
+          </s.TEXT>
+          <s.TEXT
+            color="#333"
+            size={isMobileForMain ? "6px" : "16px"}
+            weight="400"
+          >
+            찜 많이 받은 글
+          </s.TEXT>
         </s.ProductWrapperText>
         <s.BestProductCategory>
           <s.Category>
@@ -175,7 +188,7 @@ export default function MainUI(props: IMainProps) {
                       <s.CategoryText weight="400" size="0.8rem">
                         {el.location?.address}
                       </s.CategoryText>
-                      <s.CategoryText weight="400" size="0.8rem">
+                      <s.CategoryText weight="700" size="0.8rem">
                         {el?.price} 원
                       </s.CategoryText>
                     </s.CategoryInfo>
@@ -189,10 +202,20 @@ export default function MainUI(props: IMainProps) {
         </s.BestProductCategory>
       </s.ProductWrapper>
       <s.BannerDiv>
-        <s.H1 color="#4E6781">러너 1:1 매칭 </s.H1>
-        <s.BannerText>
+        <s.TEXT
+          color="#333"
+          size={isMobileForMain ? "15px" : "30px"}
+          weight="700"
+        >
+          러너 1:1 매칭
+        </s.TEXT>
+        <s.TEXT
+          color="#333"
+          size={isMobileForMain ? "6px" : "16px"}
+          weight="400"
+        >
           어려웠던 줄서기 오픈런과 함께하면 쉬워집니다.
-        </s.BannerText>
+        </s.TEXT>
       </s.BannerDiv>
     </s.Wrapper>
   );

@@ -58,7 +58,15 @@ export const DetailText = styled.div`
   font-size: 0.5rem;
 `;
 
-export const SelectText = styled.div``;
+export const PhoneWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
 export const Certify = styled.div`
   width: 100%;
+`;
+
+export const Margin = styled.div`
+  width: 10px;
+  height: 10px;
 `;

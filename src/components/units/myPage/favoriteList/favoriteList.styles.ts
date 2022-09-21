@@ -155,8 +155,13 @@ export const Status = styled.div<{ color: string; border: string }>`
 export const BoardImg = styled.img`
   width: 90px;
   height: 90px;
-  border-radius: 20px;
-  object-fit: contain;
+  border-radius: 16px;
+  object-fit: cover;
+  @media (max-width: 767px) {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+  }
 `;
 
 export const BoardContentsWrapper = styled.div`

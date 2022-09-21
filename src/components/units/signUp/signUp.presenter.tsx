@@ -58,27 +58,29 @@ export default function SignUpUI(props: ISignUpProps) {
         <YupWarningMsg
           errormsg={props.formState.errors.passwordCheck?.message}
         />
+        <s.PhoneWrapper>
+          <SignInput
+            register={props.register}
+            placeholder="휴대전화"
+            color="#000000"
+            width="70%"
+            name="phone"
+            type="text"
+          />
+          <s.Margin />
 
-        <SignInput
-          register={props.register}
-          placeholder="휴대전화"
-          color="#000000"
-          width="70%"
-          name="phone"
-          type="text"
-        />
-
-        <BlackButton
-          onClick={props.onClickPhoneCertify}
-          type="button"
-          width="30%"
-          fontWeight="700"
-          title="인증하기"
-        />
-        <YupWarningMsg errormsg={props.formState.errors.phone?.message} />
+          <BlackButton
+            onClick={props.onClickPhoneCertify}
+            type="button"
+            width="30%"
+            fontWeight="700"
+            title="인증하기"
+          />
+          <YupWarningMsg errormsg={props.formState.errors.phone?.message} />
+        </s.PhoneWrapper>
 
         {props.isOpen ? (
-          <s.Certify>
+          <s.PhoneWrapper>
             <SignInput
               register={props.register}
               placeholder="인증번호"
@@ -87,6 +89,7 @@ export default function SignUpUI(props: ISignUpProps) {
               name="token"
               type="text"
             />
+            <s.Margin />
 
             <BlackButton
               onClick={props.onClickCheckCertify}
@@ -95,7 +98,7 @@ export default function SignUpUI(props: ISignUpProps) {
               fontWeight="700"
               title="확인"
             />
-          </s.Certify>
+          </s.PhoneWrapper>
         ) : (
           <></>
         )}

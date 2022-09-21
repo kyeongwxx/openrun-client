@@ -39,8 +39,9 @@ export const ProductImg = styled.img`
   width: 100%;
   height: 60%;
   border-radius: 24px;
-  background-color: lightgray;
-  object-fit: fill;
+  background-color: #fff;
+  object-fit: cover;
+  box-shadow: ${BOX_SHADOW_TOP};
   cursor: pointer;
 `;
 export const ProductTexts = styled.div`
@@ -68,14 +69,18 @@ export const H1 = styled.p`
   }
 `;
 
-export const TEXT = styled.div`
+export const TEXT = styled.div<{
+  color: string;
+  size: string;
+  weight: string;
+}>`
   color: ${(props) => props.color};
-  font-weight: 400;
-  font-size: 1rem;
+  font-weight: ${(props) => props.weight};
+  font-size: ${(props) => props.size};
+  text-align: center;
 
   @media (max-width: 767px) {
     width: 100%;
-    font-size: 0.5rem;
   }
 `;
 
@@ -251,8 +256,8 @@ export const BannerDiv = styled(Container)`
   align-items: center;
   justify-content: center;
   background-color: #d2e0ec;
-  margin: auto;
-  margin-bottom: 100px;
+  /* margin: auto;
+  margin-bottom: 100px; */
 
   @media (max-width: 767px) {
     height: 100px;
@@ -314,6 +319,7 @@ export const CategoryImage = styled.img`
   border-radius: 24px;
   box-shadow: ${BOX_SHADOW_TOP};
   position: absolute;
+  object-fit: cover;
 
   @media (max-width: 767px) {
     width: 140px;
