@@ -25,6 +25,8 @@ export async function getAccessToken() {
 
     return newAccessToken;
   } catch (error) {
-    if (error instanceof Error) console.log(error.message);
+    if (error instanceof Error) {
+      // console.log(error.message);
+    }
   }
 }

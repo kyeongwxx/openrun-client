@@ -103,7 +103,7 @@ export default function BoardDetail() {
       });
       router.push("/board");
     } catch (error: any) {
-      console.log(error.message);
+      // console.log(error.message);
     }
   };
 
@@ -111,7 +111,7 @@ export default function BoardDetail() {
   const appliedRunner = runner?.fetchRunnerByBoard.filter(
     (el: any) => el.user.id === login?.fetchLoginUser?.id
   );
-  console.log(runner);
+  // console.log(runner);
 
   const [applyRunner] = useMutation(APPLY_RUNNER);
   const onClickApply = async () => {
@@ -180,7 +180,7 @@ export default function BoardDetail() {
           boardId: router.query.id,
         },
       });
-      console.log(result);
+      // console.log(result);
       Modal.success({
         title: "Success",
         content: "runner 채택이 완료되었습니다.",

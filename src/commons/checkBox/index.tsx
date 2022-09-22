@@ -17,7 +17,7 @@ export default function CheckBox(props: any) {
     setCheckedList(list);
     setIndeterminate(!!list.length && list.length < plainOptions.length);
     setCheckAll(list.length === plainOptions.length);
-    console.log(list);
+    // console.log(list);
   };
 
   const onCheckAllChange = (e: CheckboxChangeEvent) => {

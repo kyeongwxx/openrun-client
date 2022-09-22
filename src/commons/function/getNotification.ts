@@ -41,6 +41,8 @@ export async function getNotification() {
 
     return newNotification;
   } catch (error) {
-    if (error instanceof Error) console.log(error.message);
+    if (error instanceof Error) {
+      // console.log(error.message);
+    }
   }
 }
