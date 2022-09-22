@@ -58,11 +58,10 @@ export default function EditAccount() {
         },
       });
       if (result) {
-        // console.log(result);
         location.replace(`/myPage/`);
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
   const onClickCancel = () => {
@@ -86,7 +85,7 @@ export default function EditAccount() {
         location.replace(`/myPage/`);
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 

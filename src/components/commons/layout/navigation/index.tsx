@@ -70,13 +70,12 @@ export default function LayoutNavigation() {
         location.replace(`/main`);
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
   const onClickBadge = async () => {
     setPopover(!popover);
     const result = await updateNotifications();
-    console.log(result);
   };
 
   return (
