@@ -29,9 +29,9 @@ export default function LiveChat() {
   const { data, refetch } = useQuery(FETCH_CHAT_LOGS, {
     variables: { room: `first${router.query.id}` },
   });
-  console.log(data);
+  // console.log(data);
   const { data: chatRoom } = useQuery(FETCH_USER_CHAT_ROOM);
-  console.log(chatRoom);
+  // console.log(chatRoom);
 
   const { data: login } = useQuery(FETCH_LOGIN_USER);
   const { data: board } = useQuery(FETCH_BOARD, {
@@ -79,7 +79,7 @@ export default function LiveChat() {
         router.query.id,
       ]);
       socket.on(`first${router.query.id}`, (data) => {
-        console.log(data);
+        // console.log(data);
       });
     } else {
       socket.emit("message", [
@@ -88,7 +88,7 @@ export default function LiveChat() {
         router.query.id,
       ]);
       socket.on(`first${router.query.id}`, (data) => {
-        console.log(data);
+        // console.log(data);
       });
     }
   };

@@ -23,6 +23,8 @@ export async function getUserInfo(accessToken: string) {
 
     return newUserInfo;
   } catch (error) {
-    if (error instanceof Error) console.log(error.message);
+    if (error instanceof Error) {
+      // console.log(error.message);
+    }
   }
 }

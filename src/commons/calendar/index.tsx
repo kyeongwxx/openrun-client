@@ -6,7 +6,7 @@ import { dayState } from "../../components/commons/store";
 export default function Calendar() {
   const [dayValue, setDayValue] = useRecoilState(dayState);
   const onClickDay = () => {
-    console.log(dayValue);
+    // console.log(dayValue);
   };
 
   return (

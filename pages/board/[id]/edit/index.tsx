@@ -30,6 +30,5 @@ export default function BoardEditPage() {
   const { data } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.id },
   });
-  console.log(data);
   return <BoardWrite data={data} isEdit={true} />;
 }

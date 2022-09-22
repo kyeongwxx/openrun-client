@@ -99,7 +99,7 @@ export default function BoardWrite(props: any) {
     setValue("image", newFileUrls);
     trigger("image");
     setFileUrls(newFileUrls);
-    console.log(fileUrls);
+    // console.log(fileUrls);
   };
 
   useEffect(() => {
@@ -130,8 +130,8 @@ export default function BoardWrite(props: any) {
           },
         },
       });
-      console.log(result);
-      console.log(data);
+      // console.log(result);
+      // console.log(data);
       Modal.success({
         title: "Success",
         content: "게시물 등록이 완료되었습니다.",
@@ -167,14 +167,14 @@ export default function BoardWrite(props: any) {
           boardId: router.query.id,
         },
       });
-      console.log(data);
+      // console.log(data);
       Modal.success({
         title: "Success",
         content: "게시물 수정이 완료되었습니다.",
       });
       router.push(`/board/${result.data?.updateBoard.id}`);
     } catch (error: any) {
-      console.log(error.message);
+      // console.log(error.message);
     }
   };
 

@@ -13,7 +13,7 @@ export default function MainSlider(props: ICarouselProps) {
   const router = useRouter();
 
   const onHover = () => {
-    console.log(isHover);
+    // console.log(isHover);
     setIsHover(!isHover);
   };
   const onLeave = () => {
