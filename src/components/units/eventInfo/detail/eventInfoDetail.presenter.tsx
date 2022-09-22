@@ -3,8 +3,6 @@ import * as s from "./eventInfoDetail.styles";
 import { IEventInfoDetailUI } from "./eventInfoDetail.types";
 
 export default function EventInfoDetailUI(props: IEventInfoDetailUI) {
-  console.log(props);
-
   return (
     <>
       <s.Wrapper>

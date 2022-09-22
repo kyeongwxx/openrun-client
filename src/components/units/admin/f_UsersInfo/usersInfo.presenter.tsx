@@ -7,9 +7,7 @@ export default function UsersInfoUI(props: any) {
   console.log(props.data?.fetchUsers);
   return (
     <s.Wrapper>
-      {console.log(props.data)}
       <s.Row>
-        {/* <s.ColumnHeader>회원 유형</s.ColumnHeader> */}
         <s.ColumnHeader>id</s.ColumnHeader>
         <s.ColumnHeader>E-mail</s.ColumnHeader>
         <s.ColumnHeader>가입일</s.ColumnHeader>
