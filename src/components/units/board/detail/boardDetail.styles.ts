@@ -234,7 +234,7 @@ export const Location = styled.div`
 `;
 export const AddressWrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 `;
 export const Address = styled.div`
   font-weight: 700;
