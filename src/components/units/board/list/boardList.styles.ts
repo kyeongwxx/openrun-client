@@ -174,14 +174,14 @@ export const DateWrapper1 = styled.div`
 
 export const Month = styled.div`
   font-weight: 350;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #fff;
   z-index: 1;
   text-shadow: 1px 1px 1px #555;
 `;
 export const Day = styled.div`
   font-weight: 450;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: #fff;
   height: 60px;
   line-height: 15px;
