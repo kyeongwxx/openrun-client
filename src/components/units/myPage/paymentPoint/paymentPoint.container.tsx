@@ -14,8 +14,6 @@ import {
   IMutation,
   IMutationCancelPaymentArgs,
   IMutationChargePaymentArgs,
-  IQuery,
-  IQueryFetchPointChargeHistoryArgs,
 } from "../../../../commons/types/generated/types";
 
 declare const window: typeof globalThis & {
@@ -111,7 +109,7 @@ export default function MypagePaymentPoint() {
 
       setIsRefund(result.data?.cancelPayment.impUid || "");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 

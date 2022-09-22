@@ -100,12 +100,12 @@ export default function MypageWrittenBoards() {
               refetchQueries: [{ query: FETCH_WRITE_BOARDS }],
             });
           } catch (error) {
-            console.log(error);
+            // console.log(error);
           }
         },
       });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -132,7 +132,7 @@ export default function MypageWrittenBoards() {
 
       setIsModalOpen(false);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
