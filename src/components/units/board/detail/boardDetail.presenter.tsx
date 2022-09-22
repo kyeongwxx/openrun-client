@@ -246,6 +246,11 @@ export default function BoardDetailUI(props: any) {
                           <AiOutlineCheckCircle size={30} />
                         </s.SelectBtn>
                       )}
+                      {props.isUltra && (
+                        <s.SelectBtn onClick={props.onClickAdopt(el?.user?.id)}>
+                          <AiOutlineCheckCircle size={30} />
+                        </s.SelectBtn>
+                      )}
                     </s.ApplyList>
                   ))}
                 </s.ApplyWrapper>
