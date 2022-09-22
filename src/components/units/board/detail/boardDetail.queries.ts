@@ -69,6 +69,7 @@ export const FETCH_RUNNER_BY_BOARD = gql`
         rating
         successRate
         runnerCount
+        profileImg
       }
     }
   }

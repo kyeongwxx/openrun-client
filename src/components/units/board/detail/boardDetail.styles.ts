@@ -427,8 +427,17 @@ export const ApplyItem = styled.div`
     justify-content: center;
   }
 `;
+export const IconWrapper = styled.div`
+  width: 45px;
+  height: 45px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-left: 2rem;
+`;
 export const RunnerIcon = styled.img`
-  padding-left: 2.688rem;
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
   @media (max-width: 767px) {
     display: none;
   }
