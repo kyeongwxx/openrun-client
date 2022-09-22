@@ -163,7 +163,7 @@ export default function BoardListFoodUI(props: any) {
                   />
                 </s.ImageWrapper>
                 <s.DateWrapper1>
-                  <s.Month>{el?.dueDate?.slice(6, 7)}월</s.Month>
+                  <s.Month>{el?.dueDate?.slice(5, 7)}월</s.Month>
                   <s.Day>{el?.dueDate?.slice(8, 10)}</s.Day>
                 </s.DateWrapper1>
                 {props.interestedId?.fetchInterestBoardId?.includes(el.id) ? (
