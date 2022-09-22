@@ -26,6 +26,7 @@ export const Tabs = styled.div`
   @media (max-width: 767px) {
     width: 100%;
   }
+  cursor: pointer;
 `;
 export const Tab = styled.div<{ color: string; bg: string; weight: string }>`
   width: 20%;
