@@ -103,9 +103,9 @@ export default function LayoutNavigation() {
               content={content}
             >
               <s.Menu onClick={onClickBadge}>
-                {notificationState ? (
+                {!notificationState ? (
                   <Badge
-                    count={notification?.length}
+                    count={notification?.fetchNotifications?.length}
                     color="#6400ff"
                     size="small"
                   >
