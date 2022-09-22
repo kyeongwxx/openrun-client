@@ -1,12 +1,11 @@
 import styled from "@emotion/styled";
 
-export const Wrapper = styled.div`
-  width: 90%;
-  margin: auto;
+export const TabsWrapper = styled.div`
+  height: 50px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 
   @media (max-width: 767px) {
     width: auto;
@@ -17,37 +16,32 @@ export const Wrapper = styled.div`
     justify-content: center;
   }
 `;
-export const InnerWrapper = styled.div`
-  width: 100%;
-
-  margin-bottom: 10rem;
-  padding-left: 8rem;
-  padding-top: 5rem;
+export const Tabs = styled.div`
+  width: 70%;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
 
   @media (max-width: 767px) {
-    flex-direction: column;
-    padding-left: 2.5rem;
+    width: 100%;
   }
 `;
-export const Box = styled.div`
-  width: 62rem;
+export const Tab = styled.div<{ color: string; bg: string; weight: string }>`
+  width: 20%;
 
-  margin-bottom: 5rem;
+  text-align: center;
+  margin: 0 10px;
+  font-size: 0.8rem;
+  background: ${(props) => props.bg};
+  color: ${(props) => props.color};
+  -webkit-background-clip: text;
+  font-weight: ${(props) => props.weight};
 
   @media (max-width: 767px) {
-    width: 500px;
-    height: 500px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    width: 100%;
+    font-size: 0.6rem;
   }
-  border: 1px solid green;
 `;
 
 export const Title = styled.div`
