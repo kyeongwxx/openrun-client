@@ -211,7 +211,15 @@ export default function BoardDetailUI(props: any) {
                   {props.runner?.fetchRunnerByBoard?.map((el: any) => (
                     <s.ApplyList key={el.id}>
                       <s.ApplyItem>
-                        <s.RunnerIcon src="/boardDetail/RunnerIcon.png" />
+                        <s.IconWrapper>
+                          <s.RunnerIcon
+                            src={
+                              el?.user?.profileImg
+                                ? `https://storage.googleapis.com/openrun-storage/${el?.user?.profileImg}`
+                                : `https://storage.googleapis.com/openrun-storage/profile/2022-09-21/54776adb-634b-43da-8b90-ebe9ef19c6e8/origin/Smile-Emoticon-Transparent-PNG.png`
+                            }
+                          />
+                        </s.IconWrapper>
                         <s.RunnerName>{el?.user?.nickName}</s.RunnerName>
                         <s.Rating>
                           <s.Star value={el.user.rating || 0.0} disabled />
