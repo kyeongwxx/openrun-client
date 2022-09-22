@@ -36,7 +36,7 @@ export default function LayoutHeader() {
         router.push("/main");
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
