@@ -16,6 +16,7 @@ import {
   FETCH_RUNNER_BY_BOARD,
 } from "./boardDetail.queries";
 import { Modal } from "antd";
+import MediaQueryUltra from "../../../../commons/mediaQuery/mediaQueryStandardUltra";
 
 export default function BoardDetail() {
   const router = useRouter();
@@ -61,6 +62,7 @@ export default function BoardDetail() {
   // mediaQuery
   const isMobile = MediaQueryMobile();
   const isPc = MediaQueryPc();
+  const isUltra = MediaQueryUltra();
 
   // 페이지 이동 함수
   const onClickMoveToProductEdit = () => {
@@ -247,6 +249,7 @@ export default function BoardDetail() {
       boardOpenCloseModal={boardOpenCloseModal}
       isMobile={isMobile}
       isPc={isPc}
+      isUltra={isUltra}
       onClickMoveToProductEdit={onClickMoveToProductEdit}
       onClickDelete={onClickDelete}
       onClickApply={onClickApply}
