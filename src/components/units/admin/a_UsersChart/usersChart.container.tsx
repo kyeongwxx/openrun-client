@@ -53,7 +53,6 @@ export default function UsersChart() {
     datasets: [
       {
         label: "신규 유저 가입 수",
-
         data: labels.map(
           (_, i) => countData?.fetchUsersCountByDate?.[i]?.countByDate
         ),
