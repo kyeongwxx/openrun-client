@@ -23,6 +23,7 @@ export default function Main() {
   const router = useRouter();
   const [color, setColor] = useState(Array(7).fill(false));
   const [colorBestPick, setColorBestPick] = useState(Array(5).fill(false));
+  const [rate, setRate] = useState(0);
 
   const [categoryValue, setCategoryValue] = useState("FASHION");
   const [isHover, setIsHover] = useState(Array(5).fill(false));

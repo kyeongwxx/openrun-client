@@ -43,7 +43,8 @@ export interface IWrittenBoardsProps {
   isModalOpen: boolean;
   onClickCompleteModal: (boardId: string) => () => void;
   showModal: (boardId: string) => () => void;
-  showModalRate: (boardId: string) => () => void;
+  showModalRate: (boardId: string) => () => Promise<void>;
+
   onClickSubmitReport: () => void;
   onClickCancel: () => void;
   onClickCancelRate: () => void;

@@ -8,6 +8,8 @@ import MediaQueryPc from "../../../commons/mediaQuery/mediaQueryStandardPc";
 
 import mediaQueryStandardForMain from "../../../commons/mediaQuery/mediaQueryStandardForMain";
 import SwiperCustom from "../../../commons/swiper";
+import { Rate } from "antd";
+import { useState } from "react";
 
 export default function MainUI(props: IMainProps) {
   const isPc = MediaQueryPc();
@@ -92,6 +94,8 @@ export default function MainUI(props: IMainProps) {
                   <s.RunnerText weight="700" size="1rem" color="#333">
                     {el?.nickName}
                   </s.RunnerText>
+
+                  <Rate value={el?.rating} />
                   <s.RunnerText weight="400" size="0.8rem" color="#1F8716">
                     성공률 {el?.successRate}%
                   </s.RunnerText>
