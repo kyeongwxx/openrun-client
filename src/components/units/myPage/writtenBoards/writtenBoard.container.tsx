@@ -28,7 +28,11 @@ export default function MypageWrittenBoards() {
   const [accessToken] = useRecoilState(accessTokenState);
   const [userRate, setUserRate] = useState(0);
 
+  const [runnerInfo, setUserInfo] = useState("");
+
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpenRate, setIsModalOpenRate] = useState(false);
+
   const [boardId, setBoardId] = useState("");
   const [inputValue, setInputValue] = useRecoilState(modalInputState);
 
@@ -71,6 +75,7 @@ export default function MypageWrittenBoards() {
 
   // 거래 완료 모달
   const onClickCompleteModal = (boardId: string) => async () => {
+    console.log(boardId);
     try {
       const graphQlClient = new GraphQLClient(
         "https://openrunbackend.shop/graphql",
@@ -82,28 +87,7 @@ export default function MypageWrittenBoards() {
       const runnerResult = await graphQlClient.request(FETCH_RUNNER, {
         boardId: boardId,
       });
-      Modal.success({
-        title: `${runnerResult.fetchRunner?.nickName}님 러너 평가`,
-        content: <Rate onChange={setUserRate} />,
-        onOk: async () => {
-          try {
-            const rateResult = await createRating({
-              variables: {
-                boardId,
-                rate: userRate,
-              },
-            });
-            const completeResult = await completeBusiness({
-              variables: {
-                boardId,
-              },
-              refetchQueries: [{ query: FETCH_WRITE_BOARDS }],
-            });
-          } catch (error) {
-            // console.log(error);
-          }
-        },
-      });
+      setUserInfo(runnerResult.fetchRunner?.nickName);
     } catch (error) {
       // console.log(error);
     }
@@ -114,6 +98,7 @@ export default function MypageWrittenBoards() {
     setIsModalOpen(true);
     setBoardId(boardId);
   };
+
   const onClickSubmitReport = async () => {
     try {
       const result = await createReport({
@@ -136,8 +121,54 @@ export default function MypageWrittenBoards() {
     }
   };
 
+  const showModalRate = (boardId: string) => async () => {
+    setIsModalOpenRate(true);
+    setBoardId(boardId);
+    try {
+      const graphQlClient = new GraphQLClient(
+        "https://openrunbackend.shop/graphql",
+        {
+          credentials: "include",
+          headers: { Authorization: `Bearer ${accessToken}` },
+        }
+      );
+      const runnerResult = await graphQlClient.request(FETCH_RUNNER, {
+        boardId: boardId,
+      });
+
+      setUserInfo(runnerResult.fetchRunner?.nickName);
+    } catch (error) {
+      // console.log(error);
+    }
+  };
+
+  const onClickRate = async () => {
+    try {
+      const rateResult = await createRating({
+        variables: {
+          boardId,
+          rate: userRate,
+        },
+      });
+
+      const completeResult = await completeBusiness({
+        variables: {
+          boardId,
+        },
+        refetchQueries: [{ query: FETCH_WRITE_BOARDS }],
+      });
+
+      setIsModalOpenRate(false);
+    } catch (error) {
+      // console.log(error);
+    }
+  };
+
   const onClickCancel = () => {
     setIsModalOpen(false);
+  };
+  const onClickCancelRate = () => {
+    setIsModalOpenRate(false);
   };
 
   return (
@@ -152,6 +183,12 @@ export default function MypageWrittenBoards() {
       isModalOpen={isModalOpen}
       onClickSubmitReport={onClickSubmitReport}
       onClickCancel={onClickCancel}
+      showModalRate={showModalRate}
+      onClickRate={onClickRate}
+      runnerInfo={runnerInfo}
+      isModalOpenRate={isModalOpenRate}
+      onClickCancelRate={onClickCancelRate}
+      setUserRate={setUserRate}
     />
   );
 }
