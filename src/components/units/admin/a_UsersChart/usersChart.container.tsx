@@ -42,7 +42,6 @@ export default function UsersChart() {
   const { data: countData } = useQuery<Pick<IQuery, "fetchUsersCountByDate">>(
     FETCH_USERS_COUNT_BY_DATE
   );
-  console.log("userChart - countData", countData);
 
   const labels = Array(countData?.fetchUsersCountByDate.length)
     .fill(0)
@@ -63,8 +62,6 @@ export default function UsersChart() {
       },
     ],
   };
-
-  console.log("userChart - datas", datas);
 
   return (
     <s.Wrapper>

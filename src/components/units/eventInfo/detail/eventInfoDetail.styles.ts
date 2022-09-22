@@ -157,21 +157,10 @@ export const PlaceTitle = styled.div`
   }
 `;
 
-// export const Store = styled.div`
-//   font-size: 1.05rem;
-//   font-weight: 600;
-//   padding-bottom: 0.2rem;
-//   text-decoration: underline;
-
-//   @media (max-width: 767px) {
-//     font-size: 1rem;
-//   }
-// `;
 export const StoreDetail = styled.div`
   font-size: 1.3rem;
   font-weight: 600;
   padding-bottom: 0.8rem;
-  //color: #808080;
 
   @media (max-width: 767px) {
     font-size: 1.4rem;
@@ -348,7 +337,6 @@ export const WithItemBox = styled.div`
     width: 350px;
     height: 13rem;
   }
-  // border: 1px solid blue;
 `;
 export const WithImageWrapper = styled.div`
   width: 23rem;
@@ -374,7 +362,6 @@ export const WithImageIdWrapper = styled.div`
     width: 13rem;
     height: 13rem;
   }
-  //  border: 1px solid green;
 `;
 
 export const WithItemImg = styled.img`
@@ -392,5 +379,4 @@ export const WithItemImg = styled.img`
     width: 13rem;
     height: 13rem;
   }
-  // border: 1px solid red;
 `;

@@ -26,7 +26,6 @@ export default function EventInfoDetail() {
       dateType: "최신순",
     },
   });
-  console.log(boardsData);
 
   const onClickMoveToBoardDetail = (event: any) => {
     router.push(`/board/${event}`);
