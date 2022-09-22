@@ -1,4 +1,4 @@
-import { MouseEventHandler, RefObject } from "react";
+import { Dispatch, MouseEventHandler, RefObject, SetStateAction } from "react";
 import {
   FieldValues,
   FormState,
@@ -43,8 +43,14 @@ export interface IWrittenBoardsProps {
   isModalOpen: boolean;
   onClickCompleteModal: (boardId: string) => () => void;
   showModal: (boardId: string) => () => void;
+  showModalRate: (boardId: string) => () => void;
   onClickSubmitReport: () => void;
   onClickCancel: () => void;
+  onClickCancelRate: () => void;
+  onClickRate: () => void;
+  runnerInfo: string;
+  isModalOpenRate: boolean;
+  setUserRate: Dispatch<SetStateAction<number>>;
 }
 
 export interface IMainProps {

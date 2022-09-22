@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import { dateSplit } from "../../../../commons/function/dateSlice";
 import { IWrittenBoardsProps } from "../myPage.types";
-import { Modal } from "antd";
+import { Modal, Rate } from "antd";
 import ReportInput from "../../../../commons/input/report";
 import { Warning } from "@mui/icons-material";
 
@@ -27,6 +27,16 @@ export default function MypageWrittenBoardsUI(props: IWrittenBoardsProps) {
               hasMore={true}
               useWindow={false}
             >
+              <Modal
+                title={`${props.runnerInfo}님 평가하기`}
+                open={props.isModalOpenRate}
+                closable={false}
+                onOk={props.onClickRate}
+                onCancel={props.onClickCancelRate}
+              >
+                <Rate onChange={props.setUserRate} />
+              </Modal>
+
               <Modal
                 title="신고하기"
                 open={props.isModalOpen}
@@ -98,9 +108,7 @@ export default function MypageWrittenBoardsUI(props: IWrittenBoardsProps) {
                         </s.ButtonC>
 
                         <s.DivideLine />
-                        <s.ButtonC
-                          onClick={props.onClickCompleteModal(el?.id || "")}
-                        >
+                        <s.ButtonC onClick={props.showModalRate(el?.id || "")}>
                           <s.Check />
                           <s.Text color="#1F8716" weight="400">
                             거래완료
