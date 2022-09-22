@@ -130,16 +130,23 @@ export default function BoardWrite(props: any) {
           },
         },
       });
-      // console.log(result);
-      // console.log(data);
       Modal.success({
         title: "Success",
         content: "게시물 등록이 완료되었습니다.",
       });
       router.push(`/board/${result.data.createBoard.id}`);
     } catch (error: any) {
-      alert(error.message);
-      if (!accessToken) router.push("/signIn");
+      Modal.warning({
+        title: "Warning",
+        content: "포인트가 부족합니다.",
+      });
+      if (!accessToken) {
+        Modal.warning({
+          title: "Warning",
+          content: "로그인이 필요합니다.",
+        });
+        router.push("/signIn");
+      }
     }
   };
 
