@@ -116,6 +116,7 @@ export default function MypageWrittenBoards() {
       });
 
       setIsModalOpen(false);
+      Modal.success({ content: "신고가 접수되었습니다." });
     } catch (error) {
       // console.log(error);
     }
@@ -159,6 +160,7 @@ export default function MypageWrittenBoards() {
       });
 
       setIsModalOpenRate(false);
+      Modal.success({ content: "거래 완료되었습니다." });
     } catch (error) {
       // console.log(error);
     }

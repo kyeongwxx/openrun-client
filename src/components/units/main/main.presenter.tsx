@@ -95,7 +95,7 @@ export default function MainUI(props: IMainProps) {
                     {el?.nickName}
                   </s.RunnerText>
 
-                  <Rate value={el?.rating} />
+                  <Rate value={el?.rating} disabled={true} />
                   <s.RunnerText weight="400" size="0.8rem" color="#1F8716">
                     성공률 {el?.successRate}%
                   </s.RunnerText>
@@ -178,9 +178,9 @@ export default function MainUI(props: IMainProps) {
                   top={
                     isMobileForMain ? `${index * 150}px` : `${index * 250}px`
                   }
+                  key={uuidv4()}
                 >
                   <s.CategoryImage
-                    key={uuidv4()}
                     onMouseEnter={() => props.onMouse(index)}
                     src={
                       el?.image?.url

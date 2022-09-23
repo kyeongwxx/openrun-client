@@ -74,7 +74,7 @@ export const NodataImg = styled.img`
 `;
 
 export const NoData = styled.div`
-  width: 80%;
+  width: 100%;
   height: 400px;
   background-color: ${BOX_BG_COLOR};
   display: flex;
@@ -83,6 +83,7 @@ export const NoData = styled.div`
   justify-content: center;
   @media (max-width: 767px) {
     width: 100%;
+    height: 173px;
   }
 `;
 export const ExclamationMark = styled(ErrorOutlineIcon)`
@@ -135,11 +136,9 @@ export const ActiveListWrapper = styled(Container)`
 `;
 
 export const ActiveTitle = styled.div`
-  cursor: pointer;
   margin-top: 5px;
   font-weight: 700;
   color: #333;
-
   width: 20%;
   @media (max-width: 767px) {
     width: 100%;
@@ -176,7 +175,7 @@ export const ActiveWrapper = styled(InfiniteScroll)`
 `;
 
 export const ChatWrapper = styled.div`
-  width: 80%;
+  width: 100%;
   height: 100%;
   overflow-y: auto;
 
@@ -190,7 +189,8 @@ export const ChatWrapper = styled.div`
   }
   @media (max-width: 767px) {
     width: 100%;
-    flex-direction: row;
+
+    flex-direction: column;
   }
 `;
 

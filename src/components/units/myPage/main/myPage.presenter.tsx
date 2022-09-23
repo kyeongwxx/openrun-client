@@ -117,7 +117,7 @@ export default function MyPageUI(props: IMainProps) {
           {props?.chatRoom?.length === 0 ? (
             <s.NoData>
               <s.ExclamationMark />
-              <s.NodataText>치탱중이 아닙니다.</s.NodataText>
+              <s.NodataText>채팅중이 아닙니다.</s.NodataText>
             </s.NoData>
           ) : (
             props?.chatRoom?.map((el: any) =>
