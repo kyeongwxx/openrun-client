@@ -221,7 +221,7 @@ export const RunnerText = styled.div<{
 export const RunnerImg = styled.img`
   width: 60px;
   height: 60px;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 50%;
 
   @media (max-width: 767px) {
