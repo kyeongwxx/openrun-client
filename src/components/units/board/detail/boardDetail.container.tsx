@@ -20,15 +20,18 @@ import MediaQueryUltra from "../../../../commons/mediaQuery/mediaQueryStandardUl
 
 export default function BoardDetail() {
   const router = useRouter();
+
   const { data } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.id },
   });
-  // console.log(data);
   const { data: runner } = useQuery(FETCH_RUNNER_BY_BOARD, {
     variables: { boardId: router.query.id },
   });
 
-  // console.log(runner);
+  // mediaQuery
+  const isMobile = MediaQueryMobile();
+  const isPc = MediaQueryPc();
+  const isUltra = MediaQueryUltra();
 
   // LiveChat 모달
   const [showChatModal, setShowChatModal] = useState(false);
@@ -58,11 +61,6 @@ export default function BoardDetail() {
   const boardOpenCloseModal = () => {
     setShowBoardModal((prev) => !prev);
   };
-
-  // mediaQuery
-  const isMobile = MediaQueryMobile();
-  const isPc = MediaQueryPc();
-  const isUltra = MediaQueryUltra();
 
   // 페이지 이동 함수
   const onClickMoveToProductEdit = () => {
@@ -113,7 +111,6 @@ export default function BoardDetail() {
   const appliedRunner = runner?.fetchRunnerByBoard.filter(
     (el: any) => el.user.id === login?.fetchLoginUser?.id
   );
-  // console.log(runner);
 
   const [applyRunner] = useMutation(APPLY_RUNNER);
   const onClickApply = async () => {
@@ -153,6 +150,7 @@ export default function BoardDetail() {
       alert(error.message);
     }
   };
+
   // runner 채택
   const adoptedRunner = runner?.fetchRunnerByBoard?.filter(
     (el: any) => el.isChecked === true
@@ -191,6 +189,7 @@ export default function BoardDetail() {
       alert(error.message);
     }
   };
+
   // 찜하기
   const [addInterestList] = useMutation(ADD_INTEREST_LIST);
   const { data: interested } = useQuery(FETCH_INTEREST_BOARDS);
@@ -234,7 +233,6 @@ export default function BoardDetail() {
       alert(error.message);
     }
   };
-  // console.log(interestedBoard[0].board.id);
 
   return (
     <BoardDetailUI

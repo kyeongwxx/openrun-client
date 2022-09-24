@@ -31,12 +31,9 @@ export default function BoardListToy() {
       page: 1,
     },
   });
-  // console.log(sortValue);
-  // console.log(sortValue2);
 
-  // 더보기  함수
+  // 더보기 함수
   const onFetchMore = () => {
-    // console.log(data);
     if (!data) return;
 
     fetchMore({
@@ -51,7 +48,6 @@ export default function BoardListToy() {
       },
     });
   };
-  // console.log(data);
 
   // search 함수
   const [keyword, setKeyword] = useState("");
@@ -65,7 +61,6 @@ export default function BoardListToy() {
       page: 1,
     });
     setKeyword(value);
-    // console.log(value);
   }, 1000);
 
   const onChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {

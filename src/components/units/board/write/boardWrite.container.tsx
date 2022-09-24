@@ -37,7 +37,6 @@ export default function BoardWrite(props: any) {
         image: [props.data.fetchBoard.image.url],
       });
     }
-    // setIsEdit(true);
   }, [props.data]);
 
   // mediaQuery
@@ -49,10 +48,6 @@ export default function BoardWrite(props: any) {
   const [sortValue] = useRecoilState(selectorValue);
   const [dayValue] = useRecoilState(dayState);
   const [timeValue] = useRecoilState<any>(timeState);
-
-  // console.log(`sortValue : ${sortValue}`);
-  // console.log(`dayValue : ${String(dayValue).slice(0, 15)}`);
-  // console.log(`timeValue : ${timeValue.$d}`);
 
   // 주소 state
   const [address, setAddress] = useState("");
@@ -99,7 +94,6 @@ export default function BoardWrite(props: any) {
     setValue("image", newFileUrls);
     trigger("image");
     setFileUrls(newFileUrls);
-    // console.log(fileUrls);
   };
 
   useEffect(() => {
@@ -174,7 +168,6 @@ export default function BoardWrite(props: any) {
           boardId: router.query.id,
         },
       });
-      // console.log(data);
       Modal.success({
         title: "Success",
         content: "게시물 수정이 완료되었습니다.",

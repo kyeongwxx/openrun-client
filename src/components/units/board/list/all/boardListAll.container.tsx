@@ -30,9 +30,8 @@ export default function BoardListAll() {
     },
   });
 
-  // 더보기  함수
+  // 더보기 함수
   const onFetchMore = () => {
-    // console.log(data);
     if (!data) return;
 
     fetchMore({
@@ -47,7 +46,6 @@ export default function BoardListAll() {
       },
     });
   };
-  // console.log(data);
 
   // search 함수
   const [keyword, setKeyword] = useState("");
@@ -59,7 +57,6 @@ export default function BoardListAll() {
       search: value,
     });
     setKeyword(value);
-    // console.log(value);
   }, 1000);
 
   const onChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
@@ -70,7 +67,6 @@ export default function BoardListAll() {
   const onClickMoveToProductDetail = (event: any) => {
     if (!(event.target instanceof HTMLElement)) return;
     router.push(`/board/${event.currentTarget.id}`);
-    // console.log(event.currentTarget.id);
   };
   const onClickMoveToAll = () => {
     router.push("/board/all");

@@ -31,9 +31,8 @@ export default function BoardListFood() {
     },
   });
 
-  // 더보기  함수
+  // 더보기 함수
   const onFetchMore = () => {
-    // console.log(data);
     if (!data) return;
 
     fetchMore({
@@ -48,7 +47,6 @@ export default function BoardListFood() {
       },
     });
   };
-  // console.log(data);
 
   // search 함수
   const [keyword, setKeyword] = useState("");
@@ -62,7 +60,6 @@ export default function BoardListFood() {
       page: 1,
     });
     setKeyword(value);
-    // console.log(value);
   }, 1000);
 
   const onChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
@@ -73,7 +70,6 @@ export default function BoardListFood() {
   const onClickMoveToProductDetail = (event: any) => {
     if (!(event.target instanceof HTMLElement)) return;
     router.push(`/board/${event.currentTarget.id}`);
-    // console.log(event.currentTarget.id);
   };
   const onClickMoveToAll = () => {
     router.push("/board/all");
