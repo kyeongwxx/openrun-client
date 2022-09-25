@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import BoardWriteUI from "./boardWrite.presenter";
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { CREATE_BOARD, UPDATE_BOARD } from "./boardWrite.queries";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";

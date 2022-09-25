@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { ChangeEvent, MouseEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import BoardListUI from "./boardList.presenter";
 import { FETCH_BOARDS, FETCH_INTEREST_BOARD_ID } from "./boardList.queries";
 import _ from "lodash";
