@@ -19,7 +19,6 @@ export default function Upload(props: any) {
     try {
       const result = await uploadFile({ variables: { file } });
       props.onChangeFileUrls(result.data.uploadFile, props.index);
-      // console.log(result);
     } catch (error: any) {
       alert(error.message);
     }

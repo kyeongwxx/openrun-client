@@ -1,5 +1,4 @@
 import { useQuery } from "@apollo/client";
-import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -29,20 +28,13 @@ export default function LiveChat() {
   const { data, refetch } = useQuery(FETCH_CHAT_LOGS, {
     variables: { room: `first${router.query.id}` },
   });
-  // console.log(data);
   const { data: chatRoom } = useQuery(FETCH_USER_CHAT_ROOM);
-  // console.log(chatRoom);
-
   const { data: login } = useQuery(FETCH_LOGIN_USER);
   const { data: board } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.id },
   });
 
   const socket = io("https://openrunbackend.shop/chat");
-
-  const delay = (ms: number) => {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  };
 
   const { register, handleSubmit, resetField } = useForm({
     mode: "onChange",
@@ -97,8 +89,6 @@ export default function LiveChat() {
     const message = await data.message;
     socket.emit("send", `first${router.query.id}`, nickName, message);
     resetField("message");
-    // await delay(100);
-    // refetch();
 
     return messagesEndRef?.current?.scrollIntoView({
       behavior: "smooth",
