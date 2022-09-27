@@ -180,7 +180,6 @@ export default function BoardDetail() {
           boardId: router.query.id,
         },
       });
-      // console.log(result);
       Modal.success({
         title: "Success",
         content: "runner 채택이 완료되었습니다.",
