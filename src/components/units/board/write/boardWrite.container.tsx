@@ -75,7 +75,6 @@ export default function BoardWrite(props: any) {
   const handleOk = () => {
     setIsModalOpen(false);
   };
-
   const handleCancel = () => {
     setIsModalOpen(false);
   };
@@ -104,6 +103,7 @@ export default function BoardWrite(props: any) {
 
   // 게시물 등록 함수
   const [createBoard] = useMutation(CREATE_BOARD);
+
   const onClickCreate = async (data: any) => {
     try {
       const result = await createBoard({
