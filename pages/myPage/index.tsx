@@ -1,5 +1,5 @@
-import MyPage from "../../src/components/units/myPage/myPage.container";
+import MyPage from "../../src/components/units/myPage/main/myPage.container";
 
-export default function MyPagePage(){
-    return <MyPage />
+export default function MyPagePage() {
+  return <MyPage />;
 }
