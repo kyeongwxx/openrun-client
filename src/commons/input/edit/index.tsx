@@ -22,7 +22,7 @@ export default function EditInput(props: IEditInputProps) {
     props;
   return (
     <Input
-      {...register(name || "")}
+      {...register(name)}
       placeholder={placeholder}
       color={color}
       width={width}

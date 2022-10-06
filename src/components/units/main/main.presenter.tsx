@@ -61,18 +61,10 @@ export default function MainUI(props: IMainProps) {
       </s.EventProductWrapper>
       <s.BannerImg height="690px" url="/img/rectangle2.png">
         <s.ProductWrapperText>
-          <s.TEXT
-            color="#333"
-            size={isMobileForMain ? "15px" : "30px"}
-            weight="700"
-          >
+          <s.TEXT color="#333" size={isPc ? "30px" : "15px"} weight="700">
             Best Runner Ranking
           </s.TEXT>
-          <s.TEXT
-            color="#333"
-            size={isMobileForMain ? "6px" : "16px"}
-            weight="400"
-          >
+          <s.TEXT color="#333" size={isPc ? "16px" : "6px"} weight="400">
             우리가 사랑하는 베스트 러너 순위
           </s.TEXT>
         </s.ProductWrapperText>
@@ -107,36 +99,20 @@ export default function MainUI(props: IMainProps) {
       </s.BannerImg>
 
       <s.BannerDiv>
-        <s.TEXT
-          color="#333"
-          size={isMobileForMain ? "15px" : "30px"}
-          weight="700"
-        >
+        <s.TEXT color="#333" size={isPc ? "30px" : "15px"} weight="700">
           러너 1:1 매칭
         </s.TEXT>
-        <s.TEXT
-          color="#333"
-          size={isMobileForMain ? "6px" : "16px"}
-          weight="400"
-        >
+        <s.TEXT color="#333" size={isPc ? "16px" : "6px"} weight="400">
           어려웠던 줄서기 오픈런과 함께하면 쉬워집니다.
         </s.TEXT>
       </s.BannerDiv>
 
       <s.ProductWrapper>
         <s.ProductWrapperText>
-          <s.TEXT
-            color="#333"
-            size={isMobileForMain ? "15px" : "30px"}
-            weight="700"
-          >
+          <s.TEXT color="#333" size={isPc ? "30px" : "15px"} weight="700">
             Best Pick
           </s.TEXT>
-          <s.TEXT
-            color="#333"
-            size={isMobileForMain ? "6px" : "16px"}
-            weight="400"
-          >
+          <s.TEXT color="#333" size={isPc ? "16px" : "6px"} weight="400">
             찜 많이 받은 글
           </s.TEXT>
         </s.ProductWrapperText>
@@ -175,9 +151,7 @@ export default function MainUI(props: IMainProps) {
             ) : (
               props.bestBoards?.map((el: any, index: any) => (
                 <s.CategoryImg
-                  top={
-                    isMobileForMain ? `${index * 150}px` : `${index * 250}px`
-                  }
+                  top={isPc ? `${index * 250}px` : `${index * 150}px`}
                   key={uuidv4()}
                 >
                   <s.CategoryImage
