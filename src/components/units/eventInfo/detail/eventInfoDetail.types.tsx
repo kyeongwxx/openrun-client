@@ -1,9 +1,23 @@
-import { IEvent } from "../../../../commons/types/generated/types";
+import { BaseSyntheticEvent } from "react";
+import { IBoard, IEvent } from "../../../../commons/types/generated/types";
 
 export interface IEventInfoDetailUI {
   data?: IEventInfoDetailData;
-  boardsData?: any;
-  onClickMoveToBoardDetail?: (event: any) => void;
+  onClickMoveToBoardDetail?: (
+    event:
+      | BaseSyntheticEvent<
+          MouseEvent,
+          EventTarget & HTMLDivElement,
+          EventTarget
+        >
+      | string
+  ) => void;
+  boardsData?: IBoardsData;
+}
+
+export interface IBoardsData {
+  fetchEvent?: IEvent;
+  fetchBoards?: IBoard[];
 }
 
 export interface IEventInfoDetailData {
@@ -17,6 +31,4 @@ export interface IEventInfoDetailData {
   period?: string;
   title?: string;
   __typename?: string;
-
-  boardsData?: any;
 }

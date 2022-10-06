@@ -1,4 +1,5 @@
 import { getDateHour } from "../../../../commons/getDateHour";
+import { IBoard, IEventImage } from "../../../../commons/types/generated/types";
 import * as s from "./eventInfoDetail.styles";
 import { IEventInfoDetailUI } from "./eventInfoDetail.types";
 
@@ -23,7 +24,7 @@ export default function EventInfoDetailUI(props: IEventInfoDetailUI) {
         <s.InfoWrapper>
           <s.InfoTitle>행사정보</s.InfoTitle>
           <s.Information>
-            {props.data?.fetchEvent?.contentsImage?.map((el: any) => (
+            {props.data?.fetchEvent?.contentsImage?.map((el: IEventImage) => (
               <s.EventImg
                 src={`https://storage.googleapis.com/openrun-storage/${
                   el.url?.split(",")[0]
@@ -37,16 +38,16 @@ export default function EventInfoDetailUI(props: IEventInfoDetailUI) {
           <s.WithItemSubTitle>함께 보면 좋은 상품</s.WithItemSubTitle>
         </s.WithItemWrapper>
         <s.WithItemBox>
-          {props.boardsData?.fetchBoards.map((el: any) => (
+          {props.boardsData?.fetchBoards?.map((el: IBoard) => (
             <s.WithImageWrapper key={el.id}>
               <s.WithImageIdWrapper
                 id={el.id}
-                onClick={(e) => {
-                  props.onClickMoveToBoardDetail?.(e.currentTarget.id);
+                onClick={(event) => {
+                  props.onClickMoveToBoardDetail?.(event.currentTarget.id);
                 }}
               >
                 <s.WithItemImg
-                  key={el}
+                  key={el.id}
                   src={
                     el?.image?.url
                       ? `https://storage.googleapis.com/openrun-storage/${el?.image?.url}`
