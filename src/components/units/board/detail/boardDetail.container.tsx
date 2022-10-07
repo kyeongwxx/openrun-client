@@ -17,15 +17,29 @@ import {
 } from "./boardDetail.queries";
 import { Modal } from "antd";
 import MediaQueryUltra from "../../../../commons/mediaQuery/mediaQueryStandardUltra";
+import {
+  IMutation,
+  IMutationAdoptRunnerArgs,
+  IQuery,
+  IQueryFetchBoardArgs,
+  IQueryFetchInterestBoardsArgs,
+  IQueryFetchRunnerByBoardArgs,
+} from "../../../../commons/types/generated/types";
 
 export default function BoardDetail() {
   const router = useRouter();
 
-  const { data } = useQuery(FETCH_BOARD, {
-    variables: { boardId: router.query.id },
-  });
-  const { data: runner } = useQuery(FETCH_RUNNER_BY_BOARD, {
-    variables: { boardId: router.query.id },
+  const { data } = useQuery<Pick<IQuery, "fetchBoard">, IQueryFetchBoardArgs>(
+    FETCH_BOARD,
+    {
+      variables: { boardId: String(router.query.id) },
+    }
+  );
+  const { data: runner } = useQuery<
+    Pick<IQuery, "fetchRunnerByBoard">,
+    IQueryFetchRunnerByBoardArgs
+  >(FETCH_RUNNER_BY_BOARD, {
+    variables: { boardId: String(router.query.id) },
   });
 
   // mediaQuery
@@ -44,8 +58,8 @@ export default function BoardDetail() {
       return;
     }
     if (
-      login?.fetchLoginUser?.id !== data?.fetchBoard?.user.id &&
-      login?.fetchLoginUser?.id !== adoptedRunner[0]?.user.id
+      login?.fetchLoginUser?.id !== data?.fetchBoard?.user?.id &&
+      login?.fetchLoginUser?.id !== adoptedRunner[0]?.user?.id
     ) {
       Modal.warning({
         title: "Warning",
@@ -77,7 +91,7 @@ export default function BoardDetail() {
   // 상품 삭제
   const [deleteBoard] = useMutation(DELETE_BOARD);
   const { data: login } = useQuery(FETCH_LOGIN_USER);
-  const onClickDelete = async (event: any) => {
+  const onClickDelete = async () => {
     try {
       if (data?.fetchBoard?.user?.id !== login?.fetchLoginUser?.id) {
         Modal.warning({
@@ -102,26 +116,27 @@ export default function BoardDetail() {
         content: "게시물이 삭제되었습니다.",
       });
       router.push("/board");
-    } catch (error: any) {
+    } catch (error) {
+      // if (error instanceof Error)
       // console.log(error.message);
     }
   };
 
   // runner 신청
   const appliedRunner = runner?.fetchRunnerByBoard.filter(
-    (el: any) => el.user.id === login?.fetchLoginUser?.id
+    (el) => el?.user?.id === login?.fetchLoginUser?.id
   );
 
   const [applyRunner] = useMutation(APPLY_RUNNER);
   const onClickApply = async () => {
-    if (data.fetchBoard.user.id === login.fetchLoginUser.id) {
+    if (data?.fetchBoard?.user?.id === login.fetchLoginUser.id) {
       Modal.warning({
         title: "Warning",
         content: "본인이 작성한 게시글에는 runner 신청이 제한됩니다.",
       });
       return;
     }
-    if (appliedRunner.length === 1) {
+    if (appliedRunner?.length === 1) {
       Modal.warning({
         title: "Warning",
         content: "이미 신청한 게시물입니다.",
@@ -146,19 +161,23 @@ export default function BoardDetail() {
         title: "Success",
         content: "runner 신청이 완료되었습니다.",
       });
-    } catch (error: any) {
-      alert(error.message);
+    } catch (error) {
+      // if (error instanceof Error)
+      // alert(error.message);
     }
   };
 
   // runner 채택
-  const adoptedRunner = runner?.fetchRunnerByBoard?.filter(
-    (el: any) => el.isChecked === true
+  const adoptedRunner: any = runner?.fetchRunnerByBoard?.filter(
+    (el) => el?.isChecked === true
   );
 
-  const [adoptRunner] = useMutation(ADOPT_RUNNER);
+  const [adoptRunner] = useMutation<
+    Pick<IMutation, "adoptRunner">,
+    IMutationAdoptRunnerArgs
+  >(ADOPT_RUNNER);
   const onClickAdopt = (id: string) => async () => {
-    if (data.fetchBoard.user.id !== login.fetchLoginUser.id) {
+    if (data?.fetchBoard?.user?.id !== login.fetchLoginUser.id) {
       Modal.warning({
         title: "Warning",
         content: "작성자 외에는 runner 채택이 제한됩니다.",
@@ -177,28 +196,32 @@ export default function BoardDetail() {
       const result = await adoptRunner({
         variables: {
           userId: id,
-          boardId: router.query.id,
+          boardId: String(router.query.id),
         },
       });
       Modal.success({
         title: "Success",
         content: "runner 채택이 완료되었습니다.",
       });
-    } catch (error: any) {
-      alert(error.message);
+    } catch (error) {
+      // if (error instanceof Error)
+      // alert(error.message);
     }
   };
 
   // 찜하기
   const [addInterestList] = useMutation(ADD_INTEREST_LIST);
-  const { data: interested } = useQuery(FETCH_INTEREST_BOARDS);
+  const { data: interested } = useQuery<
+    Pick<IQuery, "fetchInterestBoards">,
+    IQueryFetchInterestBoardsArgs
+  >(FETCH_INTEREST_BOARDS);
   const interestedBoard = interested?.fetchInterestBoards.filter(
-    (el: any) => el.board.id === router.query.id
+    (el) => el.board.id === router.query.id
   );
 
   const onClickAddInterestList = async () => {
     try {
-      if (data.fetchBoard.user.id === login.fetchLoginUser.id) {
+      if (data?.fetchBoard?.user?.id === login.fetchLoginUser.id) {
         Modal.warning({
           title: "Warning",
           content: "본인이 작성한 게시글에는 찜 기능이 제한됩니다.",
@@ -228,8 +251,9 @@ export default function BoardDetail() {
           content: "찜 목록에서 해제되었습니다.",
         });
       }
-    } catch (error: any) {
-      alert(error.message);
+    } catch (error) {
+      // if (error instanceof Error)
+      // alert(error.message);
     }
   };
 
