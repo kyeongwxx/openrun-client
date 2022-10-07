@@ -25,6 +25,7 @@ export const CustomSwiperSlideImg = styled.img`
   cursor: pointer;
   display: block;
   margin: auto;
+  object-fit: cover;
 
   @media (max-width: 767px) {
     height: 300px;

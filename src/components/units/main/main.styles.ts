@@ -241,7 +241,7 @@ export const BestRunner = styled.div`
   background-color: #fff;
 
   @media (max-width: 767px) {
-    width: 80%;
+    width: 100%;
     height: 100px;
     border-radius: 10px;
     margin-bottom: 10px;

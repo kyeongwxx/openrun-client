@@ -1,5 +1,6 @@
 import { useMutation } from "@apollo/client";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Modal } from "antd";
 
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -43,25 +44,31 @@ export default function EditAccount() {
     setFileUrls(newFileUrls);
   };
 
-  const onClickEdit = async () => {
-    if (!getValues("password")) return;
+  const onClickEdit = async (data: any) => {
+    if (!data.email || !data.password || !data.nickname || !data.phone) return;
     try {
       const result = await updateLoginUser({
         variables: {
           updateUserInput: {
-            email: getValues("email"),
-            password: getValues("password"),
-            nickName: getValues("nickname"),
-            phone: getValues("phone"),
+            email: String(data.email),
+            password: String(data.password),
+            nickName: String(data.nickname),
+            phone: String(data.phone),
             profileImg: fileUrls[0],
           },
         },
       });
+
       if (result) {
-        location.replace(`/myPage/`);
+        Modal.success({
+          content: "수정 완료되었습니다.",
+          onOk: () => {
+            location.replace(`/myPage/`);
+          },
+        });
       }
     } catch (error) {
-      // console.log(error);
+      if (error instanceof Error) Modal.error({ content: error.message });
     }
   };
   const onClickCancel = () => {
@@ -81,11 +88,15 @@ export default function EditAccount() {
         },
       });
       if (result) {
-        // console.log(result);
-        location.replace(`/myPage/`);
+        Modal.success({
+          content: "수정 완료되었습니다.",
+          onOk: () => {
+            location.replace(`/myPage/`);
+          },
+        });
       }
     } catch (error) {
-      // console.log(error);
+      if (error instanceof Error) Modal.error({ content: error.message });
     }
   };
 

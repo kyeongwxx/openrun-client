@@ -7,7 +7,6 @@ export const schema = yup.object({
   password: yup
     .string()
     .min(1, "8자 이상 입력하세요")
-
     .required("비밀번호는 필수사항입니다.")
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
