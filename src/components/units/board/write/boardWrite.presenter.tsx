@@ -6,8 +6,9 @@ import Upload from "../../../../commons/uploads/Uploads.container";
 import { v4 as uuidv4 } from "uuid";
 import YupWarningMsg from "../../../../commons/div/yupWarningMsg";
 import RequiredSelector from "../../../../commons/requiredSelector";
+import { IBoardWriteUIProps } from "./boardWrite.types";
 
-export default function BoardWriteUI(props: any) {
+export default function BoardWriteUI(props: IBoardWriteUIProps) {
   return (
     <form
       onSubmit={
@@ -39,14 +40,14 @@ export default function BoardWriteUI(props: any) {
             {...props.register("title")}
             type="text"
             placeholder="행사명을 입력해주세요."
-            defaultValue={props.data?.fetchBoard.title}
+            defaultValue={props.data?.fetchBoard.title || ""}
           />
           <YupWarningMsg errormsg={props.formState.errors.title?.message} />
           <s.PriceInput
             {...props.register("price")}
             type="text"
             placeholder="대행 가격을 입력해주세요."
-            defaultValue={props.data?.fetchBoard.price}
+            defaultValue={props.data?.fetchBoard.price || ""}
           />
           <YupWarningMsg errormsg={props.formState.errors.price?.message} />
         </s.ProductInfoWrapper>
@@ -123,7 +124,6 @@ export default function BoardWriteUI(props: any) {
                   props.data?.fetchBoard.location?.address ||
                   ""
                 }
-                onChange={props.onChangeAddress}
               />
               <YupWarningMsg
                 errormsg={props.formState.errors.address?.message}
