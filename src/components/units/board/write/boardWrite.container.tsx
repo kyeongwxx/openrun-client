@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import BoardWriteUI from "./boardWrite.presenter";
 import { useMutation } from "@apollo/client";
 import { CREATE_BOARD, UPDATE_BOARD } from "./boardWrite.queries";
@@ -17,8 +17,13 @@ import MediaQueryPc from "../../../../commons/mediaQuery/mediaQueryStandardPc";
 import { schema } from "../../../../commons/yup/boardWrite";
 import { Modal } from "antd";
 import MediaQueryUltra from "../../../../commons/mediaQuery/mediaQueryStandardUltra";
+import {
+  IBoardAddress,
+  IBoardCreateEdit,
+  IBoardWrite,
+} from "./boardWrite.types";
 
-export default function BoardWrite(props: any) {
+export default function BoardWrite(props: IBoardWrite) {
   const router = useRouter();
   const [accessToken] = useRecoilState(accessTokenState);
 
@@ -32,9 +37,9 @@ export default function BoardWrite(props: any) {
     if (props.data !== undefined) {
       reset({
         contents: props.data.fetchBoard.contents,
-        address: props.data.fetchBoard.location.address,
-        addressDetail: props.data.fetchBoard.location.addressDetail,
-        image: [props.data.fetchBoard.image.url],
+        address: props.data.fetchBoard.location?.address,
+        addressDetail: props.data.fetchBoard.location?.addressDetail,
+        image: [props.data.fetchBoard.image?.url],
       });
     }
   }, [props.data]);
@@ -54,7 +59,7 @@ export default function BoardWrite(props: any) {
   const [zipcode, setZipcode] = useState("");
   const [addressDetail, setAddressDetail] = useState("");
 
-  const onChangeAddressDetail = (event: any) => {
+  const onChangeAddressDetail = (event: ChangeEvent<HTMLInputElement>) => {
     setAddressDetail(event.target.value);
     setValue("addressDetail", event.target.value);
     trigger("addressDetail");
@@ -62,7 +67,7 @@ export default function BoardWrite(props: any) {
 
   // 주소 modal
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const onCompleteAddressSearch = (data: any) => {
+  const onCompleteAddressSearch = (data: IBoardAddress) => {
     setAddress(data.address);
     setZipcode(data.zonecode);
     setValue("address", data.address);
@@ -86,7 +91,7 @@ export default function BoardWrite(props: any) {
   };
 
   // 파일 업로드
-  const [fileUrls, setFileUrls] = useState([""]);
+  const [fileUrls, setFileUrls] = useState<string[]>([""]);
   const onChangeFileUrls = (fileUrl: string, index: number) => {
     const newFileUrls = [...fileUrls];
     newFileUrls[index] = fileUrl;
@@ -97,14 +102,14 @@ export default function BoardWrite(props: any) {
 
   useEffect(() => {
     if (props.data?.fetchBoard.image) {
-      setFileUrls([props.data?.fetchBoard.image.url]);
+      setFileUrls([String(props.data?.fetchBoard.image.url)]);
     }
   }, [props.data]);
 
   // 게시물 등록 함수
   const [createBoard] = useMutation(CREATE_BOARD);
 
-  const onClickCreate = async (data: any) => {
+  const onClickCreate = async (data: IBoardCreateEdit) => {
     try {
       const result = await createBoard({
         variables: {
@@ -129,11 +134,12 @@ export default function BoardWrite(props: any) {
         content: "게시물 등록이 완료되었습니다.",
       });
       router.push(`/board/${result.data.createBoard.id}`);
-    } catch (error: any) {
-      Modal.warning({
-        title: "Warning",
-        content: "포인트가 부족합니다.",
-      });
+    } catch (error) {
+      if (error instanceof Error)
+        Modal.warning({
+          title: "Warning",
+          content: "포인트가 부족합니다.",
+        });
       if (!accessToken) {
         Modal.warning({
           title: "Warning",
@@ -147,7 +153,7 @@ export default function BoardWrite(props: any) {
   // 게시물 수정 함수
   const [updateBoard] = useMutation(UPDATE_BOARD);
 
-  const onClickUpdate = async (data: any) => {
+  const onClickUpdate = async (data: IBoardCreateEdit) => {
     try {
       const result = await updateBoard({
         variables: {
@@ -173,7 +179,8 @@ export default function BoardWrite(props: any) {
         content: "게시물 수정이 완료되었습니다.",
       });
       router.push(`/board/${result.data?.updateBoard.id}`);
-    } catch (error: any) {
+    } catch (error) {
+      // if (error instanceof Error)
       // console.log(error.message);
     }
   };
