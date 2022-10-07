@@ -13,6 +13,7 @@ import LiveChat from "../../../../commons/liveChat/liveChat.container";
 import Timer from "../../../../commons/timer";
 import { AiOutlineClockCircle, AiOutlineEllipsis } from "react-icons/ai";
 import { BsChatFill, BsChat } from "react-icons/bs";
+import { BoardDetailUIProps } from "./boardDetail.types";
 
 const theme = createTheme({
   components: {
@@ -30,7 +31,7 @@ const theme = createTheme({
   },
 });
 
-export default function BoardDetailUI(props: any) {
+export default function BoardDetailUI(props: BoardDetailUIProps) {
   // tabs 설정
   const [value, setValue] = React.useState("1");
 
@@ -92,12 +93,7 @@ export default function BoardDetailUI(props: any) {
                       <s.MUpdate onClick={props.onClickMoveToProductEdit}>
                         수정
                       </s.MUpdate>
-                      <s.MDelete
-                        onClick={props.onClickDelete}
-                        id={props.router.query?.id}
-                      >
-                        삭제
-                      </s.MDelete>
+                      <s.MDelete onClick={props.onClickDelete}>삭제</s.MDelete>
                     </s.MMutationBtn>
                   </s.MWrapper>
                 </s.MBackground>
