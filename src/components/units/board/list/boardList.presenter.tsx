@@ -5,8 +5,9 @@ import DOMPurify from "dompurify";
 import { AiOutlinePlus } from "react-icons/ai";
 import { v4 as uuidv4 } from "uuid";
 import Selector2 from "../../../../commons/selector2";
+import { BoardListUIProps } from "./boardList.types";
 
-export default function BoardListUI(props: any) {
+export default function BoardListUI(props: BoardListUIProps) {
   return (
     <s.Wrapper>
       {props.isPc && (
