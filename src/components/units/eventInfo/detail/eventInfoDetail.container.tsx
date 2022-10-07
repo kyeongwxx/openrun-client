@@ -7,6 +7,7 @@ import {
   IQueryFetchBoardsArgs,
   IQueryFetchEventArgs,
 } from "../../../../commons/types/generated/types";
+import { BaseSyntheticEvent } from "react";
 
 export default function EventInfoDetail() {
   const router = useRouter();
@@ -27,13 +28,22 @@ export default function EventInfoDetail() {
     },
   });
 
-  const onClickMoveToBoardDetail = (event: any) => {
+  const onClickMoveToBoardDetail = (
+    event:
+      | BaseSyntheticEvent<
+          MouseEvent,
+          EventTarget & HTMLDivElement,
+          EventTarget
+        >
+      | string
+  ) => {
     router.push(`/board/${event}`);
   };
 
   return (
     <EventInfoDetailUI
       data={data}
+      // boardsData={boardsData?.fetchBoards}
       boardsData={boardsData}
       onClickMoveToBoardDetail={onClickMoveToBoardDetail}
     />
