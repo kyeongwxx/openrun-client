@@ -5,8 +5,9 @@ import { v4 as uuidv4 } from "uuid";
 import * as React from "react";
 import Selector from "../../../../../commons/selector";
 import Selector2 from "../../../../../commons/selector2";
+import { BoardListUIProps } from "../boardList.types";
 
-export default function BoardListToyUI(props: any) {
+export default function BoardListToyUI(props: BoardListUIProps) {
   return (
     <s.Wrapper>
       {props.isPc && (
