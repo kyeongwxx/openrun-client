@@ -39,7 +39,7 @@ export default function BoardWrite(props: IBoardWrite) {
         contents: props.data.fetchBoard.contents,
         address: props.data.fetchBoard.location?.address,
         addressDetail: props.data.fetchBoard.location?.addressDetail,
-        image: [props.data.fetchBoard.image?.url],
+        image: [props.data.fetchBoard?.image],
       });
     }
   }, [props.data]);
@@ -101,8 +101,8 @@ export default function BoardWrite(props: IBoardWrite) {
   };
 
   useEffect(() => {
-    if (props.data?.fetchBoard.image) {
-      setFileUrls([String(props.data?.fetchBoard.image.url)]);
+    if (props.data?.fetchBoard?.image) {
+      setFileUrls([String(props.data?.fetchBoard?.image)]);
     }
   }, [props.data]);
 

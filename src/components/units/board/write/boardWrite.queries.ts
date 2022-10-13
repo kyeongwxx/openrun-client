@@ -15,9 +15,7 @@ export const CREATE_BOARD = gql`
         address
         addressDetail
       }
-      image {
-        url
-      }
+      image
     }
   }
 `;
@@ -40,9 +38,7 @@ export const UPDATE_BOARD = gql`
         address
         addressDetail
       }
-      image {
-        url
-      }
+      image
     }
   }
 `;
