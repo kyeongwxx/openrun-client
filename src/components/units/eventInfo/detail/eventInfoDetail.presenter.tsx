@@ -9,7 +9,7 @@ export default function EventInfoDetailUI(props: IEventInfoDetailUI) {
       <s.Wrapper>
         <s.ItemWrapper>
           <s.ItemImg
-            src={`https://storage.googleapis.com/openrun-storage/${props.data?.fetchEvent?.image}`}
+            src={`https://storage.googleapis.com/openrun-bucket/${props.data?.fetchEvent?.image}`}
           />
           <s.ItemInfoBox>
             <s.PlanTitle>오픈런 일정</s.PlanTitle>
@@ -26,7 +26,7 @@ export default function EventInfoDetailUI(props: IEventInfoDetailUI) {
           <s.Information>
             {props.data?.fetchEvent?.contentsImage?.map((el: IEventImage) => (
               <s.EventImg
-                src={`https://storage.googleapis.com/openrun-storage/${
+                src={`https://storage.googleapis.com/openrun-bucket/${
                   el.url?.split(",")[0]
                 }`}
               />
@@ -49,8 +49,8 @@ export default function EventInfoDetailUI(props: IEventInfoDetailUI) {
                 <s.WithItemImg
                   key={el.id}
                   src={
-                    el?.image?.url
-                      ? `https://storage.googleapis.com/openrun-storage/${el?.image?.url}`
+                    el?.image
+                      ? `https://storage.googleapis.com/openrun-bucket/${el?.image}`
                       : "/boardList/default.jpeg"
                   }
                 />

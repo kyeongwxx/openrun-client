@@ -6,7 +6,9 @@ export const FETCH_EVENT = gql`
       id
       title
       contentsImage {
+        id
         url
+        event
       }
       period
       location
@@ -31,9 +33,7 @@ export const FETCH_BOARDS = gql`
       direcion: $direcion
     ) {
       id
-      image {
-        url
-      }
+      image
     }
   }
 `;
