@@ -72,11 +72,11 @@ export default function MypageWrittenBoardsUI(props: IWrittenBoardsProps) {
                       {el.status}
                     </s.Status>
 
-                    {el.image?.url === "default.img" ? (
+                    {el.image === "" ? (
                       <s.NoImg />
                     ) : (
                       <s.BoardImg
-                        src={`https://storage.googleapis.com/openrun-storage/${el.image?.url}`}
+                        src={`https://storage.googleapis.com/openrun-storage/${el.image}`}
                         onClick={props.onClickMoveToDetail(el.id)}
                       />
                     )}

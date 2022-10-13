@@ -3,12 +3,12 @@ import { useRouter } from "next/router";
 
 import {
   IQuery,
-  IQueryFetchBoardProcessingByUserArgs,
+  IQueryFetchBoardInprocessingByUserArgs,
   IQueryFetchRuunerProcessingByUserArgs,
 } from "../../../../commons/types/generated/types";
 import MyPageUI from "./myPage.presenter";
 import {
-  FETCH_BOARD_PROCESSING_BY_USER,
+  FETCH_BOARD_IN_PROCESSING_BY_USER,
   FETCH_RUNNER_PROCESSING_BY_USER,
   FETCH_USER_CHATROOM,
 } from "./myPage.queries";
@@ -20,9 +20,9 @@ export default function MyPage() {
 
   // 내가 셀러
   const { data: processingSeller, fetchMore } = useQuery<
-    Pick<IQuery, "fetchBoardProcessingByUser">,
-    IQueryFetchBoardProcessingByUserArgs
-  >(FETCH_BOARD_PROCESSING_BY_USER);
+    Pick<IQuery, "fetchBoardInprocessingByUser">,
+    IQueryFetchBoardInprocessingByUserArgs
+  >(FETCH_BOARD_IN_PROCESSING_BY_USER);
 
   // 내가 러너
   const { data: processingRunner, fetchMore: fetchMore2 } = useQuery<
@@ -39,18 +39,21 @@ export default function MyPage() {
     fetchMore({
       variables: {
         page:
-          Math.ceil(processingSeller?.fetchBoardProcessingByUser.length / 10) +
-          1,
+          Math.ceil(
+            processingSeller?.fetchBoardInprocessingByUser.length / 10
+          ) + 1,
       },
       updateQuery: (prev, { fetchMoreResult }) => {
-        if (!fetchMoreResult?.fetchBoardProcessingByUser)
+        if (!fetchMoreResult?.fetchBoardInprocessingByUser)
           return {
-            fetchBoardProcessingByUser: [...prev.fetchBoardProcessingByUser],
+            fetchBoardInprocessingByUser: [
+              ...prev.fetchBoardInprocessingByUser,
+            ],
           };
         return {
-          fetchBoardProcessingByUser: [
-            ...prev.fetchBoardProcessingByUser,
-            ...fetchMoreResult?.fetchBoardProcessingByUser,
+          fetchBoardInprocessingByUser: [
+            ...prev.fetchBoardInprocessingByUser,
+            ...fetchMoreResult?.fetchBoardInprocessingByUser,
           ],
         };
       },
@@ -82,7 +85,7 @@ export default function MyPage() {
 
   return (
     <MyPageUI
-      sellerData={processingSeller?.fetchBoardProcessingByUser}
+      sellerData={processingSeller?.fetchBoardInprocessingByUser}
       runnerData={processingRunner?.fetchRuunerProcessingByUser}
       onFetchMore={onFetchMore}
       onClickMoveToBoardDetail={onClickMoveToBoardDetail}

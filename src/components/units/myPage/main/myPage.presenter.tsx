@@ -29,11 +29,11 @@ export default function MyPageUI(props: IMainProps) {
                     height="300px"
                     onClick={props.onClickMoveToBoardDetail(el.id || "")}
                   >
-                    {el.image?.url === "default.img" ? (
+                    {el.image === "" ? (
                       <s.NoImg />
                     ) : (
                       <s.ActiveImg
-                        src={`https://storage.googleapis.com/openrun-storage/${el.image?.url}`}
+                        src={`https://storage.googleapis.com/openrun-storage/${el.image}`}
                       />
                     )}
 
@@ -78,11 +78,11 @@ export default function MyPageUI(props: IMainProps) {
                     onClick={props.onClickMoveToBoardDetail(el.board?.id || "")}
                     key={uuidv4()}
                   >
-                    {el.board?.image?.url === "default.img" ? (
+                    {el.board?.image === "" ? (
                       <s.NoImg />
                     ) : (
                       <s.ActiveImg
-                        src={`https://storage.googleapis.com/openrun-storage/${el.board?.image?.url}`}
+                        src={`https://storage.googleapis.com/openrun-storage/${el.board?.image}`}
                       />
                     )}
                     <s.ActiveTextWrapper>

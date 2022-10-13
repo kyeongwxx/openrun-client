@@ -36,7 +36,7 @@ export type IBoard = {
   deletedAt?: Maybe<Scalars['DateTime']>;
   dueDate?: Maybe<Scalars['DateTime']>;
   id: Scalars['String'];
-  image?: Maybe<IImage>;
+  image?: Maybe<Scalars['String']>;
   interestCount?: Maybe<Scalars['Int']>;
   location?: Maybe<ILocation>;
   price?: Maybe<Scalars['Int']>;
@@ -94,6 +94,7 @@ export type ICreateBoardInput = {
 
 export type ICreateEventInput = {
   brand?: InputMaybe<Scalars['String']>;
+  category?: InputMaybe<Scalars['String']>;
   contentsImage?: InputMaybe<Array<Scalars['String']>>;
   fakeData?: InputMaybe<Scalars['String']>;
   image?: InputMaybe<Scalars['String']>;
@@ -124,6 +125,7 @@ export type ICreateUserInput = {
 export type IEvent = {
   __typename?: 'Event';
   brand?: Maybe<Scalars['String']>;
+  category?: Maybe<Scalars['String']>;
   contentsImage?: Maybe<Array<IEventImage>>;
   createdAt?: Maybe<Scalars['DateTime']>;
   id: Scalars['String'];
@@ -136,12 +138,6 @@ export type IEvent = {
 export type IEventImage = {
   __typename?: 'EventImage';
   event: IEvent;
-  id: Scalars['String'];
-  url?: Maybe<Scalars['String']>;
-};
-
-export type IImage = {
-  __typename?: 'Image';
   id: Scalars['String'];
   url?: Maybe<Scalars['String']>;
 };
@@ -207,17 +203,17 @@ export type IMutation = {
   createEvent: IEvent;
   createInquiry: IInquiry;
   createInquiryAnswer: IInquiryAnswer;
-  createRating: Scalars['Boolean'];
+  createRating: Scalars['Float'];
   createReport: IReport;
   createUser: IUser;
   deleteBoard: Scalars['Boolean'];
+  deleteEvent: Scalars['Boolean'];
   deleteLoginUser: Scalars['Boolean'];
   deleteReport: Scalars['Boolean'];
   login: Scalars['String'];
   logout: Scalars['Boolean'];
   restoreAccessToken: Scalars['String'];
   sendTokenToPhone: Scalars['String'];
-  test: IPaymentHistory;
   updateBoard: IBoard;
   updateLoginUser: IUser;
   updateNotifications: Scalars['Boolean'];
@@ -323,6 +319,11 @@ export type IMutationDeleteBoardArgs = {
 };
 
 
+export type IMutationDeleteEventArgs = {
+  eventId: Scalars['String'];
+};
+
+
 export type IMutationDeleteReportArgs = {
   reportId: Scalars['String'];
 };
@@ -336,11 +337,6 @@ export type IMutationLoginArgs = {
 
 export type IMutationSendTokenToPhoneArgs = {
   phone: Scalars['String'];
-};
-
-
-export type IMutationTestArgs = {
-  boardId: Scalars['String'];
 };
 
 
@@ -409,7 +405,8 @@ export type IQuery = {
   fetchBestOfBoards: Array<IBoard>;
   fetchBestOfUser: Array<IUser>;
   fetchBoard: IBoard;
-  fetchBoardProcessingByUser: Array<IBoard>;
+  fetchBoardInprocessingByUser: Array<IBoard>;
+  fetchBoardRecruitingByUser: Array<IBoard>;
   fetchBoards: Array<IBoard>;
   fetchCategories: Array<ICategory>;
   fetchChatLogs: Array<IChatMessage>;
@@ -434,7 +431,6 @@ export type IQuery = {
   fetchUsers: Array<IUser>;
   fetchUsersCount: Scalars['Int'];
   fetchUsersCountByDate: Array<IUser>;
-  fetchWriteBoards: Array<IBoard>;
 };
 
 
@@ -448,7 +444,12 @@ export type IQueryFetchBoardArgs = {
 };
 
 
-export type IQueryFetchBoardProcessingByUserArgs = {
+export type IQueryFetchBoardInprocessingByUserArgs = {
+  page?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type IQueryFetchBoardRecruitingByUserArgs = {
   page?: InputMaybe<Scalars['Int']>;
 };
 
@@ -508,11 +509,6 @@ export type IQueryFetchRunnerByBoardArgs = {
 
 
 export type IQueryFetchRuunerProcessingByUserArgs = {
-  page?: InputMaybe<Scalars['Int']>;
-};
-
-
-export type IQueryFetchWriteBoardsArgs = {
   page?: InputMaybe<Scalars['Int']>;
 };
 

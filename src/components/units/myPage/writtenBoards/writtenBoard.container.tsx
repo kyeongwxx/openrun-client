@@ -8,7 +8,7 @@ import {
   IMutation,
   IMutationCreateRatingArgs,
   IQuery,
-  IQueryFetchWriteBoardsArgs,
+  IQueryFetchBoardRecruitingByUserArgs,
 } from "../../../../commons/types/generated/types";
 
 import MypageWrittenBoardsUI from "./writtenBoard.presenter";
@@ -17,7 +17,7 @@ import {
   CREATE_RATING,
   CREATE_REPORT,
   FETCH_RUNNER,
-  FETCH_WRITE_BOARDS,
+  FETCH_BOARD_RECRUITING_BY_USER,
 } from "./writtenBoard.queries";
 import { useRecoilState } from "recoil";
 import { accessTokenState, modalInputState } from "../../../commons/store";
@@ -37,9 +37,9 @@ export default function MypageWrittenBoards() {
   const [inputValue, setInputValue] = useRecoilState(modalInputState);
 
   const { data, fetchMore } = useQuery<
-    Pick<IQuery, "fetchWriteBoards">,
-    IQueryFetchWriteBoardsArgs
-  >(FETCH_WRITE_BOARDS);
+    Pick<IQuery, "fetchBoardRecruitingByUser">,
+    IQueryFetchBoardRecruitingByUserArgs
+  >(FETCH_BOARD_RECRUITING_BY_USER);
 
   const [createRating] = useMutation<
     Pick<IMutation, "createRating">,
@@ -59,14 +59,18 @@ export default function MypageWrittenBoards() {
   const onFetchMore = () => {
     if (!data) return;
     fetchMore({
-      variables: { page: Math.ceil(data?.fetchWriteBoards.length / 10) + 1 },
+      variables: {
+        page: Math.ceil(data?.fetchBoardRecruitingByUser.length / 10) + 1,
+      },
       updateQuery: (prev, { fetchMoreResult }) => {
-        if (!fetchMoreResult?.fetchWriteBoards)
-          return { fetchWriteBoards: [...prev.fetchWriteBoards] };
+        if (!fetchMoreResult?.fetchBoardRecruitingByUser)
+          return {
+            fetchBoardRecruitingByUser: [...prev.fetchBoardRecruitingByUser],
+          };
         return {
-          fetchWriteBoards: [
-            ...prev.fetchWriteBoards,
-            ...fetchMoreResult?.fetchWriteBoards,
+          fetchBoardRecruitingByUser: [
+            ...prev.fetchBoardRecruitingByUser,
+            ...fetchMoreResult?.fetchBoardRecruitingByUser,
           ],
         };
       },
@@ -110,7 +114,7 @@ export default function MypageWrittenBoards() {
         },
         refetchQueries: [
           {
-            query: FETCH_WRITE_BOARDS,
+            query: FETCH_BOARD_RECRUITING_BY_USER,
           },
         ],
       });
@@ -156,7 +160,7 @@ export default function MypageWrittenBoards() {
         variables: {
           boardId,
         },
-        refetchQueries: [{ query: FETCH_WRITE_BOARDS }],
+        refetchQueries: [{ query: FETCH_BOARD_RECRUITING_BY_USER }],
       });
 
       setIsModalOpenRate(false);
@@ -176,7 +180,7 @@ export default function MypageWrittenBoards() {
   return (
     <MypageWrittenBoardsUI
       onFetchMore={onFetchMore}
-      data={data?.fetchWriteBoards}
+      data={data?.fetchBoardRecruitingByUser}
       onClickMoveToDetail={onClickMoveToDetail}
       onClickTop={onClickTop}
       scrollRef={scrollRef}
