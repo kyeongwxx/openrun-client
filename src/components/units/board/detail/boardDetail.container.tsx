@@ -252,8 +252,7 @@ export default function BoardDetail() {
         });
       }
     } catch (error) {
-      // if (error instanceof Error)
-      // alert(error.message);
+      // if (error instanceof Error) alert(error.message);
     }
   };
 

@@ -17,9 +17,7 @@ export const FETCH_BOARD = gql`
         address
         addressDetail
       }
-      image {
-        url
-      }
+      image
       user {
         id
       }
