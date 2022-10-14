@@ -45,8 +45,8 @@ export default function BoardDetailUI(props: BoardDetailUIProps) {
           <s.ImageWrapper>
             <s.Image
               src={
-                props.data?.fetchBoard?.image?.url
-                  ? `https://storage.googleapis.com/openrun-storage/${props.data?.fetchBoard?.image?.url}`
+                props.data?.fetchBoard?.image
+                  ? `https://storage.googleapis.com/openrun-bucket/${props.data?.fetchBoard?.image}`
                   : "/boardList/default.jpeg"
               }
             />

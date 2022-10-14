@@ -33,9 +33,7 @@ export const FETCH_BOARDS = gql`
       location {
         address
       }
-      image {
-        url
-      }
+      image
     }
   }
 `;
