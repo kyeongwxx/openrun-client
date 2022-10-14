@@ -17,9 +17,7 @@ export const FETCH_INTEREST_BOARDS = gql`
         user {
           nickName
         }
-        image {
-          url
-        }
+        image
       }
     }
   }

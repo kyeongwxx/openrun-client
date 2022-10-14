@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
-export const FETCH_WRITE_BOARDS = gql`
-  query fetchWriteBoards($page: Int) {
-    fetchWriteBoards(page: $page) {
+export const FETCH_BOARD_RECRUITING_BY_USER = gql`
+  query fetchBoardRecruitingByUser($page: Int) {
+    fetchBoardRecruitingByUser(page: $page) {
       id
       title
       contents
@@ -15,9 +15,7 @@ export const FETCH_WRITE_BOARDS = gql`
         nickName
       }
 
-      image {
-        url
-      }
+      image
     }
   }
 `;

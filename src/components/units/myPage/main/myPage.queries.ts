@@ -25,9 +25,9 @@ export const FETCH_USER_CHATROOM = gql`
   }
 `;
 
-export const FETCH_BOARD_PROCESSING_BY_USER = gql`
-  query fetchBoardProcessingByUser($page: Int) {
-    fetchBoardProcessingByUser(page: $page) {
+export const FETCH_BOARD_IN_PROCESSING_BY_USER = gql`
+  query fetchBoardInprocessingByUser($page: Int) {
+    fetchBoardInprocessingByUser(page: $page) {
       id
       title
 
@@ -36,9 +36,7 @@ export const FETCH_BOARD_PROCESSING_BY_USER = gql`
       createdAt
 
       dueDate
-      image {
-        url
-      }
+      image
       user {
         nickName
       }
@@ -59,9 +57,7 @@ export const FETCH_RUNNER_PROCESSING_BY_USER = gql`
         title
         price
         dueDate
-        image {
-          url
-        }
+        image
         location {
           address
           addressDetail
