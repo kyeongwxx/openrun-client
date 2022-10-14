@@ -36,7 +36,7 @@ export default function MainUI(props: IMainProps) {
           props.eventInfo?.map((el) => (
             <s.EventProduct key={uuidv4()}>
               <s.ProductImg
-                src={`https://storage.googleapis.com/openrun-storage/${el.image}`}
+                src={`https://storage.googleapis.com/openrun-bucket/${el.image}`}
                 onClick={props.onClickMoveToDetail(`/eventInfo/${el.id}`)}
               />
               <s.ProductTexts
@@ -79,7 +79,7 @@ export default function MainUI(props: IMainProps) {
                   src={
                     !el.profileImg
                       ? "/img/profile.png"
-                      : `https://storage.googleapis.com/openrun-storage/${el.profileImg}`
+                      : `https://storage.googleapis.com/openrun-bucket/${el.profileImg}`
                   }
                 />
                 <s.TextWrapper>
@@ -157,8 +157,8 @@ export default function MainUI(props: IMainProps) {
                   <s.CategoryImage
                     onMouseEnter={() => props.onMouse(index)}
                     src={
-                      el?.image?.url
-                        ? `https://storage.googleapis.com/openrun-storage/${el.image?.url}`
+                      el?.image
+                        ? `https://storage.googleapis.com/openrun-bucket/${el.image}`
                         : "/img/profile.png"
                     }
                   />

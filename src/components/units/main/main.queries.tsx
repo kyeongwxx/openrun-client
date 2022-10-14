@@ -31,9 +31,7 @@ export const FETCH_BEST_OF_BOARDS = gql`
       user {
         nickName
       }
-      image {
-        url
-      }
+      image
     }
   }
 `;
